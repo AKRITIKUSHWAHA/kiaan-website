@@ -3,6 +3,8 @@ import { Footer } from '../components/Footer'
 import { Outlet } from 'react-router-dom'
 import { BackgroundEffects } from '../components/BackgroundEffects'
 
+import { GoogleTagManager } from '@next/third-parties/google';
+
 export const Layout = () => {
     return (
         <div className="flex flex-col min-h-screen relative bg-black text-white overflow-hidden">
