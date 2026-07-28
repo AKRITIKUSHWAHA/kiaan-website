@@ -6,8 +6,8 @@ import { Reveal } from '@/components/Reveal';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Kiaan Journals | Engineering Blog & Tech Insights",
-    description: "Deep dives into software engineering, SaaS architecture, and the Indore tech ecosystem. Stay updated with the latest from Kiaan Technology.",
+    title: "Software Dev Blog & Tech Insights | Kiaan Technology",
+    description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology's team. Stay ahead in the Indian tech ecosystem. Read our latest posts.",
 };
 
 const categories = [

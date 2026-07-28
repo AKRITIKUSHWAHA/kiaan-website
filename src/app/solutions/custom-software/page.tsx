@@ -3,8 +3,8 @@ import { NicheServicePage } from '@/components/NicheServicePage';
 import { solutionsData } from '@/data/solutionsData';
 
 export const metadata: Metadata = {
-    title: "Custom Software Development Company India | Kiaan Technology",
-    description: "Tailored custom software development services for global businesses seeking scalable digital transformation. Enterprise software, SaaS platforms, startup MVP development, and business software solutions.",
+    title: "Custom-Built Enterprise Software Development India | Kiaan",
+    description: "Scalable, custom-built software for global businesses — ERP, SaaS platforms, startup MVPs & enterprise apps. Start your digital transformation with Kiaan Technology.",
     keywords: "Custom Software Development Company, Enterprise Software Development, SaaS Development Services, Business Software Solutions, Software Development for Startups, Bespoke Enterprise Applications, Custom Digital Product Engineering, Scalable Enterprise Applications",
     alternates: {
         canonical: "https://kiaantechnology.com/solutions/custom-software",
