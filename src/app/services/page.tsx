@@ -33,7 +33,7 @@ const serviceCategories = [
         borderColor: "border-blue-600/30",
         hoverBg: "hover:bg-blue-600/10",
         solutions: ["Clinic Management", "EMR Software", "Telemedicine", "Lab Systems"],
-        link: "/solutions/healthcare"
+        link: "/industries/healthcare-software"
     },
     {
         title: "Real Estate & Property",
@@ -51,7 +51,7 @@ const serviceCategories = [
         borderColor: "border-yellow-600/30",
         hoverBg: "hover:bg-yellow-600/10",
         solutions: ["Accounting ERP", "Payroll Systems", "Banking Dashboards", "Trading Bots"],
-        link: "/solutions/finance"
+        link: "/industries/fintech-software"
     },
     {
         title: "Education & LMS",
@@ -78,7 +78,7 @@ const serviceCategories = [
         borderColor: "border-pink-600/30",
         hoverBg: "hover:bg-pink-600/10",
         solutions: ["Retail POS", "Inventory Management", "Billing Software", "Sales Tracking"],
-        link: "/solutions/retail"
+        link: "/industries/retail-technology"
     },
     {
         title: "Automotive & Rental",
@@ -105,7 +105,7 @@ const serviceCategories = [
         borderColor: "border-purple-600/30",
         hoverBg: "hover:bg-purple-600/10",
         solutions: ["Neural Architectures", "Workflow Bots", "Predictive Analytics", "Cognitive Apps"],
-        link: "/solutions/ai-automation"
+        link: "/services/ai-automation"
     },
     {
         title: "HRM Solutions",

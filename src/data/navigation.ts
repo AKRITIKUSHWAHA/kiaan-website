@@ -200,14 +200,14 @@ export const navLinks = [
         name: 'Services',
         href: '/services',
         subItems: [
-            { name: 'Custom SaaS Development', href: '/solutions/saas-development' },
-            { name: 'Mobile App Development', href: '/solutions/mobile-development' },
-            { name: 'ERP & CRM Development', href: '/solutions/erp-crm' },
+            { name: 'Custom SaaS Development', href: '/services/saas-development' },
+            { name: 'Mobile App Development', href: '/services/mobile-app-development' },
+            { name: 'ERP & CRM Development', href: '/services/erp-crm-solutions' },
             { name: 'HRM Systems', href: '/hrm' },
-            { name: 'Automation Systems', href: '/solutions/ai-automation' },
+            { name: 'Automation Systems', href: '/services/ai-automation' },
             { name: 'UI/UX Design', href: '/solutions/ui-ux' },
-            { name: 'Web Development', href: '/solutions/web-development' },
-            { name: 'Custom Software Development', href: '/solutions/custom-software' },
+            { name: 'Web Development', href: '/services/web-development' },
+            { name: 'Custom Software Development', href: '/services/custom-software-development' },
         ]
     },
     { name: 'Case Studies', href: '/case-studies' },
@@ -218,5 +218,5 @@ export const navLinks = [
         level2: internshipCategories
     },
 
-    { name: 'AI Automation', href: '/ai-automation' },
+    { name: 'AI Automation', href: '/services/ai-automation' },
 ]

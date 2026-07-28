@@ -164,7 +164,7 @@ export default function RootLayout({
                             "sameAs": [
                                 "https://www.linkedin.com/company/89547261/",
                                 "https://www.instagram.com/kiaan_technology4/",
-                                "https://youtube.com/@kiaantechnology-r3p?si=_NY7-esRTL0vhO6_"
+                                "https://youtube.com/@kiaantechnology"
                             ]
                         })
                     }}

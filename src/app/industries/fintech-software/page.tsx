@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: data.metaTitle || 'Finance Solutions | Kiaan Technology',
         description: data.metaDescription || data.desc,
-        url: 'https://kiaantechnology.com/solutions/finance',
+        url: 'https://kiaantechnology.com/industries/fintech-software/',
         siteName: 'Kiaan Technology',
         type: 'website',
     },
@@ -21,10 +21,10 @@ export const metadata: Metadata = {
         description: data.metaDescription || data.desc,
     },
     alternates: {
-        canonical: 'https://kiaantechnology.com/solutions/finance',
+        canonical: 'https://kiaantechnology.com/industries/fintech-software/',
     },
 };
 
 export default function FinancePage() {
-    return <NicheServicePage {...data} slug="finance" />;
+    return <NicheServicePage {...data} slug="industries/fintech-software" />;
 }

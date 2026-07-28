@@ -52,7 +52,7 @@ export const Footer = () => {
                                 },
                                 { 
                                     label: 'YouTube', 
-                                    href: 'https://youtube.com/@kiaantechnology-r3p?si=_NY7-esRTL0vhO6_',
+                                    href: 'https://www.youtube.com/@kiaantechnology',
                                     icon: <Youtube className="w-5 h-5" />
                                 }
                             ].map(({ label, href, icon }, i) => (
