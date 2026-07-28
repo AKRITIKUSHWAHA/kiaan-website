@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     description: "AI-driven automation services that eliminate manual work. Intelligent workflow automation, RPA & process optimisation for Indian enterprises. Request a free demo.",
     keywords: "Business Automation Software, Workflow Automation Systems, Enterprise Automation Solutions, AI-Powered Automation Software, Process Automation Development, Robotic Process Automation Solutions, Intelligent Business Automation Tools",
     alternates: {
-        canonical: "https://kiaantechnology.com/solutions/ai-automation",
+        canonical: "https://kiaantechnology.com/services/ai-automation/",
     },
 };
 
 export default function AIAutomationPage() {
     const data = solutionsData['ai-automation'];
-    return <NicheServicePage {...data} slug="ai-automation" />;
+    return <NicheServicePage {...data} slug="services/ai-automation" />;
 }

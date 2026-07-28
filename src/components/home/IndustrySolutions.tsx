@@ -69,12 +69,12 @@ const IndustryCardMemo = React.memo(IndustryCard)
 
 const IndustrySolutionsInner = () => {
     const industries = [
-        { title: "Healthcare Software Development", desc: "HIPAA-compliant patient portals, doctor-patient EHR systems & telemedicine platforms for hospitals.", icon: Activity, href: "/solutions/healthcare" },
+        { title: "Healthcare Software Development", desc: "HIPAA-compliant patient portals, doctor-patient EHR systems & telemedicine platforms for hospitals.", icon: Activity, href: "/industries/healthcare-software" },
         { title: "Real Estate Software Solutions", desc: "Advanced property management software, CRM for real estate & virtual tour integrations.", icon: Building, href: "/solutions/real-estate" },
-        { title: "Fintech Software Development", desc: "Secure banking dashboards, algorithmic trading bots & payment gateway integration solutions.", icon: Landmark, href: "/solutions/finance" },
+        { title: "Fintech Software Development", desc: "Secure banking dashboards, algorithmic trading bots & payment gateway integration solutions.", icon: Landmark, href: "/industries/fintech-software" },
         { title: "Education Management Software", desc: "Custom LMS platforms, student performance tracking systems & virtual classroom solutions.", icon: GraduationCap, href: "/solutions/education" },
         { title: "Logistics Software Solutions", desc: "Fleet tracking, route optimization, warehouse management & supply chain ERP systems.", icon: Truck, href: "/solutions/logistics" },
-        { title: "Retail Technology Solutions", desc: "Smart POS systems, inventory management, e-commerce suites & omni-channel retail software.", icon: ShoppingBag, href: "/solutions/retail" },
+        { title: "Retail Technology Solutions", desc: "Smart POS systems, inventory management, e-commerce suites & omni-channel retail software.", icon: ShoppingBag, href: "/industries/retail-technology" },
     ]
 
     return (
