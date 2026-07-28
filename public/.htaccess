@@ -1,0 +1,12 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Default landing page
+DirectoryIndex index.html
+
+# Set custom 404 page for Next.js static export fallback
+ErrorDocument 404 /404.html
+
+# Redirect external index.html requests to directory root
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
