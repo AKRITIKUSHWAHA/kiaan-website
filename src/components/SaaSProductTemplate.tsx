@@ -348,3 +348,5 @@ const SaaSProductTemplateInner = ({ data }: { data: ProductData }) => {
 };
 
 export const SaaSProductTemplate = React.memo(SaaSProductTemplateInner);
+export default SaaSProductTemplate;
+
