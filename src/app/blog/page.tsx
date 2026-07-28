@@ -67,7 +67,7 @@ export default function BlogPage() {
                             <h3 className="text-sm font-black uppercase tracking-widest text-white mb-8 border-b border-zinc-800 pb-4">Categories</h3>
                             <div className="space-y-4">
                                 {categories.map(cat => (
-                                    <Link key={cat} href={`/blog/category/${cat.toLowerCase().replace(/ /g, '-')}`} className="flex justify-between items-center group">
+                                    <Link key={cat} href={`/blog`} className="flex justify-between items-center group">
                                         <span className="text-zinc-400 group-hover:text-yellow-500 transition-colors">{cat}</span>
                                         <ChevronRight size={14} className="text-zinc-800 group-hover:text-yellow-500 transition-all" />
                                     </Link>
