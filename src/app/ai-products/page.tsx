@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { NicheServicePage } from '@/components/NicheServicePage';
 
 export const metadata: Metadata = {
-    title: 'AI Products & Solutions India | AI SaaS Tools for Business | Kiaan Technology',
-    description: 'Kiaan AI Products — AI-powered business tools including document OCR, AI chatbots, resume screening, sales assistant, business analytics, and workflow automation for Indian enterprises.',
+    title: "AI-Powered Business Products & Tools India | Kiaan",
+    description: "Enterprise AI products — OCR, chatbots, resume screening & business analytics. Plug-and-play AI SaaS for Indian enterprises. Explore Kiaan AI solutions today.",
     keywords: 'AI products India, AI business tools, AI chatbot India, document OCR software, AI sales assistant, AI automation software, business AI solutions, AI SaaS India',
     alternates: { canonical: 'https://kiaantechnology.com/ai-products' },
     openGraph: {
-        title: 'AI Products & Solutions India | Kiaan Technology',
-        description: 'AI-powered business tools: OCR, chatbots, analytics, and workflow automation.',
+        title: "AI-Powered Business Products & Tools India | Kiaan",
+        description: 'Enterprise AI products — OCR, chatbots, resume screening & business analytics. Plug-and-play AI SaaS for Indian enterprises.',
         url: 'https://kiaantechnology.com/ai-products',
         siteName: 'Kiaan Technology',
         type: 'website',

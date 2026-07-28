@@ -1,6 +1,6 @@
 [
   {
-    "slug": "study-first-info",
+    "slug": "study-first-crm",
     "title": "Study First Info CRM",
     "client": "Study First Info",
     "category": "CRM / SAAS",
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "slug": "healthsakhi",
+    "slug": "healthsakhi-ai",
     "title": "HealthSakhi AI",
     "client": "HealthSakhi",
     "category": "HEALTHTECH AI",
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "slug": "pgx-gateway",
+    "slug": "pgx-payment-gateway",
     "title": "PGX Payment Gateway",
     "client": "PlayGroundX",
     "category": "FINTECH GATEWAY",

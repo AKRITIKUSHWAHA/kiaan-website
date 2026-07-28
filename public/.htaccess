@@ -1,6 +1,21 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
+# 301 Redirects for URL Restructuring
+Redirect 301 /solutions/custom-software/ /services/custom-software-development/
+Redirect 301 /solutions/saas-development/ /services/saas-development/
+Redirect 301 /solutions/ai-automation/ /services/ai-automation/
+Redirect 301 /ai-automation/ /services/ai-automation/
+Redirect 301 /solutions/web-development/ /services/web-development/
+Redirect 301 /solutions/mobile-development/ /services/mobile-app-development/
+Redirect 301 /solutions/erp-crm/ /services/erp-crm-solutions/
+Redirect 301 /solutions/healthcare/ /industries/healthcare-software/
+Redirect 301 /solutions/finance/ /industries/fintech-software/
+Redirect 301 /solutions/retail/ /industries/retail-technology/
+Redirect 301 /case-studies/study-first-info/ /case-studies/study-first-crm/
+Redirect 301 /case-studies/healthsakhi/ /case-studies/healthsakhi-ai/
+Redirect 301 /case-studies/pgx-gateway/ /case-studies/pgx-payment-gateway/
+
 # Default landing page
 DirectoryIndex index.html
 

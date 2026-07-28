@@ -1,24 +1,11 @@
-import React from 'react';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Case Studies | Kiaan Technology',
-    description: 'Explore our portfolio of successful software development projects, SaaS platforms, and digital transformations.',
+    title: "Software Development Case Studies | Kiaan Technology",
+    description: "Real-world success stories from Kiaan Technology — custom ERP, SaaS, AI automation & mobile solutions delivered for businesses across India. View our work.",
     alternates: {
-        canonical: 'https://kiaantechnology.com/case-studies',
+        canonical: "https://kiaantechnology.com/case-studies",
     },
-    openGraph: {
-        title: 'Case Studies | Kiaan Technology',
-        description: 'Explore our portfolio of successful software development projects, SaaS platforms, and digital transformations.',
-        url: 'https://kiaantechnology.com/case-studies',
-        siteName: 'Kiaan Technology',
-        type: 'website',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Case Studies | Kiaan Technology',
-        description: 'Explore our portfolio of successful software development projects, SaaS platforms, and digital transformations.',
-    }
 };
 
 export default function CaseStudiesLayout({

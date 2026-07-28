@@ -80,39 +80,54 @@ const NicheServicePageInner = ({
     return (
         <div className="bg-black min-h-screen text-white pt-24 pb-8 font-sans selection:bg-yellow-500 selection:text-black overflow-hidden uppercase">
             {/* Breadcrumb Schema */}
-            {slug && (
-                <Script
-                    id={`breadcrumb-schema-${slug}`}
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BreadcrumbList",
-                            "itemListElement": [
-                                {
-                                    "@type": "ListItem",
-                                    "position": 1,
-                                    "name": "Home",
-                                    "item": "https://kiaantechnology.com"
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 2,
-                                    "name": "Solutions",
-                                    "item": "https://kiaantechnology.com/solutions"
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 3,
-                                    "name": title,
-                                    "item": `https://kiaantechnology.com/solutions/${slug}`
-                                }
-                            ]
-                        })
-                    }}
-                />
-            )}
+            {slug && (() => {
+                let parentName = "Solutions";
+                let parentUrl = "https://kiaantechnology.com/solutions";
+                let schemaItemUrl = `https://kiaantechnology.com/solutions/${slug}`;
+                if (slug.startsWith('services/')) {
+                    parentName = "Services";
+                    parentUrl = "https://kiaantechnology.com/services";
+                    schemaItemUrl = `https://kiaantechnology.com/${slug}`;
+                } else if (slug.startsWith('industries/')) {
+                    parentName = "Industries";
+                    parentUrl = "https://kiaantechnology.com";
+                    schemaItemUrl = `https://kiaantechnology.com/${slug}`;
+                }
+                const schemaId = slug.replace(/\//g, '-');
+                return (
+                    <Script
+                        id={`breadcrumb-schema-${schemaId}`}
+                        type="application/ld+json"
+                        strategy="afterInteractive"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify({
+                                "@context": "https://schema.org",
+                                "@type": "BreadcrumbList",
+                                "itemListElement": [
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 1,
+                                        "name": "Home",
+                                        "item": "https://kiaantechnology.com"
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 2,
+                                        "name": parentName,
+                                        "item": parentUrl
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        "position": 3,
+                                        "name": title,
+                                        "item": schemaItemUrl
+                                    }
+                                ]
+                            })
+                        }}
+                    />
+                );
+            })()}
 
             {/* FAQ Schema */}
             {slug && faqs && faqs.length > 0 && (

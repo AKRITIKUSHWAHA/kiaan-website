@@ -16,7 +16,7 @@ import "@fontsource/manrope/700.css";
 
 export const metadata: Metadata = {
     title: "Custom Software Development Company India | Kiaan Technology",
-    description: "Kiaan Technology provides AI-driven custom software development services including ERP, CRM, SaaS development, and enterprise automation solutions in India.",
+    description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale. Get a free consultation — Kiaan Technology.",
     keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software, Enterprise Software Development, Cloud Based Business Software, Web Application Development Company",
     robots: "index, follow",
     authors: [{ name: "Kiaan Technology" }],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Kiaan Technology provides ERP, CRM, SaaS and AI powered custom software development services.",
+        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale — Kiaan Technology.",
         url: "https://kiaantechnology.com",
         siteName: "Kiaan Technology",
         images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title: "Custom Software Development Company India | Kiaan Technology",
-        description: "AI driven business automation and software development company.",
+        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale.",
         images: ["/og-image.jpg"],
     },
     icons: {
