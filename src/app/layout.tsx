@@ -74,7 +74,7 @@ export default function RootLayout({
                             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                            })(window,document,'script','dataLayer','GTM-XXXXXXX');
+                            })(window,document,'script','dataLayer','GTM-WCMW8NVC');
                         `,
                     }}
                 />
@@ -116,7 +116,7 @@ export default function RootLayout({
 
                 {/* Google Analytics (GA4) */}
                 <Script
-                    src="https://www.googletagmanager.com/gtag/js?id=G-JCSRXVVVR8"
+                    src="https://www.googletagmanager.com/gtag/js?id=G-Y9H9T9S8PN"
                     strategy="afterInteractive"
                 />
                 <Script
@@ -127,7 +127,7 @@ export default function RootLayout({
                             window.dataLayer = window.dataLayer || [];
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
-                            gtag('config', 'G-JCSRXVVVR8');
+                            gtag('config', 'G-Y9H9T9S8PN');
                         `,
                     }}
                 />
@@ -136,7 +136,7 @@ export default function RootLayout({
                 {/* Google Tag Manager (noscript) */}
                 <noscript>
                     <iframe
-                        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+                        src="https://www.googletagmanager.com/ns.html?id=GTM-WCMW8NVC"
                         height="0"
                         width="0"
                         style={{ display: 'none', visibility: 'hidden' }}
