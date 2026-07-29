@@ -255,6 +255,11 @@ export default function RootLayout({
                     <GlobalClientComponents />
                     <AwardBanner />
                 </div>
+                <Script
+  id="tidio-chat"
+  src="https://code.tidio.co/qihkscecnmcvf2gnjrau6nahfxnp3ytj.js"
+  strategy="afterInteractive"
+/>
             </body>
         </html>
     );
