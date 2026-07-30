@@ -43,7 +43,7 @@ export default function ResourceDetailClient({ resource, relatedResources }: Res
                             "name": "Kiaan Technology",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "https://kiaantechnology.com/ChatGPT_Image_Feb_20__2026__05_48_11_PM-removebg-preview.png"
+                                "url": "https://kiaantechnology.com/ChatGPT_Image_Feb_20__2026__05_48_11_PM-removebg-preview.webp"
                             }
                         },
                         "mainEntityOfPage": {

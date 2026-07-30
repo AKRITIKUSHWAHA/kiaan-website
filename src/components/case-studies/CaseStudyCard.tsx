@@ -136,7 +136,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
         <div className="aspect-video w-full overflow-hidden relative">
           <img
             src={image}
-            alt={imageAlt || `${projectName} project preview`}
+            alt={imageAlt || `${projectName} - Enterprise Software Project Screenshot`}
             loading="lazy"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
           />

@@ -14,6 +14,9 @@ import React from 'react';
 import Script from 'next/script'
 
 // Lazy Load Heavy Sections
+const AsSeenOnSection = dynamic(() => import('@/components/home/AsSeenOnSection').then(mod => mod.AsSeenOnSection), {
+    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+})
 const IndustrySolutions = dynamic(() => import('@/components/home/IndustrySolutions').then(mod => mod.IndustrySolutions), {
     loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
 })
@@ -41,7 +44,7 @@ const ContactCTA = dynamic(() => import('@/components/shared/ContactCTA').then(m
 const heroSlides = [
     { 
         id: 1, 
-        img: '/frontPage/ISO certificate.jpg', 
+        img: '/frontPage/ISO certificate.webp', 
         alt: 'Kiaan Technology ISO/IEC 27001:2022 Compliance Certificate',
         label: 'Global Compliance', 
         title: 'ISO Certified',
@@ -51,7 +54,7 @@ const heroSlides = [
     },
     { 
         id: 2, 
-        img: '/frontPage/Graphic Design.png', 
+        img: '/frontPage/Graphic Design.webp', 
         alt: 'Creative UI/UX & Graphic Design Showcase',
         label: 'Visual Excellence', 
         title: 'Creative Design',
@@ -61,7 +64,7 @@ const heroSlides = [
     },
     { 
         id: 3, 
-        img: '/frontPage/glassdoor-award.png', 
+        img: '/frontPage/glassdoor-award.webp', 
         alt: 'Glassdoor Top Workplace Award Certificate',
         label: 'Top workplace', 
         title: 'Glassdoor Rated',
@@ -71,7 +74,7 @@ const heroSlides = [
     },
     { 
         id: 4, 
-        img: '/frontPage/ReactJs.png', 
+        img: '/frontPage/ReactJs.webp', 
         alt: 'React.js logo',
         label: 'Next-Gen Tech', 
         title: 'React Development',
@@ -81,7 +84,7 @@ const heroSlides = [
     },
     { 
         id: 5, 
-        img: '/frontPage/ambitionbox.png', 
+        img: '/frontPage/ambitionbox.webp', 
         alt: 'AmbitionBox Excellence Rating Award',
         label: 'IT Company Achiever', 
         title: 'AmbitionBox Rated',
@@ -91,7 +94,7 @@ const heroSlides = [
     },
     { 
         id: 6, 
-        img: '/frontPage/UI design.png', 
+        img: '/frontPage/UI design.webp', 
         alt: 'UI/UX Design Showcase Interface',
         label: 'User Centric', 
         title: 'UI/UX Design',
@@ -101,7 +104,7 @@ const heroSlides = [
     },
     { 
         id: 7, 
-        img: '/frontPage/Fiver certificate.jpeg', 
+        img: '/frontPage/Fiver certificate.webp', 
         alt: 'Fiverr Certified Top Rated Development Expert Badge',
         label: 'Verified Freelancer', 
         title: 'Fiverr Certified',
@@ -111,7 +114,7 @@ const heroSlides = [
     },
     { 
         id: 8, 
-        img: '/frontPage/wix-partner.jpg', 
+        img: '/frontPage/wix-partner.webp', 
         alt: 'Wix Studio Pioneer Partner Badge',
         label: 'Wix Studio Partner', 
         title: 'Wix Partner',
@@ -528,6 +531,7 @@ export default function Home() {
             </section>
 
             {/* NEW SECTIONS */}
+            <AsSeenOnSection />
             <IndustrySolutions />
             <FeaturedCaseStudies />
             <TestimonialsSection />

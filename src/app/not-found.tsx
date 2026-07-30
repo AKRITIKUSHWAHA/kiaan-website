@@ -1,257 +1,247 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Home, ArrowRight, Search, Code2, Cpu, Globe, Zap, CheckCircle2, ArrowUpRight, Mail } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-const quickLinks = [
-    { label: 'Services', href: '/services', desc: 'Custom Software, ERP, SaaS, AI' },
-    { label: 'Case Studies', href: '/case-studies', desc: '5 real-world success stories' },
-    { label: 'About Us', href: '/about', desc: 'Our team, mission & values' },
-    { label: 'Start a Project', href: '/start-project', desc: 'Get a free consultation' },
-    { label: 'Blog', href: '/blog', desc: 'Insights on enterprise tech' },
-    { label: 'Contact', href: '/contact', desc: 'Talk to our engineers' },
-];
-
-const floatingItems = [
-    { icon: Code2, label: '< 404 />', x: '8%', y: '20%', delay: 0 },
-    { icon: Cpu, label: 'NULL', x: '85%', y: '15%', delay: 0.3 },
-    { icon: Globe, label: 'LOST', x: '75%', y: '70%', delay: 0.6 },
-    { icon: Zap, label: 'ERROR', x: '12%', y: '72%', delay: 0.9 },
-];
+import {
+    Home,
+    Compass,
+    Layers,
+    Cpu,
+    Briefcase,
+    GraduationCap,
+    Info,
+    Mail,
+    ArrowRight,
+    ShieldAlert,
+    Terminal,
+    Sparkles
+} from 'lucide-react';
+import { Button } from '@/components/Button';
+import { Reveal } from '@/components/Reveal';
 
 export default function NotFound() {
-    const [email, setEmail] = useState('');
-    const [submitted, setSubmitted] = useState(false);
-    const [glitchActive, setGlitchActive] = useState(false);
-
-    // Periodic glitch effect on the 404
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setGlitchActive(true);
-            setTimeout(() => setGlitchActive(false), 300);
-        }, 3000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (email.trim()) {
-            setSubmitted(true);
+    const quickLinks = [
+        {
+            title: "Home Gateway",
+            desc: "Return to the main enterprise dashboard",
+            href: "/",
+            icon: Home,
+            badge: "Main"
+        },
+        {
+            title: "Our Services",
+            desc: "AI automation & custom engineering",
+            href: "/services",
+            icon: Cpu,
+            badge: "Tech"
+        },
+        {
+            title: "Solutions Suite",
+            desc: "ERP, CRM & industry automation",
+            href: "/solutions",
+            icon: Layers,
+            badge: "Enterprise"
+        },
+        {
+            title: "Case Archive",
+            desc: "Verified client results & blueprints",
+            href: "/case-studies",
+            icon: Briefcase,
+            badge: "Proof"
+        },
+        {
+            title: "SaaS Products",
+            desc: "Explore 100+ business modules",
+            href: "/products",
+            icon: Compass,
+            badge: "Modules"
+        },
+        {
+            title: "Internship Track",
+            desc: "40+ specialized engineering tracks",
+            href: "/internship",
+            icon: GraduationCap,
+            badge: "Career"
+        },
+        {
+            title: "Engineering Protocol",
+            desc: "Learn about Kiaan Tech architecture",
+            href: "/about",
+            icon: Info,
+            badge: "About"
+        },
+        {
+            title: "Contact Architect",
+            desc: "Direct technical consultation",
+            href: "/contact",
+            icon: Mail,
+            badge: "Support"
         }
-    };
+    ];
 
     return (
-        <div className="bg-black min-h-screen text-white relative overflow-hidden flex flex-col selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black min-h-screen pt-28 pb-20 px-6 relative overflow-hidden flex flex-col justify-between">
+            {/* Background Ambient FX */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,_rgba(234,179,8,0.07)_0%,_transparent_60%)] pointer-events-none" />
+            <div className="absolute top-1/4 -left-32 w-96 h-96 bg-yellow-500/5 blur-[140px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-blue-600/5 blur-[140px] rounded-full pointer-events-none" />
 
-            {/* Ambient background glows */}
-            <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-yellow-500/4 blur-[150px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-red-500/4 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-900/30 blur-[200px] rounded-full pointer-events-none" />
+            <div className="max-w-7xl w-full mx-auto relative z-10 my-auto">
+                
+                {/* Status Badge */}
+                <div className="flex justify-center mb-6">
+                    <Reveal>
+                        <div className="inline-flex items-center gap-3 bg-zinc-900/80 border border-yellow-500/30 px-5 py-2 rounded-full backdrop-blur-md">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                            </span>
+                            <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-yellow-500 flex items-center gap-2">
+                                <ShieldAlert size={14} /> ERROR 404 // ROUTE_NOT_FOUND
+                            </span>
+                        </div>
+                    </Reveal>
+                </div>
 
-            {/* Floating decorative icons */}
-            {floatingItems.map(({ icon: Icon, label, x, y, delay }, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute hidden md:flex flex-col items-center gap-2 opacity-10 pointer-events-none"
-                    style={{ left: x, top: y }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 0.1, y: [0, -12, 0] }}
-                    transition={{ duration: 4, delay, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                    <Icon size={28} className="text-yellow-500" />
-                    <span className="text-[8px] font-black tracking-widest text-zinc-600">{label}</span>
-                </motion.div>
-            ))}
-
-            {/* Grid overlay */}
-            <div
-                className="absolute inset-0 pointer-events-none opacity-[0.015]"
-                style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-                    backgroundSize: '60px 60px'
-                }}
-            />
-
-            {/* Main content */}
-            <main className="flex-1 flex flex-col items-center justify-center px-6 pt-24 pb-16 relative z-10">
-
-                {/* 404 Giant Number */}
-                <motion.div
-                    className="relative mb-8 select-none"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                >
-                    <div
-                        className={`text-[120px] md:text-[200px] font-display leading-none tracking-tighter text-white/5 ${glitchActive ? 'translate-x-[3px]' : ''} transition-transform duration-75`}
-                        style={{ WebkitTextStroke: '1px rgba(255,255,255,0.08)' }}
-                    >
-                        404
-                    </div>
-                    <div
-                        className={`absolute inset-0 text-[120px] md:text-[200px] font-display leading-none tracking-tighter text-yellow-500/20 ${glitchActive ? '-translate-x-[3px] translate-y-[2px]' : ''} transition-transform duration-75`}
-                        aria-hidden
-                        style={{ WebkitTextStroke: '1px rgba(234,179,8,0.3)' }}
-                    >
-                        404
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 border border-red-500/20 text-red-400 text-[10px] font-black uppercase tracking-widest mb-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                                Page Not Found
+                {/* Hero Glitch / 404 Big Display */}
+                <div className="text-center max-w-4xl mx-auto mb-12">
+                    <Reveal delay={0.1}>
+                        <div className="relative inline-block">
+                            <h1 className="text-7xl sm:text-9xl md:text-[13rem] font-display uppercase tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-200 to-zinc-700 select-none">
+                                404
+                            </h1>
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 blur-sm">
+                                <span className="text-7xl sm:text-9xl md:text-[13rem] font-display uppercase tracking-tighter text-yellow-500">
+                                    404
+                                </span>
                             </div>
                         </div>
+                    </Reveal>
+
+                    <Reveal delay={0.2}>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-display uppercase tracking-tight text-white mb-4">
+                            System Node <span className="text-yellow-500">Disconnected</span>
+                        </h2>
+                    </Reveal>
+
+                    <Reveal delay={0.3}>
+                        <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto font-light leading-relaxed mb-8">
+                            The requested architectural route or endpoint does not exist or has been relocated within our enterprise cloud network.
+                        </p>
+                    </Reveal>
+
+                    {/* Primary CTAs */}
+                    <Reveal delay={0.4} width="100%">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                            <Link href="/" className="w-full sm:w-auto">
+                                <Button className="h-14 px-8 bg-yellow-500 text-black hover:bg-white hover:text-black rounded-none font-black uppercase text-xs tracking-[0.2em] shadow-[4px_4px_0_rgba(255,255,255,0.1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all w-full justify-center gap-3">
+                                    <Home size={16} /> Return To Gateway
+                                </Button>
+                            </Link>
+                            <Link href="/demo" className="w-full sm:w-auto">
+                                <Button variant="outline" className="h-14 px-8 border-white/20 hover:border-yellow-500 text-white rounded-none font-black uppercase text-xs tracking-[0.2em] transition-all gap-3 w-full justify-center">
+                                    <Sparkles size={16} className="text-yellow-500" /> Start A Project
+                                </Button>
+                            </Link>
+                        </div>
+                    </Reveal>
+                </div>
+
+                {/* Section Divider with Header */}
+                <div className="border-t border-white/10 pt-12 mt-12">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-yellow-500 block mb-1">
+                                System Navigation Blueprints
+                            </span>
+                            <h3 className="text-xl md:text-2xl font-display uppercase text-white">
+                                Explore Verified <span className="text-zinc-500">Destinations</span>
+                            </h3>
+                        </div>
+                        <Link 
+                            href="/contact" 
+                            className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-zinc-400 hover:text-yellow-500 transition-colors group"
+                        >
+                            Need Custom Assistance? <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
                     </div>
-                </motion.div>
 
-                {/* Headline */}
-                <motion.div
-                    className="text-center max-w-2xl mb-6"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-4">
-                        You Wandered Into <br />
-                        <span className="text-yellow-500">Uncharted Territory</span>
-                    </h1>
-                    <p className="text-zinc-400 font-light text-base md:text-lg leading-relaxed">
-                        The page you&apos;re looking for doesn&apos;t exist, was moved, or may have a typo in the URL.
-                        Let&apos;s get you back on track.
-                    </p>
-                </motion.div>
+                    {/* Navigation Cards Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {quickLinks.map((item, idx) => {
+                            const IconComponent = item.icon;
+                            return (
+                                <Reveal key={idx} delay={0.1 * idx}>
+                                    <Link href={item.href} className="block group h-full">
+                                        <div className="p-6 bg-zinc-950/80 border border-white/5 hover:border-yellow-500/40 backdrop-blur-sm transition-all duration-500 h-full flex flex-col justify-between relative overflow-hidden group-hover:bg-zinc-900/60">
+                                            <div className="absolute top-0 right-0 w-16 h-16 bg-yellow-500/5 rounded-bl-full pointer-events-none group-hover:bg-yellow-500/10 transition-colors" />
+                                            
+                                            <div>
+                                                <div className="flex items-center justify-between mb-4">
+                                                    <div className="w-10 h-10 bg-zinc-900 border border-white/10 flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black group-hover:border-yellow-500 transition-all duration-300">
+                                                        <IconComponent size={20} strokeWidth={1.5} />
+                                                    </div>
+                                                    <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 border border-white/10 bg-black/60 text-zinc-400 group-hover:border-yellow-500/40 group-hover:text-yellow-500 transition-colors">
+                                                        {item.badge}
+                                                    </span>
+                                                </div>
+                                                <h4 className="text-base font-display uppercase tracking-tight text-white mb-1 group-hover:text-yellow-500 transition-colors flex items-center gap-2">
+                                                    {item.title}
+                                                </h4>
+                                                <p className="text-xs text-zinc-400 font-light leading-relaxed mb-4">
+                                                    {item.desc}
+                                                </p>
+                                            </div>
 
-                {/* Primary CTA */}
-                <motion.div
-                    className="flex flex-col sm:flex-row gap-4 mb-16"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.35 }}
-                >
-                    <Link
-                        href="/"
-                        id="not-found-home-btn"
-                        className="inline-flex items-center gap-2 bg-yellow-500 text-black px-8 h-12 text-xs font-black uppercase tracking-widest hover:bg-white transition-all duration-300"
-                    >
-                        <Home size={16} /> Back to Home
-                    </Link>
-                    <Link
-                        href="/start-project"
-                        id="not-found-project-btn"
-                        className="inline-flex items-center gap-2 bg-transparent border border-white/10 text-white px-8 h-12 text-xs font-black uppercase tracking-widest hover:border-yellow-500/40 hover:text-yellow-500 transition-all duration-300"
-                    >
-                        Start a Project <ArrowRight size={16} />
-                    </Link>
-                </motion.div>
+                                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500 group-hover:text-white transition-colors pt-3 border-t border-white/5">
+                                                Navigate Route <ArrowRight size={12} className="group-hover:translate-x-1.5 transition-transform text-yellow-500" />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </Reveal>
+                            );
+                        })}
+                    </div>
+                </div>
 
-                {/* Quick Navigation Grid */}
-                <motion.div
-                    className="w-full max-w-4xl mb-16"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.45 }}
-                >
-                    <div className="text-center mb-6">
-                        <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-500">
-                            <Search size={12} /> Explore Key Pages
+                {/* Direct CTA Banner */}
+                <div className="mt-12 p-8 md:p-10 border border-yellow-500/20 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-96 h-full bg-yellow-500/5 blur-[80px] pointer-events-none" />
+                    <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                        <div>
+                            <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-yellow-500 mb-2">
+                                <Terminal size={14} /> Immediate Engineering Support
+                            </div>
+                            <h3 className="text-2xl md:text-3xl font-display uppercase text-white tracking-tight">
+                                Looking for a Specific <span className="text-yellow-500">Enterprise Solution?</span>
+                            </h3>
+                            <p className="text-zinc-400 text-xs md:text-sm font-light mt-1 max-w-2xl">
+                                Speak directly with our Lead Solution Architects to discuss your custom software, AI workflow automation, or ERP integration roadmap.
+                            </p>
+                        </div>
+                        <div className="flex flex-wrap gap-4 flex-shrink-0">
+                            <Link href="/contact">
+                                <Button className="h-12 px-6 bg-yellow-500 text-black hover:bg-white font-black uppercase text-xs tracking-widest rounded-none transition-all">
+                                    Contact Us Now
+                                </Button>
+                            </Link>
+                            <Link href="/services">
+                                <Button variant="outline" className="h-12 px-6 border-white/20 hover:border-yellow-500 text-white font-black uppercase text-xs tracking-widest rounded-none transition-all">
+                                    Explore Services
+                                </Button>
+                            </Link>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        {quickLinks.map((link, i) => (
-                            <motion.div
-                                key={link.href}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: 0.5 + i * 0.07 }}
-                            >
-                                <Link
-                                    href={link.href}
-                                    id={`not-found-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                                    className="group flex flex-col p-5 bg-zinc-950 border border-white/5 hover:border-yellow-500/20 hover:bg-zinc-900/50 transition-all duration-300 h-full"
-                                >
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm font-black uppercase tracking-wider text-white group-hover:text-yellow-500 transition-colors">
-                                            {link.label}
-                                        </span>
-                                        <ArrowUpRight size={14} className="text-zinc-700 group-hover:text-yellow-500 transition-colors" />
-                                    </div>
-                                    <span className="text-[10px] text-zinc-600 font-semibold leading-relaxed">
-                                        {link.desc}
-                                    </span>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+                </div>
 
-                {/* Lead Capture Form */}
-                <motion.div
-                    className="w-full max-w-xl"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                >
-                    <div className="border border-white/5 bg-zinc-950/80 backdrop-blur-xl p-8 relative overflow-hidden">
-                        {/* Yellow accent top bar */}
-                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-500 via-amber-400 to-orange-500" />
+            </div>
 
-                        {!submitted ? (
-                            <>
-                                <div className="flex items-center gap-3 mb-2">
-                                    <Mail size={18} className="text-yellow-500" />
-                                    <h2 className="text-sm font-black uppercase tracking-widest text-white">
-                                        Stay in the Loop
-                                    </h2>
-                                </div>
-                                <p className="text-zinc-500 text-xs font-light leading-relaxed mb-6">
-                                    Get occasional insights on enterprise software, AI automation, and SaaS trends — no spam, unsubscribe anytime.
-                                </p>
-                                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                                    <input
-                                        id="not-found-email-input"
-                                        type="email"
-                                        required
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        placeholder="your@email.com"
-                                        className="flex-1 bg-black border border-zinc-800 text-white text-sm px-4 h-12 placeholder:text-zinc-600 focus:outline-none focus:border-yellow-500/50 transition-colors font-light"
-                                        aria-label="Email address for newsletter"
-                                    />
-                                    <button
-                                        id="not-found-email-submit"
-                                        type="submit"
-                                        className="bg-yellow-500 text-black px-6 h-12 text-xs font-black uppercase tracking-widest hover:bg-white transition-all duration-300 whitespace-nowrap"
-                                    >
-                                        Notify Me
-                                    </button>
-                                </form>
-                                <p className="text-[9px] text-zinc-700 mt-3 uppercase tracking-wider font-bold">
-                                    Join 2,000+ tech leaders — 100% free, no spam.
-                                </p>
-                            </>
-                        ) : (
-                            <motion.div
-                                className="flex flex-col items-center text-center py-4 gap-4"
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                            >
-                                <CheckCircle2 size={32} className="text-emerald-500" />
-                                <h3 className="text-base font-black uppercase tracking-widest text-white">You&apos;re In!</h3>
-                                <p className="text-zinc-400 text-sm font-light">
-                                    We&apos;ll send you the best enterprise tech insights. Welcome aboard!
-                                </p>
-                                <Link href="/" className="text-yellow-500 text-xs font-black uppercase tracking-widest hover:text-white transition-colors">
-                                    ← Back to Homepage
-                                </Link>
-                            </motion.div>
-                        )}
-                    </div>
-                </motion.div>
-
-            </main>
+            {/* Footer Tagline */}
+            <div className="max-w-7xl w-full mx-auto relative z-10 mt-12 text-center border-t border-white/5 pt-6">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">
+                    Kiaan Technology &copy; {new Date().getFullYear()} &middot; AI-Driven Business Automation & Digital Acceleration
+                </p>
+            </div>
         </div>
     );
 }

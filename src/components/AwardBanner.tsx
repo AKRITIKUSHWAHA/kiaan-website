@@ -243,7 +243,7 @@ export default function AwardBanner() {
               >
                 <div className="relative bg-black rounded-md overflow-hidden">
                   <Image
-                    src="/images/certificate.png"
+                    src="/images/certificate.webp"
                     alt="TechBehemoths Award Certificate 2025 - Kiaan Technology"
                     width={900}
                     height={640}
