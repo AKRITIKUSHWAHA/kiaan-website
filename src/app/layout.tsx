@@ -202,6 +202,8 @@ export default function RootLayout({
                                 s.parentNode.insertBefore(b, s);
                             })(window._linkedin_data_partner_color || window._linkedin_data_partner_ids);
                         `,
+                    }}
+                />
                 {/* Organization Schema */}
                 <Script
                     id="organization-schema"
