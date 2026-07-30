@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, Zap, Target, BarChart3, Globe, ShieldCheck, ArrowRight, Filter } from 'lucide-react'
+import { ArrowUpRight, Zap, Target, BarChart3, Globe, ShieldCheck, ArrowRight, Filter, Play, MessageSquareQuote } from 'lucide-react'
+import { VIDEO_TESTIMONIALS } from '@/data/videoTestimonials';
 import { Reveal } from '@/components/Reveal'
 import React, { useState } from 'react';
 import { Button } from '@/components/Button';
@@ -40,7 +41,48 @@ const reviews = [
 ];
 
 
-
+// ── Compact video card for case studies embed ──
+const VideoCard = ({ t }: { t: typeof VIDEO_TESTIMONIALS[0] }) => {
+    const [playing, setPlaying] = React.useState(false);
+    return (
+        <div className="relative rounded-xl overflow-hidden border border-white/5 hover:border-yellow-500/30 transition-all duration-300 group">
+            <div className="relative aspect-video bg-zinc-900">
+                {!playing ? (
+                    <div className="absolute inset-0 cursor-pointer" onClick={() => setPlaying(true)}>
+                        <img
+                            src={`https://img.youtube.com/vi/${t.youtubeId}/hqdefault.jpg`}
+                            alt={`${t.name} testimonial`}
+                            className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity"
+                            loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-11 h-11 rounded-full bg-yellow-500 flex items-center justify-center shadow-[0_0_30px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform">
+                                <Play size={16} className="text-black ml-0.5" fill="currentColor" />
+                            </div>
+                        </div>
+                        <div className="absolute bottom-2 left-2 right-2 flex items-end justify-between">
+                            <p className="text-[10px] font-bold text-white truncate">{t.name}</p>
+                            <span className="text-[9px] font-mono text-zinc-400 bg-black/60 px-1.5 py-0.5 rounded">{t.duration}</span>
+                        </div>
+                    </div>
+                ) : (
+                    <iframe
+                        src={`https://www.youtube.com/embed/${t.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                        title={`${t.name} testimonial`}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                )}
+            </div>
+            <div className="p-3 bg-zinc-950">
+                <p className="text-[10px] font-bold text-white truncate">{t.name}</p>
+                <p className="text-[9px] text-zinc-500 font-mono truncate">{t.designation} · {t.company}</p>
+            </div>
+        </div>
+    );
+};
 
 export default function CaseStudies() {
     const [filter, setFilter] = useState('All');
@@ -151,6 +193,27 @@ export default function CaseStudies() {
                             >
                                 {cat}
                             </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Video Testimonials Compact Carousel */}
+            <section className="container mx-auto px-6 mb-12">
+                <div className="border border-white/5 rounded-2xl bg-zinc-950/40 p-6">
+                    <div className="flex items-center justify-between mb-5">
+                        <div className="flex items-center gap-2">
+                            <MessageSquareQuote size={16} className="text-yellow-500" />
+                            <h2 className="text-sm font-bold font-mono text-white uppercase tracking-wider">Watch Client Stories</h2>
+                        </div>
+                        <Link href="/video-testimonials" className="text-[10px] font-mono font-bold text-yellow-500 hover:text-yellow-400 uppercase tracking-widest flex items-center gap-1 transition-colors">
+                            View All <ArrowRight size={10} className="inline" />
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {VIDEO_TESTIMONIALS.slice(0, 3).map((t) => (
+                            <VideoCard key={t.id} t={t} />
                         ))}
                     </div>
                 </div>

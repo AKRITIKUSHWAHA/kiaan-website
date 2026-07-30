@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
 import AwardBanner from "@/components/AwardBanner";
+import UTMTracker from "@/components/UTMTracker";
 import Script from "next/script";
 import "@fontsource/anton/400.css";
 import "@fontsource/manrope/300.css";
@@ -131,6 +132,75 @@ export default function RootLayout({
                         `,
                     }}
                 />
+
+                {/* Google Tag Manager (GTM) */}
+                <Script
+                    id="gtm-script"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                            })(window,document,'script','dataLayer','GTM-WCMW8NVC');
+                        `,
+                    }}
+                />
+
+                {/* Microsoft Clarity */}
+                <Script
+                    id="clarity-script"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function(c,l,a,r,i,t,y){
+                                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                            })(window,document,"clarity","script","p68w2nvc");
+                        `,
+                    }}
+                />
+
+                {/* Hotjar */}
+                <Script
+                    id="hotjar-script"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function(h,o,t,j,a,r){
+                                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                                h._hjSettings={hjid:5088291,hjsv:6};
+                                a=o.getElementsByTagName('head')[0];
+                                r=o.createElement('script');r.async=1;
+                                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                                a.appendChild(r);
+                            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+                        `,
+                    }}
+                />
+
+                {/* LinkedIn Insight Tag */}
+                <Script
+                    id="linkedin-insight-script"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            _linkedin_partner_id = "582910";
+                            window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+                            window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+                            (function(l) {
+                                if (!l) return;
+                                var s = document.getElementsByTagName("script")[0];
+                                var b = document.createElement("script");
+                                b.type = "text/javascript";b.async = true;
+                                b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+                                s.parentNode.insertBefore(b, s);
+                            })(window._linkedin_data_partner_color || window._linkedin_data_partner_ids);
+                        `,
+                    }}
+                />
             </head>
             <body className="antialiased selection:bg-yellow-500 selection:text-black max-w-screen pb-20" suppressHydrationWarning>
                 {/* Google Tag Manager (noscript) */}
@@ -248,6 +318,7 @@ export default function RootLayout({
                         })
                     }}
                 />
+                <UTMTracker />
                 <div className="flex flex-col min-h-screen relative bg-black text-white">
                     <Navbar />
                     <main className="relative z-10 w-full">{children}</main>

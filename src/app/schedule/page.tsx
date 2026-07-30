@@ -6,6 +6,8 @@ import { Calendar, Clock, User, MessageSquare, CheckCircle2, ArrowRight, ArrowLe
 import { Button } from '@/components/Button';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 
 const EMAILJS_SERVICE_ID = 'service_opc05wm';
 const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
@@ -51,6 +53,7 @@ export default function SchedulePage() {
         setSubmitError('');
 
         const chosenDate = dates[selectedDate];
+        const utm = getStoredUTMParams();
 
         try {
             await emailjs.send(
@@ -76,12 +79,20 @@ export default function SchedulePage() {
                         `WhatsApp: ${formData.whatsapp || 'N/A'}`,
                         `Selected Date: ${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`,
                         `Selected Time: ${selectedTime}`,
-                        `Discussion Topic: ${formData.discuss || 'N/A'}`
+                        `Discussion Topic: ${formData.discuss || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
                     ].join('\n')
                 },
                 EMAILJS_PUBLIC_KEY
             );
 
+            trackGAEvent('form_submit', 'Lead Generation', 'Schedule Call Booking');
+            trackGTMEvent('form_submit', { form_name: 'Schedule Call Booking', date: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`, time: selectedTime });
             setStep(4);
         } catch (error) {
             console.error('Schedule booking email failed', error);

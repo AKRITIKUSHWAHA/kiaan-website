@@ -3,6 +3,8 @@
 import { Button } from '@/components/Button'
 import React from 'react';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 
 const EMAILJS_SERVICE_ID = 'service_opc05wm';
 const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
@@ -22,6 +24,8 @@ export default function Contact() {
         e.preventDefault();
         setStatus('submitting');
         setErrorMessage('');
+
+        const utm = getStoredUTMParams();
 
         try {
             await emailjs.send(
@@ -44,18 +48,26 @@ export default function Contact() {
                         `Name: ${formData.name || 'N/A'}`,
                         `Email: ${formData.email || 'N/A'}`,
                         `Project Type: ${formData.projectType || 'N/A'}`,
-                        `Message: ${formData.message || 'N/A'}`
+                        `Message: ${formData.message || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
                     ].join('\n')
                 },
                 EMAILJS_PUBLIC_KEY
             );
 
             setStatus('success');
+            trackGAEvent('form_submit', 'Lead Generation', 'Contact Form Submission');
+            trackGTMEvent('form_submit', { form_name: 'Contact Form', project_type: formData.projectType });
             setFormData({ name: '', email: '', projectType: 'Custom Software Development', message: '' });
         } catch (error) {
             console.error('Contact form email failed', error);
             setStatus('error');
-            setErrorMessage('Message send nahi ho paaya. Please try again.');
+            setErrorMessage('Message send nahi ho paayi. Please try again.');
         }
     };
 
@@ -82,7 +94,19 @@ export default function Contact() {
                         ].map((item, idx) => (
                             <div key={idx} className="group cursor-pointer">
                                 <div className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest mb-0.5">{item.label}</div>
-                                <a href={item.link} className="text-xl md:text-3xl font-display uppercase hover:text-red-500 transition-colors">
+                                <a 
+                                    href={item.link} 
+                                    onClick={() => {
+                                        if (item.label === 'PHONE') {
+                                            trackGAEvent('click_phone', 'Engagement', 'Phone Call click');
+                                            trackGTMEvent('click_phone', { phone_number: item.value });
+                                        } else if (item.label === 'EMAIL') {
+                                            trackGAEvent('click_email', 'Engagement', 'Email address click');
+                                            trackGTMEvent('click_email', { email_address: item.value });
+                                        }
+                                    }}
+                                    className="text-xl md:text-3xl font-display uppercase hover:text-red-500 transition-colors"
+                                >
                                     {item.value}
                                 </a>
                             </div>

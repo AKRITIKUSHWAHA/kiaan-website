@@ -30,6 +30,8 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/Button';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 import {
     whyStudentsChooseCards,
     highlightQuote,
@@ -196,6 +198,8 @@ export default function InternshipPage() {
         setFormStatus('submitting');
         setErrorMessage('');
 
+        const utm = getStoredUTMParams();
+
         try {
             await emailjs.send(
                 EMAILJS_SERVICE_ID,
@@ -222,13 +226,21 @@ export default function InternshipPage() {
                         `WhatsApp: ${formData.whatsapp || 'N/A'}`,
                         `Selected Category: ${selectedCategory ? internshipCategories.find(c => c.id === selectedCategory)?.title || selectedCategory : 'N/A'}`,
                         `Selected Program: ${formData.program || 'N/A'}`,
-                        `Education: ${formData.education || 'N/A'}`
+                        `Education: ${formData.education || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
                     ].join('\n')
                 },
                 EMAILJS_PUBLIC_KEY
             );
 
             setFormStatus('success');
+            trackGAEvent('form_submit', 'Lead Generation', 'Internship Application');
+            trackGTMEvent('form_submit', { form_name: 'Internship Application', program: formData.program });
             setFormData({ name: '', email: '', whatsapp: '', program: '', education: '' });
             setSelectedCategory('');
         } catch (error) {
