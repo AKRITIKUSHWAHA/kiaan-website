@@ -41,7 +41,7 @@ export const AwardMarquee = () => {
                             <div className="relative w-32 h-32 md:w-40 md:h-40">
                                 <Image
                                     src={award.img}
-                                    alt={award.name}
+                                    alt={`${award.name} - Excellence in Software Development Award`}
                                     fill
                                     className="object-contain"
                                 />

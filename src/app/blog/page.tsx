@@ -8,6 +8,21 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Software Dev Blog & Tech Insights | Kiaan Technology",
     description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology's team. Stay ahead in the Indian tech ecosystem. Read our latest posts.",
+    openGraph: {
+        title: "Software Dev Blog & Tech Insights | Kiaan Technology",
+        description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology’s team. Stay ahead in the Indian tech ecosystem.",
+        url: "https://kiaantechnology.com/blog",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "Kiaan Technology Blog" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Software Dev Blog & Tech Insights | Kiaan Technology",
+        description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology’s team.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
+    },
 };
 
 const categories = [

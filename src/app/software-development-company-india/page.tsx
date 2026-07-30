@@ -12,9 +12,22 @@ export const metadata: Metadata = {
     description: "Kiaan Technology is a trusted custom software development company in India offering ERP, CRM, SaaS and industry-specific software solutions for businesses.",
     keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software",
     robots: "index, follow",
-    alternates: {
-        canonical: 'https://kiaantechnology.com/custom-software-development-company-india',
-    }
+    alternates: {},
+    openGraph: {
+        title: "Custom Software Development Company India | Kiaan Technology",
+        description: "Trusted custom software development company in India — ERP, CRM, SaaS and industry-specific software solutions.",
+        url: "https://kiaantechnology.com/software-development-company-india",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "Custom Software Development Company India - Kiaan Technology" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Custom Software Development Company India | Kiaan Technology",
+        description: "Trusted custom software development company in India offering ERP, CRM, SaaS solutions.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
+    },
 };
 
 export default function SoftwareDevelopmentIndia() {

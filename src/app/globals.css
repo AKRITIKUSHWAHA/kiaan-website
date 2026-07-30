@@ -25,6 +25,26 @@
     /* Deep Black */
 }
 
+/* ─── CLS Prevention: Ensure custom fonts swap in instantly ─────── */
+/* font-display:swap prevents invisible text (FOIT) during font load */
+@font-face {
+    font-family: 'Anton';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    size-adjust: 105%;
+    src: local('Anton');
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    size-adjust: 100%;
+    src: local('Manrope');
+}
+
 html {
     scroll-behavior: smooth;
     overflow-x: clip;
@@ -42,15 +62,22 @@ body {
     overscroll-behavior-y: none;
 }
 
-/* Hardware accelerated layer promotion for scrolling performance */
+/* Scrolling performance via GPU layer — scoped to wrapper only */
 main {
     transform: translateZ(0);
-    will-change: transform;
+    /* Note: will-change removed from main to avoid unnecessary GPU layers causing CLS */
 }
 
 /* Global Smoothness — font smoothing only */
 * {
     -webkit-font-smoothing: antialiased;
+}
+
+/* ─── INP / Paint optimization: defer off-screen section rendering ── */
+/* Apply .offscreen-section to any below-fold section component       */
+.offscreen-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px; /* estimated height — prevents layout shift */
 }
 
 /* Containment for repeated card/tile elements — reduces layout/paint scope */

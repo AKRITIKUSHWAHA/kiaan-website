@@ -187,6 +187,45 @@ const NicheServicePageInner = ({
                 />
             )}
 
+            {/* Service Schema */}
+            {slug && (
+                <Script
+                    id={`service-schema-${slug}`}
+                    type="application/ld+json"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": title,
+                            "description": desc,
+                            "url": `https://kiaantechnology.com/${slug}`,
+                            "provider": {
+                                "@type": "Organization",
+                                "name": "Kiaan Technology",
+                                "url": "https://kiaantechnology.com"
+                            },
+                            "areaServed": {
+                                "@type": "Country",
+                                "name": "India"
+                            },
+                            "hasOfferCatalog": {
+                                "@type": "OfferCatalog",
+                                "name": "Service Features",
+                                "itemListElement": features ? features.map((feature) => ({
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": feature.title,
+                                        "description": feature.desc
+                                    }
+                                })) : []
+                            }
+                        })
+                    }}
+                />
+            )}
+
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-full animated-grid opacity-10" />

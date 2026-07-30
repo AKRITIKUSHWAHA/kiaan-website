@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title: `${study.title} | Kiaan Technology Case Studies`,
         description: study.desc,
         alternates: {
-            canonical: `https://kiaantechnology.com/case-studies/${study.slug}`,
         },
         openGraph: {
             title: `${study.title} | Kiaan Technology Case Studies`,
@@ -62,20 +61,48 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
         <div className="bg-black min-h-screen text-white pt-24 pb-16 selection:bg-yellow-500 selection:text-black">
             {/* SEO JSON-LD */}
             <JsonLd 
-                data={{
-                    "@context": "https://schema.org",
-                    "@type": "SoftwareApplication",
-                    "name": study.title,
-                    "applicationCategory": study.category,
-                    "operatingSystem": "Web, Mobile",
-                    "description": study.desc,
-                    "image": study.image,
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "5",
-                        "ratingCount": "1"
+                data={[
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": study.title,
+                        "applicationCategory": study.category,
+                        "operatingSystem": "Web, Mobile",
+                        "description": study.desc,
+                        "image": study.image,
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "5",
+                            "ratingCount": "1"
+                        }
+                    },
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": `${study.title} - Case Study`,
+                        "description": study.desc,
+                        "image": study.image,
+                        "url": `https://kiaantechnology.com/case-studies/${study.slug}`,
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Kiaan Technology",
+                            "url": "https://kiaantechnology.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Kiaan Technology",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://kiaantechnology.com/logo.png"
+                            }
+                        },
+                        "about": {
+                            "@type": "Thing",
+                            "name": study.category
+                        },
+                        "keywords": study.technologies ? study.technologies.join(", ") : undefined
                     }
-                }}
+                ]}
             />
             {/* Back button */}
             <div className="container mx-auto px-6 mb-6">
@@ -89,7 +116,8 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                 <div className="w-full h-[35vh] md:h-[45vh] relative mb-12 overflow-hidden border-y border-zinc-900 bg-zinc-950">
                     <img 
                         src={study.image} 
-                        alt={study.title} 
+                        alt={`${study.title} - Custom Software Solution Details`} 
+                        fetchPriority="high"
                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-50 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
@@ -143,7 +171,7 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                             </p>
                             {study.architectureImage && (
                                 <div className="mt-8 border border-zinc-800 p-2 bg-zinc-950/50">
-                                    <img src={study.architectureImage} alt="Architecture Blueprint" className="w-full h-auto grayscale opacity-80" />
+                                    <img src={study.architectureImage} alt={`System Architecture Blueprint for ${study.title}`} loading="lazy" className="w-full h-auto grayscale opacity-80" />
                                 </div>
                             )}
                         </div>

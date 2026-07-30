@@ -118,7 +118,8 @@ export default function ResourceDetailClient({ resource, relatedResources }: Res
                             <div className="aspect-video overflow-hidden border border-zinc-800 mb-8">
                                 <img
                                     src={resource.image}
-                                    alt={resource.title}
+                                    alt={`${resource.title} - Technology Resource`}
+                                    loading="lazy"
                                     className="w-full h-full object-cover"
                                 />
                             </div>

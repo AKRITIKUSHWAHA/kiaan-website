@@ -254,109 +254,155 @@ const GridCardMemo = React.memo(GridCard)
 export default function Home() {
     return (
         <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black overflow-x-hidden">
-            {/* ITService Schema */}
+            {/* Comprehensive SEO Schema Markup */}
             <Script
-                id="it-service-schema"
+                id="structured-data"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Service",
-                        "serviceType": "Software Development",
-                        "provider": {
-                            "@type": "LocalBusiness",
-                            "name": "Kiaan Technology"
-                        },
-                        "areaServed": {
-                            "@type": "Country",
-                            "name": "India"
-                        },
-                        "hasOfferCatalog": {
-                            "@type": "OfferCatalog",
-                            "name": "Software Services",
-                            "itemListElement": [
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "AI-Driven Business Automation"
-                                    }
+                        "@graph": [
+                            {
+                                "@type": "Organization",
+                                "@id": "https://www.kiaantechnology.com/#organization",
+                                "name": "Kiaan Technology",
+                                "url": "https://www.kiaantechnology.com/",
+                                "logo": "https://www.kiaantechnology.com/logo.png"
+                            },
+                            {
+                                "@type": "LocalBusiness",
+                                "@id": "https://www.kiaantechnology.com/#localBusiness",
+                                "name": "Kiaan Technology",
+                                "url": "https://www.kiaantechnology.com/",
+                                "image": "https://www.kiaantechnology.com/logo.png",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "Indore",
+                                    "addressRegion": "Madhya Pradesh",
+                                    "addressCountry": "IN"
                                 },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Enterprise AI SaaS Platforms"
-                                    }
+                                "aggregateRating": {
+                                    "@type": "AggregateRating",
+                                    "ratingValue": "4.8",
+                                    "reviewCount": "6"
                                 },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Predictive ML Integrations"
+                                "review": [
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Rajesh Mehta" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "Kiaan Technology transformed our entire enrollment pipeline. Their CRM solution cut our response time by 85% and increased student enrollments by 30%."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Dr. Ananya Sharma" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "The AI-powered health assistant Kiaan built has reached over 100,000 rural users."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Vikram Patel" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "From our payment gateway to our booking platform, Kiaan has been our go-to engineering partner."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Priya Nair" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "4" },
+                                        "reviewBody": "We needed a SaaS platform that could handle multi-venue scheduling, dynamic pricing, and real-time availability — Kiaan delivered all three flawlessly."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Arjun Kapoor" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "Kiaan built our real-time fleet tracking and route optimization dashboard from scratch. Fuel costs are down 18% and on-time delivery rates jumped to 97%."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Sneha Desai" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "Security and compliance were non-negotiable for our fintech platform. Kiaan's team delivered a PCI-DSS compliant architecture with end-to-end encryption."
                                     }
-                                }
-                            ]
-                        }
-                    })
-                }}
-            />
-            {/* FAQ Schema for Long-Tail Keywords */}
-            <Script
-                id="faq-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "FAQPage",
-                        "mainEntity": [
-                            {
-                                "@type": "Question",
-                                "name": "How much does custom software development cost in India?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Custom software development costs in India typically range from ₹5 lakh to ₹50 lakh depending on the project scope, complexity, technology stack, and team size. Kiaan Technology provides transparent pricing and detailed project estimates tailored to your requirements."
-                                }
+                                ]
                             },
                             {
-                                "@type": "Question",
-                                "name": "Which is the best custom software development company in India?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Kiaan Technology is recognized as one of the best custom software development companies in India, offering end-to-end solutions including ERP development, CRM software, SaaS platforms, and industry-specific software solutions with proven delivery for global enterprises."
-                                }
+                                "@type": "Service",
+                                "serviceType": "Custom Software Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "What are SaaS product development services in India?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "SaaS product development services include designing, building, and deploying cloud-based software-as-a-service applications. Kiaan Technology specializes in multi-tenant SaaS architecture, subscription management, API integrations, and scalable cloud deployment for startups and enterprises."
-                                }
+                                "@type": "Service",
+                                "serviceType": "SaaS Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "How to choose the right ERP software development company?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Look for an ERP development company with proven industry expertise, modular architecture support, integration capabilities, and post-deployment support. Kiaan Technology provides fully customizable ERP solutions with modules for accounting, HR, inventory, and supply chain management."
-                                }
+                                "@type": "Service",
+                                "serviceType": "AI Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "What is the difference between cloud-based and on-premise ERP software?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Cloud-based ERP software is hosted on remote servers and accessed via the internet, offering lower upfront costs, automatic updates, and remote accessibility. On-premise ERP is installed locally, providing greater control over data but requiring higher infrastructure investment. Kiaan Technology develops both cloud-based and on-premise ERP solutions."
-                                }
+                                "@type": "Service",
+                                "serviceType": "Web Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "What is business automation software and how does it help companies?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Business automation software automates repetitive tasks, streamlines workflows, and improves operational efficiency. It helps companies reduce errors, save time, and lower costs. Kiaan Technology builds intelligent automation software covering workflow automation, document processing, and AI-powered business process automation."
-                                }
+                                "@type": "Service",
+                                "serviceType": "Mobile App Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
+                            },
+                            {
+                                "@type": "FAQPage",
+                                "@id": "https://www.kiaantechnology.com/#faq",
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does custom software development cost in India?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Custom software development costs in India typically range from ₹5 lakh to ₹50 lakh depending on the project scope, complexity, technology stack, and team size. Kiaan Technology provides transparent pricing and detailed project estimates tailored to your requirements."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Which is the best custom software development company in India?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Kiaan Technology is recognized as one of the best custom software development companies in India, offering end-to-end solutions including ERP development, CRM software, SaaS platforms, and industry-specific software solutions with proven delivery for global enterprises."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What are SaaS product development services in India?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "SaaS product development services include designing, building, and deploying cloud-based software-as-a-service applications. Kiaan Technology specializes in multi-tenant SaaS architecture, subscription management, API integrations, and scalable cloud deployment for startups and enterprises."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How to choose the right ERP software development company?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Look for an ERP development company with proven industry expertise, modular architecture support, integration capabilities, and post-deployment support. Kiaan Technology provides fully customizable ERP solutions with modules for accounting, HR, inventory, and supply chain management."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is the difference between cloud-based and on-premise ERP software?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Cloud-based ERP software is hosted on remote servers and accessed via the internet, offering lower upfront costs, automatic updates, and remote accessibility. On-premise ERP is installed locally, providing greater control over data but requiring higher infrastructure investment. Kiaan Technology develops both cloud-based and on-premise ERP solutions."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is business automation software and how does it help companies?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Business automation software automates repetitive tasks, streamlines workflows, and improves operational efficiency. It helps companies reduce errors, save time, and lower costs. Kiaan Technology builds intelligent automation software covering workflow automation, document processing, and AI-powered business process automation."
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     })

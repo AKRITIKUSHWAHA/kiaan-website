@@ -27,7 +27,7 @@ export const ProjectScreenshots: React.FC<ProjectScreenshotsProps> = ({ screensh
               <div className="w-full h-full overflow-hidden relative">
                 <img
                   src={url}
-                  alt={`${title} screenshot preview ${index + 1}`}
+                  alt={`${title} Interface Screenshot ${index + 1} - Kiaan Technology`}
                   loading="lazy"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 />

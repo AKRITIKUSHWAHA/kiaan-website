@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
 import AwardBanner from "@/components/AwardBanner";
+import { CanonicalTag } from "@/components/seo/CanonicalTag";
 import Script from "next/script";
 import "@fontsource/anton/400.css";
 import "@fontsource/manrope/300.css";
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
     category: "Technology",
     metadataBase: new URL("https://kiaantechnology.com"),
     alternates: {
-        canonical: "https://kiaantechnology.com",
     },
     openGraph: {
         title: "Custom Software Development Company India | Kiaan Technology",
@@ -64,10 +64,11 @@ export default function RootLayout({
     return (
         <html lang="en" className="no-scrollbar" suppressHydrationWarning>
             <head>
+                <CanonicalTag />
                 {/* Google Tag Manager */}
                 <Script
                     id="gtm-script"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
                             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -79,13 +80,14 @@ export default function RootLayout({
                     }}
                 />
 
-                {/* DNS Prefetch for external domains */}
+                {/* Preconnect for external domains (LCP optimization) */}
+                <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
                 {/* Trustpilot Initialization */}
                 <Script
                     id="trustpilot-init"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
                             (function(w,d,s,r,n){
@@ -111,17 +113,17 @@ export default function RootLayout({
                 <Script
                     id="trustpilot-widget-bootstrap"
                     src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                 />
 
                 {/* Google Analytics (GA4) */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-Y9H9T9S8PN"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                 />
                 <Script
                     id="ga4-script"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
                             window.dataLayer = window.dataLayer || [];

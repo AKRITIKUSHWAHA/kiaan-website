@@ -5,7 +5,6 @@ export const metadata: Metadata = {
     title: "AI-Powered Business Products & Tools India | Kiaan",
     description: "Enterprise AI products — OCR, chatbots, resume screening & business analytics. Plug-and-play AI SaaS for Indian enterprises. Explore Kiaan AI solutions today.",
     keywords: 'AI products India, AI business tools, AI chatbot India, document OCR software, AI sales assistant, AI automation software, business AI solutions, AI SaaS India',
-    alternates: { canonical: 'https://kiaantechnology.com/ai-products' },
     openGraph: {
         title: "AI-Powered Business Products & Tools India | Kiaan",
         description: 'Enterprise AI products — OCR, chatbots, resume screening & business analytics. Plug-and-play AI SaaS for Indian enterprises.',

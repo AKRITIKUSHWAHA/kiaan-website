@@ -27,7 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         keywords: resource.keywords.join(', '),
         robots: 'index, follow',
         alternates: {
-            canonical: `https://kiaantechnology.com/resources/${resource.slug}`,
         },
         openGraph: {
             title: resource.metaTitle,

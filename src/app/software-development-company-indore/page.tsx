@@ -10,6 +10,21 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Software Development Company in Indore | Custom Solutions - Kiaan Technology",
     description: "Leading software development company in Indore offering custom software development, enterprise solutions, and expert IT consulting. Transform your business with Kiaan Technology.",
+    openGraph: {
+        title: "Software Development Company in Indore | Kiaan Technology",
+        description: "Leading software development company in Indore — custom software, enterprise solutions & IT consulting.",
+        url: "https://kiaantechnology.com/software-development-company-indore",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "Software Development Company Indore - Kiaan Technology" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Software Development Company in Indore | Kiaan Technology",
+        description: "Leading software development company in Indore — custom software, enterprise solutions & IT consulting.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
+    },
 };
 
 export default function SoftwareDevelopmentIndore() {
