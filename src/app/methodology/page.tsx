@@ -6,7 +6,7 @@ import { Rocket, Box, Network, Bot, Settings, Search, Code2, ArrowRight } from '
 
 export default function MethodologyPage() {
     return (
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-24 pb-16">
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-32 pb-16">
 
             {/* HEROS SECTION */}
             <section className="relative px-6 py-20 lg:py-32 overflow-hidden border-b border-white/5">

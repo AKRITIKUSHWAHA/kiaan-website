@@ -48,7 +48,7 @@ const SaaSProductTemplateInner = ({ data }: { data: ProductData }) => {
     const [showAllKeywords, setShowAllKeywords] = useState(false);
 
     return (
-        <div className="bg-black min-h-screen text-white pt-10 pb-8 font-sans selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen text-white pt-32 pb-8 font-sans selection:bg-yellow-500 selection:text-black">
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-full animated-grid opacity-10" />

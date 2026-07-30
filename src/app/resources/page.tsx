@@ -8,7 +8,7 @@ import { ResourceCardMemo } from '@/components/ResourceCard'
 
 export default function ResourcesPage() {
     return (
-        <div className="min-h-screen bg-black pt-20 pb-20 selection:bg-yellow-500 selection:text-black">
+        <div className="min-h-screen bg-black pt-32 pb-20 selection:bg-yellow-500 selection:text-black">
             {/* Background Effects */}
             <div className="fixed inset-0 pointer-events-none opacity-20">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-yellow-500/10 blur-[120px] rounded-full" />

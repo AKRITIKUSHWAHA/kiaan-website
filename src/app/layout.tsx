@@ -1,8 +1,9 @@
- import type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import AwardBanner from "@/components/AwardBanner";
 import { CanonicalTag } from "@/components/seo/CanonicalTag";
 import Script from "next/script";
@@ -16,8 +17,8 @@ import "@fontsource/manrope/700.css";
 // CSS variables --font-anton and --font-manrope are defined in globals.css
 
 export const metadata: Metadata = {
-    title: "Custom Software Development Company India | Kiaan Technology",
-    description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale. Get a free consultation — Kiaan Technology.",
+    title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+    description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
     keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software, Enterprise Software Development, Cloud Based Business Software, Web Application Development Company",
     robots: "index, follow",
     authors: [{ name: "Kiaan Technology" }],
@@ -26,16 +27,16 @@ export const metadata: Metadata = {
     alternates: {
     },
     openGraph: {
-        title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale — Kiaan Technology.",
+        title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+        description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
         url: "https://kiaantechnology.com",
         siteName: "Kiaan Technology",
         images: [
             {
-                url: "/og-image.jpg",
+                url: "https://kiaantechnology.com/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Kiaan Technology - Custom Software Development",
+                alt: "Kiaan Technology - Custom Software & SaaS Development Company",
             },
         ],
         type: "website",
@@ -43,8 +44,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale.",
+        title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+        description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
         images: ["/og-image.jpg"],
     },
     icons: {
@@ -133,6 +134,110 @@ export default function RootLayout({
                         `,
                     }}
                 />
+
+                {/* Organization Schema */}
+                <Script
+                    id="organization-schema"
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Organization",
+                            "@id": "https://kiaantechnology.com/#organization",
+                            "name": "Kiaan Technology",
+                            "url": "https://kiaantechnology.com",
+                            "logo": "https://kiaantechnology.com/og-image.jpg",
+                            "sameAs": [
+                                "https://www.linkedin.com/company/89547261/",
+                                "https://www.instagram.com/kiaan_technology4/",
+                                "https://www.youtube.com/@kiaantechnology"
+                            ]
+                        })
+                    }}
+                />
+
+                {/* LocalBusiness Schema */}
+                <Script
+                    id="localbusiness-schema"
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "LocalBusiness",
+                            "@id": "https://kiaantechnology.com/#localbusiness",
+                            "name": "Kiaan Technology",
+                            "url": "https://kiaantechnology.com",
+                            "logo": "https://kiaantechnology.com/og-image.jpg",
+                            "image": "https://kiaantechnology.com/og-image.jpg",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "2341, E Sector, Sudama Nagar",
+                                "addressLocality": "Indore",
+                                "addressRegion": "MP",
+                                "postalCode": "452009",
+                                "addressCountry": "India"
+                            }
+                        })
+                    }}
+                />
+
+                {/* Services Schema */}
+                <Script
+                    id="services-schema"
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify([
+                            {
+                                "@context": "https://schema.org",
+                                "@type": "Service",
+                                "name": "Custom Software Development",
+                                "serviceType": "Custom Software Development",
+                                "provider": {
+                                    "@type": "Organization",
+                                    "name": "Kiaan Technology",
+                                    "url": "https://kiaantechnology.com"
+                                },
+                                "areaServed": {
+                                    "@type": "Country",
+                                    "name": "India"
+                                },
+                                "description": "Tailored custom software development services designed to automate enterprise workflows and optimize operational efficiency."
+                            },
+                            {
+                                "@context": "https://schema.org",
+                                "@type": "Service",
+                                "name": "SaaS Development",
+                                "serviceType": "SaaS Development",
+                                "provider": {
+                                    "@type": "Organization",
+                                    "name": "Kiaan Technology",
+                                    "url": "https://kiaantechnology.com"
+                                },
+                                "areaServed": {
+                                    "@type": "Country",
+                                    "name": "India"
+                                },
+                                "description": "Scalable multi-tenant SaaS platform engineering, cloud architecture, and subscription management solutions."
+                            },
+                            {
+                                "@context": "https://schema.org",
+                                "@type": "Service",
+                                "name": "AI Automation",
+                                "serviceType": "AI Automation",
+                                "provider": {
+                                    "@type": "Organization",
+                                    "name": "Kiaan Technology",
+                                    "url": "https://kiaantechnology.com"
+                                },
+                                "areaServed": {
+                                    "@type": "Country",
+                                    "name": "India"
+                                },
+                                "description": "Enterprise AI-driven business process automation, predictive machine learning integrations, and intelligent workflow optimization."
+                            }
+                        ])
+                    }}
+                />
             </head>
             <body className="antialiased selection:bg-yellow-500 selection:text-black max-w-screen pb-20" suppressHydrationWarning>
                 {/* Google Tag Manager (noscript) */}
@@ -149,7 +254,6 @@ export default function RootLayout({
                 <Script
                     id="schema-org"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -174,7 +278,6 @@ export default function RootLayout({
                 <Script
                     id="website-schema"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -192,7 +295,6 @@ export default function RootLayout({
                 <Script
                     id="breadcrumb-schema"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -211,7 +313,6 @@ export default function RootLayout({
                 <Script
                     id="local-business"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -252,11 +353,19 @@ export default function RootLayout({
                 />
                 <div className="flex flex-col min-h-screen relative bg-black text-white">
                     <Navbar />
-                    <main className="relative z-10 w-full">{children}</main>
+                    <main className="relative z-10 w-full">
+                        <Breadcrumbs />
+                        {children}
+                    </main>
                     <Footer />
                     <GlobalClientComponents />
                     <AwardBanner />
                 </div>
+                <Script
+  id="tidio-chat"
+  src="https://code.tidio.co/qihkscecnmcvf2gnjrau6nahfxnp3ytj.js"
+  strategy="afterInteractive"
+/>
             </body>
         </html>
     );

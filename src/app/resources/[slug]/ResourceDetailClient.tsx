@@ -19,7 +19,7 @@ export default function ResourceDetailClient({ resource, relatedResources }: Res
     const [isUnlocked, setIsUnlocked] = useState(!resource.isGated);
 
     return (
-        <div className="min-h-screen bg-black text-white pt-20 pb-16 selection:bg-yellow-500 selection:text-black overflow-x-hidden">
+        <div className="min-h-screen bg-black text-white pt-32 pb-16 selection:bg-yellow-500 selection:text-black overflow-x-hidden">
             {/* Article Schema */}
             <Script
                 id="article-schema"

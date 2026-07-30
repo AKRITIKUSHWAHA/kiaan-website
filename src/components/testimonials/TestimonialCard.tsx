@@ -106,7 +106,11 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-zinc-800 group-hover:border-yellow-500/40 transition-colors duration-500 flex-shrink-0">
             <img
               src={photo}
+<<<<<<< HEAD
               alt={`${name} - Client Testimonial Photo`}
+=======
+              alt={`${name} - ${designation} at ${company} - Kiaan Technology Client Testimonial`}
+>>>>>>> f1315c14ac8daa996022f6ce10f0488ae7dd3f57
               loading="lazy"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
             />
