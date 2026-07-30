@@ -40,6 +40,7 @@ const heroSlides = [
     { 
         id: 1, 
         img: '/frontPage/ISO certificate.jpg', 
+        alt: 'Kiaan Technology ISO/IEC 27001:2022 Compliance Certificate',
         label: 'Global Compliance', 
         title: 'ISO Certified',
         sub: 'International Quality Standards',
@@ -49,6 +50,7 @@ const heroSlides = [
     { 
         id: 2, 
         img: '/frontPage/Graphic Design.png', 
+        alt: 'Creative UI/UX & Graphic Design Showcase',
         label: 'Visual Excellence', 
         title: 'Creative Design',
         sub: 'Defining Digital Identities',
@@ -58,6 +60,7 @@ const heroSlides = [
     { 
         id: 3, 
         img: '/frontPage/glassdoor-award.png', 
+        alt: 'Glassdoor Top Workplace Award Certificate',
         label: 'Top workplace', 
         title: 'Glassdoor Rated',
         sub: 'High employee satisfaction rating',
@@ -67,6 +70,7 @@ const heroSlides = [
     { 
         id: 4, 
         img: '/frontPage/ReactJs.png', 
+        alt: 'React.js logo',
         label: 'Next-Gen Tech', 
         title: 'React Development',
         sub: 'High-Performance Web Apps',
@@ -76,6 +80,7 @@ const heroSlides = [
     { 
         id: 5, 
         img: '/frontPage/ambitionbox.png', 
+        alt: 'AmbitionBox Excellence Rating Award',
         label: 'IT Company Achiever', 
         title: 'AmbitionBox Rated',
         sub: '4.7/5.0 Excellence Rating',
@@ -85,6 +90,7 @@ const heroSlides = [
     { 
         id: 6, 
         img: '/frontPage/UI design.png', 
+        alt: 'UI/UX Design Showcase Interface',
         label: 'User Centric', 
         title: 'UI/UX Design',
         sub: 'Crafting Immersive Experiences',
@@ -94,6 +100,7 @@ const heroSlides = [
     { 
         id: 7, 
         img: '/frontPage/Fiver certificate.jpeg', 
+        alt: 'Fiverr Certified Top Rated Development Expert Badge',
         label: 'Verified Freelancer', 
         title: 'Fiverr Certified',
         sub: 'Top Rated Development Expert',
@@ -103,6 +110,7 @@ const heroSlides = [
     { 
         id: 8, 
         img: '/frontPage/wix-partner.jpg', 
+        alt: 'Wix Studio Pioneer Partner Badge',
         label: 'Wix Studio Partner', 
         title: 'Wix Partner',
         sub: 'Pioneer Level Partner',
@@ -172,7 +180,7 @@ const HeroShowcase = () => {
                         <div className="relative w-full h-full">
                             <NextImage
                                 src={heroSlides[active].img}
-                                alt={heroSlides[active].title}
+                                alt={heroSlides[active].alt}
                                 fill
                                 className="object-contain transition-transform duration-700"
                                 priority
@@ -550,7 +558,7 @@ export default function Home() {
             <section className="py-8 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
                 <div className="container mx-auto max-w-7xl">
                     <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-light">
-                        Kiaan Technology is a premier <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">Software Development Company in Indore</Link> delivering custom digital solutions across India. As a leading <Link href="/it-company-indore" className="text-white hover:text-yellow-500 font-medium">IT Company in Indore</Link>, we specialize in <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platform development</Link>, enterprise software systems, and high-performance <Link href="/web-development-company-indore" className="text-white hover:text-yellow-500 font-medium">web development in Indore</Link>. Our expertise as a <Link href="/software-development-company-india" className="text-white hover:text-yellow-500 font-medium">Software Development Company in India</Link> empowers global businesses with scalable architectures, AI-driven automation, and robust cybersecurity. Whether you&#39;re looking for an app development partner or a strategic IT consultant, our Indore-based engineering team ensures zero-downtime deployment and premium technical excellence.
+                        Kiaan Technology is an Indore-based technology partner specializing in <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">custom software development</Link>, enterprise <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platforms</Link>, and intelligent AI automation. We engineer high-performance digital products for businesses looking to scale with confidence and technical excellence.
                     </p>
                 </div>
             </section>
