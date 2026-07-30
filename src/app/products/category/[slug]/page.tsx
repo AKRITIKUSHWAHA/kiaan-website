@@ -210,7 +210,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     }
 
     return (
-        <div className="bg-black min-h-screen pt-20 pb-12 text-white overflow-x-hidden">
+        <div className="bg-black min-h-screen pt-32 pb-12 text-white overflow-x-hidden">
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-0 left-0 w-full h-full animated-grid opacity-[0.07]" />

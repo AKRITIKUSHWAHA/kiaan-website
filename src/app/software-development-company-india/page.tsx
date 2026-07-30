@@ -8,8 +8,8 @@ import Script from 'next/script';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Custom Software Development Company India | Kiaan Technology",
-    description: "Kiaan Technology is a trusted custom software development company in India offering ERP, CRM, SaaS and industry-specific software solutions for businesses.",
+    title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+    description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
     keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software",
     robots: "index, follow",
     alternates: {
@@ -140,7 +140,7 @@ export default function SoftwareDevelopmentIndia() {
                 }}
             />
             {/* Hero Section */}
-            <section className="relative pt-24 pb-20 overflow-hidden border-b border-zinc-900">
+            <section className="relative pt-32 pb-20 overflow-hidden border-b border-zinc-900">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-500/5 via-transparent to-transparent opacity-50" />
                 <div className="container mx-auto px-4 relative z-10">
                     <Reveal>

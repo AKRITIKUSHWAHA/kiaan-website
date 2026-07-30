@@ -78,7 +78,7 @@ const NicheServicePageInner = ({
     const [showAllLinks, setShowAllLinks] = useState(false);
 
     return (
-        <div className="bg-black min-h-screen text-white pt-24 pb-8 font-sans selection:bg-yellow-500 selection:text-black overflow-hidden uppercase">
+        <div className="bg-black min-h-screen text-white pt-32 pb-8 font-sans selection:bg-yellow-500 selection:text-black overflow-hidden uppercase">
             {/* Breadcrumb Schema */}
             {slug && (() => {
                 let parentName = "Solutions";

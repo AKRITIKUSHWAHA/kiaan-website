@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import AwardBanner from "@/components/AwardBanner";
 import Script from "next/script";
 import "@fontsource/anton/400.css";
@@ -15,8 +16,8 @@ import "@fontsource/manrope/700.css";
 // CSS variables --font-anton and --font-manrope are defined in globals.css
 
 export const metadata: Metadata = {
-    title: "Custom Software & SaaS Development Company | Kiaan Technology — AI-Driven Automation",
-    description: "Transform your business with Kiaan Technology — India's leading custom software & SaaS company. AI automation, enterprise solutions & scalable architectures.",
+    title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+    description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
     keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software, Enterprise Software Development, Cloud Based Business Software, Web Application Development Company",
     robots: "index, follow",
     authors: [{ name: "Kiaan Technology" }],
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
         canonical: "https://kiaantechnology.com",
     },
     openGraph: {
-        title: "Custom Software & SaaS Development Company | Kiaan Technology",
-        description: "Transform your business with Kiaan Technology — India's leading custom software & SaaS company. AI automation, enterprise solutions & scalable architectures.",
-        url: "https://kiaantechnology.com/",
+        title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+        description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
+        url: "https://kiaantechnology.com",
         siteName: "Kiaan Technology",
         images: [
             {
@@ -43,9 +44,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Custom Software & SaaS Development Company | Kiaan Technology",
-        description: "Transform your business with Kiaan Technology — India's leading custom software & SaaS company. AI automation, enterprise solutions & scalable architectures.",
-        images: ["https://kiaantechnology.com/og-image.jpg"],
+        title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
+        description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
+        images: ["/og-image.jpg"],
     },
     icons: {
         icon: '/favicon.ico',
@@ -251,7 +252,6 @@ export default function RootLayout({
                 <Script
                     id="schema-org"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -276,7 +276,6 @@ export default function RootLayout({
                 <Script
                     id="website-schema"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -294,7 +293,6 @@ export default function RootLayout({
                 <Script
                     id="breadcrumb-schema"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -313,7 +311,6 @@ export default function RootLayout({
                 <Script
                     id="local-business"
                     type="application/ld+json"
-                    strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
@@ -354,11 +351,19 @@ export default function RootLayout({
                 />
                 <div className="flex flex-col min-h-screen relative bg-black text-white">
                     <Navbar />
-                    <main className="relative z-10 w-full">{children}</main>
+                    <main className="relative z-10 w-full">
+                        <Breadcrumbs />
+                        {children}
+                    </main>
                     <Footer />
                     <GlobalClientComponents />
                     <AwardBanner />
                 </div>
+                <Script
+  id="tidio-chat"
+  src="https://code.tidio.co/qihkscecnmcvf2gnjrau6nahfxnp3ytj.js"
+  strategy="afterInteractive"
+/>
             </body>
         </html>
     );

@@ -58,7 +58,7 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
   return (
     <section
       id="case-study-hero"
-      className="relative w-full overflow-hidden bg-black pt-20 pb-16 md:pt-28 md:pb-24"
+      className="relative w-full overflow-hidden bg-black pt-32 pb-16 md:pt-28 md:pb-24"
       aria-label="Case Studies Hero"
     >
       {/* ── Background ambient glows ── */}

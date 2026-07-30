@@ -71,7 +71,7 @@ export default function SoftwareDevelopmentIndore() {
                 }}
             />
             {/* Hero Section */}
-            <section className="relative pt-24 pb-20 overflow-hidden border-b border-zinc-900">
+            <section className="relative pt-32 pb-20 overflow-hidden border-b border-zinc-900">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-500/5 via-transparent to-transparent opacity-50" />
                 <div className="container mx-auto px-4 relative z-10">
                     <Reveal>

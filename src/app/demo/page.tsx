@@ -1463,7 +1463,7 @@ export default function AccessLiveEnvironment() {
             </div>
 
             {/* HERO SECTION - SINGLE ROW LAYOUT */}
-            <section className="relative z-10 pt-24 pb-0 container mx-auto px-4 lg:px-8 max-w-[1400px]">
+            <section className="relative z-10 pt-32 pb-0 container mx-auto px-4 lg:px-8 max-w-[1400px]">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 w-full">
                     {/* LEFT SIDE: Headings */}
                     <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
