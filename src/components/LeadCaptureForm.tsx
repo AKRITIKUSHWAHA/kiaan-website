@@ -27,20 +27,45 @@ export function LeadCaptureForm({ resourceName, onSuccess }: LeadCaptureFormProp
         }));
     };
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setErrorMessage('');
 
-        // Simulate CRM API / Webhook submission
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'lead_magnet',
+                    name: formData.name,
+                    email: formData.email,
+                    company: formData.company,
+                    challenge: formData.challenge,
+                    leadMagnet: resourceName,
+                    sourcePage: typeof window !== 'undefined' ? window.location.pathname : '/resources'
+                })
+            });
 
-        setIsSubmitting(false);
-        setIsSuccess(true);
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setErrorMessage(data.message || 'We could not unlock this guide. Please try again.');
+                setIsSubmitting(false);
+                return;
+            }
 
-        // Wait a moment for the user to see success state before unlocking content
-        setTimeout(() => {
-            onSuccess();
-        }, 2000);
+            setIsSubmitting(false);
+            setIsSuccess(true);
+
+            setTimeout(() => {
+                onSuccess();
+            }, 1500);
+        } catch {
+            setErrorMessage('We could not unlock this guide. Please try again.');
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -70,6 +95,12 @@ export function LeadCaptureForm({ resourceName, onSuccess }: LeadCaptureFormProp
                             <p className="text-zinc-400 text-sm mb-8 max-w-lg">
                                 Access the complete insights for "{resourceName}". Enter your professional details below to unlock instant access.
                             </p>
+
+                            {errorMessage && (
+                                <div className="mb-4 border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-300">
+                                    {errorMessage}
+                                </div>
+                            )}
 
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -2,12 +2,6 @@
 
 import { Button } from '@/components/Button'
 import React from 'react';
-import emailjs from '@emailjs/browser';
-
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
-
 export default function Contact() {
     const [formData, setFormData] = React.useState({
         name: '',
@@ -24,36 +18,29 @@ export default function Contact() {
         setErrorMessage('');
 
         try {
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                {
-                    name: formData.name || 'N/A',
-                    email: formData.email || 'N/A',
-                    company: 'N/A',
-                    contact_number: 'N/A',
-                    contact_method: 'Email',
-                    industry: 'N/A',
-                    project_type: formData.projectType || 'N/A',
-                    features: 'N/A',
-                    vision: formData.message || 'N/A',
-                    budget: 'N/A',
-                    timeline: 'N/A',
-                    submitted_at: new Date().toLocaleString(),
-                    message: [
-                        `Name: ${formData.name || 'N/A'}`,
-                        `Email: ${formData.email || 'N/A'}`,
-                        `Project Type: ${formData.projectType || 'N/A'}`,
-                        `Message: ${formData.message || 'N/A'}`
-                    ].join('\n')
-                },
-                EMAILJS_PUBLIC_KEY
-            );
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'contact',
+                    name: formData.name,
+                    email: formData.email,
+                    projectType: formData.projectType,
+                    message: formData.message,
+                    sourcePage: '/contact'
+                })
+            });
+
+            const data = await response.json();
+            if (!response.ok || !data.ok) {
+                setStatus('error');
+                setErrorMessage(data.message || 'Message send nahi ho paaya. Please try again.');
+                return;
+            }
 
             setStatus('success');
             setFormData({ name: '', email: '', projectType: 'Custom Software Development', message: '' });
-        } catch (error) {
-            console.error('Contact form email failed', error);
+        } catch {
             setStatus('error');
             setErrorMessage('Message send nahi ho paaya. Please try again.');
         }

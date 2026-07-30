@@ -29,7 +29,6 @@ import {
     Star,
 } from 'lucide-react';
 import { Button } from '@/components/Button';
-import emailjs from '@emailjs/browser';
 import {
     whyStudentsChooseCards,
     highlightQuote,
@@ -41,10 +40,6 @@ import {
     benefitsData,
     faqData,
 } from '@/data/internshipData';
-
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 interface Program {
     title: string;
@@ -197,42 +192,32 @@ export default function InternshipPage() {
         setErrorMessage('');
 
         try {
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                {
-                    name: formData.name || 'N/A',
-                    email: formData.email || 'N/A',
-                    company: 'Internship Application',
-                    contact_number: formData.whatsapp || 'N/A',
-                    contact_method: 'WhatsApp / Email',
-                    industry: selectedCategory
-                        ? internshipCategories.find(c => c.id === selectedCategory)?.title || 'Internship Program'
-                        : 'Internship Program',
-                    project_type: formData.program || 'N/A',
-                    features: selectedCategory || 'N/A',
-                    vision: formData.education || 'N/A',
-                    budget: 'N/A',
-                    timeline: 'N/A',
-                    submitted_at: new Date().toLocaleString(),
-                    message: [
-                        'Application Type: Innovation Lab Track',
-                        `Name: ${formData.name || 'N/A'}`,
-                        `Email: ${formData.email || 'N/A'}`,
-                        `WhatsApp: ${formData.whatsapp || 'N/A'}`,
-                        `Selected Category: ${selectedCategory ? internshipCategories.find(c => c.id === selectedCategory)?.title || selectedCategory : 'N/A'}`,
-                        `Selected Program: ${formData.program || 'N/A'}`,
-                        `Education: ${formData.education || 'N/A'}`
-                    ].join('\n')
-                },
-                EMAILJS_PUBLIC_KEY
-            );
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'internship',
+                    leadSource: 'internship_application',
+                    fullName: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    serviceInterest: formData.program || 'Internship Program',
+                    message: `Education: ${formData.education || 'N/A'} | Category: ${selectedCategory || 'N/A'}`,
+                    sourcePage: '/internship'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setFormStatus('error');
+                setErrorMessage(data.message || 'Application send nahi ho paayi. Please try again.');
+                return;
+            }
 
             setFormStatus('success');
             setFormData({ name: '', email: '', whatsapp: '', program: '', education: '' });
             setSelectedCategory('');
-        } catch (error) {
-            console.error('Internship apply email failed', error);
+        } catch {
             setFormStatus('error');
             setErrorMessage('Application send nahi ho paayi. Please try again.');
         }

@@ -310,6 +310,18 @@ main {
     animation: whatsapp-pulse 2s infinite;
 }
 
+@media print {
+    body * { visibility: hidden !important; }
+    .roi-print-report, .roi-print-report * { visibility: visible !important; }
+    .roi-print-report { position: absolute; inset: 0; width: 100%; border: 0 !important; background: #fff !important; color: #111 !important; padding: 20px !important; }
+    .roi-print-report * { color: #111 !important; background: transparent !important; box-shadow: none !important; }
+    .roi-print-report .print-hide, .print-hide { display: none !important; }
+    .vendor-print-report, .vendor-print-report * { visibility: visible !important; }
+    .vendor-print-report { position: absolute; inset: 0; width: 100%; border: 0 !important; background: #fff !important; color: #111 !important; padding: 20px !important; }
+    .vendor-print-report * { color: #111 !important; background: transparent !important; box-shadow: none !important; }
+    @page { margin: 12mm; }
+}
+
 /* Privacy sidebar thin scrollbar */
 .privacy-sidebar-scroll {
     scrollbar-width: thin;

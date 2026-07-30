@@ -12,11 +12,6 @@ import {
 } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import Link from 'next/link';
-import emailjs from '@emailjs/browser';
-
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 // Specific Software Data Setup per requirements
 const softwareList = [
@@ -1386,41 +1381,30 @@ export default function AccessLiveEnvironment() {
         if (isValid) {
             setIsSubmitting(true);
             try {
-                await emailjs.send(
-                    EMAILJS_SERVICE_ID,
-                    EMAILJS_TEMPLATE_ID,
-                    {
-                        name: formData.name || 'N/A',
-                        email: formData.email || 'N/A',
-                        company: selectedSoftware?.name || 'Live Demo Request',
-                        contact_number: formData.phone || 'N/A',
-                        contact_method: 'Phone / Email',
-                        industry: selectedSoftware?.category || 'N/A',
-                        project_type: 'Live Demo Arena Access',
-                        features: selectedSoftware?.features?.join(', ') || 'N/A',
-                        vision: selectedSoftware?.desc || 'N/A',
-                        budget: 'N/A',
-                        timeline: 'Immediate',
-                        submitted_at: new Date().toLocaleString(),
-                        message: [
-                            `Live Demo Requested: ${selectedSoftware?.name}`,
-                            `Name: ${formData.name}`,
-                            `Email: ${formData.email}`,
-                            `Phone: ${formData.phone}`,
-                            `Category: ${selectedSoftware?.category}`,
-                            `Preview Link: ${selectedSoftware?.link || 'N/A'}`
-                        ].join('\n')
-                    },
-                    EMAILJS_PUBLIC_KEY
-                );
+                const res = await fetch('/api/leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        leadType: 'demo_request',
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        serviceInterest: selectedSoftware?.name,
+                        sourcePage: '/demo'
+                    })
+                });
+
+                const data = await res.json();
+                if (!res.ok || !data.ok) {
+                    setFormErrors({ email: data.message || 'Submission failed. Please try again.', phone: '' });
+                    setIsSubmitting(false);
+                    return;
+                }
 
                 setModalState('selection');
-                setFormErrors({ email: '', phone: '' }); // Clear on success
-            } catch (error) {
-                console.error('Demo request email failed', error);
-                // Still allow them to see the demo even if email fails to avoid blocking the user journey
-                setModalState('selection');
                 setFormErrors({ email: '', phone: '' });
+            } catch {
+                setFormErrors({ email: 'Submission failed. Please try again.', phone: '' });
             } finally {
                 setIsSubmitting(false);
             }

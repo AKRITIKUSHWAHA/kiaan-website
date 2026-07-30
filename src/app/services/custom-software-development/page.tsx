@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NicheServicePage } from '@/components/NicheServicePage';
 import { solutionsData } from '@/data/solutionsData';
+import { VendorScorecardCTA } from '@/components/VendorScorecardCTA';
 
 export const metadata: Metadata = {
     title: "Custom-Built Enterprise Software Development India | Kiaan",
@@ -13,5 +14,5 @@ export const metadata: Metadata = {
 
 export default function CustomSoftwarePage() {
     const data = solutionsData['custom-software'];
-    return <NicheServicePage {...data} slug="services/custom-software-development" />;
+    return <><NicheServicePage {...data} slug="services/custom-software-development" /><VendorScorecardCTA /></>;
 }
