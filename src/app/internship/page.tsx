@@ -260,7 +260,7 @@ export default function InternshipPage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-28 pb-12 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-32 pb-12 selection:bg-yellow-500 selection:text-black">
 
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 1: HERO

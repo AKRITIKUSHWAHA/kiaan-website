@@ -68,3 +68,6 @@ export async function generateStaticParams() {
         slug: slug,
     }));
 }
+
+// Tell Next.js: if a slug is NOT in generateStaticParams(), return 404 (don't crash)
+export const dynamicParams = false;

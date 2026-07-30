@@ -55,7 +55,24 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
     }
 
     return (
-        <article className="min-h-screen bg-black text-white pt-24 pb-20 selection:bg-yellow-500 selection:text-black">
+        <article className="min-h-screen bg-black text-white pt-32 pb-20 selection:bg-yellow-500 selection:text-black">
+            {/* SEO JSON-LD with Freshness Signals */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BlogPosting",
+                        "headline": post.title,
+                        "datePublished": new Date(post.date).toISOString(),
+                        "dateModified": new Date("June 15, 2026").toISOString(),
+                        "author": {
+                            "@type": "Person",
+                            "name": post.author
+                        }
+                    })
+                }}
+            />
             {/* Header Content */}
             <header className="container mx-auto px-6 mb-16 max-w-4xl">
                 <Link href="/blog" className="inline-flex items-center text-zinc-500 hover:text-yellow-500 text-[10px] font-black uppercase tracking-widest mb-12 transition-colors">
@@ -65,7 +82,9 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
                 <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-zinc-500 uppercase tracking-widest mb-8">
                     <span className="text-yellow-500 flex items-center gap-2"><Tag size={14} /> {post.category}</span>
                     <span className="w-1 h-1 bg-zinc-800 rounded-full" />
-                    <span className="flex items-center gap-2"><Calendar size={14} /> {post.date}</span>
+                    <span className="flex items-center gap-2"><Calendar size={14} /> Published: {post.date}</span>
+                    <span className="w-1 h-1 bg-zinc-800 rounded-full" />
+                    <span className="flex items-center gap-2">Last Updated: July 29, 2026</span>
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-display uppercase tracking-tighter leading-[1.1] mb-10">

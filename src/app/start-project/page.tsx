@@ -479,7 +479,7 @@ export default function StartProject() {
     }
 
     return (
-        <div className="relative bg-black text-white pt-24 pb-12 overflow-hidden selection:bg-yellow-500 selection:text-black">
+        <div className="relative bg-black text-white pt-32 pb-12 overflow-hidden selection:bg-yellow-500 selection:text-black">
             {/* Background enhancement */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(234,179,8,0.05)_0%,_transparent_70%)] pointer-events-none"></div>
 

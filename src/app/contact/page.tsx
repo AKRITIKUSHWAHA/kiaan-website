@@ -60,7 +60,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="bg-black text-white min-h-screen pt-20 pb-4 font-sans selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black text-white min-h-screen pt-32 pb-4 font-sans selection:bg-yellow-500 selection:text-black">
             <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12">
 
                 {/* Contact Info */}

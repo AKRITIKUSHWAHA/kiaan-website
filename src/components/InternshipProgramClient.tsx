@@ -100,7 +100,7 @@ export default function InternshipProgramClient({ program }: { program: Internsh
     }
 
     return (
-        <div className="bg-black min-h-screen pt-20 pb-20 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-32 pb-20 selection:bg-yellow-500 selection:text-black">
             {/* Back Button */}
             <div className="container mx-auto px-6 mb-2">
                 <button
