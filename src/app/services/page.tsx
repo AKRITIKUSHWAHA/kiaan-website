@@ -120,7 +120,7 @@ const serviceCategories = [
 
 export default function ServicesPage() {
     return (
-        <div className="bg-black text-white pt-24 pb-12 font-sans selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black text-white pt-32 pb-12 font-sans selection:bg-yellow-500 selection:text-black">
             {/* Header */}
             <section className="container mx-auto px-4 mb-12">
                 <div className="border-b border-zinc-800 pb-12">

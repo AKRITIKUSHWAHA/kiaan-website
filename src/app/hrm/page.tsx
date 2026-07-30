@@ -5,8 +5,21 @@ export const metadata: Metadata = {
     title: "Custom HRM Software Development Company | Kiaan Technology",
     description: "Kiaan Technology is a premier custom HRM software development company building secure, cloud-native HRMS portals, automated payroll systems, ATS recruitment bots, and employee management portals.",
     keywords: "Custom HRM Software Development, HRM Software Development Company, HRMS Software development, Automated Payroll ERP, Employee Management System India, HR Automation Software, Performance Appraisal Software, Cloud HRMS Solutions",
-    alternates: {
-        canonical: "https://kiaantechnology.com/hrm",
+    alternates: {},
+    openGraph: {
+        title: "Custom HRM Software Development Company | Kiaan Technology",
+        description: "Cloud-native HRMS portals, automated payroll systems, ATS recruitment bots & employee management portals — built by Kiaan Technology.",
+        url: "https://kiaantechnology.com/hrm",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "HRM Software Development - Kiaan Technology" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Custom HRM Software Development Company | Kiaan Technology",
+        description: "Cloud-native HRMS portals, automated payroll systems & ATS recruitment bots. Build with Kiaan Technology.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
     },
 };
 

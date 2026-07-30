@@ -96,7 +96,7 @@ const NicheServicePageInner = ({
     })() : [];
 
     return (
-        <div className="bg-black min-h-screen text-white pt-24 pb-8 font-sans selection:bg-yellow-500 selection:text-black overflow-hidden uppercase">
+        <div className="bg-black min-h-screen text-white pt-32 pb-8 font-sans selection:bg-yellow-500 selection:text-black overflow-hidden uppercase">
             {/* Breadcrumb Schema */}
             {slug && (() => {
                 let parentName = "Solutions";
@@ -199,6 +199,45 @@ const NicheServicePageInner = ({
                                     "addressRegion": "Madhya Pradesh",
                                     "addressCountry": "IN"
                                 }
+                            }
+                        })
+                    }}
+                />
+            )}
+
+            {/* Service Schema */}
+            {slug && (
+                <Script
+                    id={`service-schema-${slug}`}
+                    type="application/ld+json"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Service",
+                            "name": title,
+                            "description": desc,
+                            "url": `https://kiaantechnology.com/${slug}`,
+                            "provider": {
+                                "@type": "Organization",
+                                "name": "Kiaan Technology",
+                                "url": "https://kiaantechnology.com"
+                            },
+                            "areaServed": {
+                                "@type": "Country",
+                                "name": "India"
+                            },
+                            "hasOfferCatalog": {
+                                "@type": "OfferCatalog",
+                                "name": "Service Features",
+                                "itemListElement": features ? features.map((feature) => ({
+                                    "@type": "Offer",
+                                    "itemOffered": {
+                                        "@type": "Service",
+                                        "name": feature.title,
+                                        "description": feature.desc
+                                    }
+                                })) : []
                             }
                         })
                     }}

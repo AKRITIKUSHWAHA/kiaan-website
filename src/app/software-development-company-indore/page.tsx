@@ -10,6 +10,21 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Software Development Company in Indore | Custom Solutions - Kiaan Technology",
     description: "Leading software development company in Indore offering custom software development, enterprise solutions, and expert IT consulting. Transform your business with Kiaan Technology.",
+    openGraph: {
+        title: "Software Development Company in Indore | Kiaan Technology",
+        description: "Leading software development company in Indore — custom software, enterprise solutions & IT consulting.",
+        url: "https://kiaantechnology.com/software-development-company-indore",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "Software Development Company Indore - Kiaan Technology" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Software Development Company in Indore | Kiaan Technology",
+        description: "Leading software development company in Indore — custom software, enterprise solutions & IT consulting.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
+    },
 };
 
 export default function SoftwareDevelopmentIndore() {
@@ -71,7 +86,7 @@ export default function SoftwareDevelopmentIndore() {
                 }}
             />
             {/* Hero Section */}
-            <section className="relative pt-24 pb-20 overflow-hidden border-b border-zinc-900">
+            <section className="relative pt-32 pb-20 overflow-hidden border-b border-zinc-900">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-500/5 via-transparent to-transparent opacity-50" />
                 <div className="container mx-auto px-4 relative z-10">
                     <Reveal>

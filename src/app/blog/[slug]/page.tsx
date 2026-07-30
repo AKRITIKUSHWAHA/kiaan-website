@@ -115,7 +115,6 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
                     }
                 }}
             />
-
             {/* Header Content */}
             <header className="container mx-auto px-6 mb-16 max-w-4xl">
                 <Link href="/blog" className="inline-flex items-center text-zinc-500 hover:text-yellow-500 text-[10px] font-black uppercase tracking-widest mb-12 transition-colors">
@@ -125,7 +124,9 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
                 <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-zinc-500 uppercase tracking-widest mb-8">
                     <span className="text-yellow-500 flex items-center gap-2"><Tag size={14} /> {post.category}</span>
                     <span className="w-1 h-1 bg-zinc-800 rounded-full" />
-                    <span className="flex items-center gap-2"><Calendar size={14} /> {post.date}</span>
+                    <span className="flex items-center gap-2"><Calendar size={14} /> Published: {post.date}</span>
+                    <span className="w-1 h-1 bg-zinc-800 rounded-full" />
+                    <span className="flex items-center gap-2">Last Updated: July 29, 2026</span>
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-display uppercase tracking-tighter leading-[1.1] mb-10">

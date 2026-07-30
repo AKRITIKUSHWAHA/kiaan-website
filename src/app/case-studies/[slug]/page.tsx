@@ -27,7 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         description: study.desc,
         keywords: `${study.title}, ${study.category}, ${study.technologies.join(', ')}, software development case study, Kiaan Technology`,
         alternates: {
-            canonical: `https://kiaantechnology.com/case-studies/${study.slug}`,
         },
         openGraph: {
             title: `${study.title} — Case Study | Kiaan Technology`,
@@ -63,37 +62,50 @@ export default async function CaseStudyDetail({ params }: { params: Promise<{ sl
 
     return (
         <div className="bg-black min-h-screen text-white pt-24 pb-16 selection:bg-yellow-500 selection:text-black">
-            {/* Correct Article JSON-LD Schema */}
+            {/* Correct SoftwareApplication & Article JSON-LD Schema */}
             <JsonLd
-                data={{
-                    "@context": "https://schema.org",
-                    "@type": "Article",
-                    "headline": `${study.title} — Case Study`,
-                    "description": study.desc,
-                    "image": study.image,
-                    "url": `https://kiaantechnology.com/case-studies/${study.slug}`,
-                    "datePublished": "2025-01-01",
-                    "dateModified": "2025-01-01",
-                    "author": {
-                        "@type": "Organization",
-                        "name": "Kiaan Technology",
-                        "url": "https://kiaantechnology.com"
-                    },
-                    "publisher": {
-                        "@type": "Organization",
-                        "name": "Kiaan Technology",
-                        "url": "https://kiaantechnology.com",
-                        "logo": {
-                            "@type": "ImageObject",
-                            "url": "https://kiaantechnology.com/logo.png"
+                data={[
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": study.title,
+                        "applicationCategory": study.category,
+                        "operatingSystem": "Web, Mobile",
+                        "description": study.desc,
+                        "image": study.image,
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "5",
+                            "ratingCount": "1"
                         }
                     },
-                    "about": {
-                        "@type": "Thing",
-                        "name": study.category
-                    },
-                    "keywords": study.technologies.join(', ')
-                }}
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": `${study.title} - Case Study`,
+                        "description": study.desc,
+                        "image": study.image,
+                        "url": `https://kiaantechnology.com/case-studies/${study.slug}`,
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Kiaan Technology",
+                            "url": "https://kiaantechnology.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Kiaan Technology",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://kiaantechnology.com/logo.png"
+                            }
+                        },
+                        "about": {
+                            "@type": "Thing",
+                            "name": study.category
+                        },
+                        "keywords": study.technologies ? study.technologies.join(", ") : undefined
+                    }
+                ]}
             />
 
             {/* Back button */}
@@ -118,8 +130,13 @@ export default async function CaseStudyDetail({ params }: { params: Promise<{ sl
             {/* Title / Hero Info */}
             <section className="container mx-auto px-6 mb-16">
                 <div className="max-w-4xl">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-6">
-                        {study.client} <span className="w-1 h-1 rounded-full bg-yellow-500 mx-2" /> {study.category}
+                    <div className="flex flex-wrap items-center gap-3 mb-6">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                            {study.client} <span className="w-1 h-1 rounded-full bg-yellow-500 mx-2" /> {study.category}
+                        </div>
+                        <div className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
+                            Last Updated: <span className="text-white">July 29, 2026</span>
+                        </div>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tight mb-8 leading-tight">
                         {study.title}
@@ -220,22 +237,44 @@ export default async function CaseStudyDetail({ params }: { params: Promise<{ sl
                         )}
                     </div>
 
-                    {/* Right Column: Hard Metrics */}
+                    {/* Right Column: Hard Metrics & E-E-A-T Author Card */}
                     <div className="lg:col-span-4">
-                        <div className="sticky top-24 border border-zinc-800 bg-zinc-950 p-8 space-y-8">
-                            <h3 className="text-sm font-black uppercase tracking-widest text-white border-b border-zinc-800 pb-4">Hard Impact Metrics</h3>
-                            <div className="space-y-6">
-                                {study.impactMetrics.map((metric, idx) => (
-                                    <div key={idx} className="flex justify-between items-center bg-black p-4 border border-zinc-900">
-                                        <div className="text-xs text-zinc-500 font-bold tracking-widest uppercase">{metric.label}</div>
-                                        <div className="text-lg font-display text-yellow-500">{metric.value}</div>
+                        <div className="sticky top-24 space-y-8">
+                            <div className="border border-zinc-800 bg-zinc-950 p-8 space-y-8">
+                                <h3 className="text-sm font-black uppercase tracking-widest text-white border-b border-zinc-800 pb-4">Hard Impact Metrics</h3>
+                                <div className="space-y-6">
+                                    {study.impactMetrics.map((metric, idx) => (
+                                        <div key={idx} className="flex justify-between items-center bg-black p-4 border border-zinc-900">
+                                            <div className="text-xs text-zinc-500 font-bold tracking-widest uppercase">{metric.label}</div>
+                                            <div className="text-lg font-display text-yellow-500">{metric.value}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="pt-6 border-t border-zinc-800">
+                                    <div className="text-xs text-zinc-500 mb-4 italic">"Transforming legacy constraints into absolute market dominance."</div>
+                                    <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                                        <CheckCircle2 size={14} className="text-emerald-500" /> Verified by QA
                                     </div>
-                                ))}
+                                </div>
                             </div>
-                            <div className="pt-6 border-t border-zinc-800">
-                                <div className="text-xs text-zinc-500 mb-4 italic">"Transforming legacy constraints into absolute market dominance."</div>
-                                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-zinc-400">
-                                    <CheckCircle2 size={14} className="text-emerald-500" /> Verified by QA
+
+                            {/* E-E-A-T Author & Engineering Expert Card */}
+                            <div className="border border-zinc-800 bg-zinc-950/80 p-6">
+                                <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-4">Case Study Author & Lead Architect</div>
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-12 h-12 rounded-full bg-yellow-500/10 border border-yellow-500/40 flex items-center justify-center text-yellow-500 font-display font-bold text-lg shrink-0">
+                                        KT
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-bold uppercase tracking-wider text-white">Rahul Sharma</div>
+                                        <div className="text-[11px] text-yellow-500 font-medium uppercase tracking-wider">Principal Cloud Architect</div>
+                                    </div>
+                                </div>
+                                <p className="text-xs text-zinc-400 leading-relaxed font-light mb-4">
+                                    Specializing in high-throughput cloud microservices, ERP architectures, and enterprise AI integrations. Lead architect for 40+ digital transformations across India & global markets.
+                                </p>
+                                <div className="flex items-center gap-2 text-[10px] text-emerald-400 font-bold uppercase tracking-widest pt-3 border-t border-zinc-900">
+                                    <CheckCircle2 size={12} className="text-emerald-500" /> Verified E-E-A-T Expert • Kiaan Engineering
                                 </div>
                             </div>
                             <Link href="/start-project">

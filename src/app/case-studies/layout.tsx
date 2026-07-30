@@ -5,7 +5,6 @@ export const metadata: Metadata = {
     description: "Explore Kiaan Technology's real-world project portfolio — custom CRM, AI health tech, fintech payment gateways, Web3 gaming platforms and SaaS solutions delivered for clients across India and globally.",
     keywords: "software development case studies, IT project portfolio, SaaS development India, custom CRM case study, AI software success stories, fintech development case study, web3 gaming platform, Kiaan Technology projects",
     alternates: {
-        canonical: "https://kiaantechnology.com/case-studies",
     },
     openGraph: {
         title: "Software Development Case Studies | Kiaan Technology",

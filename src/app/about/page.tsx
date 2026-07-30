@@ -68,7 +68,7 @@ const TimelineStep = ({ number, title, desc, delay }: { number: string, title: s
 
 export default function AboutPage() {
     return (
-        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black overflow-hidden pt-20">
+        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black overflow-hidden pt-32">
 
             {/* SECTION 1 – HERO (Animated) */}
             <section className="relative flex flex-col justify-start pt-6 lg:pt-10 pb-0 px-6 overflow-hidden">

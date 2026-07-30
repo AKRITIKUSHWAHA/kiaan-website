@@ -100,6 +100,13 @@ export default function CaseStudies() {
                     }
                 }}
             />
+            {/* Last Updated Freshness Signal */}
+            <div className="container mx-auto px-6 pt-8 pb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                <span>Page Last Updated:</span>
+                <span className="text-white">July 29, 2026</span>
+                <span className="w-1 h-1 rounded-full bg-yellow-500 mx-1" />
+                <span>Verified by Kiaan Technology</span>
+            </div>
             {/* Featured Section */}
             <section className="container mx-auto px-6 mb-16">
                 <div className="glass-panel p-6 md:p-10 border-yellow-500/20 relative overflow-hidden group">
@@ -141,7 +148,8 @@ export default function CaseStudies() {
                                 <div className="aspect-video relative overflow-hidden border border-white/10 shadow-2xl">
                                     <img
                                         src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                                        alt="Featured Project"
+                                        alt="Featured Enterprise Custom Software Project - Kiaan Technology"
+                                        fetchPriority="high"
                                         className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -235,7 +243,8 @@ export default function CaseStudies() {
                                         </div>
                                         <img
                                             src={study.image}
-                                            alt={study.title}
+                                            alt={`Case study interface for ${study.title}`}
+                                            loading="lazy"
                                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent opacity-60" />

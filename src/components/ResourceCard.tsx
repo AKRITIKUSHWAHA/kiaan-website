@@ -24,7 +24,7 @@ export const ResourceCard = ({ res, idx }: { res: Resource; idx: number }) => (
             <div className="aspect-video overflow-hidden relative border-b border-zinc-900">
                 <img
                     src={res.image}
-                    alt={res.title}
+                    alt={`${res.title} - Software Engineering Resource`}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale"
                 />
