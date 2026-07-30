@@ -5,11 +5,8 @@ import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import AwardBanner from "@/components/AwardBanner";
-<<<<<<< HEAD
 import UTMTracker from "@/components/UTMTracker";
-=======
 import { CanonicalTag } from "@/components/seo/CanonicalTag";
->>>>>>> 5a63f9e603c1962c11b3513676760a24ea219e1a
 import Script from "next/script";
 import "@fontsource/anton/400.css";
 import "@fontsource/manrope/300.css";
@@ -139,7 +136,6 @@ export default function RootLayout({
                     }}
                 />
 
-<<<<<<< HEAD
                 {/* Google Tag Manager (GTM) */}
                 <Script
                     id="gtm-script"
@@ -206,7 +202,6 @@ export default function RootLayout({
                                 s.parentNode.insertBefore(b, s);
                             })(window._linkedin_data_partner_color || window._linkedin_data_partner_ids);
                         `,
-=======
                 {/* Organization Schema */}
                 <Script
                     id="organization-schema"
@@ -308,7 +303,6 @@ export default function RootLayout({
                                 "description": "Enterprise AI-driven business process automation, predictive machine learning integrations, and intelligent workflow optimization."
                             }
                         ])
->>>>>>> 5a63f9e603c1962c11b3513676760a24ea219e1a
                     }}
                 />
             </head>
