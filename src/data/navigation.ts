@@ -229,6 +229,7 @@ export const navLinks = [
             { name: 'Day in the Life', href: '/day-in-the-life' },
         ]
     },
+    { name: 'Blog', href: '/blog' },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Demo Arena', href: '/demo' },
     {

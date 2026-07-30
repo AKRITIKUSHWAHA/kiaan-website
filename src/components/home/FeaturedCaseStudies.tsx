@@ -53,6 +53,7 @@ export const FeaturedCaseStudies: React.FC = () => {
               technologies={study.technologies}
               results={study.impactMetrics}
               image={study.image}
+              imageAlt={study.imageAlt}
               href={`/case-studies/${study.slug}`}
               index={idx}
               accentClass={accentClasses[idx % accentClasses.length]}

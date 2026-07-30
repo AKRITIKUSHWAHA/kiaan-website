@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const awards = [
-    { name: "TechBehemoths 2025 Winner", img: "/frontPage/techbehemoths-award.png" },
-    { name: "Glassdoor 5.0 Achiever", img: "/frontPage/glassdoor-award.png" },
-    { name: "Top Software Development Company", img: "/frontPage/Graphic Design.png" },
-    { name: "Expert ReactJs Development", img: "/frontPage/ReactJs.png" },
-    { name: "Premium UI/UX Design", img: "/frontPage/UI design.png" },
+    { name: "TechBehemoths 2025 Winner", img: "/frontPage/techbehemoths-award.png", alt: "TechBehemoths 2025 Winner Award Certificate" },
+    { name: "Glassdoor 5.0 Achiever", img: "/frontPage/glassdoor-award.png", alt: "Glassdoor Top Workplace Award Badge" },
+    { name: "Top Software Development Company", img: "/frontPage/Graphic Design.png", alt: "Top Software Development Company Award" },
+    { name: "Expert ReactJs Development", img: "/frontPage/ReactJs.png", alt: "React.js logo" },
+    { name: "Premium UI/UX Design", img: "/frontPage/UI design.png", alt: "Premium UI/UX Design Award Showcase" },
 ];
 
 export const AwardMarquee = () => {
@@ -41,7 +41,11 @@ export const AwardMarquee = () => {
                             <div className="relative w-32 h-32 md:w-40 md:h-40">
                                 <Image
                                     src={award.img}
-                                    alt={award.name}
+<<<<<<< HEAD
+                                    alt={`${award.name} - Excellence in Software Development Award`}
+=======
+                                    alt={award.alt || award.name}
+>>>>>>> f1315c14ac8daa996022f6ce10f0488ae7dd3f57
                                     fill
                                     className="object-contain"
                                 />

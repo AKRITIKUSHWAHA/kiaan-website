@@ -46,7 +46,7 @@ export default function SaaSProducts() {
             </div>
 
             {/* Step 1: Redesigned DEMO ARENA Hero Section */}
-            <section className="w-full bg-black relative border-b border-white/5 pt-20 pb-12 md:pt-32 md:pb-24 flex flex-col items-center justify-center text-center">
+            <section className="w-full bg-black relative border-b border-white/5 pt-32 pb-12 md:pt-32 md:pb-24 flex flex-col items-center justify-center text-center">
                 {/* Subtle premium gradient */}
                 <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black z-0"></div>
 
