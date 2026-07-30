@@ -75,10 +75,12 @@ export const Footer = () => {
                         <ul className="grid grid-cols-[max-content_1fr] gap-x-8 gap-y-4">
                             {[
                                 { name: 'About Us', href: '/about' },
+                                { name: 'Our Process', href: '/our-process' },
                                 { name: 'Pricing Plans', href: '/pricing' },
                                 { name: 'Our Blog', href: '/blog' },
                                 { name: 'Resources & Insights', href: '/resources' },
                                 { name: 'Schedule Call', href: '/schedule' },
+                                { name: 'Book a Demo', href: '/book-demo' },
                                 { name: 'Product Demo', href: '/demo' }
                             ].map((link) => (
                                 <li key={link.name}>
@@ -142,6 +144,42 @@ export const Footer = () => {
                         >
                             Trustpilot
                         </a>
+                    </div>
+
+                    {/* Clutch + GoodFirms Review CTAs */}
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-4 px-1">
+                        <div className="flex items-center gap-3">
+                            <div className="flex gap-0.5">
+                                {[...Array(5)].map((_, i) => (
+                                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#EAB308" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                                    </svg>
+                                ))}
+                            </div>
+                            <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">
+                                Rated on <span className="text-white">Clutch</span>, <span className="text-white">GoodFirms</span> &amp; <span className="text-white">Trustpilot</span>
+                            </span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="https://clutch.co/profile/kiaan-technology"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 border border-yellow-500/30 text-yellow-500 hover:bg-yellow-500 hover:text-black transition-all text-[9px] font-black uppercase tracking-widest group"
+                            >
+                                ⭐ Rate on Clutch
+                                <ArrowUpRight size={10} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </a>
+                            <a
+                                href="https://www.goodfirms.co/company/kiaan-technology"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 border border-zinc-700 text-zinc-400 hover:border-yellow-500/30 hover:text-yellow-500 transition-all text-[9px] font-black uppercase tracking-widest group"
+                            >
+                                ⭐ Rate on GoodFirms
+                                <ArrowUpRight size={10} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </a>
+                        </div>
                     </div>
                 </div>
 

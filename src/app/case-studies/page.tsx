@@ -51,6 +51,7 @@ export default function CaseStudies() {
 
     return (
         <div className="bg-black min-h-screen pt-16 pb-16 selection:bg-yellow-500 selection:text-black">
+            {/* Organization + Reviews Schema */}
             <JsonLd 
                 data={{
                     "@context": "https://schema.org",
@@ -70,6 +71,33 @@ export default function CaseStudies() {
                         "reviewBody": r.text,
                         "reviewRating": { "@type": "Rating", "ratingValue": "5" }
                     }))
+                }}
+            />
+            {/* CollectionPage + ItemList Schema */}
+            <JsonLd
+                data={{
+                    "@context": "https://schema.org",
+                    "@type": "CollectionPage",
+                    "name": "Software Development Case Studies | Kiaan Technology",
+                    "description": "Explore Kiaan Technology's real-world project portfolio — custom CRM, AI health tech, fintech payment gateways, Web3 gaming platforms and SaaS solutions.",
+                    "url": "https://kiaantechnology.com/case-studies",
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Kiaan Technology",
+                        "url": "https://kiaantechnology.com"
+                    },
+                    "mainEntity": {
+                        "@type": "ItemList",
+                        "name": "Case Studies",
+                        "numberOfItems": caseStudiesData.length,
+                        "itemListElement": caseStudiesData.map((cs, i) => ({
+                            "@type": "ListItem",
+                            "position": i + 1,
+                            "name": cs.title,
+                            "description": cs.desc,
+                            "url": `https://kiaantechnology.com/case-studies/${cs.slug}`
+                        }))
+                    }
                 }}
             />
             {/* Featured Section */}
@@ -133,13 +161,40 @@ export default function CaseStudies() {
                         </div>
                     </Reveal>
                     <Reveal delay={0.2}>
-                        <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tighter text-white mb-8">
+                        <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tighter text-white mb-4">
                             Engineering <span className="text-yellow-500">Masterpieces</span>
                         </h1>
                     </Reveal>
+                    <Reveal delay={0.3}>
+                        <p className="text-zinc-400 font-light text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+                            Real-world software solutions that delivered measurable business impact — from AI health platforms and fintech gateways to Web3 gaming and enterprise SaaS.
+                        </p>
+                    </Reveal>
+
+                    {/* Stats Bar */}
+                    <Reveal delay={0.4}>
+                        <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-10 py-6 px-8 border border-white/5 bg-zinc-950/50">
+                            <div className="text-center">
+                                <div className="text-3xl font-display text-yellow-500">{caseStudiesData.length}</div>
+                                <div className="text-[10px] uppercase tracking-widest font-black text-zinc-500 mt-1">Projects</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-display text-yellow-500">5</div>
+                                <div className="text-[10px] uppercase tracking-widest font-black text-zinc-500 mt-1">Industries</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-display text-yellow-500">100%</div>
+                                <div className="text-[10px] uppercase tracking-widest font-black text-zinc-500 mt-1">Client Success Rate</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-display text-yellow-500">25+</div>
+                                <div className="text-[10px] uppercase tracking-widest font-black text-zinc-500 mt-1">Countries Served</div>
+                            </div>
+                        </div>
+                    </Reveal>
 
                     {/* Category Filter */}
-                    <div className="flex flex-wrap justify-center gap-4 mt-8">
+                    <div className="flex flex-wrap justify-center gap-4">
                         {categories.map((cat, i) => (
                             <button
                                 key={cat}
@@ -352,6 +407,36 @@ export default function CaseStudies() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* ── Related Services — SEO Internal Links ── */}
+            <section className="container mx-auto px-6 py-8 border-t border-zinc-900">
+                <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 mb-5">Related Services</h2>
+                <div className="flex flex-wrap gap-2">
+                    {[
+                        { label: 'Custom Software Development', href: '/services/custom-software-development' },
+                        { label: 'ERP Systems', href: '/erp' },
+                        { label: 'CRM Software', href: '/crm' },
+                        { label: 'HRM Software', href: '/hrm' },
+                        { label: 'SaaS Development', href: '/services/saas-development' },
+                        { label: 'Mobile App Development', href: '/services/mobile-app-development' },
+                        { label: 'AI & Automation', href: '/services/ai-automation' },
+                        { label: 'Web Development', href: '/services/web-development' },
+                        { label: 'Healthcare Software', href: '/industries/healthcare-software' },
+                        { label: 'Fintech Software', href: '/industries/fintech-software' },
+                        { label: 'Methodology', href: '/methodology' },
+                        { label: 'Our Blog', href: '/blog' },
+                    ].map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            prefetch={false}
+                            className="px-3 py-1.5 text-[10px] font-black uppercase tracking-widest border border-zinc-800 text-zinc-600 hover:border-yellow-500/30 hover:text-yellow-500 transition-all duration-300"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
                 </div>
             </section>
         </div>

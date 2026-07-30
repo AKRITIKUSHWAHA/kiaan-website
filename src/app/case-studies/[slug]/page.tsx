@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { caseStudiesData } from '@/data/caseStudiesData';
 import { Button } from '@/components/Button';
 import Link from 'next/link';
-import { ArrowLeft, Target, Cpu, Activity, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Target, Cpu, Activity, CheckCircle2, Code2 } from 'lucide-react';
 import { ProjectNavigation } from '@/components/case-studies/ProjectNavigation';
 import { ProjectScreenshots } from '@/components/case-studies/ProjectScreenshots';
 import { Reveal } from '@/components/Reveal';
@@ -17,18 +17,20 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const study = caseStudiesData.find((s) => s.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const study = caseStudiesData.find((s) => s.slug === slug);
     if (!study) return {};
-    
+
     return {
-        title: `${study.title} | Kiaan Technology Case Studies`,
+        title: `${study.title} — Case Study | Kiaan Technology`,
         description: study.desc,
+        keywords: `${study.title}, ${study.category}, ${study.technologies.join(', ')}, software development case study, Kiaan Technology`,
         alternates: {
             canonical: `https://kiaantechnology.com/case-studies/${study.slug}`,
         },
         openGraph: {
-            title: `${study.title} | Kiaan Technology Case Studies`,
+            title: `${study.title} — Case Study | Kiaan Technology`,
             description: study.desc,
             url: `https://kiaantechnology.com/case-studies/${study.slug}`,
             siteName: 'Kiaan Technology',
@@ -44,15 +46,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${study.title} | Kiaan Technology Case Studies`,
+            title: `${study.title} — Case Study | Kiaan Technology`,
             description: study.desc,
             images: [study.image],
         }
     };
 }
 
-export default function CaseStudyDetail({ params }: { params: { slug: string } }) {
-    const study = caseStudiesData.find((s) => s.slug === params.slug);
+export default async function CaseStudyDetail({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const study = caseStudiesData.find((s) => s.slug === slug);
 
     if (!study) {
         notFound();
@@ -60,23 +63,39 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
 
     return (
         <div className="bg-black min-h-screen text-white pt-24 pb-16 selection:bg-yellow-500 selection:text-black">
-            {/* SEO JSON-LD */}
-            <JsonLd 
+            {/* Correct Article JSON-LD Schema */}
+            <JsonLd
                 data={{
                     "@context": "https://schema.org",
-                    "@type": "SoftwareApplication",
-                    "name": study.title,
-                    "applicationCategory": study.category,
-                    "operatingSystem": "Web, Mobile",
+                    "@type": "Article",
+                    "headline": `${study.title} — Case Study`,
                     "description": study.desc,
                     "image": study.image,
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "5",
-                        "ratingCount": "1"
-                    }
+                    "url": `https://kiaantechnology.com/case-studies/${study.slug}`,
+                    "datePublished": "2025-01-01",
+                    "dateModified": "2025-01-01",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "Kiaan Technology",
+                        "url": "https://kiaantechnology.com"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Kiaan Technology",
+                        "url": "https://kiaantechnology.com",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://kiaantechnology.com/logo.png"
+                        }
+                    },
+                    "about": {
+                        "@type": "Thing",
+                        "name": study.category
+                    },
+                    "keywords": study.technologies.join(', ')
                 }}
             />
+
             {/* Back button */}
             <div className="container mx-auto px-6 mb-6">
                 <Link href="/case-studies" className="inline-flex items-center text-zinc-500 hover:text-yellow-500 text-xs font-black uppercase tracking-widest transition-colors">
@@ -87,10 +106,10 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
             {/* Hero Banner Image */}
             {study.image && (
                 <div className="w-full h-[35vh] md:h-[45vh] relative mb-12 overflow-hidden border-y border-zinc-900 bg-zinc-950">
-                    <img 
-                        src={study.image} 
-                        alt={study.title} 
-                        className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-50 transition-all duration-700"
+                    <img
+                        src={study.image}
+                        alt={study.title}
+                        className="w-full h-full object-cover opacity-60 hover:opacity-85 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 </div>
@@ -105,14 +124,21 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                     <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tight mb-8 leading-tight">
                         {study.title}
                     </h1>
+                    <p className="text-lg text-zinc-400 font-light leading-relaxed max-w-3xl mb-10">
+                        {study.desc}
+                    </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-zinc-900">
                         <div>
                             <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Primary Impact</div>
                             <div className="text-xl font-display text-yellow-500">{study.result}</div>
                         </div>
                         <div>
-                            <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Technology Target</div>
+                            <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Project Type</div>
                             <div className="text-xl font-display text-white">{study.type}</div>
+                        </div>
+                        <div>
+                            <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Client</div>
+                            <div className="text-xl font-display text-white">{study.client}</div>
                         </div>
                     </div>
                 </div>
@@ -124,40 +150,67 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                     {/* Left Column: Narrative */}
                     <div className="lg:col-span-8 space-y-16">
                         {/* The Challenge */}
-                        <div className="space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
-                                <Target className="text-red-500" /> The Challenge
-                            </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light">
-                                {study.challenge}
-                            </p>
-                        </div>
+                        <Reveal>
+                            <div className="space-y-6">
+                                <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
+                                    <Target className="text-red-500" /> The Challenge
+                                </h2>
+                                <p className="text-lg text-zinc-400 leading-relaxed font-light">
+                                    {study.challenge}
+                                </p>
+                            </div>
+                        </Reveal>
 
                         {/* The Blueprint */}
-                        <div className="space-y-6">
-                            <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
-                                <Cpu className="text-yellow-500" /> The Blueprint
-                            </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light">
-                                {study.blueprint}
-                            </p>
-                            {study.architectureImage && (
-                                <div className="mt-8 border border-zinc-800 p-2 bg-zinc-950/50">
-                                    <img src={study.architectureImage} alt="Architecture Blueprint" className="w-full h-auto grayscale opacity-80" />
-                                </div>
-                            )}
-                        </div>
+                        <Reveal delay={0.1}>
+                            <div className="space-y-6">
+                                <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
+                                    <Cpu className="text-yellow-500" /> The Blueprint
+                                </h2>
+                                <p className="text-lg text-zinc-400 leading-relaxed font-light">
+                                    {study.blueprint}
+                                </p>
+                                {study.architectureImage && (
+                                    <div className="mt-8 border border-zinc-800 p-2 bg-zinc-950/50">
+                                        <img src={study.architectureImage} alt={`${study.title} Architecture Blueprint`} className="w-full h-auto opacity-95" />
+                                    </div>
+                                )}
+                            </div>
+                        </Reveal>
 
                         {/* The Execution */}
-                        <div className="space-y-6 relative overflow-hidden">
-                            <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
-                                <Activity className="text-emerald-500" /> The Execution
-                            </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light relative z-10">
-                                {study.execution}
-                            </p>
-                            <div className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 blur-[80px] rounded-full pointer-events-none" />
-                        </div>
+                        <Reveal delay={0.2}>
+                            <div className="space-y-6 relative overflow-hidden">
+                                <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
+                                    <Activity className="text-emerald-500" /> The Execution
+                                </h2>
+                                <p className="text-lg text-zinc-400 leading-relaxed font-light relative z-10">
+                                    {study.execution}
+                                </p>
+                                <div className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 blur-[80px] rounded-full pointer-events-none" />
+                            </div>
+                        </Reveal>
+
+                        {/* Technology Stack */}
+                        {study.technologies && study.technologies.length > 0 && (
+                            <Reveal delay={0.3}>
+                                <div className="space-y-6">
+                                    <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
+                                        <Code2 className="text-blue-400" /> Technology Stack
+                                    </h2>
+                                    <div className="flex flex-wrap gap-3">
+                                        {study.technologies.map((tech, i) => (
+                                            <span
+                                                key={i}
+                                                className="px-4 py-2 bg-zinc-900 border border-zinc-800 text-xs font-black uppercase tracking-widest text-zinc-300 hover:border-yellow-500/40 hover:text-yellow-500 transition-all duration-300"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </Reveal>
+                        )}
 
                         {/* Screenshots Section */}
                         {study.screenshots && study.screenshots.length > 0 && (
@@ -185,6 +238,11 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                                     <CheckCircle2 size={14} className="text-emerald-500" /> Verified by QA
                                 </div>
                             </div>
+                            <Link href="/start-project">
+                                <Button className="w-full bg-yellow-500 text-black rounded-none h-12 text-xs font-black uppercase tracking-widest hover:bg-white transition-all mt-4">
+                                    Start a Similar Project
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from '@/components/Button'
+import { SocialProofBar } from '@/components/SocialProofBar'
 import React from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -179,6 +180,7 @@ export default function Contact() {
                             >
                                 {status === 'submitting' ? 'SENDING...' : 'Send Message'}
                             </Button>
+                            <SocialProofBar variant="dark" className="mt-4" />
                         </form>
                     )}
                 </div>

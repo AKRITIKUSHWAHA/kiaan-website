@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
 import AwardBanner from "@/components/AwardBanner";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import Script from "next/script";
 import "@fontsource/anton/400.css";
 import "@fontsource/manrope/300.css";
@@ -15,9 +16,9 @@ import "@fontsource/manrope/700.css";
 // CSS variables --font-anton and --font-manrope are defined in globals.css
 
 export const metadata: Metadata = {
-    title: "Custom Software Development Company India | Kiaan Technology",
-    description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale. Get a free consultation — Kiaan Technology.",
-    keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software, Enterprise Software Development, Cloud Based Business Software, Web Application Development Company",
+    title: "Software Dev Company India | ERP, SaaS & AI — Kiaan",
+    description: "Turn ideas into enterprise software — ERP, CRM, SaaS & AI. 250+ businesses trust Kiaan Technology. India's top software dev company. Explore services →",
+    keywords: "Custom Software Development Company India, ERP Software Development, CRM Development Company, SaaS Development India, Business Automation Software, Enterprise Software Development, AI Automation India, Software Company Indore",
     robots: "index, follow",
     authors: [{ name: "Kiaan Technology" }],
     category: "Technology",
@@ -26,8 +27,8 @@ export const metadata: Metadata = {
         canonical: "https://kiaantechnology.com",
     },
     openGraph: {
-        title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale — Kiaan Technology.",
+        title: "Software Dev Company India | ERP, SaaS & AI — Kiaan",
+        description: "Turn ideas into enterprise software — ERP, CRM, SaaS & AI. 250+ businesses trust Kiaan Technology. India's top software dev company. Explore services →",
         url: "https://kiaantechnology.com",
         siteName: "Kiaan Technology",
         images: [
@@ -43,8 +44,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale.",
+        title: "Software Dev Company India | ERP, SaaS & AI — Kiaan",
+        description: "Turn ideas into enterprise software — ERP, CRM, SaaS & AI. 250+ businesses trust Kiaan Technology. India's top software dev company.",
         images: ["/og-image.jpg"],
     },
     icons: {
@@ -53,6 +54,10 @@ export const metadata: Metadata = {
     },
     other: {
         "theme-color": "#000000",
+        // Google Search Console verification
+        "google-site-verification": "2Wsr1OneAkeWe0UL_I_F85Q9opcwTrnRzT3dUCSikK8",
+        // Bing Webmaster Tools verification
+        "msvalidate.01": "A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6",
     },
 };
 
@@ -79,13 +84,25 @@ export default function RootLayout({
                     }}
                 />
 
-                {/* DNS Prefetch for external domains */}
+                {/* Preconnect — reduce connection setup time for LCP-critical origins */}
+                <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://invitejs.trustpilot.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://widget.trustpilot.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+                {/* DNS Prefetch — fallback for browsers without preconnect support */}
                 <link rel="dns-prefetch" href="https://images.unsplash.com" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="dns-prefetch" href="https://assets.calendly.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
                 {/* Trustpilot Initialization */}
                 <Script
                     id="trustpilot-init"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
                             (function(w,d,s,r,n){
@@ -111,17 +128,17 @@ export default function RootLayout({
                 <Script
                     id="trustpilot-widget-bootstrap"
                     src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                 />
 
                 {/* Google Analytics (GA4) */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-JCSRXVVVR8"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                 />
                 <Script
                     id="ga4-script"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
                             window.dataLayer = window.dataLayer || [];
@@ -187,25 +204,7 @@ export default function RootLayout({
                         })
                     }}
                 />
-                <Script
-                    id="breadcrumb-schema"
-                    type="application/ld+json"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BreadcrumbList",
-                            "itemListElement": [
-                                {
-                                    "@type": "ListItem",
-                                    "position": 1,
-                                    "name": "Home",
-                                    "item": "https://kiaantechnology.com"
-                                }
-                            ]
-                        })
-                    }}
-                />
+
                 <Script
                     id="local-business"
                     type="application/ld+json"
@@ -250,7 +249,10 @@ export default function RootLayout({
                 />
                 <div className="flex flex-col min-h-screen relative bg-black text-white">
                     <Navbar />
-                    <main className="relative z-10 w-full">{children}</main>
+                    <main className="relative z-10 w-full">
+                        <Breadcrumbs />
+                        {children}
+                    </main>
                     <Footer />
                     <GlobalClientComponents />
                     <AwardBanner />

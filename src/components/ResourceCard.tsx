@@ -9,7 +9,7 @@ import { Resource, getResourceCTA } from '@/data/resourcesData';
 // Reusable Resource Card component
 export const ResourceCard = ({ res, idx }: { res: Resource; idx: number }) => (
     <Link
-        href={`/resources/${res.slug}`}
+        href={res.customHref || `/resources/${res.slug}`}
         className="block group"
     >
         <motion.div

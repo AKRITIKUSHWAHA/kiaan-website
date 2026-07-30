@@ -7,6 +7,8 @@ import { ArrowRight, Code, Zap, Globe, Shield, TrendingUp, LucideIcon, Award } f
 import Link from 'next/link'
 import { Button } from '@/components/Button'
 import { Reveal } from '@/components/Reveal'
+import { SocialProofBar } from '@/components/SocialProofBar'
+import { ClientLogosSection } from '@/components/ClientLogosSection'
 import dynamic from 'next/dynamic'
 import React from 'react';
 import Script from 'next/script'
@@ -177,6 +179,7 @@ const HeroShowcase = () => {
                                 className="object-contain transition-transform duration-700"
                                 priority
                                 quality={100}
+                                fetchPriority="high"
                             />
                         </div>
                     </motion.div>
@@ -378,7 +381,7 @@ export default function Home() {
                                 </h1>
                             </Reveal>
                             <Reveal delay={0.3}>
-                                <p className="text-sm sm:text-base text-zinc-400 max-w-2xl border-l-2 border-red-600 pl-4 mb-6 leading-snug">
+                                <p className="text-sm sm:text-base text-zinc-400 max-w-2xl border-l-2 border-yellow-500 pl-4 mb-6 leading-snug">
                                     Kiaan Technology is an elite <strong>AI-Driven Business Automation Partner</strong> delivering <strong>custom software solutions</strong> and <strong>scalable SaaS platforms</strong>. We engineer software ecosystems that transform manual enterprise processes into autonomous, high-margin revenue engines using <strong>Enterprise AI</strong> and <strong>Predictive ML</strong>.
                                 </p>
                             </Reveal>
@@ -403,6 +406,7 @@ export default function Home() {
                                             Launch Your Software
                                         </Button>
                                     </Link>
+                                    <SocialProofBar variant="transparent" className="mt-3 px-0" />
                                 </div>
                             </Reveal>
                         </div>
@@ -415,6 +419,9 @@ export default function Home() {
                 </div>
             </section>
 
+
+            {/* Client Logos Strip — social proof marquee */}
+            <ClientLogosSection />
 
             {/* Bento Grid Services — Content Only */}
             <section className="pt-8 pb-10 container mx-auto px-4">
@@ -547,11 +554,16 @@ export default function Home() {
             <ContactCTA />
 
             {/* SEO Content Section */}
-            <section className="py-8 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
+            <section className="py-12 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
                 <div className="container mx-auto max-w-7xl">
-                    <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-light">
-                        Kiaan Technology is a premier <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">Software Development Company in Indore</Link> delivering custom digital solutions across India. As a leading <Link href="/it-company-indore" className="text-white hover:text-yellow-500 font-medium">IT Company in Indore</Link>, we specialize in <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platform development</Link>, enterprise software systems, and high-performance <Link href="/web-development-company-indore" className="text-white hover:text-yellow-500 font-medium">web development in Indore</Link>. Our expertise as a <Link href="/software-development-company-india" className="text-white hover:text-yellow-500 font-medium">Software Development Company in India</Link> empowers global businesses with scalable architectures, AI-driven automation, and robust cybersecurity. Whether you&#39;re looking for an app development partner or a strategic IT consultant, our Indore-based engineering team ensures zero-downtime deployment and premium technical excellence.
-                    </p>
+                    <div className="text-sm md:text-base text-zinc-300 leading-relaxed font-light space-y-4">
+                        <p>
+                            Based in Indore, Kiaan Technology is a dedicated technology partner building robust digital systems for businesses across India and around the globe. As a leading <Link href="/it-company-indore" className="text-white hover:text-yellow-500 font-medium">IT Company in Indore</Link>, we work closely with clients to modernize workflows and deliver high-performance applications. Our capabilities as a premier <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">Software Development Company in Indore</Link> span end-to-end <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platform development</Link>, bespoke enterprise software, and custom <Link href="/web-development-company-indore" className="text-white hover:text-yellow-500 font-medium">web development in Indore</Link>.
+                        </p>
+                        <p>
+                            With our foundation as a trusted <Link href="/software-development-company-india" className="text-white hover:text-yellow-500 font-medium">Software Development Company in India</Link>, we combine engineering precision with scalable cloud architectures and advanced security practices. From consulting to final deployment, our Indore-based engineering team ensures reliable, zero-downtime delivery to help your business scale securely.
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>

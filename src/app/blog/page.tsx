@@ -86,6 +86,32 @@ export default function BlogPage() {
                                 </Button>
                             </Link>
                         </div>
+
+                        {/* Related Services — Internal Links Panel */}
+                        <div className="p-6 bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm mt-8">
+                            <h3 className="text-sm font-black uppercase tracking-widest text-white mb-5 border-b border-zinc-800 pb-3">Our Services</h3>
+                            <ul className="space-y-3">
+                                {[
+                                    { label: 'Custom Software Development', href: '/services/custom-software-development' },
+                                    { label: 'SaaS Product Engineering', href: '/services/saas-development' },
+                                    { label: 'ERP Systems', href: '/erp' },
+                                    { label: 'CRM Software', href: '/crm' },
+                                    { label: 'AI & Automation', href: '/services/ai-automation' },
+                                    { label: 'Web Development', href: '/services/web-development' },
+                                    { label: 'Mobile App Development', href: '/services/mobile-app-development' },
+                                ].map((link) => (
+                                    <li key={link.href}>
+                                        <Link
+                                            href={link.href}
+                                            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-yellow-500 transition-colors group"
+                                        >
+                                            <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300" />
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

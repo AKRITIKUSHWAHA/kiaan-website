@@ -136,7 +136,7 @@ export default function ServicesPage() {
                             </h1>
                         </Reveal>
                         <Reveal delay={0.4}>
-                            <p className="text-base md:text-lg text-white max-w-xl font-light italic border-l-2 border-red-600 pl-6 lg:mb-2">
+                            <p className="text-base md:text-lg text-white max-w-xl font-light italic border-l-2 border-yellow-500 pl-6 lg:mb-2">
                                 "We don't just provide software. We provide the digital dominance required to lead your industry in the age of AI."
                             </p>
                         </Reveal>

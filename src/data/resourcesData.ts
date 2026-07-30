@@ -21,6 +21,7 @@ export interface Resource {
     benefits: string[];
     relatedSlugs: string[];
     isGated?: boolean;
+    customHref?: string;
 }
 
 export const resources: Resource[] = [
@@ -265,6 +266,27 @@ export const resources: Resource[] = [
         useCases: ["High-Frequency Trading Web Terminals", "Enterprise Corporate Banking Portals", "Wealth Management Portfolio Dashboards", "Regulatory Compliance Monitoring UIs", "Micro-Frontend Financial Ecosystems"],
         benefits: ["XSS and CSRF attack mitigation", "Zero-latency real-time market data rendering", "Modular component reusability across apps", "Strict TypeScript interfaces for financial models", "Seamless integration with heavy charting libraries"],
         relatedSlugs: ["nextjs-high-performance-saas", "winning-with-custom-crm"]
+    },
+    {
+        id: 11,
+        slug: "automating-enterprise-workflows-webinar",
+        title: "Automating Enterprise Workflows: Integrating Custom ERP/CRM with Digital Signatures",
+        category: "Enterprise Automation",
+        type: "Webinar",
+        date: "August 18, 2026",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
+        description: "Join our live joint session with SignFlow to learn how linking electronic signature APIs with custom CRM/ERP platforms scales operation workflows.",
+        readTime: "Live August 18, 2026",
+        metaTitle: "Automating Enterprise Workflows Webinar | Kiaan Technology",
+        metaDescription: "Register for the joint webinar by Kiaan Technology and SignFlow. Bridge custom CRM/ERP platforms with digital signature API workflows.",
+        keywords: ["Webinar Enterprise Automation", "Custom ERP digital signature integration", "SignFlow Kiaan Technology", "Automate business workflows"],
+        sections: [
+            { heading: "Webinar Overview", content: "Kiaan Technology and SignFlow team up for a live integration walkthrough. Learn to construct automated document signing triggers natively inside custom CRM and ERP interfaces. Eliminate manual data entry, reduce transaction turnaround times, and ensure compliance with security and privacy frameworks." }
+        ],
+        useCases: ["Automated customer sign-offs", "Seamless contract execution", "Legally secure operations"],
+        benefits: ["Reduce deal turnaround times by 70%", "Secure storage with audit trails", "Legally binding workflows"],
+        relatedSlugs: ["future-of-ai-enterprise-saas", "scaling-custom-erp"],
+        customHref: "/webinar"
     }
 ];
 
@@ -276,6 +298,7 @@ export const getResourceCTA = (type: string): string => {
         case 'E-Book': return 'Access E-Book';
         case 'Technical Guide': return 'Read Full Guide';
         case 'Blog Post': return 'Read Full Article';
+        case 'Webinar': return 'Register For Webinar';
         default: return 'Read More';
     }
 };
