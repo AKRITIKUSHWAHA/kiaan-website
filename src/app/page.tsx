@@ -7,11 +7,16 @@ import { ArrowRight, Code, Zap, Globe, Shield, TrendingUp, LucideIcon, Award, Ch
 import Link from 'next/link'
 import { Button } from '@/components/Button'
 import { Reveal } from '@/components/Reveal'
+import { SocialProofBar } from '@/components/SocialProofBar'
+import { ClientLogosSection } from '@/components/ClientLogosSection'
 import dynamic from 'next/dynamic'
 import React from 'react';
 import Script from 'next/script'
 
 // Lazy Load Heavy Sections
+const AsSeenOnSection = dynamic(() => import('@/components/home/AsSeenOnSection').then(mod => mod.AsSeenOnSection), {
+    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+})
 const IndustrySolutions = dynamic(() => import('@/components/home/IndustrySolutions').then(mod => mod.IndustrySolutions), {
     loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
 })
@@ -39,7 +44,8 @@ const ContactCTA = dynamic(() => import('@/components/shared/ContactCTA').then(m
 const heroSlides = [
     { 
         id: 1, 
-        img: '/frontPage/ISO certificate.jpg', 
+        img: '/frontPage/ISO certificate.webp', 
+        alt: 'Kiaan Technology ISO/IEC 27001:2022 Compliance Certificate',
         label: 'Global Compliance', 
         title: 'ISO Certified',
         sub: 'International Quality Standards',
@@ -48,7 +54,8 @@ const heroSlides = [
     },
     { 
         id: 2, 
-        img: '/frontPage/Graphic Design.png', 
+        img: '/frontPage/Graphic Design.webp', 
+        alt: 'Creative UI/UX & Graphic Design Showcase',
         label: 'Visual Excellence', 
         title: 'Creative Design',
         sub: 'Defining Digital Identities',
@@ -57,7 +64,8 @@ const heroSlides = [
     },
     { 
         id: 3, 
-        img: '/frontPage/glassdoor-award.png', 
+        img: '/frontPage/glassdoor-award.webp', 
+        alt: 'Glassdoor Top Workplace Award Certificate',
         label: 'Top workplace', 
         title: 'Glassdoor Rated',
         sub: 'High employee satisfaction rating',
@@ -66,7 +74,8 @@ const heroSlides = [
     },
     { 
         id: 4, 
-        img: '/frontPage/ReactJs.png', 
+        img: '/frontPage/ReactJs.webp', 
+        alt: 'React.js logo',
         label: 'Next-Gen Tech', 
         title: 'React Development',
         sub: 'High-Performance Web Apps',
@@ -75,7 +84,8 @@ const heroSlides = [
     },
     { 
         id: 5, 
-        img: '/frontPage/ambitionbox.png', 
+        img: '/frontPage/ambitionbox.webp', 
+        alt: 'AmbitionBox Excellence Rating Award',
         label: 'IT Company Achiever', 
         title: 'AmbitionBox Rated',
         sub: '4.7/5.0 Excellence Rating',
@@ -84,7 +94,8 @@ const heroSlides = [
     },
     { 
         id: 6, 
-        img: '/frontPage/UI design.png', 
+        img: '/frontPage/UI design.webp', 
+        alt: 'UI/UX Design Showcase Interface',
         label: 'User Centric', 
         title: 'UI/UX Design',
         sub: 'Crafting Immersive Experiences',
@@ -93,7 +104,8 @@ const heroSlides = [
     },
     { 
         id: 7, 
-        img: '/frontPage/Fiver certificate.jpeg', 
+        img: '/frontPage/Fiver certificate.webp', 
+        alt: 'Fiverr Certified Top Rated Development Expert Badge',
         label: 'Verified Freelancer', 
         title: 'Fiverr Certified',
         sub: 'Top Rated Development Expert',
@@ -102,7 +114,8 @@ const heroSlides = [
     },
     { 
         id: 8, 
-        img: '/frontPage/wix-partner.jpg', 
+        img: '/frontPage/wix-partner.webp', 
+        alt: 'Wix Studio Pioneer Partner Badge',
         label: 'Wix Studio Partner', 
         title: 'Wix Partner',
         sub: 'Pioneer Level Partner',
@@ -172,11 +185,12 @@ const HeroShowcase = () => {
                         <div className="relative w-full h-full">
                             <NextImage
                                 src={heroSlides[active].img}
-                                alt={heroSlides[active].title}
+                                alt={heroSlides[active].alt}
                                 fill
                                 className="object-contain transition-transform duration-700"
                                 priority
                                 quality={100}
+                                fetchPriority="high"
                             />
                         </div>
                     </motion.div>
@@ -334,116 +348,155 @@ export default function Home() {
 
     return (
         <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black overflow-x-hidden">
-            {/* FAQ Page Schema */}
+            {/* Comprehensive SEO Schema Markup */}
             <Script
-                id="faq-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-            />
-
-            {/* ITService Schema */}
-            <Script
-                id="it-service-schema"
+                id="structured-data"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Service",
-                        "serviceType": "Software Development",
-                        "provider": {
-                            "@type": "LocalBusiness",
-                            "name": "Kiaan Technology"
-                        },
-                        "areaServed": {
-                            "@type": "Country",
-                            "name": "India"
-                        },
-                        "hasOfferCatalog": {
-                            "@type": "OfferCatalog",
-                            "name": "Software Services",
-                            "itemListElement": [
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "AI-Driven Business Automation"
-                                    }
+                        "@graph": [
+                            {
+                                "@type": "Organization",
+                                "@id": "https://www.kiaantechnology.com/#organization",
+                                "name": "Kiaan Technology",
+                                "url": "https://www.kiaantechnology.com/",
+                                "logo": "https://www.kiaantechnology.com/logo.png"
+                            },
+                            {
+                                "@type": "LocalBusiness",
+                                "@id": "https://www.kiaantechnology.com/#localBusiness",
+                                "name": "Kiaan Technology",
+                                "url": "https://www.kiaantechnology.com/",
+                                "image": "https://www.kiaantechnology.com/logo.png",
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "Indore",
+                                    "addressRegion": "Madhya Pradesh",
+                                    "addressCountry": "IN"
                                 },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Enterprise AI SaaS Platforms"
-                                    }
+                                "aggregateRating": {
+                                    "@type": "AggregateRating",
+                                    "ratingValue": "4.8",
+                                    "reviewCount": "6"
                                 },
-                                {
-                                    "@type": "Offer",
-                                    "itemOffered": {
-                                        "@type": "Service",
-                                        "name": "Predictive ML Integrations"
+                                "review": [
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Rajesh Mehta" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "Kiaan Technology transformed our entire enrollment pipeline. Their CRM solution cut our response time by 85% and increased student enrollments by 30%."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Dr. Ananya Sharma" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "The AI-powered health assistant Kiaan built has reached over 100,000 rural users."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Vikram Patel" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "From our payment gateway to our booking platform, Kiaan has been our go-to engineering partner."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Priya Nair" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "4" },
+                                        "reviewBody": "We needed a SaaS platform that could handle multi-venue scheduling, dynamic pricing, and real-time availability — Kiaan delivered all three flawlessly."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Arjun Kapoor" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "Kiaan built our real-time fleet tracking and route optimization dashboard from scratch. Fuel costs are down 18% and on-time delivery rates jumped to 97%."
+                                    },
+                                    {
+                                        "@type": "Review",
+                                        "author": { "@type": "Person", "name": "Sneha Desai" },
+                                        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+                                        "reviewBody": "Security and compliance were non-negotiable for our fintech platform. Kiaan's team delivered a PCI-DSS compliant architecture with end-to-end encryption."
                                     }
-                                }
-                            ]
-                        }
-                    })
-                }}
-            />
-            {/* FAQ Schema for Long-Tail Keywords */}
-            <Script
-                id="faq-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "FAQPage",
-                        "mainEntity": [
-                            {
-                                "@type": "Question",
-                                "name": "How much does custom software development cost in India?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Custom software development costs in India typically range from ₹5 lakh to ₹50 lakh depending on the project scope, complexity, technology stack, and team size. Kiaan Technology provides transparent pricing and detailed project estimates tailored to your requirements."
-                                }
+                                ]
                             },
                             {
-                                "@type": "Question",
-                                "name": "Which is the best custom software development company in India?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Kiaan Technology is recognized as one of the best custom software development companies in India, offering end-to-end solutions including ERP development, CRM software, SaaS platforms, and industry-specific software solutions with proven delivery for global enterprises."
-                                }
+                                "@type": "Service",
+                                "serviceType": "Custom Software Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "What are SaaS product development services in India?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "SaaS product development services include designing, building, and deploying cloud-based software-as-a-service applications. Kiaan Technology specializes in multi-tenant SaaS architecture, subscription management, API integrations, and scalable cloud deployment for startups and enterprises."
-                                }
+                                "@type": "Service",
+                                "serviceType": "SaaS Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "How to choose the right ERP software development company?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Look for an ERP development company with proven industry expertise, modular architecture support, integration capabilities, and post-deployment support. Kiaan Technology provides fully customizable ERP solutions with modules for accounting, HR, inventory, and supply chain management."
-                                }
+                                "@type": "Service",
+                                "serviceType": "AI Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "What is the difference between cloud-based and on-premise ERP software?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Cloud-based ERP software is hosted on remote servers and accessed via the internet, offering lower upfront costs, automatic updates, and remote accessibility. On-premise ERP is installed locally, providing greater control over data but requiring higher infrastructure investment. Kiaan Technology develops both cloud-based and on-premise ERP solutions."
-                                }
+                                "@type": "Service",
+                                "serviceType": "Web Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
                             },
                             {
-                                "@type": "Question",
-                                "name": "What is business automation software and how does it help companies?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Business automation software automates repetitive tasks, streamlines workflows, and improves operational efficiency. It helps companies reduce errors, save time, and lower costs. Kiaan Technology builds intelligent automation software covering workflow automation, document processing, and AI-powered business process automation."
-                                }
+                                "@type": "Service",
+                                "serviceType": "Mobile App Development",
+                                "provider": { "@id": "https://www.kiaantechnology.com/#localBusiness" }
+                            },
+                            {
+                                "@type": "FAQPage",
+                                "@id": "https://www.kiaantechnology.com/#faq",
+                                "mainEntity": [
+                                    {
+                                        "@type": "Question",
+                                        "name": "How much does custom software development cost in India?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Custom software development costs in India typically range from ₹5 lakh to ₹50 lakh depending on the project scope, complexity, technology stack, and team size. Kiaan Technology provides transparent pricing and detailed project estimates tailored to your requirements."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "Which is the best custom software development company in India?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Kiaan Technology is recognized as one of the best custom software development companies in India, offering end-to-end solutions including ERP development, CRM software, SaaS platforms, and industry-specific software solutions with proven delivery for global enterprises."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What are SaaS product development services in India?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "SaaS product development services include designing, building, and deploying cloud-based software-as-a-service applications. Kiaan Technology specializes in multi-tenant SaaS architecture, subscription management, API integrations, and scalable cloud deployment for startups and enterprises."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "How to choose the right ERP software development company?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Look for an ERP development company with proven industry expertise, modular architecture support, integration capabilities, and post-deployment support. Kiaan Technology provides fully customizable ERP solutions with modules for accounting, HR, inventory, and supply chain management."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is the difference between cloud-based and on-premise ERP software?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Cloud-based ERP software is hosted on remote servers and accessed via the internet, offering lower upfront costs, automatic updates, and remote accessibility. On-premise ERP is installed locally, providing greater control over data but requiring higher infrastructure investment. Kiaan Technology develops both cloud-based and on-premise ERP solutions."
+                                        }
+                                    },
+                                    {
+                                        "@type": "Question",
+                                        "name": "What is business automation software and how does it help companies?",
+                                        "acceptedAnswer": {
+                                            "@type": "Answer",
+                                            "text": "Business automation software automates repetitive tasks, streamlines workflows, and improves operational efficiency. It helps companies reduce errors, save time, and lower costs. Kiaan Technology builds intelligent automation software covering workflow automation, document processing, and AI-powered business process automation."
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     })
@@ -465,7 +518,7 @@ export default function Home() {
                                 </h1>
                             </Reveal>
                             <Reveal delay={0.3}>
-                                <p className="text-sm sm:text-base text-zinc-400 max-w-2xl border-l-2 border-red-600 pl-4 mb-6 leading-snug">
+                                <p className="text-sm sm:text-base text-zinc-400 max-w-2xl border-l-2 border-yellow-500 pl-4 mb-6 leading-snug">
                                     Kiaan Technology is an elite <strong>AI-Driven Business Automation Partner</strong> delivering <strong>custom software solutions</strong> and <strong>scalable SaaS platforms</strong>. We engineer software ecosystems that transform manual enterprise processes into autonomous, high-margin revenue engines using <strong>Enterprise AI</strong> and <strong>Predictive ML</strong>.
                                 </p>
                             </Reveal>
@@ -490,6 +543,7 @@ export default function Home() {
                                             Launch Your Software
                                         </Button>
                                     </Link>
+                                    <SocialProofBar variant="transparent" className="mt-3 px-0" />
                                 </div>
                             </Reveal>
                         </div>
@@ -502,6 +556,9 @@ export default function Home() {
                 </div>
             </section>
 
+
+            {/* Client Logos Strip — social proof marquee */}
+            <ClientLogosSection />
 
             {/* Bento Grid Services — Content Only */}
             <section className="pt-8 pb-10 container mx-auto px-4">
@@ -554,6 +611,7 @@ export default function Home() {
             </section>
 
             {/* NEW SECTIONS */}
+            <AsSeenOnSection />
             <IndustrySolutions />
             <FeaturedCaseStudies />
             <TestimonialsSection />
@@ -798,11 +856,16 @@ export default function Home() {
             <ContactCTA />
 
             {/* SEO Content Section */}
-            <section className="py-8 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
+            <section className="py-12 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
                 <div className="container mx-auto max-w-7xl">
-                    <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-light">
-                        Kiaan Technology is a premier <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">Software Development Company in Indore</Link> delivering custom digital solutions across India. As a leading <Link href="/it-company-indore" className="text-white hover:text-yellow-500 font-medium">IT Company in Indore</Link>, we specialize in <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platform development</Link>, enterprise software systems, and high-performance <Link href="/web-development-company-indore" className="text-white hover:text-yellow-500 font-medium">web development in Indore</Link>. Our expertise as a <Link href="/software-development-company-india" className="text-white hover:text-yellow-500 font-medium">Software Development Company in India</Link> empowers global businesses with scalable architectures, AI-driven automation, and robust cybersecurity. Whether you&#39;re looking for an app development partner or a strategic IT consultant, our Indore-based engineering team ensures zero-downtime deployment and premium technical excellence.
-                    </p>
+                    <div className="text-sm md:text-base text-zinc-300 leading-relaxed font-light space-y-4">
+                        <p>
+                            Based in Indore, Kiaan Technology is a dedicated technology partner building robust digital systems for businesses across India and around the globe. As a leading <Link href="/it-company-indore" className="text-white hover:text-yellow-500 font-medium">IT Company in Indore</Link>, we work closely with clients to modernize workflows and deliver high-performance applications. Our capabilities as a premier <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">Software Development Company in Indore</Link> span end-to-end <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platform development</Link>, bespoke enterprise software, and custom <Link href="/web-development-company-indore" className="text-white hover:text-yellow-500 font-medium">web development in Indore</Link>.
+                        </p>
+                        <p>
+                            With our foundation as a trusted <Link href="/software-development-company-india" className="text-white hover:text-yellow-500 font-medium">Software Development Company in India</Link>, we combine engineering precision with scalable cloud architectures and advanced security practices. From consulting to final deployment, our Indore-based engineering team ensures reliable, zero-downtime delivery to help your business scale securely.
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>

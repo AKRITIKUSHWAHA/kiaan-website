@@ -9,6 +9,7 @@ export interface CaseStudy {
     result: string;
     desc: string;
     image: string;
+    imageAlt?: string;
     stats: string;
     challenge: string;
     blueprint: string;

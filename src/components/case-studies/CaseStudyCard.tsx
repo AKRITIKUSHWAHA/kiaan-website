@@ -41,6 +41,8 @@ export interface CaseStudyCardProps {
   results: CaseStudyCardResult[];
   /** Optional hero image src */
   image?: string;
+  /** Optional descriptive alt text for hero image */
+  imageAlt?: string;
   /** Optional href for "View Details" button. Defaults to "#" */
   href?: string;
   /** Optional index for stagger animations */
@@ -92,6 +94,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   technologies,
   results,
   image,
+  imageAlt,
   href = '#',
   index = 0,
   accentClass = 'yellow-500',
@@ -139,7 +142,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
         <div className="aspect-video w-full overflow-hidden relative">
           <img
             src={image}
-            alt={`${projectName} project preview`}
+            alt={imageAlt || `${projectName} - Enterprise Software Project Screenshot`}
             loading="lazy"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
           />

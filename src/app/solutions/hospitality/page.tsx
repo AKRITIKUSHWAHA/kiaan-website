@@ -21,7 +21,6 @@ export const metadata: Metadata = {
         description: data.metaDescription || data.desc,
     },
     alternates: {
-        canonical: 'https://kiaantechnology.com/solutions/hospitality',
     },
 };
 

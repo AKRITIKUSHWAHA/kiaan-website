@@ -8,6 +8,7 @@
     "result": "30% Enrollment Increase",
     "desc": "A custom student enrollment CRM designed to eliminate manual tracking, optimize conversion pipelines, and automate counselor interactions in real-time.",
     "image": "/images/crm_dashboard_mockup.png",
+    "imageAlt": "Study First Info CRM Dashboard Interface",
     "stats": "30% Enrollments",
     "challenge": "A major educational consultancy was losing up to 40% of potential leads due to fragmented manual Excel sheets, delayed counselor responses, and zero automation in follow-ups. To resolve this, they partnered with us for custom <a href='/services/erp-crm-solutions' class='text-yellow-500 hover:underline'>CRM & ERP development</a> to automate their workflows.",
     "blueprint": "We designed a multi-channel cloud CRM system featuring automatic lead capture from web forms, immediate automated WhatsApp and email outreach sequences, and a dynamic Kanban pipeline for counselor tracking.",
@@ -18,11 +19,10 @@
       { "label": "Conversion Rate", "value": "+45%" },
       { "label": "Enrollments Scaled", "value": "+30%" }
     ],
-    "architectureImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "architectureImage": "/images/case-studies/crm-analytics.png",
     "screenshots": [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "/images/case-studies/crm-dashboard.png",
+      "/images/case-studies/crm-analytics.png"
     ],
     "authorName": "Aarav Sharma",
     "authorDesignation": "Senior Full Stack Engineer"
@@ -36,6 +36,7 @@
     "result": "45% Clinic Load Cut",
     "desc": "An AI-powered vernacular voice and text assistant enabling rural populations to pre-screen medical symptoms and connect with qualified local doctors.",
     "image": "/images/healthsakhi_app_mockup.png",
+    "imageAlt": "HealthSakhi AI Mobile App Interface",
     "stats": "100k+ Users",
     "challenge": "Substantial shortages of rural medical personnel led to overcrowded central clinics, with patients travelling hours only to find trivial issues or delayed critical diagnoses. We developed an offline-resilient mobile web assistant utilizing advanced <a href='/services/ai-automation' class='text-yellow-500 hover:underline'>AI & automation</a> to pre-screen medical symptoms.",
     "blueprint": "We architected an offline-resilient mobile web assistant powered by fine-tuned local language models and voice-to-text translators, integrated with a lightweight clinic-locator API.",
@@ -46,11 +47,9 @@
       { "label": "Unnecessary Visits", "value": "-45%" },
       { "label": "Dialect Accuracy", "value": "98%" }
     ],
-    "architectureImage": "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "architectureImage": "/images/case-studies/healthsakhi-chat.png",
     "screenshots": [
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504810370725-2585de12e6ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "/images/case-studies/healthsakhi-chat.png"
     ],
     "authorName": "Ananya Patel",
     "authorDesignation": "Lead AI Research Engineer"
@@ -64,6 +63,7 @@
     "result": "22% Checkout Bounce Cut",
     "desc": "An ultra-low latency intelligent payment routing gateway built to handle heavy transactional surges with automated instant retry mechanism.",
     "image": "/images/pgx_gateway_mockup.png",
+    "imageAlt": "PGX Payment Gateway Dashboard",
     "stats": "99.99% Uptime",
     "challenge": "High cart abandonment rates during gaming flash sales occurred because traditional payment processors failed to scale under high-concurrency requests. We engineered an ultra-low latency gateway leveraging our <a href='/services/custom-software-development' class='text-yellow-500 hover:underline'>custom software development</a> expertise.",
     "blueprint": "We built a concurrent Go gateway using a Redis-backed queue and distributed locking, capable of dynamic multi-acquirer transaction routing and smart retries.",
@@ -74,11 +74,9 @@
       { "label": "Average Latency", "value": "150ms" },
       { "label": "Checkout Drops", "value": "-22%" }
     ],
-    "architectureImage": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "architectureImage": "/images/case-studies/pgx-dashboard.png",
     "screenshots": [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1563013544-824ae1d704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "/images/case-studies/pgx-dashboard.png"
     ],
     "authorName": "Vikram Malhotra",
     "authorDesignation": "Principal Backend Architect"
@@ -92,6 +90,7 @@
     "result": "80% Drop-off Decrease",
     "desc": "A unified Web3 gaming and tournament platform removing blockchain complexity with gasless transaction layers and social/email onboarding.",
     "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "imageAlt": "PlayGroundX Web3 Gaming Platform Interface",
     "stats": "250k+ Games Played",
     "challenge": "High barriers of entry, including Web3 wallet setups, gas token acquisitions, and complex contract signatures, deterred typical Web2 gamers from joining tournament structures.",
     "blueprint": "Designed a hybrid Next.js portal utilizing Account Abstraction smart contracts (ERC-4337) to sponsor gas fees, allowing instant social login wallet generation.",
@@ -102,11 +101,9 @@
       { "label": "Wallet Setup Drop", "value": "-80%" },
       { "label": "Tournament Volume", "value": "$1.2M" }
     ],
-    "architectureImage": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "architectureImage": "/images/case-studies/playgroundx-lobby.png",
     "screenshots": [
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "/images/case-studies/playgroundx-lobby.png"
     ],
     "authorName": "Rohan Deshmukh",
     "authorDesignation": "Senior Blockchain Engineer"
@@ -119,7 +116,7 @@
     "type": "SaaS",
     "result": "35% Revenue Boost",
     "desc": "A multi-tenant SaaS booking platform enabling sports arenas to coordinate schedules, offer real-time bookings, and implement dynamic demand pricing.",
-    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "image": "/images/case-studies/turf-calendar.png",
     "stats": "400+ Venues",
     "challenge": "Sports turf owners suffered regular revenue loss from double-booking disputes, unoptimized quiet slots, and the friction of manually collecting split payments from players.",
     "blueprint": "Constructed a multi-tenant platform with Supabase backend and Prisma-driven Postgres schema, implementing real-time calendar updates via WebSockets and automated billing integrations.",
@@ -130,11 +127,9 @@
       { "label": "Schedule Conflicts", "value": "-90%" },
       { "label": "Average Venue Revenue", "value": "+35%" }
     ],
-    "architectureImage": "https://images.unsplash.com/photo-1471295263379-6ad76882cf74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "architectureImage": "/images/case-studies/turf-calendar.png",
     "screenshots": [
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1518063319789-7217e6706b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1579952365545-36dd95b2ad2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+      "/images/case-studies/turf-calendar.png"
     ],
     "authorName": "Nisha Verma",
     "authorDesignation": "Senior Product Engineer"

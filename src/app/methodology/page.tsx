@@ -6,7 +6,7 @@ import { Rocket, Box, Network, Bot, Settings, Search, Code2, ArrowRight } from '
 
 export default function MethodologyPage() {
     return (
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-24 pb-16">
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-32 pb-16">
 
             {/* HEROS SECTION */}
             <section className="relative px-6 py-20 lg:py-32 overflow-hidden border-b border-white/5">
@@ -133,6 +133,26 @@ export default function MethodologyPage() {
                     </div>
                 </div>
             </section>
+
+            {/* VISUAL WORKFLOW INFOGRAPHIC SECTION */}
+            <section className="py-24 px-6 border-t border-white/5 bg-zinc-950">
+                <div className="max-w-5xl mx-auto text-center">
+                    <Reveal>
+                        <h2 className="text-[10px] font-black text-yellow-500 uppercase tracking-[0.5em] mb-4">Operational Architecture</h2>
+                        <h3 className="text-3xl md:text-5xl font-display uppercase tracking-tighter mb-12">The Development <span className="text-zinc-600">Workflow Visualized</span></h3>
+                    </Reveal>
+                    <Reveal delay={0.2}>
+                        <div className="border border-white/10 bg-black p-4 md:p-8 max-w-4xl mx-auto shadow-2xl">
+                            <img
+                                src="/images/development-process.png"
+                                alt="Kiaan Technology Software Development Process Infographic"
+                                className="w-full h-auto object-contain grayscale hover:grayscale-0 transition-all duration-700"
+                            />
+                        </div>
+                    </Reveal>
+                </div>
+            </section>
+
 
             {/* CALL TO ACTION */}
             <section className="py-24 px-6 bg-yellow-500 text-black text-center">

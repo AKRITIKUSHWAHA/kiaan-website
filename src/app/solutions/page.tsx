@@ -55,7 +55,7 @@ export default function SolutionsPage() {
             </div>
 
             {/* --- 1. HERO SECTION --- */}
-            <section className="relative z-10 pt-16 lg:pt-20 pb-0 lg:pb-12 overflow-visible">
+            <section className="relative z-10 pt-16 lg:pt-32 pb-0 lg:pb-12 overflow-visible">
                 {/* Background mesh & grid for hero */}
                 <motion.div style={{ y: yHeroBg, opacity: opacityHeroBg }} className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-gradient-to-b from-[#FFE81B]/10 via-cyan-500/5 to-transparent blur-[120px] rounded-[100%]" />

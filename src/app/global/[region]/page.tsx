@@ -20,7 +20,7 @@ export default function RegionalLandingPage({ params }: { params: { region: stri
     }
 
     return (
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-20">
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-32">
             {/* HERO SECTION */}
             <section className="relative min-h-[90vh] flex flex-col justify-center px-6 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_40%,_rgba(234,179,8,0.1)_0%,_transparent_60%)] pointer-events-none" />

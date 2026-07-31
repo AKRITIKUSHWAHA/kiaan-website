@@ -106,7 +106,6 @@ export const metadata: Metadata = {
         type: 'website',
     },
     alternates: {
-        canonical: 'https://kiaantechnology.com/solutions/logistics/supply-chain-erp',
     },
 };
 

@@ -249,8 +249,8 @@ export const solutionsData: Record<string, SolutionData> = {
             { val: '1st', label: 'SEO RANKING' },
             { val: '10x', label: 'SECURITY SCORE' }
         ],
-        colorClass: 'text-red-500',
-        bgClass: 'bg-red-500'
+        colorClass: 'text-yellow-500',
+        bgClass: 'bg-yellow-500'
     },
     'custom-software': {
         title: 'Custom Software Development Company',

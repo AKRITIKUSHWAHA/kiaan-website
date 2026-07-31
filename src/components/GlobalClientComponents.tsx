@@ -7,10 +7,15 @@ const WhatsAppButton = dynamic(() => import('./WhatsAppButton').then(mod => mod.
     ssr: false
 });
 
+const BookConsultationCTA = dynamic(() => import('./BookConsultationCTA').then(mod => mod.BookConsultationCTA), {
+    ssr: false
+});
+
 export function GlobalClientComponents() {
     return (
         <>
             <WhatsAppButton />
+            <BookConsultationCTA />
         </>
     );
 }

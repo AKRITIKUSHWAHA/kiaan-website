@@ -30,7 +30,7 @@ export const Footer = () => {
 
             {/* Main Footer Content */}
             <div className="relative z-10 container mx-auto px-6 pt-8 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-8">
                     <div className="lg:col-span-2">
                         <h3 className="text-4xl font-display uppercase mb-6 text-white tracking-tighter font-black">
                             Kiaan <span className="text-yellow-500">Technology</span>
@@ -94,6 +94,28 @@ export const Footer = () => {
                                 { name: 'Retail Tech', href: '/industries/retail-technology' },
                                 { name: 'Real Estate SaaS', href: '/solutions/real-estate' },
                                 { name: 'Logistics ERP', href: '/solutions/logistics' }
+                            ].map((link) => (
+                                <li key={link.name}>
+                                    <Link href={link.href} className="text-sm text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
+                                        <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300 mr-0 group-hover:mr-2"></span>
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="text-sm font-black uppercase tracking-[0.3em] text-yellow-500 mb-6 border-b border-yellow-500/20 pb-2 w-fit">Company</h4>
+                        <ul className="space-y-3">
+                            {[
+                                { name: 'About Us', href: '/about' },
+                                { name: 'Pricing Plans', href: '/pricing' },
+                                { name: 'Our Blog', href: '/blog' },
+                                { name: 'Resources & Insights', href: '/resources' },
+                                { name: 'Schedule Call', href: '/schedule' },
+                                { name: 'Product Demo', href: '/demo' },
+                                { name: 'Referral Program (£500)', href: '/referral' },
+                                { name: 'Integration Partners', href: '/partners' }
                             ].map((link) => (
                                 <li key={link.name}>
                                     <Link href={link.href} className="text-sm text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
