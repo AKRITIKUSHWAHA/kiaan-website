@@ -53,9 +53,7 @@ const IndustryCard = ({ title, desc, icon: Icon, delay, href }: IndustryCardProp
                     {title}
                 </h3>
 
-                <p className="text-zinc-500 leading-relaxed font-light mb-8 group-hover:text-zinc-300 transition-colors relative z-10">
-                    {desc}
-                </p>
+                <p className="text-zinc-500 leading-relaxed font-light mb-8 group-hover:text-zinc-300 transition-colors relative z-10" dangerouslySetInnerHTML={{ __html: desc }} />
             </div>
 
             <div className="relative z-10 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-hover:text-yellow-500 transition-all duration-500 mt-auto pointer-events-none">
@@ -69,12 +67,12 @@ const IndustryCardMemo = React.memo(IndustryCard)
 
 const IndustrySolutionsInner = () => {
     const industries = [
-        { title: "Healthcare Software Development", desc: "HIPAA-compliant patient portals, doctor-patient EHR systems & telemedicine platforms for hospitals.", icon: Activity, href: "/industries/healthcare-software" },
+        { title: "Healthcare Software Development", desc: "HIPAA-compliant <a href='/industries/healthcare-software' class='text-yellow-500 hover:underline cursor-pointer relative z-20 pointer-events-auto'>patient portals</a>, doctor-patient EHR systems & telemedicine platforms for hospitals.", icon: Activity, href: "/industries/healthcare-software" },
         { title: "Real Estate Software Solutions", desc: "Advanced property management software, CRM for real estate & virtual tour integrations.", icon: Building, href: "/solutions/real-estate" },
-        { title: "Fintech Software Development", desc: "Secure banking dashboards, algorithmic trading bots & payment gateway integration solutions.", icon: Landmark, href: "/industries/fintech-software" },
+        { title: "Fintech Software Development", desc: "Secure <a href='/industries/fintech-software' class='text-yellow-500 hover:underline cursor-pointer relative z-20 pointer-events-auto'>banking dashboards</a>, algorithmic trading bots & payment gateway integration solutions.", icon: Landmark, href: "/industries/fintech-software" },
         { title: "Education Management Software", desc: "Custom LMS platforms, student performance tracking systems & virtual classroom solutions.", icon: GraduationCap, href: "/solutions/education" },
         { title: "Logistics Software Solutions", desc: "Fleet tracking, route optimization, warehouse management & supply chain ERP systems.", icon: Truck, href: "/solutions/logistics" },
-        { title: "Retail Technology Solutions", desc: "Smart POS systems, inventory management, e-commerce suites & omni-channel retail software.", icon: ShoppingBag, href: "/industries/retail-technology" },
+        { title: "Retail Technology Solutions", desc: "Smart POS systems, <a href='/industries/retail-technology' class='text-yellow-500 hover:underline cursor-pointer relative z-20 pointer-events-auto'>inventory management</a>, e-commerce suites & omni-channel retail software.", icon: ShoppingBag, href: "/industries/retail-technology" },
     ]
 
     return (

@@ -120,12 +120,7 @@ export default function HRMPage() {
                     answer: "Security is our highest priority. Our HRM platforms implement modern SOC 2-compliant data practices, including end-to-end SSL/TLS data encryption in transit, AES-256 encryption at rest, role-based access controls (RBAC), and multi-factor authentication (MFA) to safeguard sensitive personnel records."
                 }
             ]}
-            internalLinks={[
-                { label: "Custom Software Solutions", href: "/solutions/custom-software" },
-                { label: "ERP & CRM Platforms", href: "/solutions/erp-crm" },
-                { label: "AI & Automation services", href: "/solutions/ai-automation" },
-                { label: "SaaS Product Engineering", href: "/solutions/saas-development" }
-            ]}
+            internalLinks={[]}
         />
     );
 }

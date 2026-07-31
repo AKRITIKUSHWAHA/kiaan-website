@@ -17,6 +17,8 @@ export interface CaseStudy {
     architectureImage?: string;
     screenshots?: string[];
     technologies: string[];
+    authorName?: string;
+    authorDesignation?: string;
 }
 
 export const caseStudiesData: CaseStudy[] = caseStudiesJson as CaseStudy[];

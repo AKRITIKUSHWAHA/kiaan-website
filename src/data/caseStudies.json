@@ -1,15 +1,15 @@
 [
   {
-    "slug": "study-first-crm",
+    "slug": "study-first-info-crm",
     "title": "Study First Info CRM",
     "client": "Study First Info",
     "category": "CRM / SAAS",
     "type": "SaaS",
     "result": "30% Enrollment Increase",
     "desc": "A custom student enrollment CRM designed to eliminate manual tracking, optimize conversion pipelines, and automate counselor interactions in real-time.",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "image": "/images/crm_dashboard_mockup.png",
     "stats": "30% Enrollments",
-    "challenge": "A major educational consultancy was losing up to 40% of potential leads due to fragmented manual Excel sheets, delayed counselor responses, and zero automation in follow-ups.",
+    "challenge": "A major educational consultancy was losing up to 40% of potential leads due to fragmented manual Excel sheets, delayed counselor responses, and zero automation in follow-ups. To resolve this, they partnered with us for custom <a href='/services/erp-crm-solutions' class='text-yellow-500 hover:underline'>CRM & ERP development</a> to automate their workflows.",
     "blueprint": "We designed a multi-channel cloud CRM system featuring automatic lead capture from web forms, immediate automated WhatsApp and email outreach sequences, and a dynamic Kanban pipeline for counselor tracking.",
     "execution": "Built and deployed in 10 weeks, incorporating detailed role-based access controls and custom reporting dashboards. Transitioned the advisory team with zero data loss or operational interruptions.",
     "technologies": ["Next.js", "Node.js", "MongoDB", "Express", "WhatsApp API"],
@@ -23,7 +23,9 @@
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "authorName": "Aarav Sharma",
+    "authorDesignation": "Senior Full Stack Engineer"
   },
   {
     "slug": "healthsakhi-ai",
@@ -33,9 +35,9 @@
     "type": "AI",
     "result": "45% Clinic Load Cut",
     "desc": "An AI-powered vernacular voice and text assistant enabling rural populations to pre-screen medical symptoms and connect with qualified local doctors.",
-    "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "image": "/images/healthsakhi_app_mockup.png",
     "stats": "100k+ Users",
-    "challenge": "Substantial shortages of rural medical personnel led to overcrowded central clinics, with patients travelling hours only to find trivial issues or delayed critical diagnoses.",
+    "challenge": "Substantial shortages of rural medical personnel led to overcrowded central clinics, with patients travelling hours only to find trivial issues or delayed critical diagnoses. We developed an offline-resilient mobile web assistant utilizing advanced <a href='/services/ai-automation' class='text-yellow-500 hover:underline'>AI & automation</a> to pre-screen medical symptoms.",
     "blueprint": "We architected an offline-resilient mobile web assistant powered by fine-tuned local language models and voice-to-text translators, integrated with a lightweight clinic-locator API.",
     "execution": "Integrated regional dialect models (Hindi, Marathi, etc.) with strict medical boundary guardrails. Conducted pilot programs with healthcare workers on-ground to refine the conversational UX.",
     "technologies": ["React Native", "FastAPI", "OpenAI GPT-4", "Whisper API", "PostgreSQL"],
@@ -49,7 +51,9 @@
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1504810370725-2585de12e6ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "authorName": "Ananya Patel",
+    "authorDesignation": "Lead AI Research Engineer"
   },
   {
     "slug": "pgx-payment-gateway",
@@ -59,9 +63,9 @@
     "type": "Web",
     "result": "22% Checkout Bounce Cut",
     "desc": "An ultra-low latency intelligent payment routing gateway built to handle heavy transactional surges with automated instant retry mechanism.",
-    "image": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "image": "/images/pgx_gateway_mockup.png",
     "stats": "99.99% Uptime",
-    "challenge": "High cart abandonment rates during gaming flash sales occurred because traditional payment processors failed to scale under high-concurrency requests.",
+    "challenge": "High cart abandonment rates during gaming flash sales occurred because traditional payment processors failed to scale under high-concurrency requests. We engineered an ultra-low latency gateway leveraging our <a href='/services/custom-software-development' class='text-yellow-500 hover:underline'>custom software development</a> expertise.",
     "blueprint": "We built a concurrent Go gateway using a Redis-backed queue and distributed locking, capable of dynamic multi-acquirer transaction routing and smart retries.",
     "execution": "Implemented custom lightweight API SDKs for seamless client-side checkouts, scaling infrastructure with auto-healing load balancers on AWS ECS.",
     "technologies": ["Go", "Redis", "PostgreSQL", "AWS ECS", "Docker", "Stripe API"],
@@ -75,7 +79,9 @@
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1563013544-824ae1d704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "authorName": "Vikram Malhotra",
+    "authorDesignation": "Principal Backend Architect"
   },
   {
     "slug": "playgroundx",
@@ -101,7 +107,9 @@
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "authorName": "Rohan Deshmukh",
+    "authorDesignation": "Senior Blockchain Engineer"
   },
   {
     "slug": "turf-booking-saas",
@@ -127,6 +135,8 @@
       "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1518063319789-7217e6706b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1579952365545-36dd95b2ad2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "authorName": "Nisha Verma",
+    "authorDesignation": "Senior Product Engineer"
   }
 ]

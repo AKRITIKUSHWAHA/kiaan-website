@@ -105,6 +105,11 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                     <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tight mb-8 leading-tight">
                         {study.title}
                     </h1>
+                    {study.authorName && (
+                        <div className="text-xs md:text-sm text-zinc-500 font-medium tracking-wide mb-8">
+                            Case Study by <span className="text-zinc-300 font-bold">{study.authorName}</span>, {study.authorDesignation} at Kiaan Technology
+                        </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-zinc-900">
                         <div>
                             <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Primary Impact</div>
@@ -128,34 +133,28 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                             <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
                                 <Target className="text-red-500" /> The Challenge
                             </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light">
-                                {study.challenge}
-                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: study.challenge }} />
                         </div>
-
+ 
                         {/* The Blueprint */}
                         <div className="space-y-6">
                             <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
                                 <Cpu className="text-yellow-500" /> The Blueprint
                             </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light">
-                                {study.blueprint}
-                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: study.blueprint }} />
                             {study.architectureImage && (
                                 <div className="mt-8 border border-zinc-800 p-2 bg-zinc-950/50">
                                     <img src={study.architectureImage} alt="Architecture Blueprint" className="w-full h-auto grayscale opacity-80" />
                                 </div>
                             )}
                         </div>
-
+ 
                         {/* The Execution */}
                         <div className="space-y-6 relative overflow-hidden">
                             <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
                                 <Activity className="text-emerald-500" /> The Execution
                             </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light relative z-10">
-                                {study.execution}
-                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed font-light relative z-10" dangerouslySetInnerHTML={{ __html: study.execution }} />
                             <div className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 blur-[80px] rounded-full pointer-events-none" />
                         </div>
 

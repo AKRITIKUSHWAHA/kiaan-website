@@ -350,7 +350,6 @@ export const solutionsData: Record<string, SolutionData> = {
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
             { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
             { label: 'Cloud Infrastructure', href: '/solutions/cloud-infrastructure' }
         ],
         painPoints: [
@@ -430,7 +429,6 @@ export const solutionsData: Record<string, SolutionData> = {
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
             { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
             { label: 'Cloud Infrastructure', href: '/solutions/cloud-infrastructure' }
         ],
         painPoints: [
@@ -506,7 +504,6 @@ export const solutionsData: Record<string, SolutionData> = {
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
             { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
             { label: 'Logistics Solutions', href: '/solutions/logistics' }
         ],
         painPoints: [
@@ -581,9 +578,7 @@ export const solutionsData: Record<string, SolutionData> = {
         locationKeywords: ['POS software India', 'retail software Indore', 'billing software India', 'retail ERP Indore'],
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
-            { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
-            { label: 'Finance Solutions', href: '/solutions/finance' }
+            { label: 'HRM Software', href: '/products/hrm-software' }
         ],
         painPoints: [
             { title: 'Disconnected Sales Channels', desc: 'Managing offline stores and e-commerce platforms separately leads to inventory mismatches and poor customer experience.' },
@@ -658,7 +653,6 @@ export const solutionsData: Record<string, SolutionData> = {
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
             { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
             { label: 'Automotive Solutions', href: '/solutions/automotive' }
         ],
         painPoints: [
@@ -734,7 +728,6 @@ export const solutionsData: Record<string, SolutionData> = {
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
             { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
             { label: 'Cloud Infrastructure', href: '/solutions/cloud-infrastructure' }
         ],
         painPoints: [
@@ -809,9 +802,7 @@ export const solutionsData: Record<string, SolutionData> = {
         locationKeywords: ['finance software India', 'accounting ERP Indore', 'GST software India', 'fintech company Indore'],
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
-            { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
-            { label: 'Retail Solutions', href: '/solutions/retail' }
+            { label: 'HRM Software', href: '/products/hrm-software' }
         ],
         painPoints: [
             { title: 'Manual Tax Filing', desc: 'Preparing GST returns (GSTR-1, GSTR-3B) manually using spreadsheets results in mismatch errors and regulatory penalties.' },
@@ -885,9 +876,7 @@ export const solutionsData: Record<string, SolutionData> = {
         locationKeywords: ['hotel software India', 'hospitality ERP Indore', 'restaurant software India', 'hotel PMS Indore'],
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
-            { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
-            { label: 'Retail Solutions', href: '/solutions/retail' }
+            { label: 'HRM Software', href: '/products/hrm-software' }
         ],
         painPoints: [
             { title: 'OTA Commission Leakage', desc: 'Over-reliance on third-party aggregators (MakeMyTrip, Booking.com) results in massive commission payouts and lost direct revenue.' },
@@ -961,9 +950,7 @@ export const solutionsData: Record<string, SolutionData> = {
         locationKeywords: ['professional services software India', 'consulting CRM Indore', 'legal software India', 'agency ERP Indore'],
         internalLinks: [
             { label: 'CRM Software', href: '/products/crm-software' },
-            { label: 'HRM Software', href: '/products/hrm-software' },
-            { label: 'AI & Automation', href: '/solutions/ai-automation' },
-            { label: 'Finance Solutions', href: '/solutions/finance' }
+            { label: 'HRM Software', href: '/products/hrm-software' }
         ],
         painPoints: [
             { title: 'Lost Billable Time', desc: 'Professionals relying on memory or spreadsheets to track time lose up to 20% of billable hours every week.' },

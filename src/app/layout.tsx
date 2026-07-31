@@ -3,7 +3,9 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { GlobalClientComponents } from "@/components/GlobalClientComponents";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import AwardBanner from "@/components/AwardBanner";
+import CanonicalLink from "@/components/CanonicalLink";
 import Script from "next/script";
 import "@fontsource/anton/400.css";
 import "@fontsource/manrope/300.css";
@@ -26,13 +28,13 @@ export const metadata: Metadata = {
         canonical: "https://kiaantechnology.com",
     },
     openGraph: {
-        title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale — Kiaan Technology.",
-        url: "https://kiaantechnology.com",
+        title: "Custom Software & SaaS Development Company | Kiaan Technology",
+        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale. Get a free consultation — Kiaan Technology.",
+        url: "https://kiaantechnology.com/",
         siteName: "Kiaan Technology",
         images: [
             {
-                url: "/og-image.jpg",
+                url: "https://kiaantechnology.com/og-image.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Kiaan Technology - Custom Software Development",
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Custom Software Development Company India | Kiaan Technology",
-        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale.",
-        images: ["/og-image.jpg"],
+        title: "Custom Software & SaaS Development Company | Kiaan Technology",
+        description: "Enterprise-grade custom software development in India. ERP, CRM, SaaS & AI solutions built to scale. Get a free consultation — Kiaan Technology.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
     },
     icons: {
         icon: '/favicon.ico',
@@ -64,6 +66,7 @@ export default function RootLayout({
     return (
         <html lang="en" className="no-scrollbar" suppressHydrationWarning>
             <head>
+                <CanonicalLink />
                 {/* Google Tag Manager */}
                 <Script
                     id="gtm-script"
@@ -163,8 +166,7 @@ export default function RootLayout({
                             },
                             "sameAs": [
                                 "https://www.linkedin.com/company/89547261/",
-                                "https://www.instagram.com/kiaan_technology4/",
-                                "https://youtube.com/@kiaantechnology"
+                                "https://www.instagram.com/kiaan_technology4/"
                             ]
                         })
                     }}
@@ -250,7 +252,10 @@ export default function RootLayout({
                 />
                 <div className="flex flex-col min-h-screen relative bg-black text-white">
                     <Navbar />
-                    <main className="relative z-10 w-full">{children}</main>
+                    <main className="relative z-10 w-full">
+                        <Breadcrumbs />
+                        {children}
+                    </main>
                     <Footer />
                     <GlobalClientComponents />
                     <AwardBanner />
