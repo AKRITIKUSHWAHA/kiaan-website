@@ -10,7 +10,7 @@ export default async function IndustrySolutionPage({ params }: { params: Promise
         notFound();
     }
 
-    return <NicheServicePage {...data} />;
+    return <NicheServicePage {...data} slug={`solutions/industry/${slug}`} />;
 }
 
 export function generateStaticParams() {

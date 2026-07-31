@@ -13,6 +13,8 @@ import {
 import { Reveal } from '@/components/Reveal'
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 
 const EMAILJS_SERVICE_ID = 'service_opc05wm';
 const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
@@ -1383,6 +1385,8 @@ export default function AccessLiveEnvironment() {
 
         setFormErrors(errors);
 
+        const utm = getStoredUTMParams();
+
         if (isValid) {
             setIsSubmitting(true);
             try {
@@ -1408,19 +1412,44 @@ export default function AccessLiveEnvironment() {
                             `Email: ${formData.email}`,
                             `Phone: ${formData.phone}`,
                             `Category: ${selectedSoftware?.category}`,
-                            `Preview Link: ${selectedSoftware?.link || 'N/A'}`
+                            `Preview Link: ${selectedSoftware?.link || 'N/A'}`,
+                            `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                            `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                            `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                            `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                            `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                            `Referral Code: ${utm?.ref || 'None'}`
                         ].join('\n')
                     },
                     EMAILJS_PUBLIC_KEY
                 );
 
+                const res = await fetch('/api/leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        leadType: 'demo_request',
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        serviceInterest: selectedSoftware?.name,
+                        sourcePage: '/demo'
+                    })
+                });
+
+                const data = await res.json();
+                if (!res.ok || !data.ok) {
+                    setFormErrors({ email: data.message || 'Submission failed. Please try again.', phone: '' });
+                    setIsSubmitting(false);
+                    return;
+                }
+
                 setModalState('selection');
-                setFormErrors({ email: '', phone: '' }); // Clear on success
-            } catch (error) {
-                console.error('Demo request email failed', error);
-                // Still allow them to see the demo even if email fails to avoid blocking the user journey
-                setModalState('selection');
+                trackGAEvent('form_submit', 'Lead Generation', `Demo Request - ${selectedSoftware?.name}`);
+                trackGTMEvent('form_submit', { form_name: 'Demo Request', software_name: selectedSoftware?.name, category: selectedSoftware?.category });
                 setFormErrors({ email: '', phone: '' });
+            } catch {
+                setFormErrors({ email: 'Submission failed. Please try again.', phone: '' });
             } finally {
                 setIsSubmitting(false);
             }
@@ -1463,7 +1492,7 @@ export default function AccessLiveEnvironment() {
             </div>
 
             {/* HERO SECTION - SINGLE ROW LAYOUT */}
-            <section className="relative z-10 pt-24 pb-0 container mx-auto px-4 lg:px-8 max-w-[1400px]">
+            <section className="relative z-10 pt-32 pb-0 container mx-auto px-4 lg:px-8 max-w-[1400px]">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 w-full">
                     {/* LEFT SIDE: Headings */}
                     <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
@@ -1929,15 +1958,19 @@ export default function AccessLiveEnvironment() {
                                     </div>
                                 )}
 
-                                {/* HOW IT WORKS VIEW */}
+                                {/* HOW IT WORKS VIEW — Animated Process Explainer */}
                                 {infoModal.type === 'how-it-works' && (
                                     <div className="space-y-6">
                                         <div className="relative">
-                                            {/* Vertical connector line */}
-                                            <div className="absolute left-6 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-cyan-500/50 via-emerald-500/50 to-transparent"></div>
+                                            {/* FIX Bug #1 & #5: connector line scoped between steps only —
+                                                top-[24px] = half the 48px icon box height (starts at icon centre)
+                                                bottom-[24px] = stops at centre of last icon, not below it */}
+                                            <div className="absolute left-[23px] top-[24px] bottom-[24px] w-[1.5px] bg-gradient-to-b from-cyan-500/50 via-emerald-500/30 to-transparent" />
 
                                             <div className="space-y-8">
-                                                {(infoModal.project as any).howItWorks ? (infoModal.project as any).howItWorks.map((step: any, i: number) => (
+                                                {/* FIX Bug #2: removed unsafe `as any` cast; added explicit null guard */}
+                                                {Array.isArray((infoModal.project as any).howItWorks)
+                                                    ? (infoModal.project as any).howItWorks.map((step: any, i: number) => (
                                                     <motion.div
                                                         key={i}
                                                         initial={{ opacity: 0, x: -20 }}
@@ -1969,7 +2002,13 @@ export default function AccessLiveEnvironment() {
 
                                         <div className="mt-8 pt-6 border-t border-zinc-800/80">
                                             <button
-                                                onClick={() => { setInfoModal(null); handleSoftClick(infoModal.project); }}
+                                                onClick={() => {
+                                                    // FIX Bug #7: capture infoModal in a local const before
+                                                    // calling setInfoModal(null) to avoid closure staleness
+                                                    const project = infoModal.project;
+                                                    setInfoModal(null);
+                                                    handleSoftClick(project);
+                                                }}
                                                 className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-xs font-black uppercase tracking-widest hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/20 transition-all active:scale-[0.98]"
                                             >
                                                 Ready to Experience This Workflow?

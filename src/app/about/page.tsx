@@ -6,7 +6,7 @@ import {
     Cpu, Zap, Rocket, Shield, Globe, Layers,
     ArrowRight, Monitor, Database, Target, Merge,
     Users, ShoppingBag, Building2,
-    Truck, Activity, LayoutGrid, FileText, Settings
+    Truck, Activity, LayoutGrid, FileText, Settings, Play
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/Button';
@@ -17,7 +17,7 @@ import { Reveal } from '@/components/Reveal';
 const StatCounter = ({ value, label, suffix = "+" }: { value: number, label: string, suffix?: string }) => {
     const [count, setCount] = useState(0);
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true });
 
     useEffect(() => {
         if (isInView) {
@@ -66,9 +66,48 @@ const TimelineStep = ({ number, title, desc, delay }: { number: string, title: s
     </Reveal>
 );
 
+// --- Founder Video Embed (Compact Thumbnail-First Player) ---
+const FOUNDER_YT_ID = 'dQw4w9WgXcQ'; // Replace with actual founder video ID
+const FounderVideoEmbed = () => {
+    const [playing, setPlaying] = useState(false);
+    return (
+        <div className="relative rounded-xl overflow-hidden border border-white/10 bg-zinc-950">
+            <div className="relative aspect-video bg-black">
+                {!playing ? (
+                    <div className="absolute inset-0 cursor-pointer group" onClick={() => setPlaying(true)}>
+                        <img
+                            src={`https://img.youtube.com/vi/${FOUNDER_YT_ID}/hqdefault.jpg`}
+                            alt="Founder Intro Video"
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 group-hover:from-black/50 transition-all duration-500" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center shadow-[0_0_40px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_60px_rgba(234,179,8,0.5)] group-hover:scale-110 transition-all">
+                                <Play size={24} className="text-black ml-1" fill="currentColor" />
+                            </div>
+                        </div>
+                        <div className="absolute bottom-3 left-3 text-[10px] font-mono text-zinc-400 bg-black/50 px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/5">
+                            4:32 · HD · Captions
+                        </div>
+                    </div>
+                ) : (
+                    <iframe
+                        src={`https://www.youtube.com/embed/${FOUNDER_YT_ID}?autoplay=1&rel=0&modestbranding=1&cc_load_policy=1&playsinline=1`}
+                        title="Founder Message - Kiaan Technology"
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    />
+                )}
+            </div>
+        </div>
+    );
+};
+
 export default function AboutPage() {
     return (
-        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black overflow-hidden pt-20">
+        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black overflow-hidden pt-32">
 
             {/* SECTION 1 – HERO (Animated) */}
             <section className="relative flex flex-col justify-start pt-6 lg:pt-10 pb-0 px-6 overflow-hidden">
@@ -293,6 +332,43 @@ export default function AboutPage() {
                 </div>
             </section>
 
+            {/* SECTION – FOUNDER VIDEO MESSAGE */}
+            <section className="py-16 md:py-20 px-6 bg-black relative overflow-hidden border-t border-white/5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(234,179,8,0.04)_0%,_transparent_50%)]" />
+                <div className="max-w-5xl mx-auto relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        {/* Video Player */}
+                        <div className="lg:col-span-7">
+                            <Reveal>
+                                <FounderVideoEmbed />
+                            </Reveal>
+                        </div>
+
+                        {/* Text */}
+                        <div className="lg:col-span-5">
+                            <Reveal delay={0.2}>
+                                <div className="inline-flex items-center gap-2 px-3 py-1 border border-yellow-500/20 rounded-full bg-yellow-500/5 mb-4">
+                                    <Play size={10} className="text-yellow-500" fill="currentColor" />
+                                    <span className="text-[9px] font-mono font-bold text-yellow-500 uppercase tracking-widest">From Our Founder</span>
+                                </div>
+                                <h2 className="text-3xl md:text-4xl font-display uppercase tracking-tight text-white mb-4 leading-[0.95]">
+                                    A Message from <span className="text-yellow-500">Suraj Kiaan</span>
+                                </h2>
+                                <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                                    Hear directly from our founder about the technology philosophy,
+                                    mission, and vision driving Kiaan Technology&apos;s growth across 3 continents.
+                                </p>
+                                <Link href="/founder-intro">
+                                    <Button variant="outline" className="border-white/10 hover:border-yellow-500 text-white font-bold uppercase text-xs tracking-wider px-6 py-2.5 rounded-xl">
+                                        Watch Full Video →
+                                    </Button>
+                                </Link>
+                            </Reveal>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* SECTION 8 – FINAL CTA (Conversion Optimized) */}
             <section className="py-16 md:py-20 px-6 bg-zinc-950 border-t border-white/5 relative">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-full bg-yellow-500/5 blur-[150px] pointer-events-none" />
@@ -336,6 +412,39 @@ export default function AboutPage() {
 
             {/* ── Client Testimonials (3 featured) ── */}
             <TestimonialsSection limit={3} ctaText="View All Case Studies" ctaHref="/case-studies" />
+
+            {/* ── Internal Links — Explore Our Work ── */}
+            <section className="py-12 px-6 bg-black border-t border-zinc-900">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-xs font-black uppercase tracking-[0.4em] text-zinc-500 mb-6">Explore Our Work</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {[
+                            { label: 'Case Studies', href: '/case-studies' },
+                            { label: 'Custom Software', href: '/services/custom-software-development' },
+                            { label: 'ERP Development', href: '/erp' },
+                            { label: 'CRM Systems', href: '/crm' },
+                            { label: 'SaaS Development', href: '/services/saas-development' },
+                            { label: 'AI & Automation', href: '/services/ai-automation' },
+                            { label: 'Web Development', href: '/services/web-development' },
+                            { label: 'Mobile Apps', href: '/services/mobile-app-development' },
+                            { label: 'Our Blog', href: '/blog' },
+                            { label: 'Pricing Plans', href: '/pricing' },
+                            { label: 'Methodology', href: '/methodology' },
+                            { label: 'Healthcare Software', href: '/industries/healthcare-software' },
+                            { label: 'Fintech Software', href: '/industries/fintech-software' },
+                            { label: 'Glossary', href: '/glossary' },
+                        ].map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="inline-flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest border border-zinc-800 text-zinc-500 hover:border-yellow-500/40 hover:text-yellow-500 transition-all duration-300"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }

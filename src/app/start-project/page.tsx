@@ -9,6 +9,12 @@ import { Reveal } from '@/components/Reveal'
 import React from 'react';
 import { jsPDF } from 'jspdf';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
+
+const EMAILJS_SERVICE_ID = 'service_opc05wm';
+const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
+const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 interface FormData {
     industry: string;
@@ -23,10 +29,6 @@ interface FormData {
     contactMethod: string;
     contactNumber: string;
 }
-
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 export default function StartProject() {
     const [step, setStep] = useState(1)
@@ -63,33 +65,42 @@ export default function StartProject() {
         }))
     }
 
-    const buildTemplateParams = () => ({
-        name: formData.name || 'N/A',
-        company: formData.company || 'N/A',
-        email: formData.email || 'N/A',
-        contact_number: formData.contactNumber || 'N/A',
-        contact_method: formData.contactMethod || 'N/A',
-        industry: formData.industry || 'N/A',
-        project_type: formData.projectType || 'N/A',
-        features: formData.features.length ? formData.features.join(', ') : 'None selected',
-        vision: formData.vision || 'N/A',
-        budget: formData.budget || 'N/A',
-        timeline: formData.timeline || 'N/A',
-        submitted_at: new Date().toLocaleString(),
-        message: [
-            `Name: ${formData.name || 'N/A'}`,
-            `Company: ${formData.company || 'N/A'}`,
-            `Email: ${formData.email || 'N/A'}`,
-            `Contact Number: ${formData.contactNumber || 'N/A'}`,
-            `Preferred Contact: ${formData.contactMethod || 'N/A'}`,
-            `Industry: ${formData.industry || 'N/A'}`,
-            `Project Type: ${formData.projectType || 'N/A'}`,
-            `Features: ${formData.features.length ? formData.features.join(', ') : 'None selected'}`,
-            `Project Vision: ${formData.vision || 'N/A'}`,
-            `Budget: ${formData.budget || 'N/A'}`,
-            `Timeline: ${formData.timeline || 'N/A'}`
-        ].join('\n')
-    })
+    const buildTemplateParams = () => {
+        const utm = getStoredUTMParams();
+        return {
+            name: formData.name || 'N/A',
+            company: formData.company || 'N/A',
+            email: formData.email || 'N/A',
+            contact_number: formData.contactNumber || 'N/A',
+            contact_method: formData.contactMethod || 'N/A',
+            industry: formData.industry || 'N/A',
+            project_type: formData.projectType || 'N/A',
+            features: formData.features.length ? formData.features.join(', ') : 'None selected',
+            vision: formData.vision || 'N/A',
+            budget: formData.budget || 'N/A',
+            timeline: formData.timeline || 'N/A',
+            submitted_at: new Date().toLocaleString(),
+            message: [
+                `Name: ${formData.name || 'N/A'}`,
+                `Company: ${formData.company || 'N/A'}`,
+                `Email: ${formData.email || 'N/A'}`,
+                `Contact Number: ${formData.contactNumber || 'N/A'}`,
+                `Preferred Contact: ${formData.contactMethod || 'N/A'}`,
+                `Industry: ${formData.industry || 'N/A'}`,
+                `Project Type: ${formData.projectType || 'N/A'}`,
+                `Features: ${formData.features.length ? formData.features.join(', ') : 'None selected'}`,
+                `Project Vision: ${formData.vision || 'N/A'}`,
+                `Budget: ${formData.budget || 'N/A'}`,
+                `Timeline: ${formData.timeline || 'N/A'}`,
+                `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                `Referral Code: ${utm?.ref || 'None'}`
+            ].join('\n')
+        };
+    };
 
     const handleSubmitRequest = async () => {
         if (isSubmitting) return;
@@ -104,9 +115,36 @@ export default function StartProject() {
                 buildTemplateParams(),
                 EMAILJS_PUBLIC_KEY
             )
+            trackGAEvent('form_submit', 'Lead Generation', 'Start Project Request');
+            trackGTMEvent('form_submit', { form_name: 'Start Project Request', project_type: formData.projectType, budget: formData.budget });
+
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'start_project',
+                    name: formData.name,
+                    company: formData.company,
+                    email: formData.email,
+                    phone: formData.contactNumber,
+                    contactMethod: formData.contactMethod,
+                    industry: formData.industry,
+                    projectType: formData.projectType,
+                    features: formData.features,
+                    vision: formData.vision,
+                    budget: formData.budget,
+                    timeline: formData.timeline,
+                    sourcePage: '/start-project'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setSubmitError(data.message || 'Request send nahi ho paayi. Please try again.')
+                return;
+            }
             setStep(7)
-        } catch (error) {
-            console.error('EmailJS submission failed', error)
+        } catch {
             setSubmitError('Request send nahi ho paayi. Please try again.')
         } finally {
             setIsSubmitting(false)
@@ -479,7 +517,7 @@ export default function StartProject() {
     }
 
     return (
-        <div className="relative bg-black text-white pt-24 pb-12 overflow-hidden selection:bg-yellow-500 selection:text-black">
+        <div className="relative bg-black text-white pt-32 pb-12 overflow-hidden selection:bg-yellow-500 selection:text-black">
             {/* Background enhancement */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(234,179,8,0.05)_0%,_transparent_70%)] pointer-events-none"></div>
 

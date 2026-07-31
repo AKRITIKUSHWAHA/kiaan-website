@@ -8,6 +8,21 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
     title: "Software Dev Blog & Tech Insights | Kiaan Technology",
     description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology's team. Stay ahead in the Indian tech ecosystem. Read our latest posts.",
+    openGraph: {
+        title: "Software Dev Blog & Tech Insights | Kiaan Technology",
+        description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology’s team. Stay ahead in the Indian tech ecosystem.",
+        url: "https://kiaantechnology.com/blog",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "Kiaan Technology Blog" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Software Dev Blog & Tech Insights | Kiaan Technology",
+        description: "Tech insights, SaaS tutorials & software engineering deep dives from Kiaan Technology’s team.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
+    },
 };
 
 const categories = [
@@ -23,7 +38,7 @@ import { blogData } from '@/data/blogData';
 export default function BlogPage() {
     return (
         <div className="min-h-screen bg-black text-white selection:bg-yellow-500 selection:text-black">
-            <div className="pt-24 pb-20 container mx-auto px-4">
+            <div className="pt-32 pb-20 container mx-auto px-4">
                 <Reveal>
                     <div className="inline-flex items-center gap-3 bg-zinc-900 text-yellow-500 text-[10px] font-black uppercase tracking-[0.4em] px-6 py-2 mb-8 border border-yellow-500/20">
                         <Terminal size={14} />
@@ -33,6 +48,15 @@ export default function BlogPage() {
                         Kiaan <span className="text-zinc-600">Journals</span>
                     </h1>
                 </Reveal>
+
+                {/* Last Updated Freshness Signal */}
+                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-8 -mt-10">
+                    <Clock size={12} className="text-yellow-500" />
+                    <span>Page Last Updated:</span>
+                    <span className="text-white">July 29, 2026</span>
+                    <span className="w-1 h-1 rounded-full bg-yellow-500 mx-1" />
+                    <span>Kiaan Technology</span>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     {/* Left: Blog Posts */}
@@ -85,6 +109,32 @@ export default function BlogPage() {
                                     Join Intel Waitlist
                                 </Button>
                             </Link>
+                        </div>
+
+                        {/* Related Services — Internal Links Panel */}
+                        <div className="p-6 bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm mt-8">
+                            <h3 className="text-sm font-black uppercase tracking-widest text-white mb-5 border-b border-zinc-800 pb-3">Our Services</h3>
+                            <ul className="space-y-3">
+                                {[
+                                    { label: 'Custom Software Development', href: '/services/custom-software-development' },
+                                    { label: 'SaaS Product Engineering', href: '/services/saas-development' },
+                                    { label: 'ERP Systems', href: '/erp' },
+                                    { label: 'CRM Software', href: '/crm' },
+                                    { label: 'AI & Automation', href: '/services/ai-automation' },
+                                    { label: 'Web Development', href: '/services/web-development' },
+                                    { label: 'Mobile App Development', href: '/services/mobile-app-development' },
+                                ].map((link) => (
+                                    <li key={link.href}>
+                                        <Link
+                                            href={link.href}
+                                            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-yellow-500 transition-colors group"
+                                        >
+                                            <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300" />
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>

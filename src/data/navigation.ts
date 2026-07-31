@@ -12,11 +12,11 @@ export const generateSlug = (item: string) => {
 export const saasCategories = [
     {
         title: "Business & Company",
-        items: ["CRM Software", "HRM Software", "Payroll Management", "Employee Attendance", "Time Tracking", "Recruitment Management", "Performance Appraisal", "Workforce Scheduling", "Leave Management", "HR Compliance Portal"]
+        items: ["CRM Software", "HRM Software", "Payroll Management", "Employee Attendance", "Time Tracking", "Workforce Scheduling", "Leave Management", "HR Compliance Portal"]
     },
     {
         title: "Accounting & Finance",
-        items: ["Accounting SaaS", "Invoice & Billing", "Subscription Billing", "Expense Tracking", "Tax Compliance", "Profit Loss Reporting", "Ledger Management", "Payment Collection", "Accounts Payable", "Digital OCR Tool"]
+        items: ["Accounting SaaS", "Invoice & Billing", "Subscription Billing", "Expense Tracking", "Tax Compliance", "Ledger Management", "Payment Collection", "Accounts Payable", "Digital OCR Tool"]
     },
     {
         title: "Sales & Marketing",
@@ -28,7 +28,7 @@ export const saasCategories = [
     },
     {
         title: "Retail & Inventory",
-        items: ["POS Software", "Inventory Management", "Warehouse Management", "Order Management", "Retail ERP", "Supplier Management", "Stock Tracking Tool", "Multi-Store System", "Seller Panel SaaS", "Pricing & Discount"]
+        items: ["POS Software", "Warehouse Management", "Order Management", "Retail ERP", "Supplier Management", "Stock Tracking Tool", "Multi-Store System", "Seller Panel SaaS", "Pricing & Discount"]
     },
     {
         title: "Healthcare & Clinic",
@@ -208,8 +208,28 @@ export const navLinks = [
             { name: 'UI/UX Design', href: '/solutions/ui-ux' },
             { name: 'Web Development', href: '/services/web-development' },
             { name: 'Custom Software Development', href: '/services/custom-software-development' },
+            { name: 'Agency Partnerships', href: '/referral-agency-partnerships' },
+            { name: 'Partner Program', href: '/partner-program' },
+            { name: 'HubSpot Integration', href: '/hubspot-integration' },
+            { name: 'Zapier Integration', href: '/zapier-integration' },
+            { name: 'Event Management', href: '/industry-events' },
+            { name: 'Networking Organizations', href: '/networking-organizations' },
+            { name: 'Affiliate Program', href: '/affiliate-program' },
+            { name: 'White-Label Partnership', href: '/white-label-partnership' },
+            { name: 'Analytics Debugger', href: '/analytics-debugger' },
+            { name: 'Heatmaps Debugger', href: '/heatmaps-debugger' },
+            { name: 'Analytics Dashboard', href: '/analytics-dashboard' },
+            { name: 'UTM Campaign Debugger', href: '/utm-debugger' },
+            { name: 'SEO Keyword Tracker', href: '/seo-keyword-tracker' },
+            { name: 'Backlink Monitor', href: '/backlink-monitor' },
+            { name: 'Competitor Monitor', href: '/competitor-monitor' },
+            { name: 'Lead Source Reports', href: '/lead-source-reports' },
+            { name: 'Founder Intro', href: '/founder-intro' },
+            { name: 'Video Testimonials', href: '/video-testimonials' },
+            { name: 'Day in the Life', href: '/day-in-the-life' },
         ]
     },
+    { name: 'Blog', href: '/blog' },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Demo Arena', href: '/demo' },
     {
@@ -219,4 +239,5 @@ export const navLinks = [
     },
 
     { name: 'AI Automation', href: '/services/ai-automation' },
+    { name: 'Podcast', href: '/podcast' },
 ]

@@ -9,6 +9,7 @@ export interface CaseStudy {
     result: string;
     desc: string;
     image: string;
+    imageAlt?: string;
     stats: string;
     challenge: string;
     blueprint: string;
@@ -17,6 +18,8 @@ export interface CaseStudy {
     architectureImage?: string;
     screenshots?: string[];
     technologies: string[];
+    authorName?: string;
+    authorDesignation?: string;
 }
 
 export const caseStudiesData: CaseStudy[] = caseStudiesJson as CaseStudy[];

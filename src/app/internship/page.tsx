@@ -30,6 +30,8 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/Button';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 import {
     whyStudentsChooseCards,
     highlightQuote,
@@ -196,6 +198,8 @@ export default function InternshipPage() {
         setFormStatus('submitting');
         setErrorMessage('');
 
+        const utm = getStoredUTMParams();
+
         try {
             await emailjs.send(
                 EMAILJS_SERVICE_ID,
@@ -222,17 +226,46 @@ export default function InternshipPage() {
                         `WhatsApp: ${formData.whatsapp || 'N/A'}`,
                         `Selected Category: ${selectedCategory ? internshipCategories.find(c => c.id === selectedCategory)?.title || selectedCategory : 'N/A'}`,
                         `Selected Program: ${formData.program || 'N/A'}`,
-                        `Education: ${formData.education || 'N/A'}`
+                        `Education: ${formData.education || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
                     ].join('\n')
                 },
                 EMAILJS_PUBLIC_KEY
             );
 
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'internship',
+                    leadSource: 'internship_application',
+                    fullName: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    serviceInterest: formData.program || 'Internship Program',
+                    message: `Education: ${formData.education || 'N/A'} | Category: ${selectedCategory || 'N/A'}`,
+                    sourcePage: '/internship'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setFormStatus('error');
+                setErrorMessage(data.message || 'Application send nahi ho paayi. Please try again.');
+                return;
+            }
+
             setFormStatus('success');
+            trackGAEvent('form_submit', 'Lead Generation', 'Internship Application');
+            trackGTMEvent('form_submit', { form_name: 'Internship Application', program: formData.program });
             setFormData({ name: '', email: '', whatsapp: '', program: '', education: '' });
             setSelectedCategory('');
-        } catch (error) {
-            console.error('Internship apply email failed', error);
+        } catch {
             setFormStatus('error');
             setErrorMessage('Application send nahi ho paayi. Please try again.');
         }
@@ -260,7 +293,7 @@ export default function InternshipPage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-28 pb-12 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-32 pb-12 selection:bg-yellow-500 selection:text-black">
 
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 1: HERO

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, Zap, Target, BarChart3, Globe, ShieldCheck, ArrowRight, Filter } from 'lucide-react'
+import { ArrowUpRight, Zap, Target, BarChart3, Globe, ShieldCheck, ArrowRight, Filter, Play, MessageSquareQuote } from 'lucide-react'
+import { VIDEO_TESTIMONIALS } from '@/data/videoTestimonials';
 import { Reveal } from '@/components/Reveal'
 import React, { useState } from 'react';
 import { Button } from '@/components/Button';
@@ -40,7 +41,48 @@ const reviews = [
 ];
 
 
-
+// ── Compact video card for case studies embed ──
+const VideoCard = ({ t }: { t: typeof VIDEO_TESTIMONIALS[0] }) => {
+    const [playing, setPlaying] = React.useState(false);
+    return (
+        <div className="relative rounded-xl overflow-hidden border border-white/5 hover:border-yellow-500/30 transition-all duration-300 group">
+            <div className="relative aspect-video bg-zinc-900">
+                {!playing ? (
+                    <div className="absolute inset-0 cursor-pointer" onClick={() => setPlaying(true)}>
+                        <img
+                            src={`https://img.youtube.com/vi/${t.youtubeId}/hqdefault.jpg`}
+                            alt={`${t.name} testimonial`}
+                            className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity"
+                            loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-11 h-11 rounded-full bg-yellow-500 flex items-center justify-center shadow-[0_0_30px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform">
+                                <Play size={16} className="text-black ml-0.5" fill="currentColor" />
+                            </div>
+                        </div>
+                        <div className="absolute bottom-2 left-2 right-2 flex items-end justify-between">
+                            <p className="text-[10px] font-bold text-white truncate">{t.name}</p>
+                            <span className="text-[9px] font-mono text-zinc-400 bg-black/60 px-1.5 py-0.5 rounded">{t.duration}</span>
+                        </div>
+                    </div>
+                ) : (
+                    <iframe
+                        src={`https://www.youtube.com/embed/${t.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                        title={`${t.name} testimonial`}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                )}
+            </div>
+            <div className="p-3 bg-zinc-950">
+                <p className="text-[10px] font-bold text-white truncate">{t.name}</p>
+                <p className="text-[9px] text-zinc-500 font-mono truncate">{t.designation} · {t.company}</p>
+            </div>
+        </div>
+    );
+};
 
 export default function CaseStudies() {
     const [filter, setFilter] = useState('All');
@@ -50,14 +92,14 @@ export default function CaseStudies() {
         : caseStudiesData.filter(study => study.type === filter);
 
     return (
-        <div className="bg-black min-h-screen pt-16 pb-16 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-32 pb-16 selection:bg-yellow-500 selection:text-black">
             <JsonLd 
                 data={{
                     "@context": "https://schema.org",
                     "@type": "Organization",
                     "name": "Kiaan Technology",
                     "url": "https://kiaantechnology.com",
-                    "logo": "https://kiaantechnology.com/logo.png",
+                    "logo": "https://kiaantechnology.com/logo.webp",
                     "aggregateRating": {
                         "@type": "AggregateRating",
                         "ratingValue": "5",
@@ -72,6 +114,14 @@ export default function CaseStudies() {
                     }))
                 }}
             />
+        {/* Last Updated Freshness Signal */}
+            <div className="container mx-auto px-6 pt-8 pb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                <span>Page Last Updated:</span>
+                <span className="text-white">July 29, 2026</span>
+                <span className="w-1 h-1 rounded-full bg-yellow-500 mx-1" />
+                <span>Verified by Kiaan Technology</span>
+            </div>
+
             {/* Featured Section */}
             <section className="container mx-auto px-6 mb-16">
                 <div className="glass-panel p-6 md:p-10 border-yellow-500/20 relative overflow-hidden group">
@@ -113,7 +163,8 @@ export default function CaseStudies() {
                                 <div className="aspect-video relative overflow-hidden border border-white/10 shadow-2xl">
                                     <img
                                         src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                                        alt="Featured Project"
+                                        alt="Enterprise Logistics Cloud Engine Architecture - Kiaan Technology Case Study"
+                                        loading="lazy"
                                         className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
@@ -156,6 +207,27 @@ export default function CaseStudies() {
                 </div>
             </section>
 
+            {/* Video Testimonials Compact Carousel */}
+            <section className="container mx-auto px-6 mb-12">
+                <div className="border border-white/5 rounded-2xl bg-zinc-950/40 p-6">
+                    <div className="flex items-center justify-between mb-5">
+                        <div className="flex items-center gap-2">
+                            <MessageSquareQuote size={16} className="text-yellow-500" />
+                            <h2 className="text-sm font-bold font-mono text-white uppercase tracking-wider">Watch Client Stories</h2>
+                        </div>
+                        <Link href="/video-testimonials" className="text-[10px] font-mono font-bold text-yellow-500 hover:text-yellow-400 uppercase tracking-widest flex items-center gap-1 transition-colors">
+                            View All <ArrowRight size={10} className="inline" />
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {VIDEO_TESTIMONIALS.slice(0, 3).map((t) => (
+                            <VideoCard key={t.id} t={t} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Case Studies Grid */}
             <section className="container mx-auto px-6 mb-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -180,7 +252,8 @@ export default function CaseStudies() {
                                         </div>
                                         <img
                                             src={study.image}
-                                            alt={study.title}
+                                            alt={`Case study interface for ${study.title}`}
+                                            loading="lazy"
                                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent opacity-60" />

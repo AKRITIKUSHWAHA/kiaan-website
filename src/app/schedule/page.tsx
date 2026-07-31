@@ -6,11 +6,12 @@ import { Calendar, Clock, User, MessageSquare, CheckCircle2, ArrowRight, ArrowLe
 import { Button } from '@/components/Button';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 
 const EMAILJS_SERVICE_ID = 'service_opc05wm';
 const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
 const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
-
 export default function SchedulePage() {
     const [step, setStep] = useState(1);
     const [selectedDate, setSelectedDate] = useState<number | null>(null);
@@ -51,6 +52,7 @@ export default function SchedulePage() {
         setSubmitError('');
 
         const chosenDate = dates[selectedDate];
+        const utm = getStoredUTMParams();
 
         try {
             await emailjs.send(
@@ -76,15 +78,45 @@ export default function SchedulePage() {
                         `WhatsApp: ${formData.whatsapp || 'N/A'}`,
                         `Selected Date: ${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`,
                         `Selected Time: ${selectedTime}`,
-                        `Discussion Topic: ${formData.discuss || 'N/A'}`
+                        `Discussion Topic: ${formData.discuss || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
                     ].join('\n')
                 },
                 EMAILJS_PUBLIC_KEY
             );
 
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'contact',
+                    leadSource: 'website_contact',
+                    fullName: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    serviceInterest: 'Counseling Session',
+                    projectTimeline: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month} at ${selectedTime}`,
+                    message: formData.discuss || 'Counseling Session',
+                    sourcePage: '/schedule'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setSubmitError(data.message || 'Booking send nahi ho paayi. Please try again.');
+                setIsSubmitting(false);
+                return;
+            }
+
+            trackGAEvent('form_submit', 'Lead Generation', 'Schedule Call Booking');
+            trackGTMEvent('form_submit', { form_name: 'Schedule Call Booking', date: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`, time: selectedTime });
             setStep(4);
-        } catch (error) {
-            console.error('Schedule booking email failed', error);
+        } catch {
             setSubmitError('Booking send nahi ho paayi. Please try again.');
         } finally {
             setIsSubmitting(false);
@@ -99,7 +131,7 @@ export default function SchedulePage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-16 pb-36 selection:bg-yellow-500 selection:text-black overflow-hidden relative">
+        <div className="bg-black min-h-screen pt-32 pb-36 selection:bg-yellow-500 selection:text-black overflow-hidden relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-yellow-500/5 blur-[120px] rounded-full -z-10" />
 
             <div className="container mx-auto px-6 max-w-4xl relative z-10">

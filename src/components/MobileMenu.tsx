@@ -25,7 +25,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: '100%' }}
                     transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                    className="fixed inset-0 z-[49] bg-black pt-24 px-6 overflow-y-auto"
+                    className="fixed inset-0 z-[49] bg-black pt-32 px-6 overflow-y-auto"
                 >
                     <div className="flex flex-col gap-2">
                         {navLinks.map((link) => (

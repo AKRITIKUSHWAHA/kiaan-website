@@ -18,11 +18,6 @@ import { Button } from '@/components/Button';
 import { InternshipProgram } from '@/data/InternshipProgramData';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import emailjs from '@emailjs/browser';
-
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 export default function InternshipProgramClient({ program }: { program: InternshipProgram | undefined }) {
     const router = useRouter();
@@ -42,42 +37,31 @@ export default function InternshipProgramClient({ program }: { program: Internsh
         setErrorMessage('');
 
         try {
-            await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                {
-                    name: formData.name || 'N/A',
-                    email: formData.email || 'N/A',
-                    company: 'Internship Application',
-                    contact_number: formData.whatsapp || 'N/A',
-                    contact_method: 'WhatsApp / Email',
-                    industry: 'Internship Program',
-                    project_type: program?.title || 'N/A',
-                    features: program?.category || 'N/A',
-                    vision: formData.education || 'N/A',
-                    budget: 'N/A',
-                    timeline: program?.duration || 'N/A',
-                    submitted_at: new Date().toLocaleString(),
-                    message: [
-                        `Application Type: Internship Program`,
-                        `Program: ${program?.title || 'N/A'}`,
-                        `Category: ${program?.category || 'N/A'}`,
-                        `Name: ${formData.name || 'N/A'}`,
-                        `Email: ${formData.email || 'N/A'}`,
-                        `WhatsApp: ${formData.whatsapp || 'N/A'}`,
-                        `Education: ${formData.education || 'N/A'}`,
-                        `Duration: ${program?.duration || 'N/A'}`,
-                        `Format: ${program?.format || 'N/A'}`,
-                        `Level: ${program?.level || 'N/A'}`
-                    ].join('\n')
-                },
-                EMAILJS_PUBLIC_KEY
-            );
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'internship',
+                    leadSource: 'internship_application',
+                    fullName: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    serviceInterest: program?.title || 'Internship Program',
+                    message: `Education: ${formData.education || 'N/A'} | Format: ${program?.format || 'N/A'}`,
+                    sourcePage: typeof window !== 'undefined' ? window.location.pathname : '/internship'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setFormStatus('error');
+                setErrorMessage(data.message || 'Application send nahi ho paayi. Please try again.');
+                return;
+            }
 
             setFormStatus('success');
             setFormData({ name: '', email: '', whatsapp: '', education: '' });
-        } catch (error) {
-            console.error('Internship application email failed', error);
+        } catch {
             setFormStatus('error');
             setErrorMessage('Application send nahi ho paayi. Please try again.');
         }
@@ -100,7 +84,7 @@ export default function InternshipProgramClient({ program }: { program: Internsh
     }
 
     return (
-        <div className="bg-black min-h-screen pt-20 pb-20 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-32 pb-20 selection:bg-yellow-500 selection:text-black">
             {/* Back Button */}
             <div className="container mx-auto px-6 mb-2">
                 <button
