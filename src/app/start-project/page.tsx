@@ -11,6 +11,11 @@ import { jsPDF } from 'jspdf';
 import emailjs from '@emailjs/browser';
 import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
 import { getStoredUTMParams } from '@/utils/utm';
+
+const EMAILJS_SERVICE_ID = 'service_opc05wm';
+const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
+const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
+
 interface FormData {
     industry: string;
     projectType: string;

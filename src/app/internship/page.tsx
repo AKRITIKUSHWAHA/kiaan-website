@@ -44,6 +44,10 @@ import {
     faqData,
 } from '@/data/internshipData';
 
+const EMAILJS_SERVICE_ID = 'service_opc05wm';
+const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
+const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
+
 interface Program {
     title: string;
     slug: string;
