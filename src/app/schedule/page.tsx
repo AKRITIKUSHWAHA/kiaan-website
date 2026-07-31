@@ -86,7 +86,7 @@ export default function SchedulePage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-16 pb-36 selection:bg-yellow-500 selection:text-black overflow-hidden relative">
+        <div className="bg-black min-h-screen pt-32 pb-36 selection:bg-yellow-500 selection:text-black overflow-hidden relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-yellow-500/5 blur-[120px] rounded-full -z-10" />
 
             <div className="container mx-auto px-6 max-w-4xl relative z-10">

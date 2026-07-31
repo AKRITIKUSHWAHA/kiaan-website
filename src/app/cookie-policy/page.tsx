@@ -62,7 +62,7 @@ export default function CookiePolicyPage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-24 pb-24 text-zinc-400 selection:bg-yellow-500 selection:text-black relative">
+        <div className="bg-black min-h-screen pt-32 pb-24 text-zinc-400 selection:bg-yellow-500 selection:text-black relative">
             {/* Ambient Background Glows */}
             <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-yellow-500/5 blur-[150px] rounded-full -z-10" />
             <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-yellow-500/3 blur-[180px] rounded-full -z-10" />

@@ -17,7 +17,7 @@ import { Reveal } from '@/components/Reveal';
 const StatCounter = ({ value, label, suffix = "+" }: { value: number, label: string, suffix?: string }) => {
     const [count, setCount] = useState(0);
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true });
 
     useEffect(() => {
         if (isInView) {
@@ -68,7 +68,7 @@ const TimelineStep = ({ number, title, desc, delay }: { number: string, title: s
 
 export default function AboutPage() {
     return (
-        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black overflow-hidden pt-20">
+        <div className="bg-black text-white font-sans selection:bg-yellow-500 selection:text-black overflow-hidden pt-32">
 
             {/* SECTION 1 – HERO (Animated) */}
             <section className="relative flex flex-col justify-start pt-6 lg:pt-10 pb-0 px-6 overflow-hidden">
@@ -336,6 +336,39 @@ export default function AboutPage() {
 
             {/* ── Client Testimonials (3 featured) ── */}
             <TestimonialsSection limit={3} ctaText="View All Case Studies" ctaHref="/case-studies" />
+
+            {/* ── Internal Links — Explore Our Work ── */}
+            <section className="py-12 px-6 bg-black border-t border-zinc-900">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-xs font-black uppercase tracking-[0.4em] text-zinc-500 mb-6">Explore Our Work</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {[
+                            { label: 'Case Studies', href: '/case-studies' },
+                            { label: 'Custom Software', href: '/services/custom-software-development' },
+                            { label: 'ERP Development', href: '/erp' },
+                            { label: 'CRM Systems', href: '/crm' },
+                            { label: 'SaaS Development', href: '/services/saas-development' },
+                            { label: 'AI & Automation', href: '/services/ai-automation' },
+                            { label: 'Web Development', href: '/services/web-development' },
+                            { label: 'Mobile Apps', href: '/services/mobile-app-development' },
+                            { label: 'Our Blog', href: '/blog' },
+                            { label: 'Pricing Plans', href: '/pricing' },
+                            { label: 'Methodology', href: '/methodology' },
+                            { label: 'Healthcare Software', href: '/industries/healthcare-software' },
+                            { label: 'Fintech Software', href: '/industries/fintech-software' },
+                            { label: 'Glossary', href: '/glossary' },
+                        ].map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="inline-flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest border border-zinc-800 text-zinc-500 hover:border-yellow-500/40 hover:text-yellow-500 transition-all duration-300"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }

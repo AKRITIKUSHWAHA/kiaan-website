@@ -30,8 +30,8 @@ export const Footer = () => {
 
             {/* Main Footer Content */}
             <div className="relative z-10 container mx-auto px-6 pt-8 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
-                    <div className="md:col-span-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-8">
+                    <div className="lg:col-span-2">
                         <h3 className="text-4xl font-display uppercase mb-6 text-white tracking-tighter font-black">
                             Kiaan <span className="text-yellow-500">Technology</span>
                         </h3>
@@ -49,11 +49,6 @@ export const Footer = () => {
                                     label: 'LinkedIn', 
                                     href: 'https://www.linkedin.com/company/89547261/',
                                     icon: <Linkedin className="w-5 h-5" />
-                                },
-                                { 
-                                    label: 'YouTube', 
-                                    href: 'https://www.youtube.com/@kiaantechnology',
-                                    icon: <Youtube className="w-5 h-5" />
                                 }
                             ].map(({ label, href, icon }, i) => (
                                 <Link key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={`Follow us on ${label}`}>
@@ -70,20 +65,20 @@ export const Footer = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="md:-translate-x-6 lg:-translate-x-12">
-                        <h4 className="text-sm font-black uppercase tracking-[0.4em] text-yellow-500 mb-8 border-b border-yellow-500/20 pb-2 w-fit">Quick Links</h4>
-                        <ul className="grid grid-cols-[max-content_1fr] gap-x-8 gap-y-4">
+                    <div>
+                        <h4 className="text-sm font-black uppercase tracking-[0.3em] text-yellow-500 mb-6 border-b border-yellow-500/20 pb-2 w-fit">Services</h4>
+                        <ul className="space-y-3">
                             {[
-                                { name: 'About Us', href: '/about' },
-                                { name: 'Pricing Plans', href: '/pricing' },
-                                { name: 'Our Blog', href: '/blog' },
-                                { name: 'Resources & Insights', href: '/resources' },
-                                { name: 'Schedule Call', href: '/schedule' },
-                                { name: 'Product Demo', href: '/demo' }
+                                { name: 'Custom Software', href: '/services/custom-software-development' },
+                                { name: 'SaaS Development', href: '/services/saas-development' },
+                                { name: 'AI & Automation', href: '/services/ai-automation' },
+                                { name: 'Web Development', href: '/services/web-development' },
+                                { name: 'Mobile Apps', href: '/services/mobile-app-development' },
+                                { name: 'ERP & CRM Solutions', href: '/services/erp-crm-solutions' }
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="text-base text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-4 h-[1px] bg-yellow-500 transition-all duration-300 mr-0 group-hover:mr-2"></span>
+                                    <Link href={link.href} className="text-sm text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
+                                        <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300 mr-0 group-hover:mr-2"></span>
                                         {link.name}
                                     </Link>
                                 </li>
@@ -91,33 +86,74 @@ export const Footer = () => {
                         </ul>
                     </div>
                     <div>
-                        <h4 className="text-sm font-black uppercase tracking-[0.4em] text-yellow-500 mb-8 border-b border-yellow-500/20 pb-2 w-fit">Contact</h4>
-                        <ul className="space-y-6">
-                            <li className="flex items-start gap-4 text-base text-zinc-400 group">
-                                <div className="p-2 bg-zinc-900 border border-zinc-800 text-zinc-600 group-hover:text-yellow-500 group-hover:border-yellow-500/50 transition-all">
-                                    <Mail size={18} />
+                        <h4 className="text-sm font-black uppercase tracking-[0.3em] text-yellow-500 mb-6 border-b border-yellow-500/20 pb-2 w-fit">Industries</h4>
+                        <ul className="space-y-3">
+                            {[
+                                { name: 'Healthcare Software', href: '/industries/healthcare-software' },
+                                { name: 'Fintech Solutions', href: '/industries/fintech-software' },
+                                { name: 'Retail Tech', href: '/industries/retail-technology' },
+                                { name: 'Real Estate SaaS', href: '/solutions/real-estate' },
+                                { name: 'Logistics ERP', href: '/solutions/logistics' }
+                            ].map((link) => (
+                                <li key={link.name}>
+                                    <Link href={link.href} className="text-sm text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
+                                        <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300 mr-0 group-hover:mr-2"></span>
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="text-sm font-black uppercase tracking-[0.3em] text-yellow-500 mb-6 border-b border-yellow-500/20 pb-2 w-fit">Company</h4>
+                        <ul className="space-y-3">
+                            {[
+                                { name: 'About Us', href: '/about' },
+                                { name: 'Pricing Plans', href: '/pricing' },
+                                { name: 'Our Blog', href: '/blog' },
+                                { name: 'Resources & Insights', href: '/resources' },
+                                { name: 'Schedule Call', href: '/schedule' },
+                                { name: 'Product Demo', href: '/demo' },
+                                { name: 'Referral Program (£500)', href: '/referral' },
+                                { name: 'Integration Partners', href: '/partners' }
+                            ].map((link) => (
+                                <li key={link.name}>
+                                    <Link href={link.href} className="text-sm text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
+                                        <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300 mr-0 group-hover:mr-2"></span>
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 className="text-sm font-black uppercase tracking-[0.3em] text-yellow-500 mb-6 border-b border-yellow-500/20 pb-2 w-fit">Contact</h4>
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-3 text-sm text-zinc-400 group">
+                                <div className="p-1.5 bg-zinc-900 border border-zinc-800 text-zinc-600 group-hover:text-yellow-500 group-hover:border-yellow-500/50 transition-all">
+                                    <Mail size={14} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-1">Email Us</span>
-                                    <a href="mailto:info@kiaantechnology.com" className="hover:text-white transition-colors">info@kiaantechnology.com</a>
+                                    <span className="text-[8px] font-bold text-zinc-600 uppercase tracking-widest mb-0.5">Email</span>
+                                    <a href="mailto:info@kiaantechnology.com" className="hover:text-white text-xs transition-colors">info@kiaantechnology.com</a>
                                 </div>
                             </li>
-                            <li className="flex items-start gap-4 text-base text-zinc-400 group">
-                                <div className="p-2 bg-zinc-900 border border-zinc-800 text-zinc-600 group-hover:text-yellow-500 group-hover:border-yellow-500/50 transition-all">
-                                    <Phone size={18} />
+                            <li className="flex items-start gap-3 text-sm text-zinc-400 group">
+                                <div className="p-1.5 bg-zinc-900 border border-zinc-800 text-zinc-600 group-hover:text-yellow-500 group-hover:border-yellow-500/50 transition-all">
+                                    <Phone size={14} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-1">Call Us</span>
-                                    <a href="tel:+919752100980" className="hover:text-white transition-colors">+91 97521 00980</a>
+                                    <span className="text-[8px] font-bold text-zinc-600 uppercase tracking-widest mb-0.5">Call</span>
+                                    <a href="tel:+919752100980" className="hover:text-white text-xs transition-colors">+91 97521 00980</a>
                                 </div>
                             </li>
-                            <li className="flex items-start gap-4 text-base text-zinc-400 group">
-                                <div className="p-2 bg-zinc-900 border border-zinc-800 text-zinc-600 group-hover:text-yellow-500 group-hover:border-yellow-500/50 transition-all">
-                                    <MapPin size={18} />
+                            <li className="flex items-start gap-3 text-sm text-zinc-400 group">
+                                <div className="p-1.5 bg-zinc-900 border border-zinc-800 text-zinc-600 group-hover:text-yellow-500 group-hover:border-yellow-500/50 transition-all">
+                                    <MapPin size={14} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest mb-1">Location</span>
-                                    <span className="group-hover:text-white transition-colors">Indore, India</span>
+                                    <span className="text-[8px] font-bold text-zinc-600 uppercase tracking-widest mb-0.5">Location</span>
+                                    <span className="group-hover:text-white text-xs transition-colors">Indore, India</span>
                                 </div>
                             </li>
                         </ul>

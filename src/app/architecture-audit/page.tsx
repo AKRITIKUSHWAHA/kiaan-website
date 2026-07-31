@@ -6,7 +6,7 @@ import { FileSearch, Lock, Database, Code2, Zap, ArrowRight, CheckSquare, Shield
 
 export default function ArchitectureAuditPage() {
     return (
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-24 pb-16">
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black pt-32 pb-16">
 
             {/* HERO */}
             <section className="relative px-6 py-20 lg:py-32 overflow-hidden border-b border-zinc-900">

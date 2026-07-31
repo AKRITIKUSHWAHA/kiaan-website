@@ -41,12 +41,18 @@ export interface CaseStudyCardProps {
   results: CaseStudyCardResult[];
   /** Optional hero image src */
   image?: string;
+  /** Optional descriptive alt text for hero image */
+  imageAlt?: string;
   /** Optional href for "View Details" button. Defaults to "#" */
   href?: string;
   /** Optional index for stagger animations */
   index?: number;
   /** Optional accent colour class override (default: yellow-500) */
   accentClass?: string;
+  /** Author name */
+  authorName?: string;
+  /** Author designation */
+  authorDesignation?: string;
 }
 
 /* ─── Accent colour map ──────────────────────────────────────────────────── */
@@ -88,9 +94,12 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   technologies,
   results,
   image,
+  imageAlt,
   href = '#',
   index = 0,
   accentClass = 'yellow-500',
+  authorName,
+  authorDesignation,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const gradientClass =
@@ -133,7 +142,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
         <div className="aspect-video w-full overflow-hidden relative">
           <img
             src={image}
-            alt={`${projectName} project preview`}
+            alt={imageAlt || `${projectName} - Enterprise Software Project Screenshot`}
             loading="lazy"
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
           />
@@ -169,11 +178,9 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
           {/* Always-visible challenge summary */}
           <div className="p-4">
             <SectionLabel icon={<AlertTriangle size={10} />} label="Challenge" />
-            <p className="text-zinc-500 text-sm font-light leading-relaxed line-clamp-2">
-              {challenge}
-            </p>
+            <p className="text-zinc-500 text-sm font-light leading-relaxed line-clamp-2" dangerouslySetInnerHTML={{ __html: challenge }} />
           </div>
-
+ 
           {/* Expandable section */}
           <AnimatePresence initial={false}>
             {expanded && (
@@ -187,9 +194,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
               >
                 <div className="p-4">
                   <SectionLabel icon={<Lightbulb size={10} />} label="Solution" />
-                  <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                    {solution}
-                  </p>
+                  <p className="text-zinc-500 text-sm font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: solution }} />
                 </div>
               </motion.div>
             )}
@@ -255,6 +260,13 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
             ))}
           </div>
         </div>
+
+        {/* ── Author Byline ── */}
+        {authorName && (
+          <div className="text-[10px] text-zinc-500 font-light leading-relaxed tracking-wide">
+            Case Study by <span className="text-zinc-300 font-medium">{authorName}</span>, {authorDesignation} at Kiaan Technology
+          </div>
+        )}
 
         {/* ── View Details CTA ── */}
         <div className="mt-auto pt-4 border-t border-white/5">

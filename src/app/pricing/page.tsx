@@ -59,7 +59,7 @@ export default function Pricing() {
     ]
 
     return (
-        <div className="relative bg-black min-h-screen text-white pt-24 pb-16 overflow-hidden selection:bg-yellow-500 selection:text-black">
+        <div className="relative bg-black min-h-screen text-white pt-32 pb-16 overflow-hidden selection:bg-yellow-500 selection:text-black">
             {/* Subtle background glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_rgba(234,179,8,0.05)_0%,_transparent_60%)] pointer-events-none"></div>
 

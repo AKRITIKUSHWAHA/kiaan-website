@@ -25,6 +25,26 @@
     /* Deep Black */
 }
 
+/* ─── CLS Prevention: Ensure custom fonts swap in instantly ─────── */
+/* font-display:swap prevents invisible text (FOIT) during font load */
+@font-face {
+    font-family: 'Anton';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    size-adjust: 105%;
+    src: local('Anton');
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    size-adjust: 100%;
+    src: local('Manrope');
+}
+
 html {
     scroll-behavior: smooth;
     overflow-x: clip;
@@ -42,15 +62,23 @@ body {
     overscroll-behavior-y: none;
 }
 
-/* Hardware accelerated layer promotion for scrolling performance */
+/* Hardware accelerated layer promotion — removed blanket will-change.
+   Blanket will-change: transform on main caused unnecessary GPU layer
+   promotion, increasing memory pressure. Applied per-component instead. */
 main {
-    transform: translateZ(0);
-    will-change: transform;
+    isolation: isolate;
 }
 
 /* Global Smoothness — font smoothing only */
 * {
     -webkit-font-smoothing: antialiased;
+}
+
+/* ─── INP / Paint optimization: defer off-screen section rendering ── */
+/* Apply .offscreen-section to any below-fold section component       */
+.offscreen-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px; /* estimated height — prevents layout shift */
 }
 
 /* Containment for repeated card/tile elements — reduces layout/paint scope */
@@ -232,7 +260,12 @@ main {
 .glass-panel {
     @apply bg-zinc-900/40 backdrop-blur-md border border-white/10;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
-    will-change: backdrop-filter, background-color, border-color;
+    /* Removed global will-change — triggered compositing on every glass element.
+       Paint pressure is minimized by only promoting on active interaction. */
+}
+
+.glass-panel:hover {
+    will-change: backdrop-filter;
 }
 
 /* Text Mask Animation */
@@ -450,4 +483,39 @@ body::-webkit-scrollbar-thumb:hover {
 
 .trust-tag:hover {
     @apply border-yellow-500/50 text-yellow-500;
+}
+
+/* ─── Core Web Vitals: Reduce Motion Accessibility ──────────────────── */
+/* Pauses all infinite animations for users who prefer reduced motion.
+   Fixes CLS from layout-affecting animations and improves accessibility score. */
+@media (prefers-reduced-motion: reduce) {
+    .animated-grid,
+    .animate-marquee,
+    .animate-float,
+    .animate-glitch,
+    .logo-glitter::after,
+    .animate-whatsapp-pulse,
+    .reward-pulse {
+        animation: none !important;
+    }
+
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* ─── Core Web Vitals: Font Display Swap ────────────────────────────── */
+/* Prevents FOIT (Flash of Invisible Text) during font loading.
+   Forces the browser to show fallback font immediately while custom
+   fonts are loading, avoiding blank text that causes CLS. */
+@font-face {
+    font-family: 'Anton';
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    font-display: swap;
 }

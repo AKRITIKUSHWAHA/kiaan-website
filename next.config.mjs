@@ -22,14 +22,26 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'images.unsplash.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'assets.calendly.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com',
+            },
         ],
-        minimumCacheTTL: 60,
+        minimumCacheTTL: 2678400,
         dangerouslyAllowSVG: true,
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+        deviceSizes: [390, 640, 750, 828, 1080, 1200, 1920],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     },
     trailingSlash: true,
     experimental: {
         optimizePackageImports: ['lucide-react', 'framer-motion'],
+        workerThreads: false,
+        cpus: 1
     },
 };
 

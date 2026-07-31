@@ -12,11 +12,11 @@ export const generateSlug = (item: string) => {
 export const saasCategories = [
     {
         title: "Business & Company",
-        items: ["CRM Software", "HRM Software", "Payroll Management", "Employee Attendance", "Time Tracking", "Recruitment Management", "Performance Appraisal", "Workforce Scheduling", "Leave Management", "HR Compliance Portal"]
+        items: ["CRM Software", "HRM Software", "Payroll Management", "Employee Attendance", "Time Tracking", "Workforce Scheduling", "Leave Management", "HR Compliance Portal"]
     },
     {
         title: "Accounting & Finance",
-        items: ["Accounting SaaS", "Invoice & Billing", "Subscription Billing", "Expense Tracking", "Tax Compliance", "Profit Loss Reporting", "Ledger Management", "Payment Collection", "Accounts Payable", "Digital OCR Tool"]
+        items: ["Accounting SaaS", "Invoice & Billing", "Subscription Billing", "Expense Tracking", "Tax Compliance", "Ledger Management", "Payment Collection", "Accounts Payable", "Digital OCR Tool"]
     },
     {
         title: "Sales & Marketing",
@@ -28,7 +28,7 @@ export const saasCategories = [
     },
     {
         title: "Retail & Inventory",
-        items: ["POS Software", "Inventory Management", "Warehouse Management", "Order Management", "Retail ERP", "Supplier Management", "Stock Tracking Tool", "Multi-Store System", "Seller Panel SaaS", "Pricing & Discount"]
+        items: ["POS Software", "Warehouse Management", "Order Management", "Retail ERP", "Supplier Management", "Stock Tracking Tool", "Multi-Store System", "Seller Panel SaaS", "Pricing & Discount"]
     },
     {
         title: "Healthcare & Clinic",
@@ -210,6 +210,7 @@ export const navLinks = [
             { name: 'Custom Software Development', href: '/services/custom-software-development' },
         ]
     },
+    { name: 'Blog', href: '/blog' },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Demo Arena', href: '/demo' },
     {

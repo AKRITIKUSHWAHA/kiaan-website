@@ -5,8 +5,21 @@ export const metadata: Metadata = {
     title: "Custom HRM Software Development Company | Kiaan Technology",
     description: "Kiaan Technology is a premier custom HRM software development company building secure, cloud-native HRMS portals, automated payroll systems, ATS recruitment bots, and employee management portals.",
     keywords: "Custom HRM Software Development, HRM Software Development Company, HRMS Software development, Automated Payroll ERP, Employee Management System India, HR Automation Software, Performance Appraisal Software, Cloud HRMS Solutions",
-    alternates: {
-        canonical: "https://kiaantechnology.com/hrm",
+    alternates: {},
+    openGraph: {
+        title: "Custom HRM Software Development Company | Kiaan Technology",
+        description: "Cloud-native HRMS portals, automated payroll systems, ATS recruitment bots & employee management portals — built by Kiaan Technology.",
+        url: "https://kiaantechnology.com/hrm",
+        siteName: "Kiaan Technology",
+        images: [{ url: "https://kiaantechnology.com/og-image.jpg", width: 1200, height: 630, alt: "HRM Software Development - Kiaan Technology" }],
+        type: "website",
+        locale: "en_IN",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Custom HRM Software Development Company | Kiaan Technology",
+        description: "Cloud-native HRMS portals, automated payroll systems & ATS recruitment bots. Build with Kiaan Technology.",
+        images: ["https://kiaantechnology.com/og-image.jpg"],
     },
 };
 
@@ -17,8 +30,8 @@ export default function HRMPage() {
             subTitle="HRM"
             mainKeyword="HRM SaaS Software"
             slug="hrm"
-            colorClass="text-red-500"
-            bgClass="bg-red-500"
+            colorClass="text-yellow-500"
+            bgClass="bg-yellow-500"
             desc="Streamline your workforce with the industry's most advanced HRM SaaS software. Empower your human resource department with full-cycle HR automation engineered specifically for modern, remote-first teams and complex, multi-location enterprise operations. Our intelligent human capital suite unifies automated salary calculations, statutory compliance (PF, ESI, TDS), dynamic shift planning, real-time biometric API logs, continuous KRA/KPI evaluation systems, and AI-driven candidate recruitment pipelines into a single, high-performance cloud ecosystem. By eliminating tedious manual administration, we enable your organization to scale human operations, optimize operational costs, and drive strategic talent management with zero downtime."
             stats={[
                 { val: "95%", label: "HR Automation Rate" },
@@ -121,6 +134,7 @@ export default function HRMPage() {
                 }
             ]}
             internalLinks={[
+                { label: "OKR Weekly Outcomes Portal", href: "/hrm/weekly-outcomes" },
                 { label: "Custom Software Solutions", href: "/solutions/custom-software" },
                 { label: "ERP & CRM Platforms", href: "/solutions/erp-crm" },
                 { label: "AI & Automation services", href: "/solutions/ai-automation" },

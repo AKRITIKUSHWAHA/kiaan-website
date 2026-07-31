@@ -106,7 +106,6 @@ export const metadata: Metadata = {
         type: 'website',
     },
     alternates: {
-        canonical: 'https://kiaantechnology.com/solutions/fintech/algorithmic-trading',
     },
 };
 

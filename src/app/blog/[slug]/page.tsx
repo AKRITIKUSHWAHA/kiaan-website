@@ -4,11 +4,41 @@ import { blogData } from '@/data/blogData';
 import { Button } from '@/components/Button';
 import Link from 'next/link';
 import { ArrowLeft, User, Calendar, Tag, Zap, ChevronRight } from 'lucide-react';
+import { Metadata } from 'next';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 export async function generateStaticParams() {
     return blogData.map((post) => ({
         slug: post.slug,
     }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const post = blogData.find((p) => p.slug === slug);
+    if (!post) return {};
+
+    return {
+        title: `${post.title} | Kiaan Technology Blog`,
+        description: post.excerpt,
+        alternates: {
+            canonical: `https://kiaantechnology.com/blog/${post.slug}`,
+        },
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            url: `https://kiaantechnology.com/blog/${post.slug}`,
+            siteName: 'Kiaan Technology',
+            type: 'article',
+            publishedTime: new Date(post.date).toISOString(),
+            authors: [post.author],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+        }
+    };
 }
 
 // Simple markdown renderer for the blog content
@@ -28,7 +58,7 @@ function renderContent(rawContent: string) {
         if (t.startsWith('<h') || t.startsWith('<blockquote')) {
             return <div key={i} dangerouslySetInnerHTML={{ __html: t }} />;
         }
-        if (t.match(/^\d+\.\s+/m) || t.match(/^-\s+/m)) { // match ordered or unordered list (though we only used ordered in data)
+        if (t.match(/^\d+\.\s+/m) || t.match(/^-\s+/m)) { // match ordered or unordered list
             const listItems = t.split(/\n/).map(line => {
                 const isOrdered = line.match(/^\d+\.\s+/);
                 const isUnordered = line.match(/^-\s+/);
@@ -47,8 +77,9 @@ function renderContent(rawContent: string) {
     });
 }
 
-export default function BlogPostDetail({ params }: { params: { slug: string } }) {
-    const post = blogData.find((p) => p.slug === params.slug);
+export default async function BlogPostDetail({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const post = blogData.find((p) => p.slug === slug);
 
     if (!post) {
         notFound();
@@ -56,6 +87,34 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
 
     return (
         <article className="min-h-screen bg-black text-white pt-24 pb-20 selection:bg-yellow-500 selection:text-black">
+            {/* Blog Post Schema */}
+            <JsonLd
+                data={{
+                    "@context": "https://schema.org",
+                    "@type": "BlogPosting",
+                    "headline": post.title,
+                    "description": post.excerpt,
+                    "datePublished": new Date(post.date).toISOString(),
+                    "dateModified": new Date(post.date).toISOString(),
+                    "author": {
+                        "@type": "Person",
+                        "name": post.author,
+                        "jobTitle": post.role
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Kiaan Technology",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://kiaantechnology.com/logo.png"
+                        }
+                    },
+                    "mainEntityOfPage": {
+                        "@type": "WebPage",
+                        "@id": `https://kiaantechnology.com/blog/${post.slug}`
+                    }
+                }}
+            />
             {/* Header Content */}
             <header className="container mx-auto px-6 mb-16 max-w-4xl">
                 <Link href="/blog" className="inline-flex items-center text-zinc-500 hover:text-yellow-500 text-[10px] font-black uppercase tracking-widest mb-12 transition-colors">
@@ -65,7 +124,9 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
                 <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-zinc-500 uppercase tracking-widest mb-8">
                     <span className="text-yellow-500 flex items-center gap-2"><Tag size={14} /> {post.category}</span>
                     <span className="w-1 h-1 bg-zinc-800 rounded-full" />
-                    <span className="flex items-center gap-2"><Calendar size={14} /> {post.date}</span>
+                    <span className="flex items-center gap-2"><Calendar size={14} /> Published: {post.date}</span>
+                    <span className="w-1 h-1 bg-zinc-800 rounded-full" />
+                    <span className="flex items-center gap-2">Last Updated: July 29, 2026</span>
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-display uppercase tracking-tighter leading-[1.1] mb-10">
