@@ -115,6 +115,58 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
                     }
                 }}
             />
+
+            {/* FAQ Page Schema */}
+            {post.slug === 'questions-to-ask-before-hiring-a-software-company' && (
+                <JsonLd
+                    data={{
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": [
+                            {
+                                "@type": "Question",
+                                "name": "What code coverage standard should a software agency support?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "A standard development agency should support a minimum of 80% automated code coverage (Jest / Cypress) built into their CI/CD build compilation pipelines to prevent regression bugs."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "What is a Blue-Green deployment model?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "A Blue-Green deployment is a release strategy that maintains two identical production environments (Blue and Green) to allow zero-downtime upgrades and instant rollbacks."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "What is a critical PR response SLA for software engineering?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "An elite engineering team holds a strict 24-hour SLA for peer pull request (PR) reviews to ensure development velocity is optimized."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "How does Kiaan Technology handle intellectual property rights?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Kiaan Technology guarantees 100% intellectual property, repository code, database schema, and server ownership to clients from Day 1."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "What security scanning tools are used in build pipelines?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "We enforce static application security testing (SAST) and software composition analysis (SCA) using tools like Trivy and npm audit checks to detect vulnerabilities before release."
+                                }
+                            }
+                        ]
+                    }}
+                />
+            )}
             {/* Header Content */}
             <header className="container mx-auto px-6 mb-16 max-w-4xl">
                 <Link href="/blog" className="inline-flex items-center text-zinc-500 hover:text-yellow-500 text-[10px] font-black uppercase tracking-widest mb-12 transition-colors">
