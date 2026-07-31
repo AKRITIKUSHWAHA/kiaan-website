@@ -20,6 +20,7 @@ export default function AIProductsPage() {
             title="Supercharge Business With AI Products"
             subTitle="AI Platform — Cognitive Intelligence"
             mainKeyword="AI Products India"
+            slug="ai-products"
             keywords={['AI products India', 'AI business software', 'document OCR AI', 'AI chatbot India', 'resume screening AI', 'business analytics AI', 'AI SaaS India', 'workflow automation AI']}
             desc="Deploy battle-tested AI products for document processing, customer conversations, resume screening, sales acceleration, and business analytics — all as plug-and-play SaaS modules that integrate with your existing systems in hours."
             stats={[

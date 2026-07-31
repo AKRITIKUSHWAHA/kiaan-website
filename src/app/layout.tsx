@@ -8,6 +8,7 @@ import AwardBanner from "@/components/AwardBanner";
 import UTMTracker from "@/components/UTMTracker";
 import { CanonicalTag } from "@/components/seo/CanonicalTag";
 import Script from "next/script";
+import { RetargetingTracker } from "@/components/analytics/RetargetingTracker";
 import "@fontsource/anton/400.css";
 import "@fontsource/manrope/300.css";
 import "@fontsource/manrope/400.css";
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Custom Software Development Company India | Enterprise ERP, SaaS & AI Solutions — Kiaan Technology",
         description: "Leading custom software development company in India. We build high-performance ERP, CRM, SaaS & AI automation software. Get a free consultation & quote today!",
-        images: ["/og-image.jpg"],
+        images: ["https://kiaantechnology.com/og-image.jpg"],
     },
     icons: {
         icon: '/favicon.ico',
@@ -55,6 +56,10 @@ export const metadata: Metadata = {
     },
     other: {
         "theme-color": "#000000",
+        // Google Search Console verification
+        "google-site-verification": "2Wsr1OneAkeWe0UL_I_F85Q9opcwTrnRzT3dUCSikK8",
+        // Bing Webmaster Tools verification
+        "msvalidate.01": "A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6",
     },
 };
 
@@ -82,9 +87,18 @@ export default function RootLayout({
                     }}
                 />
 
-                {/* Preconnect for external domains (LCP optimization) */}
+                {/* Preconnect — reduce connection setup time for LCP-critical origins */}
                 <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://invitejs.trustpilot.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://widget.trustpilot.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://images.unsplash.com" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="dns-prefetch" href="https://assets.calendly.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
                 {/* Trustpilot Initialization */}
                 <Script
@@ -132,6 +146,27 @@ export default function RootLayout({
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
                             gtag('config', 'G-Y9H9T9S8PN');
+                            gtag('config', 'AW-11548291032'); // Google Ads Remarketing Tag
+                        `,
+                    }}
+                />
+
+                {/* Meta Pixel (Facebook & Instagram Retargeting) */}
+                <Script
+                    id="meta-pixel-script"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            !function(f,b,e,v,n,t,s)
+                            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                            n.queue=[];t=b.createElement(e);t.async=!0;
+                            t.src=v;s=b.getElementsByTagName(e)[0];
+                            s.parentNode.insertBefore(t,s)}(window, document,'script',
+                            'https://connect.facebook.net/en_US/fbevents.js');
+                            fbq('init', '1098234891023842'); // Meta Pixel ID
+                            fbq('track', 'PageView');
                         `,
                     }}
                 />
@@ -309,6 +344,7 @@ export default function RootLayout({
                 />
             </head>
             <body className="antialiased selection:bg-yellow-500 selection:text-black max-w-screen pb-20" suppressHydrationWarning>
+                <RetargetingTracker />
                 {/* Google Tag Manager (noscript) */}
                 <noscript>
                     <iframe
@@ -329,7 +365,7 @@ export default function RootLayout({
                             "@type": "Organization",
                             "name": "Kiaan Technology",
                             "url": "https://kiaantechnology.com",
-                            "logo": "https://kiaantechnology.com/logo.png",
+                            "logo": "https://kiaantechnology.com/logo.webp",
                             "description": "AI driven custom software development company providing ERP, CRM, SaaS and enterprise solutions.",
                             "contactPoint": {
                                 "@type": "ContactPoint",
@@ -338,8 +374,7 @@ export default function RootLayout({
                             },
                             "sameAs": [
                                 "https://www.linkedin.com/company/89547261/",
-                                "https://www.instagram.com/kiaan_technology4/",
-                                "https://youtube.com/@kiaantechnology"
+                                "https://www.instagram.com/kiaan_technology4/"
                             ]
                         })
                     }}
@@ -361,24 +396,7 @@ export default function RootLayout({
                         })
                     }}
                 />
-                <Script
-                    id="breadcrumb-schema"
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BreadcrumbList",
-                            "itemListElement": [
-                                {
-                                    "@type": "ListItem",
-                                    "position": 1,
-                                    "name": "Home",
-                                    "item": "https://kiaantechnology.com"
-                                }
-                            ]
-                        })
-                    }}
-                />
+
                 <Script
                     id="local-business"
                     type="application/ld+json"
@@ -387,7 +405,7 @@ export default function RootLayout({
                             "@context": "https://schema.org",
                             "@type": "LocalBusiness",
                             "name": "Kiaan Technology Indore",
-                            "image": "https://kiaantechnology.com/logo.png",
+                            "image": "https://kiaantechnology.com/logo.webp",
                             "@id": "https://kiaantechnology.com",
                             "url": "https://kiaantechnology.com",
                             "telephone": "+91 97521 00980",

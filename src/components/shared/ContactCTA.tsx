@@ -44,7 +44,7 @@ const defaultFeatures = [
 export const ContactCTA: React.FC<ContactCTAProps> = (props) => (
   <CTASection
     tagText="Let's Build Together"
-    headlinePrimary="Need a"
+    headlinePrimary="Need a "
     headlineAccent="Similar Solution?"
     description="Whether you're scaling an existing system or launching something entirely new, our engineers are ready to turn your ideas into production-ready software — on time, on budget, and built to last."
     features={defaultFeatures}

@@ -1,0 +1,14 @@
+# CODEOWNERS Configuration for Kiaan Project Repository
+# Global Repository Leads
+*                       @kiaan-engineering-lead @senior-tech-architect
+
+# Frontend Core & Design System
+/src/app/               @frontend-senior-lead @ui-ux-lead
+/src/components/        @frontend-senior-lead @component-maintainers
+/src/styles/            @ui-ux-lead
+
+# Data & Business Logic Modules
+/src/data/              @senior-backend-leads @system-architect
+
+# Workflows & CI/CD Pipelines
+/.github/               @devops-lead @kiaan-engineering-lead

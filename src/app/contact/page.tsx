@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from '@/components/Button'
+import { SocialProofBar } from '@/components/SocialProofBar'
 import React from 'react';
 import emailjs from '@emailjs/browser';
 import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
@@ -60,12 +61,31 @@ export default function Contact() {
                 EMAILJS_PUBLIC_KEY
             );
 
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'contact',
+                    name: formData.name,
+                    email: formData.email,
+                    projectType: formData.projectType,
+                    message: formData.message,
+                    sourcePage: '/contact'
+                })
+            });
+
+            const data = await response.json();
+            if (!response.ok || !data.ok) {
+                setStatus('error');
+                setErrorMessage(data.message || 'Message send nahi ho paaya. Please try again.');
+                return;
+            }
+
             setStatus('success');
             trackGAEvent('form_submit', 'Lead Generation', 'Contact Form Submission');
             trackGTMEvent('form_submit', { form_name: 'Contact Form', project_type: formData.projectType });
             setFormData({ name: '', email: '', projectType: 'Custom Software Development', message: '' });
-        } catch (error) {
-            console.error('Contact form email failed', error);
+        } catch {
             setStatus('error');
             setErrorMessage('Message send nahi ho paayi. Please try again.');
         }
@@ -203,6 +223,7 @@ export default function Contact() {
                             >
                                 {status === 'submitting' ? 'SENDING...' : 'Send Message'}
                             </Button>
+                            <SocialProofBar variant="dark" className="mt-4" />
                         </form>
                     )}
                 </div>

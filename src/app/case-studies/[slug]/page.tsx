@@ -61,73 +61,32 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
         <div className="bg-black min-h-screen text-white pt-32 pb-16 selection:bg-yellow-500 selection:text-black">
             {/* SEO JSON-LD with E-E-A-T Author */}
             <JsonLd 
-<<<<<<< HEAD
                 data={[
                     {
                         "@context": "https://schema.org",
-                        "@type": "SoftwareApplication",
+                        "@type": "TechArticle",
+                        "headline": study.title,
                         "name": study.title,
                         "applicationCategory": study.category,
                         "operatingSystem": "Web, Mobile",
                         "description": study.desc,
                         "image": study.image,
-                        "aggregateRating": {
-                            "@type": "AggregateRating",
-                            "ratingValue": "5",
-                            "ratingCount": "1"
-                        }
-                    },
-                    {
-                        "@context": "https://schema.org",
-                        "@type": "Article",
-                        "headline": `${study.title} - Case Study`,
-                        "description": study.desc,
-                        "image": study.image,
-                        "url": `https://kiaantechnology.com/case-studies/${study.slug}`,
+                        "datePublished": "2026-03-10T08:00:00+08:00",
+                        "dateModified": "2026-07-29T09:20:00+05:30",
                         "author": {
-                            "@type": "Organization",
-                            "name": "Kiaan Technology",
-                            "url": "https://kiaantechnology.com"
+                            "@type": "Person",
+                            "name": "Rahul Sharma",
+                            "jobTitle": "Principal Cloud Architect",
+                            "worksFor": {
+                                "@type": "Organization",
+                                "name": "Kiaan Technology"
+                            }
                         },
                         "publisher": {
                             "@type": "Organization",
                             "name": "Kiaan Technology",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "https://kiaantechnology.com/logo.png"
-                            }
-                        },
-                        "about": {
-                            "@type": "Thing",
-                            "name": study.category
-                        },
-                        "keywords": study.technologies ? study.technologies.join(", ") : undefined
-=======
-                data={{
-                    "@context": "https://schema.org",
-                    "@type": "TechArticle",
-                    "headline": study.title,
-                    "name": study.title,
-                    "applicationCategory": study.category,
-                    "operatingSystem": "Web, Mobile",
-                    "description": study.desc,
-                    "image": study.image,
-                    "datePublished": "2026-03-10T08:00:00+08:00",
-                    "dateModified": "2026-07-29T09:20:00+05:30",
-                    "author": {
-                        "@type": "Person",
-                        "name": "Rahul Sharma",
-                        "jobTitle": "Principal Cloud Architect",
-                        "worksFor": {
-                            "@type": "Organization",
-                            "name": "Kiaan Technology"
+                            "logo": "https://kiaantechnology.com/logo.png"
                         }
-                    },
-                    "publisher": {
-                        "@type": "Organization",
-                        "name": "Kiaan Technology",
-                        "logo": "https://kiaantechnology.com/logo.png"
->>>>>>> f1315c14ac8daa996022f6ce10f0488ae7dd3f57
                     }
                 ]}
             />
@@ -144,7 +103,7 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                     <img 
                         src={study.image} 
                         alt={`${study.title} - Custom Software Solution Details`} 
-                        fetchPriority="high"
+                        loading="lazy"
                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-50 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
@@ -165,6 +124,11 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                     <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tight mb-8 leading-tight">
                         {study.title}
                     </h1>
+                    {study.authorName && (
+                        <div className="text-xs md:text-sm text-zinc-500 font-medium tracking-wide mb-8">
+                            Case Study by <span className="text-zinc-300 font-bold">{study.authorName}</span>, {study.authorDesignation} at Kiaan Technology
+                        </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-zinc-900">
                         <div>
                             <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Primary Impact</div>
@@ -188,34 +152,28 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
                             <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
                                 <Target className="text-red-500" /> The Challenge
                             </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light">
-                                {study.challenge}
-                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: study.challenge }} />
                         </div>
-
+ 
                         {/* The Blueprint */}
                         <div className="space-y-6">
                             <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
                                 <Cpu className="text-yellow-500" /> The Blueprint
                             </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light">
-                                {study.blueprint}
-                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: study.blueprint }} />
                             {study.architectureImage && (
                                 <div className="mt-8 border border-zinc-800 p-2 bg-zinc-950/50">
                                     <img src={study.architectureImage} alt={`System Architecture Blueprint for ${study.title}`} loading="lazy" className="w-full h-auto grayscale opacity-80" />
                                 </div>
                             )}
                         </div>
-
+ 
                         {/* The Execution */}
                         <div className="space-y-6 relative overflow-hidden">
                             <h2 className="text-2xl md:text-3xl font-display uppercase tracking-tight flex items-center gap-4">
                                 <Activity className="text-emerald-500" /> The Execution
                             </h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed font-light relative z-10">
-                                {study.execution}
-                            </p>
+                            <p className="text-lg text-zinc-400 leading-relaxed font-light relative z-10" dangerouslySetInnerHTML={{ __html: study.execution }} />
                             <div className="absolute top-1/2 -right-8 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 blur-[80px] rounded-full pointer-events-none" />
                         </div>
 

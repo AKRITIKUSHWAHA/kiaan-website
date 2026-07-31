@@ -1424,15 +1424,32 @@ export default function AccessLiveEnvironment() {
                     EMAILJS_PUBLIC_KEY
                 );
 
+                const res = await fetch('/api/leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        leadType: 'demo_request',
+                        name: formData.name,
+                        email: formData.email,
+                        phone: formData.phone,
+                        serviceInterest: selectedSoftware?.name,
+                        sourcePage: '/demo'
+                    })
+                });
+
+                const data = await res.json();
+                if (!res.ok || !data.ok) {
+                    setFormErrors({ email: data.message || 'Submission failed. Please try again.', phone: '' });
+                    setIsSubmitting(false);
+                    return;
+                }
+
                 setModalState('selection');
                 trackGAEvent('form_submit', 'Lead Generation', `Demo Request - ${selectedSoftware?.name}`);
                 trackGTMEvent('form_submit', { form_name: 'Demo Request', software_name: selectedSoftware?.name, category: selectedSoftware?.category });
-                setFormErrors({ email: '', phone: '' }); // Clear on success
-            } catch (error) {
-                console.error('Demo request email failed', error);
-                // Still allow them to see the demo even if email fails to avoid blocking the user journey
-                setModalState('selection');
                 setFormErrors({ email: '', phone: '' });
+            } catch {
+                setFormErrors({ email: 'Submission failed. Please try again.', phone: '' });
             } finally {
                 setIsSubmitting(false);
             }

@@ -11,7 +11,6 @@ import { jsPDF } from 'jspdf';
 import emailjs from '@emailjs/browser';
 import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
 import { getStoredUTMParams } from '@/utils/utm';
-
 interface FormData {
     industry: string;
     projectType: string;
@@ -25,10 +24,6 @@ interface FormData {
     contactMethod: string;
     contactNumber: string;
 }
-
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 export default function StartProject() {
     const [step, setStep] = useState(1)
@@ -117,9 +112,34 @@ export default function StartProject() {
             )
             trackGAEvent('form_submit', 'Lead Generation', 'Start Project Request');
             trackGTMEvent('form_submit', { form_name: 'Start Project Request', project_type: formData.projectType, budget: formData.budget });
+
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'start_project',
+                    name: formData.name,
+                    company: formData.company,
+                    email: formData.email,
+                    phone: formData.contactNumber,
+                    contactMethod: formData.contactMethod,
+                    industry: formData.industry,
+                    projectType: formData.projectType,
+                    features: formData.features,
+                    vision: formData.vision,
+                    budget: formData.budget,
+                    timeline: formData.timeline,
+                    sourcePage: '/start-project'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setSubmitError(data.message || 'Request send nahi ho paayi. Please try again.')
+                return;
+            }
             setStep(7)
-        } catch (error) {
-            console.error('EmailJS submission failed', error)
+        } catch {
             setSubmitError('Request send nahi ho paayi. Please try again.')
         } finally {
             setIsSubmitting(false)

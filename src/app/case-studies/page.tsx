@@ -99,7 +99,7 @@ export default function CaseStudies() {
                     "@type": "Organization",
                     "name": "Kiaan Technology",
                     "url": "https://kiaantechnology.com",
-                    "logo": "https://kiaantechnology.com/logo.png",
+                    "logo": "https://kiaantechnology.com/logo.webp",
                     "aggregateRating": {
                         "@type": "AggregateRating",
                         "ratingValue": "5",
@@ -163,12 +163,8 @@ export default function CaseStudies() {
                                 <div className="aspect-video relative overflow-hidden border border-white/10 shadow-2xl">
                                     <img
                                         src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-<<<<<<< HEAD
-                                        alt="Featured Enterprise Custom Software Project - Kiaan Technology"
-                                        fetchPriority="high"
-=======
                                         alt="Enterprise Logistics Cloud Engine Architecture - Kiaan Technology Case Study"
->>>>>>> f1315c14ac8daa996022f6ce10f0488ae7dd3f57
+                                        loading="lazy"
                                         className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />

@@ -5,6 +5,9 @@ import { AnimatePresence } from 'framer-motion'
 import { Reveal } from '@/components/Reveal'
 import { resources } from '@/data/resourcesData'
 import { ResourceCardMemo } from '@/components/ResourceCard'
+import { SaasChecklistCTA } from '@/components/SaasChecklistCTA'
+import { AIROICalculatorCTA } from '@/components/AIROICalculatorCTA'
+import { VendorScorecardCTA } from '@/components/VendorScorecardCTA'
 
 export default function ResourcesPage() {
     return (
@@ -22,21 +25,25 @@ export default function ResourcesPage() {
                         <Reveal>
                             <h5 className="text-yellow-500 font-black uppercase tracking-[0.4em] mb-4 text-sm flex items-center gap-3">
                                 <span className="w-12 h-px bg-yellow-500" />
-                                Knowledge Hub
+                                    Free Business Resources
                             </h5>
                         </Reveal>
                         <Reveal delay={0.1}>
                             <h1 className="text-4xl md:text-6xl font-display uppercase leading-[0.9] text-white tracking-tighter mb-8">
-                                Resources <span className="text-zinc-800">&</span> <br />
-                                <span className="text-yellow-500 italic">Insights</span>
+                                Free Software <span className="text-zinc-800">&</span> AI <br />
+                                <span className="text-yellow-500 italic">Business Resources</span>
                             </h1>
                         </Reveal>
                         <Reveal delay={0.2}>
                             <p className="text-zinc-500 text-lg md:text-xl max-w-2xl leading-relaxed uppercase font-medium">
-                                Expert analysis, technical whitepapers, and success stories at the intersection of business and technology.
+                                Practical tools and guides to help businesses plan software projects, calculate automation opportunities and evaluate development partners.
                             </p>
                         </Reveal>
                     </div>
+
+                    <SaasChecklistCTA compact />
+                    <AIROICalculatorCTA compact />
+                    <VendorScorecardCTA compact />
 
                     {/* Resources Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

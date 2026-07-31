@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "generate:rss": "node scripts/generate-rss.mjs",
     "prebuild": "cmd /c \"rd /s /q .next out 2>nul || exit 0\" && node scripts/generate-rss.mjs",
     "build": "next build",
@@ -37,6 +37,7 @@
     "eslint-config-next": "15.1.7",
     "globals": "^17.3.0",
     "postcss": "^8.5.1",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.3"
   }

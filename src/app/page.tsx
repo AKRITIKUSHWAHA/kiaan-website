@@ -3,15 +3,20 @@
 import { useState, useEffect } from 'react'
 import NextImage from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Code, Zap, Globe, Shield, TrendingUp, LucideIcon, Award } from 'lucide-react'
+import { ArrowRight, Code, Zap, Globe, Shield, TrendingUp, LucideIcon, Award, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/Button'
 import { Reveal } from '@/components/Reveal'
+import { SocialProofBar } from '@/components/SocialProofBar'
+import { ClientLogosSection } from '@/components/ClientLogosSection'
 import dynamic from 'next/dynamic'
 import React from 'react';
 import Script from 'next/script'
 
 // Lazy Load Heavy Sections
+const AsSeenOnSection = dynamic(() => import('@/components/home/AsSeenOnSection').then(mod => mod.AsSeenOnSection), {
+    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+})
 const IndustrySolutions = dynamic(() => import('@/components/home/IndustrySolutions').then(mod => mod.IndustrySolutions), {
     loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
 })
@@ -39,7 +44,7 @@ const ContactCTA = dynamic(() => import('@/components/shared/ContactCTA').then(m
 const heroSlides = [
     { 
         id: 1, 
-        img: '/frontPage/ISO certificate.jpg', 
+        img: '/frontPage/ISO certificate.webp', 
         alt: 'Kiaan Technology ISO/IEC 27001:2022 Compliance Certificate',
         label: 'Global Compliance', 
         title: 'ISO Certified',
@@ -49,7 +54,7 @@ const heroSlides = [
     },
     { 
         id: 2, 
-        img: '/frontPage/Graphic Design.png', 
+        img: '/frontPage/Graphic Design.webp', 
         alt: 'Creative UI/UX & Graphic Design Showcase',
         label: 'Visual Excellence', 
         title: 'Creative Design',
@@ -59,7 +64,7 @@ const heroSlides = [
     },
     { 
         id: 3, 
-        img: '/frontPage/glassdoor-award.png', 
+        img: '/frontPage/glassdoor-award.webp', 
         alt: 'Glassdoor Top Workplace Award Certificate',
         label: 'Top workplace', 
         title: 'Glassdoor Rated',
@@ -69,7 +74,7 @@ const heroSlides = [
     },
     { 
         id: 4, 
-        img: '/frontPage/ReactJs.png', 
+        img: '/frontPage/ReactJs.webp', 
         alt: 'React.js logo',
         label: 'Next-Gen Tech', 
         title: 'React Development',
@@ -79,7 +84,7 @@ const heroSlides = [
     },
     { 
         id: 5, 
-        img: '/frontPage/ambitionbox.png', 
+        img: '/frontPage/ambitionbox.webp', 
         alt: 'AmbitionBox Excellence Rating Award',
         label: 'IT Company Achiever', 
         title: 'AmbitionBox Rated',
@@ -89,7 +94,7 @@ const heroSlides = [
     },
     { 
         id: 6, 
-        img: '/frontPage/UI design.png', 
+        img: '/frontPage/UI design.webp', 
         alt: 'UI/UX Design Showcase Interface',
         label: 'User Centric', 
         title: 'UI/UX Design',
@@ -99,7 +104,7 @@ const heroSlides = [
     },
     { 
         id: 7, 
-        img: '/frontPage/Fiver certificate.jpeg', 
+        img: '/frontPage/Fiver certificate.webp', 
         alt: 'Fiverr Certified Top Rated Development Expert Badge',
         label: 'Verified Freelancer', 
         title: 'Fiverr Certified',
@@ -109,7 +114,7 @@ const heroSlides = [
     },
     { 
         id: 8, 
-        img: '/frontPage/wix-partner.jpg', 
+        img: '/frontPage/wix-partner.webp', 
         alt: 'Wix Studio Pioneer Partner Badge',
         label: 'Wix Studio Partner', 
         title: 'Wix Partner',
@@ -185,6 +190,7 @@ const HeroShowcase = () => {
                                 className="object-contain transition-transform duration-700"
                                 priority
                                 quality={100}
+                                fetchPriority="high"
                             />
                         </div>
                     </motion.div>
@@ -260,6 +266,86 @@ const GridCard = ({ title, desc, icon: Icon, variant = 'yellow', delay, href = "
 const GridCardMemo = React.memo(GridCard)
 
 export default function Home() {
+    const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [leadMagnetForm, setLeadMagnetForm] = useState({ name: "", email: "", company: "", gdprConsent: false });
+    const [leadMagnetStatus, setLeadMagnetStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+    const handleLeadMagnetSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!leadMagnetForm.name || !leadMagnetForm.email || !leadMagnetForm.company || !leadMagnetForm.gdprConsent) {
+            setLeadMagnetStatus("error");
+            return;
+        }
+        setLeadMagnetStatus("submitting");
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1200));
+            if (typeof window !== "undefined") {
+                const existingLeads = JSON.parse(localStorage.getItem("kiaan_leads") || "[]");
+                existingLeads.push({ ...leadMagnetForm, date: new Date().toISOString() });
+                localStorage.setItem("kiaan_leads", JSON.stringify(existingLeads));
+            }
+            setLeadMagnetStatus("success");
+            setLeadMagnetForm({ name: "", email: "", company: "", gdprConsent: false });
+        } catch (err) {
+            setLeadMagnetStatus("error");
+        }
+    };
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What services does Kiaan Technology offer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kiaan Technology specializes in enterprise-grade custom software development, including ERP, CRM, and SaaS platform development. We also deliver advanced AI integration, automation solutions, mobile app development, and high-performance web development. Our team designs scalable architectures tailored to streamline your business operations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does custom software development take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The timeline for custom software development typically ranges from 2 to 6 months depending on the project's scale and complexity. A standard MVP (Minimum Viable Product) might take 8-12 weeks, while complex enterprise systems require more comprehensive engineering. We follow agile development methodologies to deliver iterative updates and ensure transparency throughout the lifecycle."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide SaaS platform development?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we specialize in building scalable, multi-tenant SaaS platforms with secure subscription management, payment integrations, and high-performance databases. Our engineering team designs clean, modern user interfaces combined with robust backend structures to support thousands of concurrent users. We handle the entire lifecycle from concept and cloud architecture design to deployment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What industries do you specialize in?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We build custom digital solutions for a wide range of industries including Healthcare, Fintech, Retail, Logistics, Education, and Automotive. Our team develops tailored software such as patient portals, algorithmic trading systems, retail POS systems, and supply chain ERP software. We adapt our engineering expertise to meet the unique compliance and operational standards of each sector."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my project data secure with Kiaan?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Security is a core priority at Kiaan Technology, and we enforce strict data protection protocols at every stage of development. We sign Non-Disclosure Agreements (NDAs) to protect your intellectual property and ensure complete confidentiality. Our systems utilize industry-standard encryption, secure cloud environments, and regular vulnerability audits to keep your project data safe."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer post-launch support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide comprehensive post-launch support and maintenance packages to keep your system secure, updated, and bug-free. Our team monitors server performance, handles system upgrades, and quickly resolves any technical issues that arise. We offer flexible SLAs tailored to your operational requirements to ensure long-term stability and scaling."
+                }
+            }
+        ]
+    };
+
     return (
         <div className="bg-black min-h-screen text-white font-sans selection:bg-yellow-500 selection:text-black overflow-x-hidden">
             {/* Comprehensive SEO Schema Markup */}
@@ -432,7 +518,7 @@ export default function Home() {
                                 </h1>
                             </Reveal>
                             <Reveal delay={0.3}>
-                                <p className="text-sm sm:text-base text-zinc-400 max-w-2xl border-l-2 border-red-600 pl-4 mb-6 leading-snug">
+                                <p className="text-sm sm:text-base text-zinc-400 max-w-2xl border-l-2 border-yellow-500 pl-4 mb-6 leading-snug">
                                     Kiaan Technology is an elite <strong>AI-Driven Business Automation Partner</strong> delivering <strong>custom software solutions</strong> and <strong>scalable SaaS platforms</strong>. We engineer software ecosystems that transform manual enterprise processes into autonomous, high-margin revenue engines using <strong>Enterprise AI</strong> and <strong>Predictive ML</strong>.
                                 </p>
                             </Reveal>
@@ -457,6 +543,7 @@ export default function Home() {
                                             Launch Your Software
                                         </Button>
                                     </Link>
+                                    <SocialProofBar variant="transparent" className="mt-3 px-0" />
                                 </div>
                             </Reveal>
                         </div>
@@ -469,6 +556,9 @@ export default function Home() {
                 </div>
             </section>
 
+
+            {/* Client Logos Strip — social proof marquee */}
+            <ClientLogosSection />
 
             {/* Bento Grid Services — Content Only */}
             <section className="pt-8 pb-10 container mx-auto px-4">
@@ -521,6 +611,7 @@ export default function Home() {
             </section>
 
             {/* NEW SECTIONS */}
+            <AsSeenOnSection />
             <IndustrySolutions />
             <FeaturedCaseStudies />
             <TestimonialsSection />
@@ -597,15 +688,184 @@ export default function Home() {
             <InternshipTraining />
             <ResourcesPreview />
 
+            {/* Lead Magnet Section */}
+            <section className="py-20 bg-zinc-950 border-t border-zinc-900">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <div className="border border-zinc-900 bg-black p-8 md:p-12 relative overflow-hidden group hover:border-yellow-500/20 transition-all duration-500">
+                        {/* Glow effect */}
+                        <div className="absolute -right-16 -bottom-16 w-64 h-64 bg-yellow-500/5 blur-[80px] rounded-full pointer-events-none" />
+                        
+                        {leadMagnetStatus === "success" ? (
+                            <div className="text-center py-8">
+                                <Reveal>
+                                    <div className="w-16 h-16 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-8 h-8">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-2xl md:text-3xl font-display uppercase text-white mb-4">Guide is on its way!</h3>
+                                    <p className="text-zinc-400 max-w-md mx-auto leading-relaxed">
+                                        Thank you for downloading. We have sent **"7 Steps to Automate Your Business with AI"** to your inbox.
+                                    </p>
+                                </Reveal>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleLeadMagnetSubmit} className="space-y-6">
+                                <div>
+                                    <Reveal>
+                                        <span className="text-[10px] font-black text-yellow-500 uppercase tracking-[0.2em] mb-3 block">Free Resource</span>
+                                        <h2 className="text-3xl md:text-4xl font-display uppercase text-white mb-4 leading-tight">
+                                            Get Our Free Guide: <span className="text-yellow-500">"7 Steps to Automate Your Business with AI"</span>
+                                        </h2>
+                                        <p className="text-zinc-400 text-sm md:text-base font-light leading-relaxed max-w-2xl mb-8">
+                                            Discover how to identify automation bottlenecks, design AI microservices, and deploy intelligent agents to slash operational overhead.
+                                        </p>
+                                    </Reveal>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <Reveal delay={0.1}>
+                                        <input
+                                            type="text"
+                                            placeholder="Your Name"
+                                            value={leadMagnetForm.name}
+                                            onChange={(e) => setLeadMagnetForm({ ...leadMagnetForm, name: e.target.value })}
+                                            className="w-full bg-zinc-950 border border-zinc-800 focus:border-yellow-500 focus:outline-none px-4 py-3.5 text-white text-sm transition-colors rounded-none placeholder-zinc-600"
+                                            required
+                                        />
+                                    </Reveal>
+                                    <Reveal delay={0.2}>
+                                        <input
+                                            type="email"
+                                            placeholder="Work Email"
+                                            value={leadMagnetForm.email}
+                                            onChange={(e) => setLeadMagnetForm({ ...leadMagnetForm, email: e.target.value })}
+                                            className="w-full bg-zinc-950 border border-zinc-800 focus:border-yellow-500 focus:outline-none px-4 py-3.5 text-white text-sm transition-colors rounded-none placeholder-zinc-600"
+                                            required
+                                        />
+                                    </Reveal>
+                                    <Reveal delay={0.3}>
+                                        <input
+                                            type="text"
+                                            placeholder="Company Name"
+                                            value={leadMagnetForm.company}
+                                            onChange={(e) => setLeadMagnetForm({ ...leadMagnetForm, company: e.target.value })}
+                                            className="w-full bg-zinc-950 border border-zinc-800 focus:border-yellow-500 focus:outline-none px-4 py-3.5 text-white text-sm transition-colors rounded-none placeholder-zinc-600"
+                                            required
+                                        />
+                                    </Reveal>
+                                </div>
+
+                                <Reveal delay={0.4}>
+                                    <div className="flex items-start gap-3">
+                                        <input
+                                            type="checkbox"
+                                            id="gdprConsent"
+                                            checked={leadMagnetForm.gdprConsent}
+                                            onChange={(e) => setLeadMagnetForm({ ...leadMagnetForm, gdprConsent: e.target.checked })}
+                                            className="mt-1 cursor-pointer accent-yellow-500 h-4 w-4 border-zinc-800 bg-zinc-950"
+                                            required
+                                        />
+                                        <label htmlFor="gdprConsent" className="text-zinc-500 text-xs leading-relaxed cursor-pointer select-none">
+                                            I agree to receive emails from Kiaan Technology regarding automation tips, software strategies, and exclusive offers. I can unsubscribe at any time.
+                                        </label>
+                                    </div>
+                                </Reveal>
+
+                                <Reveal delay={0.5} width="100%">
+                                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-zinc-900/50">
+                                        {leadMagnetStatus === "error" && (
+                                            <p className="text-red-500 text-xs font-medium">
+                                                Please fill all fields and accept the consent checkbox to continue.
+                                            </p>
+                                        )}
+                                        <button
+                                            type="submit"
+                                            disabled={leadMagnetStatus === "submitting"}
+                                            className="w-full sm:w-auto bg-yellow-500 text-black hover:bg-white transition-colors duration-300 font-bold uppercase text-xs tracking-wider py-4 px-8 cursor-pointer rounded-none disabled:bg-zinc-800 disabled:text-zinc-500 disabled:cursor-not-allowed ml-auto"
+                                        >
+                                            {leadMagnetStatus === "submitting" ? "Processing..." : "Download Free Guide"}
+                                        </button>
+                                    </div>
+                                </Reveal>
+                            </form>
+                        )}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="py-20 bg-black border-t border-zinc-900">
+                <div className="container mx-auto px-4 max-w-4xl">
+                    <div className="text-center mb-16">
+                        <Reveal>
+                            <h2 className="text-4xl md:text-5xl font-display uppercase text-white mb-4">
+                                Frequently Asked <span className="text-yellow-500">Questions</span>
+                            </h2>
+                        </Reveal>
+                        <Reveal delay={0.2}>
+                            <p className="text-zinc-400 max-w-2xl mx-auto">
+                                Got questions about custom software, SaaS, or our processes? We have got the answers to help you get started.
+                            </p>
+                        </Reveal>
+                    </div>
+
+                    <div className="space-y-4">
+                        {faqSchema.mainEntity.map((item, idx) => {
+                            const isOpen = openFaq === idx;
+                            return (
+                                <Reveal key={idx} delay={idx * 0.05}>
+                                    <div className="border border-zinc-900 bg-zinc-950/50 transition-all hover:border-yellow-500/20">
+                                        <button
+                                            onClick={() => setOpenFaq(isOpen ? null : idx)}
+                                            className="w-full p-6 flex justify-between items-center text-left gap-4 focus:outline-none cursor-pointer group"
+                                        >
+                                            <span className="text-base md:text-lg font-display uppercase text-white tracking-wide transition-colors group-hover:text-yellow-500">
+                                                {item.name}
+                                            </span>
+                                            <ChevronDown
+                                                size={20}
+                                                className={`text-zinc-500 transition-transform duration-300 ${isOpen ? "rotate-180 text-yellow-500" : ""}`}
+                                            />
+                                        </button>
+                                        
+                                        <AnimatePresence initial={false}>
+                                            {isOpen && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="px-6 pb-6 pt-0 text-zinc-400 text-sm md:text-base font-light leading-relaxed border-t border-zinc-900/50">
+                                                        {item.acceptedAnswer.text}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                </Reveal>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
             {/* Contact CTA */}
             <ContactCTA />
 
             {/* SEO Content Section */}
-            <section className="py-8 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
+            <section className="py-12 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
                 <div className="container mx-auto max-w-7xl">
-                    <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-light">
-                        Kiaan Technology is an Indore-based technology partner specializing in <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">custom software development</Link>, enterprise <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platforms</Link>, and intelligent AI automation. We engineer high-performance digital products for businesses looking to scale with confidence and technical excellence.
-                    </p>
+                    <div className="text-sm md:text-base text-zinc-300 leading-relaxed font-light space-y-4">
+                        <p>
+                            Based in Indore, Kiaan Technology is a dedicated technology partner building robust digital systems for businesses across India and around the globe. As a leading <Link href="/it-company-indore" className="text-white hover:text-yellow-500 font-medium">IT Company in Indore</Link>, we work closely with clients to modernize workflows and deliver high-performance applications. Our capabilities as a premier <Link href="/software-development-company-indore" className="text-white hover:text-yellow-500 font-medium">Software Development Company in Indore</Link> span end-to-end <Link href="/saas-development-company-indore" className="text-white hover:text-yellow-500 font-medium">SaaS platform development</Link>, bespoke enterprise software, and custom <Link href="/web-development-company-indore" className="text-white hover:text-yellow-500 font-medium">web development in Indore</Link>.
+                        </p>
+                        <p>
+                            With our foundation as a trusted <Link href="/software-development-company-india" className="text-white hover:text-yellow-500 font-medium">Software Development Company in India</Link>, we combine engineering precision with scalable cloud architectures and advanced security practices. From consulting to final deployment, our Indore-based engineering team ensures reliable, zero-downtime delivery to help your business scale securely.
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>

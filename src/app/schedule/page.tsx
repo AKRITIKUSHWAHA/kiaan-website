@@ -12,7 +12,6 @@ import { getStoredUTMParams } from '@/utils/utm';
 const EMAILJS_SERVICE_ID = 'service_opc05wm';
 const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
 const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
-
 export default function SchedulePage() {
     const [step, setStep] = useState(1);
     const [selectedDate, setSelectedDate] = useState<number | null>(null);
@@ -91,11 +90,33 @@ export default function SchedulePage() {
                 EMAILJS_PUBLIC_KEY
             );
 
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'contact',
+                    leadSource: 'website_contact',
+                    fullName: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    serviceInterest: 'Counseling Session',
+                    projectTimeline: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month} at ${selectedTime}`,
+                    message: formData.discuss || 'Counseling Session',
+                    sourcePage: '/schedule'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setSubmitError(data.message || 'Booking send nahi ho paayi. Please try again.');
+                setIsSubmitting(false);
+                return;
+            }
+
             trackGAEvent('form_submit', 'Lead Generation', 'Schedule Call Booking');
             trackGTMEvent('form_submit', { form_name: 'Schedule Call Booking', date: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`, time: selectedTime });
             setStep(4);
-        } catch (error) {
-            console.error('Schedule booking email failed', error);
+        } catch {
             setSubmitError('Booking send nahi ho paayi. Please try again.');
         } finally {
             setIsSubmitting(false);

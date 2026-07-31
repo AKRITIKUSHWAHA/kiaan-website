@@ -57,6 +57,8 @@ export const FeaturedCaseStudies: React.FC = () => {
               href={`/case-studies/${study.slug}`}
               index={idx}
               accentClass={accentClasses[idx % accentClasses.length]}
+              authorName={study.authorName}
+              authorDesignation={study.authorDesignation}
             />
           ))}
         </div>

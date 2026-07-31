@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { caseStudiesData } from '@/data/caseStudiesData';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://kiaantechnology.com';
 

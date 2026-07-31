@@ -44,10 +44,6 @@ import {
     faqData,
 } from '@/data/internshipData';
 
-const EMAILJS_SERVICE_ID = 'service_opc05wm';
-const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
-const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
-
 interface Program {
     title: string;
     slug: string;
@@ -238,13 +234,34 @@ export default function InternshipPage() {
                 EMAILJS_PUBLIC_KEY
             );
 
+            const res = await fetch('/api/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    leadType: 'internship',
+                    leadSource: 'internship_application',
+                    fullName: formData.name,
+                    email: formData.email,
+                    phone: formData.whatsapp,
+                    serviceInterest: formData.program || 'Internship Program',
+                    message: `Education: ${formData.education || 'N/A'} | Category: ${selectedCategory || 'N/A'}`,
+                    sourcePage: '/internship'
+                })
+            });
+
+            const data = await res.json();
+            if (!res.ok || !data.ok) {
+                setFormStatus('error');
+                setErrorMessage(data.message || 'Application send nahi ho paayi. Please try again.');
+                return;
+            }
+
             setFormStatus('success');
             trackGAEvent('form_submit', 'Lead Generation', 'Internship Application');
             trackGTMEvent('form_submit', { form_name: 'Internship Application', program: formData.program });
             setFormData({ name: '', email: '', whatsapp: '', program: '', education: '' });
             setSelectedCategory('');
-        } catch (error) {
-            console.error('Internship apply email failed', error);
+        } catch {
             setFormStatus('error');
             setErrorMessage('Application send nahi ho paayi. Please try again.');
         }

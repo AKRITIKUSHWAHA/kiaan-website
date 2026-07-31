@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NicheServicePage } from '@/components/NicheServicePage';
 import { solutionsData } from '@/data/solutionsData';
+import { SaasChecklistCTA } from '@/components/SaasChecklistCTA';
 
 export const metadata: Metadata = {
     title: "SaaS Development Company India | Cloud Platforms | Kiaan",
@@ -27,5 +28,8 @@ export const metadata: Metadata = {
 
 export default function SaaSDevelopmentPage() {
     const data = solutionsData['saas-development'];
-    return <NicheServicePage {...data} slug="services/saas-development" />;
+    return <>
+        <NicheServicePage {...data} slug="services/saas-development" />
+        <SaasChecklistCTA />
+    </>;
 }

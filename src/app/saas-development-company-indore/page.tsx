@@ -40,19 +40,19 @@ export default function SaaSDevelopmentIndore() {
                 }}
             />
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 overflow-hidden border-b border-zinc-900">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-600/5 via-transparent to-transparent opacity-50" />
+            <section className="relative pt-24 pb-20 overflow-hidden border-b border-zinc-900">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-500/5 via-transparent to-transparent opacity-50" />
                 <div className="container mx-auto px-4 relative z-10">
                     <Reveal>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-red-600/20 text-red-500 text-[10px] font-black uppercase tracking-widest mb-8">
-                            <Layers size={12} className="text-red-600" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-yellow-500/20 text-yellow-500 text-[10px] font-black uppercase tracking-widest mb-8">
+                            <Layers size={12} className="text-yellow-500" />
                             Specialized SaaS Development Company in Indore
                         </div>
                     </Reveal>
                     <Reveal delay={0.2}>
                         <h1 className="text-5xl md:text-8xl font-display uppercase leading-[0.85] tracking-tighter mb-8 max-w-5xl">
                             SaaS Development <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">Company in Indore</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Company in Indore</span>
                         </h1>
                     </Reveal>
                     <Reveal delay={0.4}>

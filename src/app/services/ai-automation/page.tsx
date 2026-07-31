@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NicheServicePage } from '@/components/NicheServicePage';
 import { solutionsData } from '@/data/solutionsData';
+import { AIROICalculatorCTA } from '@/components/AIROICalculatorCTA';
 
 export const metadata: Metadata = {
     title: "AI Automation Services India | Workflow & RPA | Kiaan",
@@ -26,5 +27,5 @@ export const metadata: Metadata = {
 
 export default function AIAutomationPage() {
     const data = solutionsData['ai-automation'];
-    return <NicheServicePage {...data} slug="services/ai-automation" />;
+    return <><NicheServicePage {...data} slug="services/ai-automation" /><AIROICalculatorCTA /></>;
 }

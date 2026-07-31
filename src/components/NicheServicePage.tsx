@@ -10,8 +10,10 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/Button';
 import { Reveal } from '@/components/Reveal';
+import { SocialProofBar } from '@/components/SocialProofBar';
 import Link from 'next/link';
 import Script from 'next/script';
+import caseStudiesData from '@/data/caseStudies.json';
 
 const IconMap: Record<string, any> = {
     Layout, Smartphone, Database, Brain, Palette, Globe, Code, Zap,
@@ -76,6 +78,22 @@ const NicheServicePageInner = ({
     const [openFaq, setOpenFaq] = useState<number | null>(null);
     const [showAllKeywords, setShowAllKeywords] = useState(false);
     const [showAllLinks, setShowAllLinks] = useState(false);
+
+    const relatedCaseStudies = slug ? (() => {
+        const mapping: Record<string, string[]> = {
+            'services/custom-software-development': ['study-first-crm', 'healthsakhi-ai', 'pgx-payment-gateway', 'playgroundx', 'turf-booking-saas'],
+            'services/saas-development': ['turf-booking-saas', 'study-first-crm'],
+            'services/erp-crm-solutions': ['study-first-crm', 'turf-booking-saas'],
+            'services/mobile-app-development': ['healthsakhi-ai'],
+            'services/web-development': ['pgx-payment-gateway', 'playgroundx'],
+            'services/ai-automation': ['healthsakhi-ai'],
+            'industries/fintech-software': ['pgx-payment-gateway'],
+            'industries/healthcare-software': ['healthsakhi-ai'],
+            'industries/retail-technology': ['turf-booking-saas']
+        };
+        const targetSlugs = mapping[slug] || [];
+        return caseStudiesData.filter(cs => targetSlugs.includes(cs.slug));
+    })() : [];
 
     return (
         <div className="bg-black min-h-screen text-white pt-32 pb-8 font-sans selection:bg-yellow-500 selection:text-black overflow-hidden uppercase">
@@ -412,7 +430,7 @@ const NicheServicePageInner = ({
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {painPoints.map((pp, i) => (
                             <Reveal key={i} delay={i * 0.05}>
-                                <div className="glass-panel p-5 border-l-2 border-l-red-500/50 hover:border-l-yellow-500 transition-colors">
+                                <div className="glass-panel p-5 border-l-2 border-l-yellow-500/50 hover:border-l-yellow-500 transition-colors">
                                     <h3 className="text-sm font-black uppercase tracking-widest text-white mb-2">{pp.title}</h3>
                                     <p className="text-xs text-zinc-500 leading-relaxed normal-case">{pp.desc}</p>
                                 </div>
@@ -518,6 +536,53 @@ const NicheServicePageInner = ({
                 </div>
             </section>
 
+            {/* Featured Case Studies */}
+            {relatedCaseStudies.length > 0 && (
+                <section className="container mx-auto px-6 mb-12 relative z-10">
+                    <Reveal>
+                        <h2 className="text-3xl md:text-4xl font-display uppercase mb-8 tracking-tighter">
+                            Featured <span className={colorClass}>Success Stories</span>
+                        </h2>
+                    </Reveal>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {relatedCaseStudies.map((cs, i) => (
+                            <Reveal key={i} delay={i * 0.1}>
+                                <div className="group glass-panel overflow-hidden border border-white/5 bg-zinc-950/40 rounded-lg hover:border-yellow-500/30 transition-all duration-500 flex flex-col h-full">
+                                    <div className="relative aspect-video w-full overflow-hidden">
+                                        <img 
+                                            src={cs.image} 
+                                            alt={cs.title} 
+                                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-80"
+                                        />
+                                        <div className="absolute top-4 left-4 bg-black/80 border border-white/10 px-3 py-1 text-[9px] font-black uppercase tracking-widest text-yellow-500">
+                                            {cs.category}
+                                        </div>
+                                    </div>
+                                    <div className="p-6 flex flex-col flex-grow justify-between">
+                                        <div>
+                                            <h3 className="text-xl font-display uppercase text-white mb-2 group-hover:text-yellow-500 transition-colors">
+                                                {cs.title}
+                                            </h3>
+                                            <p className="text-xs text-zinc-400 font-light leading-relaxed mb-6 normal-case line-clamp-3">
+                                                {cs.desc}
+                                            </p>
+                                        </div>
+                                        <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                                                {cs.result}
+                                            </span>
+                                            <Link href={`/case-studies/${cs.slug}`} className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-yellow-500 group-hover:text-white transition-colors">
+                                                Read Blueprint <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
+                </section>
+            )}
+
             {/* Internal Links Section */}
             {internalLinks && internalLinks.length > 0 && (
                 <section className="container mx-auto px-6 mb-6 relative z-10">
@@ -584,6 +649,9 @@ const NicheServicePageInner = ({
                                 </Button>
                             </Link>
                         </div>
+                    </Reveal>
+                    <Reveal delay={0.6}>
+                        <SocialProofBar variant="transparent" className="mt-4" />
                     </Reveal>
                 </div>
             </section>

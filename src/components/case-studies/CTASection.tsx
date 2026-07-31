@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Rocket, ShieldCheck, Zap } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import Link from 'next/link';
+import { SocialProofBar } from '@/components/SocialProofBar';
 
 /* ─── Types ──────────────────────────────────────────────────────────────── */
 
@@ -183,6 +184,11 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 {secondaryCtaLabel}
               </Link>
             </div>
+          </Reveal>
+
+          {/* ── Social Proof Bar ── */}
+          <Reveal delay={0.65}>
+            <SocialProofBar variant="transparent" className="mt-6 px-0" />
           </Reveal>
         </div>
       </div>
