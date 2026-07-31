@@ -1,4 +1,4 @@
- import type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -116,7 +116,7 @@ export default function RootLayout({
 
                 {/* Google Analytics (GA4) */}
                 <Script
-                    src="https://www.googletagmanager.com/gtag/js?id=G-Y9H9T9S8PN"
+                    src="https://www.googletagmanager.com/gtag/js?id=G-LCVNSWRZV3"
                     strategy="afterInteractive"
                 />
                 <Script
@@ -127,7 +127,7 @@ export default function RootLayout({
                             window.dataLayer = window.dataLayer || [];
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
-                            gtag('config', 'G-Y9H9T9S8PN');
+                            gtag('config', 'G-LCVNSWRZV3');
                         `,
                     }}
                 />
