@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "generate:rss": "node scripts/generate-rss.mjs",
-    "prebuild": "cmd /c \"rd /s /q .next out 2>nul || exit 0\" && node scripts/generate-rss.mjs",
+    "prebuild": "node -e \"fs.rmSync('.next', { recursive: true, force: true }); fs.rmSync('out', { recursive: true, force: true });\" && node scripts/generate-rss.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
