@@ -243,5 +243,9 @@ export const navLinks = [
         name: 'Academy',
         href: '/internship',
         level2: internshipCategories
+    },
+    {
+        name: 'Contact',
+        href: '/contact'
     }
 ]

@@ -133,7 +133,7 @@ export const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-stretch h-full flex-1 ml-6 2xl:ml-12 gap-2 2xl:gap-4">
+                    <div className="hidden lg:flex items-center h-full flex-1 ml-6 2xl:ml-10 gap-2 xl:gap-4 2xl:gap-6">
                         {navLinks.map((link) => (
                             <div
                                 key={link.name}
@@ -148,7 +148,7 @@ export const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         prefetch={true}
-                                        className={`relative h-full px-3 2xl:px-5 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-300 hover:text-white'}`}
+                                        className={`relative h-full px-3 2xl:px-4 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-300 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
                                         <ChevronDown size={12} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100 text-black' : 'opacity-60'}`} />
@@ -158,7 +158,7 @@ export const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         prefetch={true}
-                                        className={`relative h-full px-3 2xl:px-5 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${pathname === link.href ? 'text-black' : 'text-zinc-300 hover:text-white'}`}
+                                        className={`relative h-full px-3 2xl:px-4 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${pathname === link.href ? 'text-black' : 'text-zinc-300 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
                                         <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
@@ -182,7 +182,6 @@ export const Navbar = () => {
                                                     onWheel={(e) => e.stopPropagation()}
                                                 >
                                                     {(() => {
-                                                        const isSaaS = link.name === 'Products' || link.name === 'Solutions';
                                                         if (link.level2) {
                                                             return link.level2.map((cat: any) => (
                                                                 <div
@@ -238,12 +237,10 @@ export const Navbar = () => {
                                                             transition={{ duration: 0.2, ease: "easeOut" }}
                                                             style={{
                                                                 top: subMenuTop,
-                                                                maxWidth: maxSubMenuWidth,
-                                                                maxHeight: 'calc(100vh - 140px)',
-                                                                scrollbarWidth: 'none',
-                                                                msOverflowStyle: 'none'
-                                                            } as React.CSSProperties}
-                                                            className="absolute left-[100%] w-[280px] bg-[#0c0c0c] border border-white/10 shadow-2xl py-2 flex flex-col overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden"
+                                                                left: '240px',
+                                                                maxHeight: 'calc(100vh - 140px)'
+                                                            }}
+                                                            className="absolute bg-[#0a0a0a] border border-white/10 border-l-0 shadow-[0_20px_50px_rgba(0,0,0,0.5)] py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden"
                                                             onWheel={(e: React.WheelEvent) => e.stopPropagation()}
                                                         >
                                                             {(() => {
@@ -260,7 +257,6 @@ export const Navbar = () => {
                                                                         href = `/solutions/${(activeCatObj as any)?.slug || generateSlug(activeCategory ?? '')}`;
                                                                         label = item;
                                                                     } else if (link.name === 'Products') {
-                                                                        // Individual product link, e.g. /products/crm-software
                                                                         href = `/products/${generateSlug(item)}`;
                                                                         label = item;
                                                                     } else {
@@ -290,15 +286,7 @@ export const Navbar = () => {
                             </div>
                         ))}
 
-                        <div className="ml-auto flex items-center gap-6">
-                            <Link
-                                href="/contact"
-                                className={`relative px-2 2xl:px-4 py-1.5 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] flex items-center transition-colors duration-300 ${pathname === '/contact' ? 'text-black' : 'text-zinc-500 hover:text-white'}`}
-                            >
-                                <span className="relative z-10">Contact</span>
-                                <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === '/contact' ? 'scale-y-100' : 'scale-y-0'}`}></span>
-                            </Link>
-
+                        <div className="ml-auto flex items-center pl-4">
                             <Link href="/start-project">
                                 <Button variant="primary" className="bg-red-600 hover:bg-red-500 border-none text-white rounded-none skew-x-[-10deg] px-3 2xl:px-5 h-9 2xl:h-10 text-[8px] 2xl:text-[9px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
                                     <span className="skew-x-[10deg] flex items-center gap-1.5 2xl:gap-2 whitespace-nowrap">
