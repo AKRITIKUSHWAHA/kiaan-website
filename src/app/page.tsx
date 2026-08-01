@@ -532,7 +532,7 @@ export default function Home() {
                                             </h2>
                                         </Reveal>
                                         <Reveal delay={0.15}>
-                                            <p className="text-zinc-500 text-[13px] sm:text-sm font-medium italic border-l border-yellow-500/50 pl-3 leading-relaxed mb-6">
+                                            <p className="text-zinc-400 text-[13px] sm:text-sm font-medium italic border-l border-yellow-500/50 pl-3 leading-relaxed mb-6">
                                                 &quot;We don&apos;t just write code. We engineer distinctive digital experiences that define categories.&quot;
                                             </p>
                                         </Reveal>
@@ -627,7 +627,7 @@ export default function Home() {
                             </h2>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <p className="text-zinc-500 max-w-sm text-right font-light uppercase tracking-widest text-xs">
+                            <p className="text-zinc-400 max-w-sm text-right font-light uppercase tracking-widest text-xs">
                                 From concept to code, we follow a rigorous agile methodology for enterprise-grade delivery.
                             </p>
                         </Reveal>
@@ -642,9 +642,9 @@ export default function Home() {
                         ].map((item, idx) => (
                             <Reveal key={idx} delay={idx * 0.1}>
                                 <div className="group p-8 border border-zinc-900 hover:border-yellow-500/30 transition-all bg-zinc-950/50">
-                                    <span className="text-4xl font-display text-zinc-800 group-hover:text-yellow-500 transition-colors mb-6 block">{item.step}</span>
+                                    <span className="text-4xl font-display text-zinc-700 group-hover:text-yellow-500 transition-colors mb-6 block">{item.step}</span>
                                     <h3 className="text-xl font-display uppercase text-white mb-4 group-hover:text-yellow-500 transition-colors">{item.title}</h3>
-                                    <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
+                                    <p className="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
                                 </div>
                             </Reveal>
                         ))}
