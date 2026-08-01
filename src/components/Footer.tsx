@@ -74,38 +74,7 @@ export const Footer = () => {
                                 { name: 'AI & Automation', href: '/services/ai-automation' },
                                 { name: 'Web Development', href: '/services/web-development' },
                                 { name: 'Mobile Apps', href: '/services/mobile-app-development' },
-                                { name: 'ERP & CRM Solutions', href: '/services/erp-crm-solutions' },
-                                { name: 'About Us', href: '/about' },
-                                { name: 'Pricing Plans', href: '/pricing' },
-                                { name: 'Our Blog', href: '/blog' },
-                                { name: 'Resources & Insights', href: '/resources' },
-                                { name: 'Schedule Call', href: '/schedule' },
-                                { name: 'Product Demo', href: '/demo' },
-                                { name: 'Partner Program', href: '/partner-program' },
-                                { name: 'HubSpot Integration', href: '/hubspot-integration' },
-                                { name: 'Zapier Integration', href: '/zapier-integration' },
-                                { name: 'Event Management', href: '/industry-events' },
-                                { name: 'Networking Organizations', href: '/networking-organizations' },
-                                { name: 'Affiliate Program', href: '/affiliate-program' },
-                                { name: 'White-Label Partnership', href: '/white-label-partnership' },
-                                { name: 'Analytics Debugger', href: '/analytics-debugger' },
-                                { name: 'Heatmaps Debugger', href: '/heatmaps-debugger' },
-                                { name: 'Analytics Dashboard', href: '/analytics-dashboard' },
-                                { name: 'UTM Debugger', href: '/utm-debugger' },
-                                { name: 'SEO Keyword Tracker', href: '/seo-keyword-tracker' },
-                                { name: 'Backlink Monitor', href: '/backlink-monitor' },
-                                { name: 'Competitor Monitor', href: '/competitor-monitor' },
-                                { name: 'Lead Source Reports', href: '/lead-source-reports' },
-                                { name: 'Founder Intro', href: '/founder-intro' },
-                                { name: 'Video Testimonials', href: '/video-testimonials' },
-                                { name: 'Day in the Life', href: '/day-in-the-life' },
-                                { name: '🎙️ Tech Talks Podcast', href: '/podcast' },
-                                { name: '📰 Press Kit', href: '/press' },
-                                { name: '✉️ Email Signatures', href: '/email-signatures' },
-                                { name: '🎨 Brand Style Guide', href: '/brand-style-guide' },
-                                { name: '📊 Ideal Customer Profile', href: '/icp-document' },
-                                { name: '🤝 Sales Scripts & Playbooks', href: '/sales-scripts' },
-                                { name: '📝 Proposal Template', href: '/proposal-template' }
+                                { name: 'ERP & CRM Solutions', href: '/services/erp-crm-solutions' }
                             ].map((link) => (
                                 <li key={link.name}>
                                     <Link href={link.href} className="text-sm text-zinc-400 hover:text-yellow-500 transition-colors flex items-center group">
@@ -188,6 +157,45 @@ export const Footer = () => {
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+
+                {/* Developer Tools & Utilities Compact Sub-Grid */}
+                <div className="mt-8 pt-6 border-t border-zinc-900">
+                    <h5 className="text-[10px] font-black uppercase tracking-[0.25em] text-zinc-500 mb-4">Enterprise Tools & Partner Portals</h5>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-2 text-xs">
+                        {[
+                            { name: 'Partner Program', href: '/partner-program' },
+                            { name: 'HubSpot Integration', href: '/hubspot-integration' },
+                            { name: 'Zapier Integration', href: '/zapier-integration' },
+                            { name: 'Event Management', href: '/industry-events' },
+                            { name: 'Networking Orgs', href: '/networking-organizations' },
+                            { name: 'Affiliate Program', href: '/affiliate-program' },
+                            { name: 'White-Label Partner', href: '/white-label-partnership' },
+                            { name: 'Analytics Debugger', href: '/analytics-debugger' },
+                            { name: 'Heatmaps Debugger', href: '/heatmaps-debugger' },
+                            { name: 'Analytics Dashboard', href: '/analytics-dashboard' },
+                            { name: 'UTM Debugger', href: '/utm-debugger' },
+                            { name: 'SEO Keyword Tracker', href: '/seo-keyword-tracker' },
+                            { name: 'Backlink Monitor', href: '/backlink-monitor' },
+                            { name: 'Competitor Monitor', href: '/competitor-monitor' },
+                            { name: 'Lead Source Reports', href: '/lead-source-reports' },
+                            { name: 'Founder Intro', href: '/founder-intro' },
+                            { name: 'Video Testimonials', href: '/video-testimonials' },
+                            { name: 'Day in the Life', href: '/day-in-the-life' },
+                            { name: '🎙️ Tech Talks Podcast', href: '/podcast' },
+                            { name: '📰 Press Kit', href: '/press' },
+                            { name: '✉️ Email Signatures', href: '/email-signatures' },
+                            { name: '🎨 Brand Style Guide', href: '/brand-style-guide' },
+                            { name: '📊 Ideal Customer Profile', href: '/icp-document' },
+                            { name: '🤝 Sales Playbooks', href: '/sales-scripts' },
+                            { name: '📝 Proposal Template', href: '/proposal-template' }
+                        ].map((tool) => (
+                            <Link key={tool.name} href={tool.href} className="text-zinc-500 hover:text-yellow-500 transition-colors truncate flex items-center gap-1.5 py-1">
+                                <span className="w-1 h-1 rounded-full bg-zinc-700 group-hover:bg-yellow-500"></span>
+                                {tool.name}
+                            </Link>
+                        ))}
                     </div>
                 </div>
 
