@@ -133,7 +133,7 @@ export const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden xl:flex items-stretch h-full flex-1 ml-4 2xl:ml-12 gap-1 2xl:gap-2">
+                    <div className="hidden lg:flex items-stretch h-full flex-1 ml-6 2xl:ml-12 gap-2 2xl:gap-4">
                         {navLinks.map((link) => (
                             <div
                                 key={link.name}
@@ -148,20 +148,20 @@ export const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         prefetch={true}
-                                        className={`relative h-full px-2 2xl:px-4 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`relative h-full px-3 2xl:px-5 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-300 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <ChevronDown size={11} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100' : 'opacity-50'}`} />
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        <ChevronDown size={12} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100 text-black' : 'opacity-60'}`} />
+                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 ) : (
                                     <Link
                                         href={link.href}
                                         prefetch={true}
-                                        className={`relative h-full px-2 2xl:px-4 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.1em] 2xl:tracking-[0.15em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`relative h-full px-3 2xl:px-5 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${pathname === link.href ? 'text-black' : 'text-zinc-300 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 )}
 
@@ -175,9 +175,9 @@ export const Navbar = () => {
                                             transition={{ duration: 0.2, ease: "easeOut" }}
                                             className="absolute top-full left-0 z-[100] mt-1"
                                         >
-                                            <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner">
+                                            <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner rounded-xl overflow-hidden">
                                                 <div
-                                                    className="w-[180px] flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden"
+                                                    className="w-[240px] flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden"
                                                     style={{ maxHeight: 'calc(100vh - 120px)', scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
                                                     onWheel={(e) => e.stopPropagation()}
                                                 >
