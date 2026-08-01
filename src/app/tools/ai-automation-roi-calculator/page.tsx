@@ -4,7 +4,7 @@ import { AI_FAQS } from '@/components/lead-magnets/LeadMagnetSections';import{le
 export const metadata: Metadata = {
     title:'AI Automation ROI Calculator | Calculate Business Savings',
     description:'Use Kiaan Technology’s free AI Automation ROI Calculator to estimate hours saved, monthly cost reduction, annual savings, payback period and potential return on AI automation investment.',
-    alternates:{canonical:'/tools/ai-automation-roi-calculator/'},
+    
     openGraph:{title:'AI Automation ROI Calculator | Calculate Business Savings',description:'Estimate the time, operating cost and annual savings your business could achieve through AI automation.',url:'/tools/ai-automation-roi-calculator/',siteName:'Kiaan Technology',type:'website'},
     twitter:{card:'summary_large_image',title:'AI Automation ROI Calculator',description:'Calculate the potential ROI of AI automation for your business.'}
 };

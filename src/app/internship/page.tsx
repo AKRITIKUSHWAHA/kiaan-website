@@ -29,6 +29,9 @@ import {
     Star,
 } from 'lucide-react';
 import { Button } from '@/components/Button';
+import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
 import {
     whyStudentsChooseCards,
     highlightQuote,
@@ -40,6 +43,10 @@ import {
     benefitsData,
     faqData,
 } from '@/data/internshipData';
+
+const EMAILJS_SERVICE_ID = 'service_opc05wm';
+const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
+const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 interface Program {
     title: string;
@@ -191,7 +198,46 @@ export default function InternshipPage() {
         setFormStatus('submitting');
         setErrorMessage('');
 
+        const utm = getStoredUTMParams();
+
         try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    name: formData.name || 'N/A',
+                    email: formData.email || 'N/A',
+                    company: 'Internship Application',
+                    contact_number: formData.whatsapp || 'N/A',
+                    contact_method: 'WhatsApp / Email',
+                    industry: selectedCategory
+                        ? internshipCategories.find(c => c.id === selectedCategory)?.title || 'Internship Program'
+                        : 'Internship Program',
+                    project_type: formData.program || 'N/A',
+                    features: selectedCategory || 'N/A',
+                    vision: formData.education || 'N/A',
+                    budget: 'N/A',
+                    timeline: 'N/A',
+                    submitted_at: new Date().toLocaleString(),
+                    message: [
+                        'Application Type: Innovation Lab Track',
+                        `Name: ${formData.name || 'N/A'}`,
+                        `Email: ${formData.email || 'N/A'}`,
+                        `WhatsApp: ${formData.whatsapp || 'N/A'}`,
+                        `Selected Category: ${selectedCategory ? internshipCategories.find(c => c.id === selectedCategory)?.title || selectedCategory : 'N/A'}`,
+                        `Selected Program: ${formData.program || 'N/A'}`,
+                        `Education: ${formData.education || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
+                    ].join('\n')
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+
             const res = await fetch('/api/leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -215,6 +261,8 @@ export default function InternshipPage() {
             }
 
             setFormStatus('success');
+            trackGAEvent('form_submit', 'Lead Generation', 'Internship Application');
+            trackGTMEvent('form_submit', { form_name: 'Internship Application', program: formData.program });
             setFormData({ name: '', email: '', whatsapp: '', program: '', education: '' });
             setSelectedCategory('');
         } catch {

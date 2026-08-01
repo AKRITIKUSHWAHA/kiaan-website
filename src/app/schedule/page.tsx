@@ -5,6 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, User, MessageSquare, CheckCircle2, ArrowRight, ArrowLeft, ChevronRight, Users } from 'lucide-react';
 import { Button } from '@/components/Button';
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
+
+const EMAILJS_SERVICE_ID = 'service_opc05wm';
+const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
+const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 export default function SchedulePage() {
     const [step, setStep] = useState(1);
     const [selectedDate, setSelectedDate] = useState<number | null>(null);
@@ -45,8 +52,44 @@ export default function SchedulePage() {
         setSubmitError('');
 
         const chosenDate = dates[selectedDate];
+        const utm = getStoredUTMParams();
 
         try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    name: formData.name || 'N/A',
+                    email: formData.email || 'N/A',
+                    company: 'Schedule Booking',
+                    contact_number: formData.whatsapp || 'N/A',
+                    contact_method: 'WhatsApp / Email',
+                    industry: 'Mentorship / Counseling',
+                    project_type: 'Counseling Session',
+                    features: 'N/A',
+                    vision: formData.discuss || 'N/A',
+                    budget: 'N/A',
+                    timeline: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month} at ${selectedTime}`,
+                    submitted_at: new Date().toLocaleString(),
+                    message: [
+                        `Booking Type: Counseling Session`,
+                        `Name: ${formData.name || 'N/A'}`,
+                        `Email: ${formData.email || 'N/A'}`,
+                        `WhatsApp: ${formData.whatsapp || 'N/A'}`,
+                        `Selected Date: ${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`,
+                        `Selected Time: ${selectedTime}`,
+                        `Discussion Topic: ${formData.discuss || 'N/A'}`,
+                        `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                        `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                        `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                        `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                        `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                        `Referral Code: ${utm?.ref || 'None'}`
+                    ].join('\n')
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+
             const res = await fetch('/api/leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -70,6 +113,8 @@ export default function SchedulePage() {
                 return;
             }
 
+            trackGAEvent('form_submit', 'Lead Generation', 'Schedule Call Booking');
+            trackGTMEvent('form_submit', { form_name: 'Schedule Call Booking', date: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month}`, time: selectedTime });
             setStep(4);
         } catch {
             setSubmitError('Booking send nahi ho paayi. Please try again.');

@@ -12,6 +12,13 @@ import {
 } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import Link from 'next/link';
+import emailjs from '@emailjs/browser';
+import { trackGAEvent, trackGTMEvent } from '@/utils/analytics';
+import { getStoredUTMParams } from '@/utils/utm';
+
+const EMAILJS_SERVICE_ID = 'service_opc05wm';
+const EMAILJS_TEMPLATE_ID = 'template_jpwu4pp';
+const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 
 // Specific Software Data Setup per requirements
 const softwareList = [
@@ -1378,9 +1385,45 @@ export default function AccessLiveEnvironment() {
 
         setFormErrors(errors);
 
+        const utm = getStoredUTMParams();
+
         if (isValid) {
             setIsSubmitting(true);
             try {
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    {
+                        name: formData.name || 'N/A',
+                        email: formData.email || 'N/A',
+                        company: selectedSoftware?.name || 'Live Demo Request',
+                        contact_number: formData.phone || 'N/A',
+                        contact_method: 'Phone / Email',
+                        industry: selectedSoftware?.category || 'N/A',
+                        project_type: 'Live Demo Arena Access',
+                        features: selectedSoftware?.features?.join(', ') || 'N/A',
+                        vision: selectedSoftware?.desc || 'N/A',
+                        budget: 'N/A',
+                        timeline: 'Immediate',
+                        submitted_at: new Date().toLocaleString(),
+                        message: [
+                            `Live Demo Requested: ${selectedSoftware?.name}`,
+                            `Name: ${formData.name}`,
+                            `Email: ${formData.email}`,
+                            `Phone: ${formData.phone}`,
+                            `Category: ${selectedSoftware?.category}`,
+                            `Preview Link: ${selectedSoftware?.link || 'N/A'}`,
+                            `UTM Source: ${utm?.utm_source || 'Direct/None'}`,
+                            `UTM Medium: ${utm?.utm_medium || 'Direct/None'}`,
+                            `UTM Campaign: ${utm?.utm_campaign || 'Direct/None'}`,
+                            `UTM Term: ${utm?.utm_term || 'Direct/None'}`,
+                            `UTM Content: ${utm?.utm_content || 'Direct/None'}`,
+                            `Referral Code: ${utm?.ref || 'None'}`
+                        ].join('\n')
+                    },
+                    EMAILJS_PUBLIC_KEY
+                );
+
                 const res = await fetch('/api/leads', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1402,6 +1445,8 @@ export default function AccessLiveEnvironment() {
                 }
 
                 setModalState('selection');
+                trackGAEvent('form_submit', 'Lead Generation', `Demo Request - ${selectedSoftware?.name}`);
+                trackGTMEvent('form_submit', { form_name: 'Demo Request', software_name: selectedSoftware?.name, category: selectedSoftware?.category });
                 setFormErrors({ email: '', phone: '' });
             } catch {
                 setFormErrors({ email: 'Submission failed. Please try again.', phone: '' });
@@ -1913,15 +1958,19 @@ export default function AccessLiveEnvironment() {
                                     </div>
                                 )}
 
-                                {/* HOW IT WORKS VIEW */}
+                                {/* HOW IT WORKS VIEW — Animated Process Explainer */}
                                 {infoModal.type === 'how-it-works' && (
                                     <div className="space-y-6">
                                         <div className="relative">
-                                            {/* Vertical connector line */}
-                                            <div className="absolute left-6 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-cyan-500/50 via-emerald-500/50 to-transparent"></div>
+                                            {/* FIX Bug #1 & #5: connector line scoped between steps only —
+                                                top-[24px] = half the 48px icon box height (starts at icon centre)
+                                                bottom-[24px] = stops at centre of last icon, not below it */}
+                                            <div className="absolute left-[23px] top-[24px] bottom-[24px] w-[1.5px] bg-gradient-to-b from-cyan-500/50 via-emerald-500/30 to-transparent" />
 
                                             <div className="space-y-8">
-                                                {(infoModal.project as any).howItWorks ? (infoModal.project as any).howItWorks.map((step: any, i: number) => (
+                                                {/* FIX Bug #2: removed unsafe `as any` cast; added explicit null guard */}
+                                                {Array.isArray((infoModal.project as any).howItWorks)
+                                                    ? (infoModal.project as any).howItWorks.map((step: any, i: number) => (
                                                     <motion.div
                                                         key={i}
                                                         initial={{ opacity: 0, x: -20 }}
@@ -1953,7 +2002,13 @@ export default function AccessLiveEnvironment() {
 
                                         <div className="mt-8 pt-6 border-t border-zinc-800/80">
                                             <button
-                                                onClick={() => { setInfoModal(null); handleSoftClick(infoModal.project); }}
+                                                onClick={() => {
+                                                    // FIX Bug #7: capture infoModal in a local const before
+                                                    // calling setInfoModal(null) to avoid closure staleness
+                                                    const project = infoModal.project;
+                                                    setInfoModal(null);
+                                                    handleSoftClick(project);
+                                                }}
                                                 className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-xs font-black uppercase tracking-widest hover:from-cyan-500 hover:to-blue-500 shadow-lg hover:shadow-cyan-500/20 transition-all active:scale-[0.98]"
                                             >
                                                 Ready to Experience This Workflow?
