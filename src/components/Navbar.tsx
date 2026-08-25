@@ -188,8 +188,7 @@ export const Navbar = () => {
                                         >
                                             <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner rounded-xl overflow-hidden">
                                                 <div
-<<<<<<< HEAD
-                                                    className={`${link.subItems ? 'w-[240px]' : 'w-[180px]'} flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
+                                                    className={`${link.subItems ? 'w-[240px]' : 'w-[200px]'} flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
                                                     style={{ maxHeight: 'calc(100vh - 120px)' }}
                                                 >
                                                     {/* Standard SubItems List */}
@@ -212,45 +211,6 @@ export const Navbar = () => {
                                                             onMouseEnter={(e) => handleCategoryHover(e, category.title, category.items)}
                                                         >
                                                             <div className="flex items-center justify-between px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider border-b border-white/5 last:border-none cursor-pointer group">
-                                                                {/* Category Link (Level 2) */}
-=======
-                                                    className="w-[240px] flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden"
-                                                    style={{ maxHeight: 'calc(100vh - 120px)', scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
-                                                    onWheel={(e) => e.stopPropagation()}
-                                                >
-                                                    {(() => {
-                                                        if (link.level2) {
-                                                            return link.level2.map((cat: any) => (
-                                                                <div
-                                                                    key={cat.title}
-                                                                    onMouseEnter={(e) => {
-                                                                        if (link.name !== 'Solutions') handleCategoryHover(e, cat.title, cat.items);
-                                                                    }}
-                                                                    onClick={(e) => {
-                                                                        if (link.name !== 'Solutions') handleCategoryHover(e, cat.title, cat.items);
-                                                                    }}
-                                                                    className={`group/cat px-4 py-3.5 flex items-center justify-between cursor-pointer transition-colors relative ${activeCategory === cat.title ? 'bg-yellow-500 text-black' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
-                                                                >
-                                                                    <Link
-                                                                        href={(() => {
-                                                                            if (link.name === 'Products') return `/products/category/${generateSlug(cat.title)}`;
-                                                                            if (link.name === 'Solutions') return `/solutions/${cat.slug || generateSlug(cat.title)}`;
-                                                                            return `/internship?cat=${generateSlug(cat.title)}`;
-                                                                        })()}
-                                                                        prefetch={true}
-                                                                        className="text-[10px] font-bold uppercase tracking-widest flex-1 before:absolute before:inset-0"
-                                                                    >
-                                                                        {cat.title}
-                                                                    </Link>
-                                                                    {link.name !== 'Solutions' && (
-                                                                        <ChevronRight size={12} className={activeCategory === cat.title ? 'text-black' : 'text-zinc-600'} />
-                                                                    )}
-                                                                </div>
-                                                            ));
-                                                        }
-                                                        if (link.subItems) {
-                                                            return link.subItems.map((item: any) => (
->>>>>>> upstream/main
                                                                 <Link
                                                                     href={(() => {
                                                                         if (category.href) return category.href;
