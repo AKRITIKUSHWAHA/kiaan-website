@@ -16,8 +16,8 @@ export function TidioPositionAdjuster() {
                 );
 
                 elements.forEach(el => {
-                    if (el.style.transform !== 'translateY(-53px)') {
-                        el.style.setProperty('transform', 'translateY(-53px)', 'important');
+                    if (el.style.transform !== 'translateY(-34px)') {
+                        el.style.setProperty('transform', 'translateY(-34px)', 'important');
                     }
                 });
             } finally {

@@ -512,6 +512,6 @@ body::-webkit-scrollbar-thumb:hover {
 #tidio-chat iframe,
 iframe[id*="tidio"],
 div#tidio-chat {
-    transform: translateY(-53px) !important;
+    transform: translateY(-34px) !important;
 }
 
