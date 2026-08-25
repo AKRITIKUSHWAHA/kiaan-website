@@ -144,7 +144,7 @@ export const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden xl:flex items-stretch h-full flex-1 ml-2 2xl:ml-6 gap-0.5 2xl:gap-1.5 min-w-0">
+                    <div className="hidden xl:flex items-center justify-center h-full flex-1 mx-2 2xl:mx-4 gap-0.5 2xl:gap-1.5 min-w-0">
                         {navLinks.map((link) => (
                             <div
                                 key={link.name}
@@ -159,20 +159,20 @@ export const Navbar = () => {
                                     <Link
                                         href={link.href}
                                         prefetch={true}
-                                        className={`relative h-full px-1.5 2xl:px-3 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.05em] 2xl:tracking-[0.12em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 whitespace-nowrap ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`relative h-full px-1.5 2xl:px-2.5 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.04em] 2xl:tracking-[0.08em] flex items-center gap-1 transition-all duration-300 whitespace-nowrap ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <ChevronDown size={12} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100 text-black' : 'opacity-60'}`} />
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        <ChevronDown size={11} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100 text-black' : 'opacity-60'}`} />
+                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 ) : (
                                     <Link
                                         href={link.href}
                                         prefetch={true}
-                                        className={`relative h-full px-1.5 2xl:px-3 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.05em] 2xl:tracking-[0.12em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 whitespace-nowrap ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`relative h-full px-1.5 2xl:px-2.5 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.04em] 2xl:tracking-[0.08em] flex items-center gap-1 transition-all duration-300 whitespace-nowrap ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 )}
 
@@ -286,15 +286,7 @@ export const Navbar = () => {
                             </div>
                         ))}
 
-                        <div className="ml-auto flex items-center gap-2 2xl:gap-4 shrink-0 pl-2">
-                            <Link
-                                href="/contact"
-                                className={`relative px-1.5 2xl:px-3 py-1 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.05em] 2xl:tracking-[0.12em] flex items-center transition-colors duration-300 whitespace-nowrap ${pathname === '/contact' ? 'text-black' : 'text-zinc-500 hover:text-white'}`}
-                            >
-                                <span className="relative z-10">Contact</span>
-                                <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === '/contact' ? 'scale-y-100' : 'scale-y-0'}`}></span>
-                            </Link>
-
+                        <div className="ml-auto flex items-center shrink-0 pl-2 2xl:pl-4">
                             <Link href="/start-project" prefetch={true} className="shrink-0 group">
                                 <div className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white rounded px-2.5 2xl:px-4 h-8 2xl:h-9 text-[9px] 2xl:text-[10.5px] font-bold uppercase tracking-[0.06em] 2xl:tracking-[0.1em] shadow-[0_2px_10px_rgba(220,38,38,0.35)] hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] transition-all duration-200 flex items-center gap-1.5 2xl:gap-2 whitespace-nowrap active:scale-95 cursor-pointer">
                                     <span>Launch Your Software</span>
