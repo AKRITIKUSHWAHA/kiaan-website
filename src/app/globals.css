@@ -506,14 +506,14 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
-/* ─── Tidio Live Chat Position (Lift ~65-70px above bottom yellow line) ─── */
+/* ─── Tidio Live Chat Position (Cleanly above bottom yellow line) ─── */
 #tidio-chat,
 #tidio-chat-iframe,
 #tidio-chat iframe,
 iframe[id*="tidio"],
 div#tidio-chat {
-    bottom: 68px !important;
-    margin-bottom: 68px !important;
+    bottom: 72px !important;
+    margin-bottom: 0px !important;
 }
 
 @media (min-width: 768px) {
@@ -522,7 +522,7 @@ div#tidio-chat {
     #tidio-chat iframe,
     iframe[id*="tidio"],
     div#tidio-chat {
-        bottom: 70px !important;
-        margin-bottom: 70px !important;
+        bottom: 74px !important;
+        margin-bottom: 0px !important;
     }
 }

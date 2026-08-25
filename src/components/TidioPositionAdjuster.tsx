@@ -16,11 +16,11 @@ export function TidioPositionAdjuster() {
                 );
 
                 elements.forEach(el => {
-                    if (el.style.bottom !== '70px') {
-                        el.style.setProperty('bottom', '70px', 'important');
+                    if (el.style.bottom !== '72px') {
+                        el.style.setProperty('bottom', '72px', 'important');
                     }
-                    if (el.style.marginBottom !== '70px') {
-                        el.style.setProperty('margin-bottom', '70px', 'important');
+                    if (el.style.marginBottom !== '0px') {
+                        el.style.setProperty('margin-bottom', '0px', 'important');
                     }
                 });
             } finally {
