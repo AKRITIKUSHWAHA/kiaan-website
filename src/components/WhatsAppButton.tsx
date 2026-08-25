@@ -23,7 +23,7 @@ export const WhatsAppButton = () => {
             animate={{ scale: 1, opacity: 1 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="fixed bottom-[148px] md:bottom-[152px] right-5 z-[9999] flex items-center justify-center w-[60px] h-[60px] bg-[#25D366] rounded-full shadow-[0_10px_25px_-5px_rgba(0,0,0,0.4)] animate-whatsapp-pulse cursor-pointer group"
+            className="fixed bottom-[128px] md:bottom-[134px] right-5 z-[9999] flex items-center justify-center w-[60px] h-[60px] bg-[#25D366] rounded-full shadow-[0_10px_25px_-5px_rgba(0,0,0,0.4)] animate-whatsapp-pulse cursor-pointer group"
             aria-label="Chat on WhatsApp"
         >
             <svg

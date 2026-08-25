@@ -15,9 +15,12 @@ export function TidioPositionAdjuster() {
                     '#tidio-chat-iframe, #tidio-chat, #tidio-chat iframe, iframe[id*="tidio"], div[id*="tidio"]'
                 );
 
+                const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                const targetBottom = isMobile ? '56px' : '62px';
+
                 elements.forEach(el => {
-                    if (el.style.bottom !== '60px') {
-                        el.style.setProperty('bottom', '60px', 'important');
+                    if (el.style.bottom !== targetBottom) {
+                        el.style.setProperty('bottom', targetBottom, 'important');
                     }
                     if (el.style.marginBottom !== '0px') {
                         el.style.setProperty('margin-bottom', '0px', 'important');
