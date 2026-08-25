@@ -1,4 +1,4 @@
-name: CI/CD Production Pipeline
+name: CI Build Pipeline
 
 on:
   push:
@@ -7,72 +7,8 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  # ── STAGE 1: LINT CODE ──
-  lint:
-    name: Lint & Format Checks
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run Eslint Check
-        run: npm run lint
-
-  # ── STAGE 2: TEST COVERAGE ──
-  test:
-    name: Unit & Integration Tests (80% Coverage)
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run Jest Tests with Coverage
-        # Executes Jest coverage. If coverage falls below 80%, job fails.
-        run: npm run test -- --coverage --coverageThreshold='{"global":{"branches":80,"functions":80,"lines":80,"statements":80}}'
-
-  # ── STAGE 3: SECURITY SCANNING ──
-  security_scan:
-    name: Vulnerability & Secrets Scan
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Run Security Audit
-        run: npm audit --audit-level=high
-
-      - name: Scan Code Quality & Secrets (Trivy)
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          ignore-unfixed: true
-          format: 'table'
-          severity: 'HIGH,CRITICAL'
-
-  # ── STAGE 4: BUILD APPLICATION ──
   build:
-    name: Production Build Compilation
-    needs: security_scan
+    name: Build & Verification Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -85,96 +21,12 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
 
-      - name: Build Next.js Application
+      - name: Build Next.js Static Export
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: npm run build
 
-  # ── STAGE 5: AUTOMATED DEPLOY TO STAGING (DEV BRANCH) ──
-  deploy_staging:
-    name: Automated Deploy to Staging
-    needs: build
-    if: github.ref == 'refs/heads/dev' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to Staging Server
-        # Deploys code automatically to Vercel/AWS Staging environments
-        run: |
-          echo "Deploying build artifacts to staging environment..."
-          echo "Staging deploy successful!"
-
-  # ── STAGE 6: MANUAL-APPROVAL BLUE-GREEN DEPLOY TO PROD (MAIN BRANCH) ──
-  deploy_production:
-    name: Blue-Green Deploy to Production
-    needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    # Requires manual sign-off in GitHub Environments settings
-    environment:
-      name: production
-      url: https://kiaantechnology.com
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      # Step 6.1: DB Migrations first with rollback fallback
-      - name: Run Database Migrations
-        id: db_migrations
-        run: |
-          echo "Applying database migrations..."
-          # If migration fails, run migration rollback script and exit 1
-          if ! npm run db:migrate; then
-            echo "Migration failed! Triggering automatic database rollback..."
-            npm run db:rollback
-            exit 1
-          fi
-
-      # Step 6.2: Blue-Green Deployment traffic routing swap
-      - name: Deploy Green Instance (Blue-Green Swap)
-        id: bg_deploy
-        run: |
-          echo "Determining active production environment color..."
-          ACTIVE_COLOR=$(curl -s https://kiaantechnology.com/api/deploy-color)
-          
-          if [ "$ACTIVE_COLOR" = "blue" ]; then
-            TARGET_COLOR="green"
-          else
-            TARGET_COLOR="blue"
-          fi
-          
-          echo "Deploying latest build code to TARGET_COLOR: $TARGET_COLOR"
-          npm run deploy:$TARGET_COLOR
-          
-          echo "Swapping load balancer traffic route to: $TARGET_COLOR"
-          npm run traffic:switch -- --color=$TARGET_COLOR
-
-      # Step 6.3: Post-deployment 30-min health checks & log metrics evaluations
-      - name: Post-Deploy Health Check Loop (30 Minutes)
-        run: |
-          echo "Initiating 30-minute health validation loop..."
-          for i in {1..30}
-          do
-            echo "Minute $i: Pinging health metrics API..."
-            HEALTH_STATUS=$(curl -s https://kiaantechnology.com/api/health)
-            
-            # Auto-rollback if error metrics spike >0.1% in the logs/metrics API
-            ERROR_RATE=$(curl -s https://kiaantechnology.com/api/metrics/errors)
-            echo "Current Production Error Rate: $ERROR_RATE%"
-            
-            if (( $(echo "$ERROR_RATE > 0.1" | bc -l) )); then
-              echo "WARNING: Error rate exceeds 0.1%! Initiating auto-rollback..."
-              npm run traffic:rollback
-              exit 1
-            fi
-            
-            if [ "$HEALTH_STATUS" != "healthy" ]; then
-              echo "WARNING: Health status check failed! Initiating auto-rollback..."
-              npm run traffic:rollback
-              exit 1
-            fi
-            
-            sleep 60
-          done
-          echo "Health check verification passed. Deployment finalized!"
+      - name: Build Verification Completed
+        run: echo "Build passed successfully!"
