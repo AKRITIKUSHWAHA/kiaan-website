@@ -210,6 +210,7 @@ export const Footer = () => {
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 {/* 2. Expandable "Resources, Tools & Ecosystem Directory" */}
                 <div className="mb-10 rounded-xl border border-zinc-800/80 bg-zinc-950/60 overflow-hidden backdrop-blur-md">
                     <button

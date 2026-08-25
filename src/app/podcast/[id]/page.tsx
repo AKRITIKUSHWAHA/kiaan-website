@@ -25,9 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: episode.description,
     keywords: episode.tags.join(", "),
     robots: "index, follow",
-    alternates: {
-      canonical: `https://kiaantechnology.com/podcast/${episode.id}`,
-    },
+    
     openGraph: {
       title: episode.title,
       description: episode.description,

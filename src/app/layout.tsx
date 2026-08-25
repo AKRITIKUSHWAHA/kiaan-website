@@ -146,6 +146,7 @@ export default function RootLayout({
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
                             gtag('config', 'G-Y9H9T9S8PN');
+                            gtag('config', 'G-LCVNSWRZV3');
                             gtag('config', 'AW-11548291032'); // Google Ads Remarketing Tag
                         `,
                     }}
@@ -450,10 +451,10 @@ export default function RootLayout({
                     <AwardBanner />
                 </div>
                 <Script
-  id="tidio-chat"
-  src="https://code.tidio.co/qihkscecnmcvf2gnjrau6nahfxnp3ytj.js"
-  strategy="afterInteractive"
-/>
+                    id="tidio-chat"
+                    src="https://code.tidio.co/qihkscecnmcvf2gnjrau6nahfxnp3ytj.js"
+                    strategy="afterInteractive"
+                />
             </body>
         </html>
     );

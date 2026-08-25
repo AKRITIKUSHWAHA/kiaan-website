@@ -10,9 +10,7 @@ export const metadata: Metadata = {
     "Official brand assets, logos, color codes, boilerplate descriptions, and media contact info for Kiaan Technology.",
   keywords: "Kiaan Technology press kit, media kit, logo pack, brand assets, color palette, company boilerplate",
   robots: "index, follow",
-  alternates: {
-    canonical: "https://kiaantechnology.com/press",
-  },
+  
 };
 
 export default function PressPage() {

@@ -498,8 +498,8 @@ export default function ReferralAgencyPartnerships() {
                         <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-1">
                             Referral & Reseller <span className="text-yellow-500">Agencies</span>
                         </h1>
-                        <p className="text-zinc-400 text-xs md:text-sm max-w-2xl font-mono">
-                            System Date: {SYSTEM_TODAY} // Monitor affiliate commissions, referral pipelines, and reseller workflows.
+                        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-mono">
+                            System Date: {SYSTEM_TODAY} | Monitor affiliate commissions, referral pipelines, and reseller workflows.
                         </p>
                     </div>
                     <div className="flex items-center gap-3">

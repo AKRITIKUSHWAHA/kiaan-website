@@ -21,9 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: `${post.title} | Kiaan Technology Blog`,
         description: post.excerpt,
-        alternates: {
-            canonical: `https://kiaantechnology.com/blog/${post.slug}`,
-        },
+        
         openGraph: {
             title: post.title,
             description: post.excerpt,
@@ -43,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 // Simple markdown renderer for the blog content
 function renderContent(rawContent: string) {
-    let processed = rawContent
+    const processed = rawContent
         .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-display uppercase mt-12 mb-6 tracking-tight text-white">$1</h3>')
         .replace(/^## (.*$)/gim, '<h2 class="text-3xl md:text-4xl font-display uppercase mt-16 mb-8 tracking-tight text-white flex items-center gap-4"><span class="w-8 h-1 bg-yellow-500"></span>$1</h2>')
         .replace(/^> (.*$)/gim, '<blockquote class="border-l-2 border-yellow-500 pl-6 py-2 my-10 italic text-xl text-zinc-300 font-light bg-gradient-to-r from-yellow-500/10 to-transparent">$1</blockquote>')

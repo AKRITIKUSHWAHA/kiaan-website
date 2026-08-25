@@ -88,8 +88,8 @@ export const CTASection: React.FC<CTASectionProps> = ({
         className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent"
       />
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-7xl">
-        <div className="border border-white/5 bg-zinc-950/60 backdrop-blur-md p-6 md:p-8 relative overflow-hidden">
+      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
+        <div className="border border-yellow-500/20 bg-zinc-950/80 backdrop-blur-md p-8 md:p-12 relative overflow-hidden rounded-xl shadow-[0_0_60px_rgba(234,179,8,0.07)] group hover:border-yellow-500/40 transition-all duration-500">
 
           {/* Inner corner glow accent */}
           <div

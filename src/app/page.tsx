@@ -38,6 +38,9 @@ const TestimonialsSection = dynamic(() => import('@/components/testimonials/Test
 const ContactCTA = dynamic(() => import('@/components/shared/ContactCTA').then(mod => mod.ContactCTA), {
     loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
+const TechStackSection = dynamic(() => import('@/components/home/TechStackSection').then(mod => mod.TechStackSection), {
+    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+})
 
 
 // Premium Hero Image Showcase — optimised for 1:1 square award images
@@ -532,7 +535,7 @@ export default function Home() {
                                             </h2>
                                         </Reveal>
                                         <Reveal delay={0.15}>
-                                            <p className="text-zinc-500 text-[13px] sm:text-sm font-medium italic border-l border-yellow-500/50 pl-3 leading-relaxed mb-6">
+                                            <p className="text-zinc-400 text-[13px] sm:text-sm font-medium italic border-l border-yellow-500/50 pl-3 leading-relaxed mb-6">
                                                 &quot;We don&apos;t just write code. We engineer distinctive digital experiences that define categories.&quot;
                                             </p>
                                         </Reveal>
@@ -627,7 +630,7 @@ export default function Home() {
                             </h2>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <p className="text-zinc-500 max-w-sm text-right font-light uppercase tracking-widest text-xs">
+                            <p className="text-zinc-400 max-w-sm text-right font-light uppercase tracking-widest text-xs">
                                 From concept to code, we follow a rigorous agile methodology for enterprise-grade delivery.
                             </p>
                         </Reveal>
@@ -642,9 +645,9 @@ export default function Home() {
                         ].map((item, idx) => (
                             <Reveal key={idx} delay={idx * 0.1}>
                                 <div className="group p-8 border border-zinc-900 hover:border-yellow-500/30 transition-all bg-zinc-950/50">
-                                    <span className="text-4xl font-display text-zinc-800 group-hover:text-yellow-500 transition-colors mb-6 block">{item.step}</span>
+                                    <span className="text-4xl font-display text-zinc-700 group-hover:text-yellow-500 transition-colors mb-6 block">{item.step}</span>
                                     <h3 className="text-xl font-display uppercase text-white mb-4 group-hover:text-yellow-500 transition-colors">{item.title}</h3>
-                                    <p className="text-zinc-500 text-sm leading-relaxed">{item.desc}</p>
+                                    <p className="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
                                 </div>
                             </Reveal>
                         ))}
@@ -653,37 +656,7 @@ export default function Home() {
             </section>
 
             {/* Technology Stack Section */}
-            <section className="py-6 bg-zinc-950">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-6">
-                        <Reveal>
-                            <h2 className="text-4xl md:text-5xl font-display uppercase text-white mb-4">
-                                Our <span className="text-yellow-500">Technology Stack</span>
-                            </h2>
-                        </Reveal>
-                        <Reveal delay={0.2}>
-                            <p className="text-zinc-400 max-w-2xl mx-auto">
-                                We utilize modern, battle-tested technologies to build high-performance software that scales with your business.
-                            </p>
-                        </Reveal>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                        {[
-                            "React.js", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "AWS",
-                            "Google Cloud", "MERN Stack", "Python", "Docker", "Kubernetes", "Tailwind CSS"
-                        ].map((tech, idx) => (
-                            <Reveal key={idx} delay={idx * 0.05}>
-                                <div className="p-6 border border-zinc-900 bg-black text-center group hover:border-yellow-500/50 transition-all cursor-default">
-                                    <span className="text-zinc-500 group-hover:text-white font-black uppercase tracking-widest text-[10px] transition-colors">
-                                        {tech}
-                                    </span>
-                                </div>
-                            </Reveal>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <TechStackSection />
 
             <InternshipTraining />
             <ResourcesPreview />

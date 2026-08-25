@@ -162,8 +162,8 @@ export const Navbar = () => {
                                         className={`relative h-full px-1.5 2xl:px-3 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.05em] 2xl:tracking-[0.12em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 whitespace-nowrap ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <ChevronDown size={11} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100' : 'opacity-50'}`} />
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        <ChevronDown size={12} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100 text-black' : 'opacity-60'}`} />
+                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 ) : (
                                     <Link
@@ -172,7 +172,7 @@ export const Navbar = () => {
                                         className={`relative h-full px-1.5 2xl:px-3 text-[10px] 2xl:text-[11px] font-bold uppercase tracking-[0.05em] 2xl:tracking-[0.12em] flex items-center gap-1 2xl:gap-1.5 transition-all duration-300 whitespace-nowrap ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[36px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
                                     </Link>
                                 )}
 
@@ -186,8 +186,9 @@ export const Navbar = () => {
                                             transition={{ duration: 0.2, ease: "easeOut" }}
                                             className="absolute top-full left-0 z-[100] mt-1"
                                         >
-                                            <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner">
+                                            <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner rounded-xl overflow-hidden">
                                                 <div
+<<<<<<< HEAD
                                                     className={`${link.subItems ? 'w-[240px]' : 'w-[180px]'} flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
                                                     style={{ maxHeight: 'calc(100vh - 120px)' }}
                                                 >
@@ -212,6 +213,44 @@ export const Navbar = () => {
                                                         >
                                                             <div className="flex items-center justify-between px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider border-b border-white/5 last:border-none cursor-pointer group">
                                                                 {/* Category Link (Level 2) */}
+=======
+                                                    className="w-[240px] flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden"
+                                                    style={{ maxHeight: 'calc(100vh - 120px)', scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
+                                                    onWheel={(e) => e.stopPropagation()}
+                                                >
+                                                    {(() => {
+                                                        if (link.level2) {
+                                                            return link.level2.map((cat: any) => (
+                                                                <div
+                                                                    key={cat.title}
+                                                                    onMouseEnter={(e) => {
+                                                                        if (link.name !== 'Solutions') handleCategoryHover(e, cat.title, cat.items);
+                                                                    }}
+                                                                    onClick={(e) => {
+                                                                        if (link.name !== 'Solutions') handleCategoryHover(e, cat.title, cat.items);
+                                                                    }}
+                                                                    className={`group/cat px-4 py-3.5 flex items-center justify-between cursor-pointer transition-colors relative ${activeCategory === cat.title ? 'bg-yellow-500 text-black' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
+                                                                >
+                                                                    <Link
+                                                                        href={(() => {
+                                                                            if (link.name === 'Products') return `/products/category/${generateSlug(cat.title)}`;
+                                                                            if (link.name === 'Solutions') return `/solutions/${cat.slug || generateSlug(cat.title)}`;
+                                                                            return `/internship?cat=${generateSlug(cat.title)}`;
+                                                                        })()}
+                                                                        prefetch={true}
+                                                                        className="text-[10px] font-bold uppercase tracking-widest flex-1 before:absolute before:inset-0"
+                                                                    >
+                                                                        {cat.title}
+                                                                    </Link>
+                                                                    {link.name !== 'Solutions' && (
+                                                                        <ChevronRight size={12} className={activeCategory === cat.title ? 'text-black' : 'text-zinc-600'} />
+                                                                    )}
+                                                                </div>
+                                                            ));
+                                                        }
+                                                        if (link.subItems) {
+                                                            return link.subItems.map((item: any) => (
+>>>>>>> upstream/main
                                                                 <Link
                                                                     href={(() => {
                                                                         if (category.href) return category.href;

@@ -223,29 +223,35 @@ export const navLinks = [
         level2: saasCategories
     },
     {
-        name: 'Solutions',
-        href: '/solutions',
-    },
-    {
-        name: 'Services',
+        name: 'Services & Solutions',
         href: '/services',
         subItems: [
             { name: 'Custom SaaS Development', href: '/services/saas-development' },
             { name: 'Mobile App Development', href: '/services/mobile-app-development' },
             { name: 'ERP & CRM Development', href: '/services/erp-crm-solutions' },
             { name: 'HRM Systems', href: '/hrm' },
-            { name: 'Automation Systems', href: '/services/ai-automation' },
-            { name: 'UI/UX Design', href: '/solutions/ui-ux' },
+            { name: 'AI & Business Automation', href: '/services/ai-automation' },
             { name: 'Web Development', href: '/services/web-development' },
             { name: 'Custom Software Development', href: '/services/custom-software-development' },
+            { name: 'UI/UX Design', href: '/solutions/ui-ux' },
+            { name: 'Healthcare Software', href: '/industries/healthcare-software' },
+            { name: 'Fintech Solutions', href: '/industries/fintech-software' },
+            { name: 'Retail Tech', href: '/industries/retail-technology' },
+            { name: 'Real Estate SaaS', href: '/solutions/real-estate' },
+            { name: 'Logistics ERP', href: '/solutions/logistics' },
+            { name: 'Automotive Software', href: '/solutions/automotive' },
             { name: 'Agency Partnerships', href: '/referral-agency-partnerships' },
-            { name: 'Partner Program', href: '/partner-program' },
-            { name: 'HubSpot Integration', href: '/hubspot-integration' },
-            { name: 'Zapier Integration', href: '/zapier-integration' },
-            { name: 'Event Management', href: '/industry-events' },
-            { name: 'Networking Organizations', href: '/networking-organizations' },
-            { name: 'Affiliate Program', href: '/affiliate-program' },
-            { name: 'White-Label Partnership', href: '/white-label-partnership' },
+            { name: 'Partner Program', href: '/partner-program' }
+        ]
+    },
+    {
+        name: 'Resources',
+        href: '/resources',
+        subItems: [
+            { name: 'Our Blog & Insights', href: '/blog' },
+            { name: 'Case Studies Archive', href: '/case-studies' },
+            { name: 'Interactive Demo Arena', href: '/demo' },
+            { name: '🎙️ Tech Talks Podcast', href: '/podcast' },
             { name: 'Analytics Debugger', href: '/analytics-debugger' },
             { name: 'Heatmaps Debugger', href: '/heatmaps-debugger' },
             { name: 'Analytics Dashboard', href: '/analytics-dashboard' },
@@ -257,17 +263,19 @@ export const navLinks = [
             { name: 'Founder Intro', href: '/founder-intro' },
             { name: 'Video Testimonials', href: '/video-testimonials' },
             { name: 'Day in the Life', href: '/day-in-the-life' },
+            { name: '📰 Press Kit', href: '/press' },
+            { name: '✉️ Email Signatures', href: '/email-signatures' },
+            { name: '🤝 Sales Playbooks', href: '/sales-scripts' },
+            { name: '📝 Proposal Template', href: '/proposal-template' }
         ]
     },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Demo Arena', href: '/demo' },
     {
-        name: 'Training & Internship',
+        name: 'Academy',
         href: '/internship',
         level2: internshipCategories
     },
-
-    { name: 'AI Automation', href: '/services/ai-automation' },
-    { name: 'Podcast', href: '/podcast' },
+    {
+        name: 'Contact',
+        href: '/contact'
+    }
 ]

@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     "tech podcast India, SaaS development podcast, AI software podcast, enterprise technology podcast, Kiaan Technology podcast",
   robots: "index, follow",
   alternates: {
-    canonical: "https://kiaantechnology.com/podcast",
     types: {
       "application/rss+xml": "https://kiaantechnology.com/podcast/rss.xml",
     },
