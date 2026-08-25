@@ -506,23 +506,12 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
-/* ─── Tidio Live Chat Position (Just above bottom yellow line) ─── */
+/* ─── Tidio Live Chat Position (Lifted above yellow line, below WhatsApp) ─── */
 #tidio-chat,
 #tidio-chat-iframe,
 #tidio-chat iframe,
 iframe[id*="tidio"],
 div#tidio-chat {
-    bottom: 56px !important;
-    margin-bottom: 0px !important;
+    transform: translateY(-53px) !important;
 }
 
-@media (min-width: 768px) {
-    #tidio-chat,
-    #tidio-chat-iframe,
-    #tidio-chat iframe,
-    iframe[id*="tidio"],
-    div#tidio-chat {
-        bottom: 62px !important;
-        margin-bottom: 0px !important;
-    }
-}
