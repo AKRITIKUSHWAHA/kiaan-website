@@ -11,11 +11,16 @@ const BookConsultationCTA = dynamic(() => import('./BookConsultationCTA').then(m
     ssr: false
 });
 
+const TidioPositionAdjuster = dynamic(() => import('./TidioPositionAdjuster').then(mod => mod.TidioPositionAdjuster), {
+    ssr: false
+});
+
 export function GlobalClientComponents() {
     return (
         <>
             <WhatsAppButton />
             <BookConsultationCTA />
+            <TidioPositionAdjuster />
         </>
     );
 }

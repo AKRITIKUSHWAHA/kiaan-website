@@ -118,32 +118,31 @@ export default function StartProject() {
             trackGAEvent('form_submit', 'Lead Generation', 'Start Project Request');
             trackGTMEvent('form_submit', { form_name: 'Start Project Request', project_type: formData.projectType, budget: formData.budget });
 
-            const res = await fetch('/api/leads', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    leadType: 'start_project',
-                    name: formData.name,
-                    company: formData.company,
-                    email: formData.email,
-                    phone: formData.contactNumber,
-                    contactMethod: formData.contactMethod,
-                    industry: formData.industry,
-                    projectType: formData.projectType,
-                    features: formData.features,
-                    vision: formData.vision,
-                    budget: formData.budget,
-                    timeline: formData.timeline,
-                    sourcePage: '/start-project'
-                })
-            });
-
-            const data = await res.json();
-            if (!res.ok || !data.ok) {
-                setSubmitError(data.message || 'Request send nahi ho paayi. Please try again.')
-                return;
+            try {
+                await fetch('/api/leads/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        leadType: 'start_project',
+                        name: formData.name,
+                        company: formData.company,
+                        email: formData.email,
+                        phone: formData.contactNumber,
+                        contactMethod: formData.contactMethod,
+                        industry: formData.industry,
+                        projectType: formData.projectType,
+                        features: formData.features,
+                        vision: formData.vision,
+                        budget: formData.budget,
+                        timeline: formData.timeline,
+                        sourcePage: '/start-project'
+                    })
+                });
+            } catch (err) {
+                console.warn('Backend start-project lead sync notice:', err);
             }
-            setStep(7)
+
+            setStep(7);
         } catch {
             setSubmitError('Request send nahi ho paayi. Please try again.')
         } finally {

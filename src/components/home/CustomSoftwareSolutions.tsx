@@ -39,26 +39,26 @@ const CustomSoftwareSolutionsInner = () => {
     ];
 
     return (
-        <section className="py-16 bg-zinc-950 relative overflow-x-hidden">
+        <section className="py-6 bg-zinc-950 relative overflow-x-hidden">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl md:text-5xl font-display uppercase text-white mb-6 leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-display uppercase text-white mb-4 leading-tight">
                                 Enterprise Software <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Solutions in India</span>
                             </h2>
-                            <p className="text-zinc-400 text-base md:text-lg border-y border-yellow-500/20 py-4 md:inline-block md:px-12 max-w-3xl">
+                            <p className="text-zinc-400 text-base md:text-lg border-y border-yellow-500/20 py-3 md:inline-block md:px-12 max-w-3xl">
                                 Engineering high-performance <strong>custom enterprise systems</strong> designed for global scale, regulatory compliance, and digital-first growth.
                             </p>
                         </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-24">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                         {solutions.map((item, index) => (
                             <SolutionTileMemo
                                 key={index}

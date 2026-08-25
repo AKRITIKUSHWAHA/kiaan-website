@@ -53,11 +53,10 @@ export const industries: Industry[] = [
         desc: 'End-to-end healthcare platforms — from clinic management to telehealth and hospital-grade inventory systems.',
         seoKeywords: ['Healthcare Software Development', 'Hospital Management System', 'Clinic Management Software', 'Telemedicine Platform', 'Healthcare SaaS'],
         solutions: [
-            s(1, 'Digital Health Assistant Platform', 'Healthcare outreach and service coordination platform.', 'healthcare', 'http://healthsakhis.kiaansoftware.com/'),
+            s(1, 'Health Sakhi - Digital Health Assistant Platform', 'Healthcare outreach and service coordination platform.', 'healthcare', 'http://health-sakhi-demo.kiaansoftwaredemo.shop/'),
             s(2, 'Physiotherapy Clinic Management System', 'Clinic operations platform for appointments and patient care.', 'healthcare', 'https://deephysio-clinic.kiaansoftware.com'),
             s(3, 'Advanced Clinic Management System', 'Comprehensive clinic operations and patient lifecycle management.', 'healthcare', 'https://clinic-pro.softwaredemolive.live'),
-            s(4, 'Multi-Clinic Healthcare Management System', 'Enterprise healthcare platform for managing multiple clinic branches.', 'healthcare', 'https://dhnawantariclinic.softwaredemolive.live'),
-            s(5, 'Tele Health Care & Virtual Care Platform', 'Telemedicine ecosystem for virtual consultations and remote monitoring.', 'healthcare', 'https://telehealthcare.softwaredemolive.live'),
+            s(222, 'Medicare Hospital & Healthcare Management Platform', 'Modern hospital management system with doctor appointment booking, patient portal, and OPD/IPD workflows.', 'healthcare', 'https://medicare.kiaansoftwaredemo.shop'),
             s(6, 'Dental Clinic Management System', 'Advanced dental clinic operations and procedure tracking.', 'healthcare', 'http://dentist.softwaredemolive.live'),
             s(7, 'Hospital Inventory & Asset Management System', 'Comprehensive inventory and medical asset management for hospitals.', 'healthcare', 'https://hopistal-inventry.softwaredemolive.live'),
             s(58, 'Smart Hospital Management System', 'Complete hospital operations software covering OPD/IPD, pharmacy, pathology laboratory, imaging, and patient portals.', 'healthcare', 'https://hospitalui.softwaredemolive.live'),
@@ -75,7 +74,6 @@ export const industries: Industry[] = [
         solutions: [
             s(8, 'Insurance Policy & Claims Management', 'Insurance policy administration and claims management system.', 'fintech', 'https://insurance-managmenet.kiaansoftware.com'),
             s(10, 'Digital Lending & Loan Automation Suite', 'Loan servicing and borrower workflow for end-to-end lending operations.', 'fintech', 'http://loanfistdemo.kiaansoftware.com/'),
-            s(11, 'Loan Management & Lending Platform', 'End-to-end digital lending ecosystem for loan origination and portfolio management.', 'fintech', 'https://lms.softwaredemolive.live'),
             s(50, 'Accounting Management Software', 'Comprehensive business accounting, multi-ledger bookkeeping, and GST invoicing platform.', 'fintech', 'https://zirakbook-accounting.kiaansoftware.com'),
             s(59, 'Role-Based Loan Management System', 'Enterprise loan management system with role-based access for borrowers, loan officers, and underwriters.', 'fintech', 'https://loankpui.softwaredemolive.live'),
         ],
@@ -93,6 +91,7 @@ export const industries: Industry[] = [
             s(13, 'Property Management System', 'Property listing and management platform.', 'real-estate', 'https://property1.kiaansoftware.com'),
             s(15, 'Property & Rental Management Platform', 'Comprehensive property portfolio management and leasing suite.', 'real-estate', 'https://property-peach-management.softwaredemolive.live'),
             s(16, 'Advanced Property Management Suite', 'High-end property ecosystem for portfolio analytics and vendor coordination.', 'real-estate', 'https://propertythree.softwaredemolive.live'),
+            s(223, 'Society Maintenance & Resident Service Portal', 'Comprehensive residential society, HOA maintenance billing, gate pass, and community management platform.', 'real-estate', 'https://society-maintenance-service.kiaansoftwaredemo.shop'),
             s(57, 'Construction Management Software', 'Comprehensive project scheduling, site reporting, document control, and resource management for developers and contractors.', 'real-estate', 'https://constructionui.softwaredemolive.live'),
         ],
     },
@@ -138,7 +137,6 @@ export const industries: Industry[] = [
         solutions: [
             s(24, 'Workforce & Employee Management Suite', 'End-to-end workforce coordination and HR operations management.', 'human-resources', 'https://employee-management-system.softwaredemolive.live'),
             s(26, 'Recruitment & Placement Management System', 'End-to-end recruitment lifecycle and candidate placement platform.', 'human-resources', 'http://placementservice.softwaredemolive.live'),
-            s(79, 'AI Workforce Platform', 'Advanced human capital management and AI-powered workforce optimization suite.', 'human-resources', 'https://hcm-demo.softwaredemolive.live'),
         ],
     },
     {
@@ -199,7 +197,6 @@ export const industries: Industry[] = [
         seoKeywords: ['EdTech Platform', 'Student Management System', 'LMS Software', 'Visa Processing System', 'Digital Library'],
         solutions: [
             s(36, 'Student Recruitment & Visa Processing System', 'Education consultancy platform for admissions and visa processing.', 'education', 'https://studentrecruitmentvisa.softwaredemolive.live'),
-            s(37, 'Digital Library & Book Reading Platform', 'Cloud-based digital repository and reading experience platform.', 'education', 'https://bookreading.softwaredemolive.live'),
         ],
     },
     {
@@ -212,6 +209,7 @@ export const industries: Industry[] = [
         desc: 'Event planning, carnival operations, venue booking, and attendee management platforms.',
         seoKeywords: ['Event Management Software', 'Venue Booking Platform', 'Carnival Management System', 'Event Planning Tool'],
         solutions: [
+            s(221, 'Wedding Photography & Cinematography Studio', 'Luxury wedding photography showcase, portfolio gallery, and client booking platform.', 'events-entertainment', 'https://wedding-photography-website.kiaansoftwaredemo.shop'),
             s(38, 'Event & Carnival Operations Management', 'End-to-end carnival and event operations platform.', 'events-entertainment', 'https://carnival-management.kiaansoftware.com'),
             s(39, 'Event Planning & Operations Management System', 'Advanced planning and coordination for large-scale events.', 'events-entertainment', 'https://event-management.softwaredemolive.live/'),
         ],

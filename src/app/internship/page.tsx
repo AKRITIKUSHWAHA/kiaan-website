@@ -238,26 +238,23 @@ export default function InternshipPage() {
                 EMAILJS_PUBLIC_KEY
             );
 
-            const res = await fetch('/api/leads', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    leadType: 'internship',
-                    leadSource: 'internship_application',
-                    fullName: formData.name,
-                    email: formData.email,
-                    phone: formData.whatsapp,
-                    serviceInterest: formData.program || 'Internship Program',
-                    message: `Education: ${formData.education || 'N/A'} | Category: ${selectedCategory || 'N/A'}`,
-                    sourcePage: '/internship'
-                })
-            });
-
-            const data = await res.json();
-            if (!res.ok || !data.ok) {
-                setFormStatus('error');
-                setErrorMessage(data.message || 'Application send nahi ho paayi. Please try again.');
-                return;
+            try {
+                await fetch('/api/leads/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        leadType: 'internship',
+                        leadSource: 'internship_application',
+                        fullName: formData.name,
+                        email: formData.email,
+                        phone: formData.whatsapp,
+                        serviceInterest: formData.program || 'Internship Program',
+                        message: `Education: ${formData.education || 'N/A'} | Category: ${selectedCategory || 'N/A'}`,
+                        sourcePage: '/internship'
+                    })
+                });
+            } catch (err) {
+                console.warn('Backend internship lead sync notice:', err);
             }
 
             setFormStatus('success');
@@ -293,12 +290,12 @@ export default function InternshipPage() {
     };
 
     return (
-        <div className="bg-black min-h-screen pt-32 pb-12 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-6 lg:pt-8 pb-10 selection:bg-yellow-500 selection:text-black">
 
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 1: HERO
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 mb-20 text-center relative">
+            <section className="container mx-auto px-4 sm:px-6 mb-8 text-center relative max-w-5xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-yellow-500/10 blur-[120px] rounded-full -z-10" />
 
                 <motion.div
@@ -307,42 +304,42 @@ export default function InternshipPage() {
                     transition={{ duration: 0.7 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <span className="inline-block px-5 py-2 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-[10px] font-black uppercase tracking-[0.3em] mb-6 rounded-full">
+                    <span className="inline-block px-4 py-1.5 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-[10px] font-black uppercase tracking-[0.25em] mb-3 rounded-full">
                         Real Projects • Real Experience • Real Growth
                     </span>
 
-                    <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-6 leading-none">
+                    <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-3 leading-tight">
                         Kiaan Technology <span className="text-yellow-500">Innovation Lab</span>
                     </h1>
 
-                    <p className="text-lg text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-sm md:text-base text-zinc-400 mb-5 max-w-2xl mx-auto leading-relaxed">
                         Work on real software projects, learn from industry professionals, build your portfolio, and gain practical experience inside a real software development company.
                     </p>
 
-                    <div className="flex flex-wrap justify-center gap-4 mb-12">
+                    <div className="flex flex-wrap justify-center gap-3 mb-6">
                         {[
-                            { text: 'Live Project Experience', icon: <CheckCircle2 size={16} /> },
-                            { text: 'Internship Certification', icon: <CheckCircle2 size={16} /> },
-                            { text: 'Industry Mentorship', icon: <CheckCircle2 size={16} /> },
-                            { text: 'Career Development Support', icon: <CheckCircle2 size={16} /> }
+                            { text: 'Live Project Experience', icon: <CheckCircle2 size={15} /> },
+                            { text: 'Internship Certification', icon: <CheckCircle2 size={15} /> },
+                            { text: 'Industry Mentorship', icon: <CheckCircle2 size={15} /> },
+                            { text: 'Career Development Support', icon: <CheckCircle2 size={15} /> }
                         ].map((badge) => (
-                            <div key={badge.text} className="flex items-center gap-2 px-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-full text-zinc-300 text-xs font-bold">
+                            <div key={badge.text} className="flex items-center gap-1.5 px-3.5 py-1.5 bg-zinc-900/50 border border-zinc-800 rounded-full text-zinc-300 text-xs font-bold">
                                 <span className="text-yellow-500">{badge.icon}</span>
                                 {badge.text}
                             </div>
                         ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                         <Link href="#apply" className="w-full sm:w-auto">
-                            <Button className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 border-none text-black rounded-none skew-x-[-12deg] px-10 h-14 text-sm font-black uppercase tracking-[0.2em]">
+                            <Button className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 border-none text-black rounded-none skew-x-[-12deg] px-8 h-12 text-xs font-black uppercase tracking-[0.15em]">
                                 <span className="skew-x-[12deg] flex items-center gap-2">
-                                    Join The Lab <Rocket size={18} />
+                                    Join The Lab <Rocket size={16} />
                                 </span>
                             </Button>
                         </Link>
                         <Link href="#counseling" className="w-full sm:w-auto">
-                            <Button variant="outline" className="w-full sm:w-auto border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-500 text-sm font-black uppercase tracking-widest h-14 px-10 rounded-none transition-all">
+                            <Button variant="outline" className="w-full sm:w-auto border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-500 text-xs font-black uppercase tracking-widest h-12 px-8 rounded-none transition-all">
                                 Book Free Training Call
                             </Button>
                         </Link>
@@ -354,13 +351,13 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 2: WHY STUDENTS CHOOSE KIAAN
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 mb-10">
-                <motion.div {...sectionFade} className="text-center mb-12">
-                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">WHY CHOOSE US</span>
-                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="container mx-auto px-4 sm:px-6 mb-8 max-w-6xl">
+                <motion.div {...sectionFade} className="text-center mb-5">
+                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">WHY CHOOSE US</span>
+                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                         Why Students Choose <span className="text-yellow-500">Kiaan Technology</span>
                     </h2>
-                    <p className="text-zinc-500 max-w-xl mx-auto text-sm">Five core reasons students trust us with their career development.</p>
+                    <p className="text-zinc-500 max-w-xl mx-auto text-xs sm:text-sm">Five core reasons students trust us with their career development.</p>
                 </motion.div>
 
                 <motion.div
@@ -400,49 +397,49 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 3: PROGRAM FEE + PERFORMANCE REWARD
             ════════════════════════════════════════════════════════════════ */}
-            <section className="bg-zinc-950/50 border-y border-zinc-900 pt-10 pb-12 mb-12">
-                <div className="container mx-auto px-6">
-                    <motion.div {...sectionFade} className="text-center mb-10">
-                        <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">INVESTMENT</span>
-                        <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="bg-zinc-950/50 border-y border-zinc-900 py-6 mb-8">
+                <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+                    <motion.div {...sectionFade} className="text-center mb-5">
+                        <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">INVESTMENT</span>
+                        <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                             Program Fee <span className="text-yellow-500">Structure</span>
                         </h2>
-                        <p className="text-zinc-500 max-w-xl mx-auto text-sm">Transparent pricing with flexible payment options.</p>
+                        <p className="text-zinc-500 max-w-xl mx-auto text-xs sm:text-sm">Transparent pricing with flexible payment options.</p>
                     </motion.div>
 
                     <div className="max-w-3xl mx-auto">
                         {/* Pricing Card */}
                         <motion.div
                             {...sectionFade}
-                            className="pricing-glow bg-zinc-950 border border-zinc-800 p-8 md:p-10 mb-6 relative overflow-hidden"
+                            className="pricing-glow bg-zinc-950 border border-zinc-800 p-5 md:p-6 mb-4 relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 w-40 h-40 bg-yellow-500/5 blur-[80px] rounded-full" />
                             <div className="relative z-10">
-                                <div className="text-center mb-8">
+                                <div className="text-center mb-4">
                                     <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Total Program Fee</span>
-                                    <div className="text-4xl md:text-5xl font-display text-white mt-2">
+                                    <div className="text-3xl md:text-4xl font-display text-white mt-1">
                                         ₹<span className="text-yellow-500">40,000</span>
                                     </div>
                                 </div>
 
-                                <div className="flex flex-col md:flex-row items-stretch justify-center gap-4 md:gap-2">
+                                <div className="flex flex-col md:flex-row items-stretch justify-center gap-3 md:gap-2">
                                     {[
                                         { label: 'At Joining', amount: '₹20,000', highlight: true, step: 1 },
                                         { label: 'After Month 1', amount: '₹10,000', highlight: false, step: 2 },
                                         { label: 'After Month 2', amount: '₹10,000', highlight: false, step: 3 },
                                     ].map((row, idx) => (
                                         <React.Fragment key={row.label}>
-                                            <div className={`flex-1 p-6 border ${row.highlight ? 'border-yellow-500/30 bg-yellow-500/[0.03]' : 'border-zinc-850 bg-zinc-900/10'} flex flex-col justify-center items-center text-center relative`}>
-                                                <span className="text-[9px] uppercase tracking-widest text-zinc-500 font-bold mb-1">Step 0{row.step}</span>
-                                                <span className="text-zinc-400 text-xs font-medium mb-2">{row.label}</span>
-                                                <span className={`text-xl font-display font-bold ${row.highlight ? 'text-yellow-500' : 'text-white'}`}>
+                                            <div className={`flex-1 p-4 border ${row.highlight ? 'border-yellow-500/30 bg-yellow-500/[0.03]' : 'border-zinc-850 bg-zinc-900/10'} flex flex-col justify-center items-center text-center relative`}>
+                                                <span className="text-[9px] uppercase tracking-widest text-zinc-500 font-bold mb-0.5">Step 0{row.step}</span>
+                                                <span className="text-zinc-400 text-xs font-medium mb-1">{row.label}</span>
+                                                <span className={`text-lg font-display font-bold ${row.highlight ? 'text-yellow-500' : 'text-white'}`}>
                                                     {row.amount}
                                                 </span>
                                             </div>
                                             {idx < 2 && (
-                                                <div className="flex items-center justify-center py-2 md:py-0 md:px-2 shrink-0">
-                                                    <ChevronRight className="hidden md:block text-yellow-500/60" size={20} />
-                                                    <ChevronDown className="block md:hidden text-yellow-500/60" size={20} />
+                                                <div className="flex items-center justify-center py-1 md:py-0 md:px-1 shrink-0">
+                                                    <ChevronRight className="hidden md:block text-yellow-500/60" size={16} />
+                                                    <ChevronDown className="block md:hidden text-yellow-500/60" size={16} />
                                                 </div>
                                             )}
                                         </React.Fragment>
@@ -454,15 +451,15 @@ export default function InternshipPage() {
                         {/* Performance Reward Box */}
                         <motion.div
                             {...sectionFade}
-                            className="reward-pulse bg-zinc-950 border border-yellow-500/30 p-6 md:p-8 relative overflow-hidden"
+                            className="reward-pulse bg-zinc-950 border border-yellow-500/30 p-4 md:p-5 relative overflow-hidden"
                         >
                             <div className="absolute inset-0 bg-yellow-500/[0.03]" />
-                            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-4">
-                                <div className="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-500 shrink-0">
-                                    <Award size={24} />
+                            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-3">
+                                <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-500 shrink-0">
+                                    <Award size={20} />
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-bold text-sm mb-1">
+                                    <h4 className="text-white font-bold text-xs sm:text-sm mb-0.5">
                                         Up to ₹20,000 Performance Reward
                                     </h4>
                                     <p className="text-zinc-500 text-xs leading-relaxed">
@@ -479,19 +476,19 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 4: YOUR JOURNEY
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 mb-20">
-                <motion.div {...sectionFade} className="text-center mb-12">
-                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">YOUR PATH</span>
-                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="container mx-auto px-4 sm:px-6 mb-8 max-w-5xl">
+                <motion.div {...sectionFade} className="text-center mb-5">
+                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">YOUR PATH</span>
+                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                         Your <span className="text-yellow-500">Internship Journey</span>
                     </h2>
-                    <p className="text-zinc-500 max-w-xl mx-auto text-sm">From foundations to certification — your step-by-step development path.</p>
+                    <p className="text-zinc-500 max-w-xl mx-auto text-xs sm:text-sm">From foundations to certification — your step-by-step development path.</p>
                 </motion.div>
 
                 {/* Desktop Timeline (horizontal) */}
                 <div className="hidden lg:block max-w-5xl mx-auto relative">
                     <div className="timeline-connector" />
-                    <div className="grid grid-cols-6 gap-4 relative z-10">
+                    <div className="grid grid-cols-6 gap-3 relative z-10">
                         {journeySteps.map((step, idx) => (
                             <motion.div
                                 key={step.step}
@@ -501,10 +498,10 @@ export default function InternshipPage() {
                                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                                 className="flex flex-col items-center text-center group"
                             >
-                                <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-zinc-700 group-hover:border-yellow-500 flex items-center justify-center text-zinc-400 group-hover:text-yellow-500 font-black text-sm transition-all duration-300 mb-4">
+                                <div className="w-10 h-10 rounded-full bg-zinc-900 border-2 border-zinc-700 group-hover:border-yellow-500 flex items-center justify-center text-zinc-400 group-hover:text-yellow-500 font-black text-xs transition-all duration-300 mb-2.5">
                                     {step.step}
                                 </div>
-                                <h4 className="text-white font-bold text-xs mb-1 leading-tight">{step.title}</h4>
+                                <h4 className="text-white font-bold text-xs mb-0.5 leading-tight">{step.title}</h4>
                                 <p className="text-zinc-600 text-[10px] leading-relaxed">{step.desc}</p>
                             </motion.div>
                         ))}
@@ -514,7 +511,7 @@ export default function InternshipPage() {
                 {/* Mobile Timeline (vertical) */}
                 <div className="lg:hidden max-w-md mx-auto relative">
                     <div className="timeline-connector-vertical" />
-                    <div className="space-y-8 relative z-10">
+                    <div className="space-y-4 relative z-10">
                         {journeySteps.map((step, idx) => (
                             <motion.div
                                 key={step.step}
@@ -522,14 +519,14 @@ export default function InternshipPage() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.08 }}
-                                className="flex items-start gap-5 group"
+                                className="flex items-start gap-3.5 group"
                             >
-                                <div className="w-12 h-12 rounded-full bg-zinc-900 border-2 border-zinc-700 group-hover:border-yellow-500 flex items-center justify-center text-zinc-400 group-hover:text-yellow-500 font-black text-sm transition-all shrink-0">
+                                <div className="w-10 h-10 rounded-full bg-zinc-900 border-2 border-zinc-700 group-hover:border-yellow-500 flex items-center justify-center text-zinc-400 group-hover:text-yellow-500 font-black text-xs transition-all shrink-0">
                                     {step.step}
                                 </div>
-                                <div className="pt-2">
-                                    <h4 className="text-white font-bold text-sm mb-1">{step.title}</h4>
-                                    <p className="text-zinc-500 text-xs leading-relaxed">{step.desc}</p>
+                                <div className="pt-1">
+                                    <h4 className="text-white font-bold text-xs mb-0.5">{step.title}</h4>
+                                    <p className="text-zinc-500 text-[11px] leading-relaxed">{step.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -541,10 +538,10 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 5: WHAT MAKES THIS DIFFERENT
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 mb-20">
-                <motion.div {...sectionFade} className="text-center mb-12">
-                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">DIFFERENTIATORS</span>
-                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="container mx-auto px-4 sm:px-6 mb-8 max-w-5xl">
+                <motion.div {...sectionFade} className="text-center mb-5">
+                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">DIFFERENTIATORS</span>
+                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                         What Makes This Program <span className="text-yellow-500">Different?</span>
                     </h2>
                 </motion.div>
@@ -554,18 +551,18 @@ export default function InternshipPage() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 max-w-5xl mx-auto"
                 >
                     {whyDifferentPoints.map((point) => (
                         <motion.div
                             key={point.text}
                             variants={staggerItem}
-                            className="group flex items-start gap-4 p-5 bg-zinc-950 border border-zinc-800/80 hover:border-yellow-500/40 transition-all duration-300"
+                            className="group flex items-start gap-3 p-4 bg-zinc-950 border border-zinc-800/80 hover:border-yellow-500/40 transition-all duration-300"
                         >
-                            <CheckCircle2 size={18} className="text-yellow-500 mt-0.5 shrink-0" />
+                            <CheckCircle2 size={16} className="text-yellow-500 mt-0.5 shrink-0" />
                             <div>
-                                <h4 className="text-white font-bold text-sm mb-1">{point.text}</h4>
-                                <p className="text-zinc-500 text-xs leading-relaxed">{point.desc}</p>
+                                <h4 className="text-white font-bold text-xs mb-0.5">{point.text}</h4>
+                                <p className="text-zinc-500 text-[11px] leading-relaxed">{point.desc}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -576,25 +573,25 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 6: IMPORTANT NOTE FOR STUDENTS & PARENTS
             ════════════════════════════════════════════════════════════════ */}
-            <section className="bg-zinc-950/50 border-y border-zinc-900 py-16 mb-20">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-10">
+            <section className="bg-zinc-950/50 border-y border-zinc-900 py-6 mb-8">
+                <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+                    <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-6">
                         {/* Left — Content */}
                         <motion.div {...sectionFade} className="lg:w-3/5">
-                            <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-4 block">IMPORTANT NOTE</span>
-                            <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-4 leading-tight">
+                            <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-2 block">IMPORTANT NOTE</span>
+                            <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-2.5 leading-tight">
                                 Not a Coaching Institute.<br />
                                 <span className="text-yellow-500">A Real Software Company.</span>
                             </h2>
-                            <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-3">
                                 We are a registered Private Limited software development company actively working on live client projects, SaaS platforms, cloud applications, CRM systems, ERP solutions, AI-powered applications, and enterprise software products.
                             </p>
-                            <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+                            <p className="text-zinc-500 text-xs sm:text-sm leading-relaxed mb-4">
                                 Our internship and training program is designed to bridge the gap between academic education and real industry requirements. Unlike traditional institutes that focus primarily on theoretical concepts, our objective is to provide students with practical industry exposure through real-world projects and professional work environments.
                             </p>
 
                             {/* Tags */}
-                            <div className="flex flex-wrap gap-2 mb-6">
+                            <div className="flex flex-wrap gap-1.5 mb-4">
                                 {trustBuildingTags.map((tag) => (
                                     <span key={tag} className="trust-tag">{tag}</span>
                                 ))}
@@ -607,20 +604,20 @@ export default function InternshipPage() {
                             initial="hidden"
                             whileInView="show"
                             viewport={{ once: true }}
-                            className="lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3"
+                            className="lg:w-2/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5"
                         >
                             {trustBuildingOpportunities.map((item) => (
                                 <motion.div
                                     key={item.title}
                                     variants={staggerItem}
-                                    className="flex items-start gap-3 p-4 bg-black/40 border border-zinc-800/60 hover:border-zinc-700 transition-colors"
+                                    className="flex items-start gap-2.5 p-3.5 bg-black/40 border border-zinc-800/60 hover:border-zinc-700 transition-colors"
                                 >
-                                    <div className="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center text-yellow-500 shrink-0">
-                                        {trustIconMap[item.icon] || <Code size={20} />}
+                                    <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-yellow-500 shrink-0">
+                                        {trustIconMap[item.icon] || <Code size={18} />}
                                     </div>
                                     <div>
                                         <h4 className="text-white font-bold text-xs mb-0.5">{item.title}</h4>
-                                        <p className="text-zinc-600 text-[11px] leading-relaxed">{item.desc}</p>
+                                        <p className="text-zinc-600 text-[10px] leading-relaxed">{item.desc}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -633,25 +630,25 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 7: CHOOSE YOUR INNOVATION LAB TRACK
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 mb-0">
-                <motion.div {...sectionFade} className="text-center mb-12">
-                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">EXPLORE TRACKS</span>
-                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">Choose Your Innovation Lab Track</h2>
-                    <p className="text-zinc-500 max-w-xl mx-auto text-sm">Explore 40+ specialized engineering tracks tailored for career growth.</p>
+            <section className="container mx-auto px-4 sm:px-6 mb-8 max-w-5xl">
+                <motion.div {...sectionFade} className="text-center mb-4">
+                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">EXPLORE TRACKS</span>
+                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">Choose Your Innovation Lab Track</h2>
+                    <p className="text-zinc-500 max-w-xl mx-auto text-xs sm:text-sm">Explore 40+ specialized engineering tracks tailored for career growth.</p>
                 </motion.div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 mb-5 max-w-5xl mx-auto">
                     {internshipCategories.map((cat) => (
                         <button
                             key={cat.id}
                             onClick={() => setActiveTab(cat.id)}
-                            className={`px-6 py-4 border transition-all duration-300 flex items-center gap-3 ${activeTab === cat.id
+                            className={`px-4 py-2.5 border transition-all duration-300 flex items-center gap-2 ${activeTab === cat.id
                                 ? 'bg-zinc-900 border-yellow-500 text-white'
                                 : 'bg-transparent border-zinc-900 text-zinc-500 hover:border-zinc-700 hover:text-zinc-300'
                                 }`}
                         >
                             {cat.icon}
-                            <span className="text-sm font-bold uppercase tracking-wider">{cat.title.replace(' Internships', '')}</span>
+                            <span className="text-xs font-bold uppercase tracking-wider">{cat.title.replace(' Internships', '')}</span>
                         </button>
                     ))}
                 </div>
@@ -664,33 +661,33 @@ export default function InternshipPage() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-wrap justify-center gap-4"
+                        className="flex flex-wrap justify-center gap-3"
                     >
                         {internshipCategories.find(c => c.id === activeTab)?.programs.map((program, index) => {
                             return (
                                 <Link
                                     key={program.title}
                                     href={`/internship/${program.slug}`}
-                                    className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
+                                    className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-0.75rem)]"
                                 >
                                     <motion.div
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, scale: 0.95 }}
                                         transition={{ delay: index * 0.05 }}
-                                        className="group p-5 bg-zinc-900/40 border border-zinc-800/80 hover:border-yellow-500/50 transition-all duration-300 flex flex-col justify-between h-full cursor-pointer hover:shadow-[0_0_30px_rgba(234,179,8,0.08)] hover:bg-zinc-900/60"
+                                        className="group p-4 bg-zinc-900/40 border border-zinc-800/80 hover:border-yellow-500/50 transition-all duration-300 flex flex-col justify-between h-full cursor-pointer hover:shadow-[0_0_30px_rgba(234,179,8,0.08)] hover:bg-zinc-900/60"
                                     >
                                         <div>
-                                            <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-500 mb-4 group-hover:bg-yellow-500 group-hover:text-black transition-colors">
-                                                <Terminal size={14} />
+                                            <div className="w-7 h-7 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-500 mb-2.5 group-hover:bg-yellow-500 group-hover:text-black transition-colors">
+                                                <Terminal size={12} />
                                             </div>
-                                            <h3 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-yellow-500 transition-colors">
+                                            <h3 className="text-sm font-bold text-white mb-1 leading-tight group-hover:text-yellow-500 transition-colors">
                                                 {program.title}
                                             </h3>
                                         </div>
-                                        <div className="mt-6 flex items-center justify-between opacity-60 group-hover:opacity-100 transition-opacity">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-white">Live Projects</span>
-                                            <Rocket size={14} className="text-yellow-500" />
+                                        <div className="mt-4 flex items-center justify-between opacity-60 group-hover:opacity-100 transition-opacity">
+                                            <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-white">Live Projects</span>
+                                            <Rocket size={12} className="text-yellow-500" />
                                         </div>
                                     </motion.div>
                                 </Link>
@@ -704,17 +701,17 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 9: REAL PROJECTS SHOWCASE
             ════════════════════════════════════════════════════════════════ */}
-            <section className="bg-zinc-950/50 border-y border-zinc-900 pt-16 pb-16 mt-16 mb-0">
-                <div className="container mx-auto px-6">
-                    <motion.div {...sectionFade} className="text-center mb-12">
-                        <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">EXPERIMENTAL R&D</span>
-                        <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="bg-zinc-950/50 border-y border-zinc-900 py-6 mb-8">
+                <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+                    <motion.div {...sectionFade} className="text-center mb-4">
+                        <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">EXPERIMENTAL R&D</span>
+                        <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                             Real Projects <span className="text-yellow-500">You May Work On</span>
                         </h2>
-                        <p className="text-zinc-500 max-w-2xl mx-auto text-sm">See the high-performance enterprise tools our interns are building today.</p>
+                        <p className="text-zinc-500 max-w-2xl mx-auto text-xs sm:text-sm">See the high-performance enterprise tools our interns are building today.</p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
                         {[
                             { title: 'AI Trading Bot Template', desc: 'A micro-SaaS starter kit integrating Binance API with local LLM sentiment analysis.', tags: ['Python', 'FastAPI', 'Next.js'] },
                             { title: 'Healthcare Patient Portal UI', desc: 'A HIPAA-compliant, fully accessible React frontend designed for telemedicine clinics.', tags: ['React', 'Tailwind', 'Accessibility'] },
@@ -729,15 +726,15 @@ export default function InternshipPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="group p-6 bg-black border border-zinc-800 hover:border-yellow-500 transition-colors"
+                                className="group p-4 bg-black border border-zinc-800 hover:border-yellow-500 transition-colors"
                             >
-                                <div className="mb-4">
-                                    <h3 className="text-base font-bold text-white mb-2">{project.title}</h3>
-                                    <p className="text-sm text-zinc-500">{project.desc}</p>
+                                <div className="mb-2.5">
+                                    <h3 className="text-sm font-bold text-white mb-1">{project.title}</h3>
+                                    <p className="text-xs text-zinc-500">{project.desc}</p>
                                 </div>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-1.5">
                                     {project.tags.map(tag => (
-                                        <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-1">
+                                        <span key={tag} className="text-[8.5px] font-black uppercase tracking-widest text-zinc-400 bg-zinc-900 border border-zinc-800 px-1.5 py-0.5">
                                             {tag}
                                         </span>
                                     ))}
@@ -752,13 +749,13 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 10: STUDENT OUTCOMES
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 py-16 mb-0">
-                <motion.div {...sectionFade} className="text-center mb-12">
-                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">OUTCOMES</span>
-                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="container mx-auto px-4 sm:px-6 py-6 mb-8 max-w-5xl">
+                <motion.div {...sectionFade} className="text-center mb-4">
+                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">OUTCOMES</span>
+                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                         By Program Completion <span className="text-yellow-500">You May Have</span>
                     </h2>
-                    <p className="text-zinc-500 max-w-xl mx-auto text-sm">Tangible outcomes that enhance your career readiness.</p>
+                    <p className="text-zinc-500 max-w-xl mx-auto text-xs sm:text-sm">Tangible outcomes that enhance your career readiness.</p>
                 </motion.div>
 
                 <motion.div
@@ -766,20 +763,20 @@ export default function InternshipPage() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-4xl mx-auto"
                 >
                     {studentOutcomes.map((outcome) => (
                         <motion.div
                             key={outcome.title}
                             variants={staggerItem}
-                            className="group flex items-start gap-4 p-5 bg-zinc-950 border border-zinc-800/80 hover:border-green-500/30 transition-all duration-300"
+                            className="group flex items-start gap-3 p-4 bg-zinc-950 border border-zinc-800/80 hover:border-green-500/30 transition-all duration-300"
                         >
-                            <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center shrink-0">
-                                <CheckCircle2 size={16} className="text-green-500" />
+                            <div className="w-7 h-7 rounded-full bg-green-500/10 flex items-center justify-center shrink-0">
+                                <CheckCircle2 size={14} className="text-green-500" />
                             </div>
                             <div>
-                                <h4 className="text-white font-bold text-sm mb-1">{outcome.title}</h4>
-                                <p className="text-zinc-500 text-xs leading-relaxed">{outcome.desc}</p>
+                                <h4 className="text-white font-bold text-xs mb-0.5">{outcome.title}</h4>
+                                <p className="text-zinc-500 text-[11px] leading-relaxed">{outcome.desc}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -790,17 +787,17 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 11: 60+ BENEFITS (Accordion)
             ════════════════════════════════════════════════════════════════ */}
-            <section className="bg-zinc-950/50 border-y border-zinc-900 py-16 mb-0">
-                <div className="container mx-auto px-6">
-                    <motion.div {...sectionFade} className="text-center mb-12">
-                        <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">COMPREHENSIVE</span>
-                        <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">
+            <section className="bg-zinc-950/50 border-y border-zinc-900 py-6 mb-8">
+                <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+                    <motion.div {...sectionFade} className="text-center mb-4">
+                        <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">COMPREHENSIVE</span>
+                        <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">
                             60+ <span className="text-yellow-500">Benefits</span> of Joining
                         </h2>
-                        <p className="text-zinc-500 max-w-xl mx-auto text-sm">Everything you gain from our Innovation Lab program.</p>
+                        <p className="text-zinc-500 max-w-xl mx-auto text-xs sm:text-sm">Everything you gain from our Innovation Lab program.</p>
                     </motion.div>
 
-                    <div className="max-w-3xl mx-auto space-y-3">
+                    <div className="max-w-3xl mx-auto space-y-2.5">
                         {benefitsData.map((category) => {
                             const isOpen = openBenefit === category.id;
                             return (
@@ -813,19 +810,19 @@ export default function InternshipPage() {
                                 >
                                     <button
                                         onClick={() => setOpenBenefit(isOpen ? null : category.id)}
-                                        className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-zinc-900/50 transition-colors"
+                                        className="w-full flex items-center justify-between px-4 py-3.5 text-left hover:bg-zinc-900/50 transition-colors"
                                     >
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center text-yellow-500">
-                                                {benefitCategoryIcons[category.id] || <Star size={20} />}
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-yellow-500">
+                                                {benefitCategoryIcons[category.id] || <Star size={16} />}
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold text-sm">{category.emoji} {category.title}</h4>
-                                                <span className="text-zinc-600 text-[10px] font-bold">{category.items.length} benefits</span>
+                                                <h4 className="text-white font-bold text-xs sm:text-sm">{category.emoji} {category.title}</h4>
+                                                <span className="text-zinc-600 text-[9px] font-bold">{category.items.length} benefits</span>
                                             </div>
                                         </div>
                                         <ChevronDown
-                                            size={18}
+                                            size={16}
                                             className={`text-zinc-500 transition-transform duration-300 ${isOpen ? 'rotate-180 text-yellow-500' : ''}`}
                                         />
                                     </button>
@@ -839,10 +836,10 @@ export default function InternshipPage() {
                                                 transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                                                 className="overflow-hidden"
                                             >
-                                                <div className="px-6 pb-6 pt-2 border-t border-zinc-800/50">
+                                                <div className="px-4 pb-4 pt-1 border-t border-zinc-800/50">
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                                         {category.items.map((item, idx) => (
-                                                            <div key={idx} className="flex items-start gap-3 py-2">
+                                                            <div key={idx} className="flex items-start gap-2 py-1">
                                                                 <span className="benefit-counter">{idx + 1}</span>
                                                                 <span className="text-zinc-400 text-xs leading-relaxed">{item}</span>
                                                             </div>
@@ -863,39 +860,39 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 12: APPLICATION FORM
             ════════════════════════════════════════════════════════════════ */}
-            <section id="apply" className="container mx-auto px-6 mb-16 mt-16">
-                <div className="max-w-5xl mx-auto flex flex-col lg:flex-row bg-zinc-950 border border-zinc-900 relative">
+            <section id="apply" className="container mx-auto px-4 sm:px-6 mb-8 max-w-5xl">
+                <div className="max-w-4xl mx-auto flex flex-col lg:flex-row bg-zinc-950 border border-zinc-900 relative">
                     <div className="absolute inset-0 bg-yellow-500/[0.02] pointer-events-none" />
 
-                    <div className="lg:w-2/5 p-12 border-b lg:border-b-0 lg:border-r border-zinc-900 bg-black/40">
-                        <h2 className="text-2xl md:text-3xl font-display text-white mb-6 leading-tight">Apply for Your <br /><span className="text-yellow-500">Innovation Lab Track</span></h2>
-                        <p className="text-zinc-500 mb-8 text-sm">Take the first step towards your career. Fill out the form below and our team will get back to you.</p>
+                    <div className="lg:w-2/5 p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-zinc-900 bg-black/40">
+                        <h2 className="text-xl md:text-2xl font-display text-white mb-3 leading-tight">Apply for Your <br /><span className="text-yellow-500">Innovation Lab Track</span></h2>
+                        <p className="text-zinc-500 mb-5 text-xs sm:text-sm">Take the first step towards your career. Fill out the form below and our team will get back to you.</p>
 
-                        <div className="space-y-6">
-                            <div className="flex items-center gap-4 text-zinc-400">
-                                <Calendar size={20} className="text-yellow-500" />
-                                <span className="text-sm">Seats limited every month. Apply early.</span>
+                        <div className="space-y-4">
+                            <div className="flex items-center gap-3 text-zinc-400">
+                                <Calendar size={16} className="text-yellow-500" />
+                                <span className="text-xs">Seats limited every month. Apply early.</span>
                             </div>
-                            <div className="flex items-center gap-4 text-zinc-400">
-                                <ShieldCheck size={20} className="text-yellow-500" />
-                                <span className="text-sm">Authorized Internship Certificates</span>
+                            <div className="flex items-center gap-3 text-zinc-400">
+                                <ShieldCheck size={16} className="text-yellow-500" />
+                                <span className="text-xs">Authorized Internship Certificates</span>
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:w-3/5 p-12 relative">
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="lg:w-3/5 p-6 md:p-8 relative">
+                        <form onSubmit={handleSubmit} className="space-y-3.5">
                             {formStatus === 'error' && errorMessage && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="p-4 bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center font-bold"
+                                    className="p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center font-bold"
                                 >
                                     {errorMessage}
                                 </motion.div>
                             )}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-1.5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                                <div className="space-y-1">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Full Name</label>
                                     <input
                                         type="text"
@@ -903,10 +900,10 @@ export default function InternshipPage() {
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         placeholder="John Doe"
-                                        className="w-full bg-zinc-900 border border-zinc-800 text-white px-6 py-4 focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                                        className="w-full bg-zinc-900 border border-zinc-800 text-white px-3.5 py-2.5 text-xs focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                                     />
                                 </div>
-                                <div className="space-y-1.5">
+                                <div className="space-y-1">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Email Address</label>
                                     <input
                                         type="email"
@@ -914,13 +911,13 @@ export default function InternshipPage() {
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         placeholder="john@example.com"
-                                        className="w-full bg-zinc-900 border border-zinc-800 text-white px-6 py-4 focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                                        className="w-full bg-zinc-900 border border-zinc-800 text-white px-3.5 py-2.5 text-xs focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-1.5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                                <div className="space-y-1">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">WhatsApp Number</label>
                                     <input
                                         type="tel"
@@ -928,10 +925,10 @@ export default function InternshipPage() {
                                         value={formData.whatsapp}
                                         onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                                         placeholder="+91 00000 00000"
-                                        className="w-full bg-zinc-900 border border-zinc-800 text-white px-6 py-4 focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                                        className="w-full bg-zinc-900 border border-zinc-800 text-white px-3.5 py-2.5 text-xs focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                                     />
                                 </div>
-                                <div className="space-y-1.5 relative" id="program-selector">
+                                <div className="space-y-1 relative" id="program-selector">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
                                         Select Internship Program
                                     </label>
@@ -943,15 +940,15 @@ export default function InternshipPage() {
                                                 const el = document.getElementById('program-menu');
                                                 if (el) el.classList.toggle('hidden');
                                             }}
-                                            className="w-full bg-zinc-900 border border-zinc-800 text-white px-6 py-4 focus:outline-none focus:border-yellow-500 transition-all text-left flex justify-between items-center group"
+                                            className="w-full bg-zinc-900 border border-zinc-800 text-white px-3.5 py-2.5 text-xs focus:outline-none focus:border-yellow-500 transition-all text-left flex justify-between items-center group"
                                         >
                                             <span className={formData.program ? 'text-white font-bold' : 'text-zinc-500'}>
                                                 {formData.program || (selectedCategory ? 'Choose specialized program' : 'Choose a category')}
                                             </span>
-                                            <ChevronRight size={16} className={`text-zinc-500 transition-transform ${formData.program ? 'rotate-90 text-yellow-500' : ''}`} />
+                                            <ChevronRight size={14} className={`text-zinc-500 transition-transform ${formData.program ? 'rotate-90 text-yellow-500' : ''}`} />
                                         </button>
 
-                                        <div id="program-menu" className="hidden absolute z-50 left-0 right-0 mt-2 bg-zinc-950 border border-zinc-800 shadow-2xl overflow-hidden min-h-[300px]">
+                                        <div id="program-menu" className="hidden absolute z-50 left-0 right-0 mt-2 bg-zinc-950 border border-zinc-800 shadow-2xl overflow-hidden min-h-[250px]">
                                             <AnimatePresence mode="wait">
                                                 {!selectedCategory ? (
                                                     <motion.div
@@ -967,9 +964,9 @@ export default function InternshipPage() {
                                                                 key={cat.id}
                                                                 type="button"
                                                                 onClick={() => setSelectedCategory(cat.id)}
-                                                                className="w-full flex items-center justify-between px-4 py-3 hover:bg-zinc-900 text-white transition-colors group/item"
+                                                                className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-zinc-900 text-white transition-colors group/item"
                                                             >
-                                                                <div className="flex items-center gap-3">
+                                                                <div className="flex items-center gap-2.5">
                                                                     <div className="text-zinc-500 group-hover/item:text-yellow-500 transition-colors">
                                                                         {cat.icon}
                                                                     </div>
@@ -997,7 +994,7 @@ export default function InternshipPage() {
                                                         <div className="px-4 py-1 text-[10px] font-bold text-zinc-500 uppercase tracking-widest bg-zinc-900/50 rounded pointer-events-none mb-2">
                                                             {internshipCategories.find(c => c.id === selectedCategory)?.title}
                                                         </div>
-                                                        <div className="max-h-[300px] overflow-y-auto custom-scrollbar">
+                                                        <div className="max-h-[250px] overflow-y-auto custom-scrollbar">
                                                             {internshipCategories.find(c => c.id === selectedCategory)?.programs.map(prog => (
                                                                 <button
                                                                     key={prog.title}
@@ -1006,7 +1003,7 @@ export default function InternshipPage() {
                                                                         setFormData({ ...formData, program: prog.title });
                                                                         document.getElementById('program-menu')?.classList.add('hidden');
                                                                     }}
-                                                                    className="w-full text-left px-4 py-3 hover:bg-zinc-900 text-white transition-colors text-sm border-l-2 border-transparent hover:border-yellow-500"
+                                                                    className="w-full text-left px-4 py-2 hover:bg-zinc-900 text-white transition-colors text-xs border-l-2 border-transparent hover:border-yellow-500"
                                                                 >
                                                                     {prog.title}
                                                                 </button>
@@ -1020,7 +1017,7 @@ export default function InternshipPage() {
                                 </div>
                             </div>
 
-                            <div className="space-y-1.5">
+                            <div className="space-y-1">
                                 <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Current Education</label>
                                 <input
                                     type="text"
@@ -1028,23 +1025,23 @@ export default function InternshipPage() {
                                     value={formData.education}
                                     onChange={(e) => setFormData({ ...formData, education: e.target.value })}
                                     placeholder="e.g. B.Tech Computer Science 3rd Year"
-                                    className="w-full bg-zinc-900 border border-zinc-800 text-white px-6 py-4 focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
+                                    className="w-full bg-zinc-900 border border-zinc-800 text-white px-3.5 py-2.5 text-xs focus:outline-none focus:border-yellow-500 transition-all placeholder:text-zinc-700"
                                 />
                             </div>
 
                             <Button
                                 type="submit"
                                 disabled={formStatus === 'submitting'}
-                                className="w-full bg-yellow-500 hover:bg-yellow-400 text-black rounded-none py-6 text-sm font-black uppercase tracking-[0.3em] transition-all flex items-center justify-center gap-2"
+                                className="w-full bg-yellow-500 hover:bg-yellow-400 text-black rounded-none py-3.5 text-xs font-black uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2"
                             >
-                                {formStatus === 'submitting' ? 'Processing...' : 'Apply Now'} <Rocket size={16} />
+                                {formStatus === 'submitting' ? 'Processing...' : 'Apply Now'} <Rocket size={15} />
                             </Button>
 
                             {formStatus === 'success' && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="p-4 bg-green-500/10 border border-green-500/20 text-green-500 text-sm text-center font-bold"
+                                    className="p-3 bg-green-500/10 border border-green-500/20 text-green-500 text-xs text-center font-bold"
                                 >
                                     Application submitted successfully! Our team will contact you soon.
                                 </motion.div>
@@ -1058,25 +1055,25 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 13: BOOK FREE CALL
             ════════════════════════════════════════════════════════════════ */}
-            <section id="counseling" className="container mx-auto px-6 mb-16">
+            <section id="counseling" className="container mx-auto px-4 sm:px-6 mb-8 max-w-5xl">
                 <div className="max-w-4xl mx-auto">
                     {/* Book Free Training Call */}
-                    <div className="bg-zinc-950 border border-zinc-900 p-8 md:p-12 relative overflow-hidden text-center group">
+                    <div className="bg-zinc-950 border border-zinc-900 p-6 md:p-8 relative overflow-hidden text-center group">
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/[0.03] blur-[120px] rounded-full pointer-events-none group-hover:bg-red-600/[0.07] transition-colors duration-700" />
                         <div className="relative z-10 max-w-2xl mx-auto">
-                            <span className="text-red-500 text-[10px] font-black tracking-[0.4em] mb-4 block flex items-center justify-center gap-2">
+                            <span className="text-red-500 text-[10px] font-black tracking-[0.4em] mb-2 block flex items-center justify-center gap-2">
                                 <Calendar size={12} /> PERSONAL GUIDANCE
                             </span>
-                            <h2 className="text-xl md:text-2xl font-display text-white mb-4 leading-tight uppercase">
+                            <h2 className="text-xl md:text-2xl font-display text-white mb-2 leading-tight uppercase">
                                 Book a Free <span className="text-red-500">Training Call</span>
                             </h2>
-                            <p className="text-zinc-400 text-sm mb-8 leading-relaxed">
+                            <p className="text-zinc-400 text-xs sm:text-sm mb-5 leading-relaxed">
                                 Not sure which track is right for you? Speak with our lab coordinator to find the perfect fit for your engineering career goals.
                             </p>
                             <Link href="/schedule" className="inline-block">
-                                <Button className="relative bg-red-600 text-white hover:bg-red-500 px-8 h-12 rounded-none text-xs font-black tracking-[0.2em] flex items-center gap-3 transition-all duration-300">
+                                <Button className="relative bg-red-600 text-white hover:bg-red-500 px-6 h-10 rounded-none text-xs font-black tracking-[0.15em] flex items-center gap-2 transition-all duration-300">
                                     <span className="relative z-10 flex items-center gap-2">
-                                        <Calendar size={16} /> Schedule Call
+                                        <Calendar size={14} /> Schedule Call
                                     </span>
                                 </Button>
                             </Link>
@@ -1089,14 +1086,14 @@ export default function InternshipPage() {
             {/* ════════════════════════════════════════════════════════════════
                 SECTION 15: FAQ (Accordion)
             ════════════════════════════════════════════════════════════════ */}
-            <section className="container mx-auto px-6 max-w-4xl pb-12">
-                <motion.div {...sectionFade} className="text-center mb-10">
-                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-3 block">GOT QUESTIONS?</span>
-                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-3">Frequently Asked Questions</h2>
-                    <p className="text-zinc-500 text-sm">Everything you need to know about our Innovation Lab program.</p>
+            <section className="container mx-auto px-4 sm:px-6 max-w-4xl pb-6">
+                <motion.div {...sectionFade} className="text-center mb-5">
+                    <span className="text-yellow-500 text-[10px] font-black tracking-[0.4em] mb-1.5 block">GOT QUESTIONS?</span>
+                    <h2 className="text-2xl md:text-3xl font-display uppercase text-white mb-1.5">Frequently Asked Questions</h2>
+                    <p className="text-zinc-500 text-xs sm:text-sm">Everything you need to know about our Innovation Lab program.</p>
                 </motion.div>
 
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                     {faqData.map((item, i) => {
                         const isOpen = openFaq === i;
                         return (
@@ -1110,14 +1107,14 @@ export default function InternshipPage() {
                             >
                                 <button
                                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                                    className="w-full flex items-center justify-between px-6 py-5 text-left group"
+                                    className="w-full flex items-center justify-between px-4 py-3.5 text-left group"
                                 >
-                                    <h4 className="text-sm font-bold text-white flex items-center gap-3 pr-4">
+                                    <h4 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2.5 pr-4">
                                         <span className="text-yellow-500 text-xs font-black">Q.</span>
                                         {item.q}
                                     </h4>
                                     <ChevronDown
-                                        size={16}
+                                        size={14}
                                         className={`text-zinc-500 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 text-yellow-500' : ''}`}
                                     />
                                 </button>
@@ -1131,8 +1128,8 @@ export default function InternshipPage() {
                                             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="px-6 pb-5 pt-0 border-t border-zinc-800/50">
-                                                <p className="text-zinc-500 text-sm leading-relaxed pl-7">
+                                            <div className="px-4 pb-3.5 pt-0 border-t border-zinc-800/50">
+                                                <p className="text-zinc-500 text-xs leading-relaxed pl-5">
                                                     {item.a}
                                                 </p>
                                             </div>

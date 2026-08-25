@@ -62,46 +62,76 @@ export const saasCategories = [
 
 export const solutionCategories = [
     {
-        title: "Healthcare",
-        items: ["Clinic Management Software", "Hospital Management System", "EMR Software Development", "Telemedicine Platform Development", "Medical Billing Software"]
-    },
-    {
         title: "Real Estate & Property",
         slug: "real-estate",
+        href: "/solutions/real-estate",
         items: ["Real Estate Management Software", "Property Management System", "Real Estate CRM Software", "Construction Management Software"]
-    },
-    {
-        title: "Automotive & Rental",
-        slug: "automotive",
-        items: ["Vehicle Rental Management Software", "Fleet Management System", "Garage Management Software", "Car Rental SaaS System"]
-    },
-    {
-        title: "Retail & POS",
-        slug: "retail",
-        items: ["Retail POS Software", "Inventory Management System", "Billing Software Custom Development", "Multi-store POS Software"]
     },
     {
         title: "Logistics & Transport",
         slug: "logistics",
+        href: "/solutions/logistics",
         items: ["Logistics Management Software", "Transport Management System", "Fleet Tracking Software", "Warehouse Management System"]
     },
     {
-        title: "Education",
+        title: "Healthcare",
+        slug: "healthcare-software",
+        href: "/industries/healthcare-software",
+        items: ["Clinic Management Software", "Hospital Management System", "EMR Software Development", "Telemedicine Platform Development", "Medical Billing Software"]
+    },
+    {
+        title: "Fintech & Banking",
+        slug: "fintech-software",
+        href: "/industries/fintech-software",
+        items: ["Banking Dashboard Software", "Accounting Software Development", "Algorithmic Trading Software", "Payment Gateway Integration"]
+    },
+    {
+        title: "Retail & POS Tech",
+        slug: "retail-technology",
+        href: "/industries/retail-technology",
+        items: ["Retail POS Software", "Inventory Management System", "Billing Software Custom Development", "Multi-store POS Software"]
+    },
+    {
+        title: "Automotive & Rental",
+        slug: "automotive",
+        href: "/solutions/automotive",
+        items: ["Vehicle Rental Management Software", "Fleet Management System", "Garage Management Software", "Car Rental SaaS System"]
+    },
+    {
+        title: "Education & LMS",
+        slug: "education",
+        href: "/solutions/education",
         items: ["School Management Software", "Student Management System", "LMS Software Development", "E-learning SaaS Platform"]
     },
     {
-        title: "Finance & Business",
-        slug: "finance",
-        items: ["Accounting Software Development", "Payroll Management System", "Business Automation Software", "Subscription Billing System"]
+        title: "Hospitality & Dining",
+        slug: "hospitality",
+        href: "/solutions/hospitality",
+        items: ["Hotel Management Software", "Restaurant Management System", "Booking & Reservation Software", "Hotel PMS Software"]
     },
     {
-        title: "Hospitality",
-        items: ["Hotel Management Software", "Restaurant Management System", "Booking & Reservation Software", "Hotel PMS Software"]
+        title: "Cloud Infrastructure",
+        slug: "cloud-infrastructure",
+        href: "/solutions/cloud-infrastructure",
+        items: ["AWS Cloud Architecture", "DevOps & CI/CD Automation", "Serverless Microservices", "Zero Downtime Cloud Migration"]
+    },
+    {
+        title: "Legacy Modernization",
+        slug: "legacy-modernization",
+        href: "/solutions/legacy-modernization",
+        items: ["Monolith to Microservices", "Database Architecture Refactor", "API Gateway Modernization", "Cloud Re-engineering"]
     },
     {
         title: "Professional Services",
         slug: "professional",
+        href: "/solutions/professional",
         items: ["Law Firm Management Software", "Consultant CRM Software", "Agency Management Software", "Client Portal Software"]
+    },
+    {
+        title: "UI/UX Product Design",
+        slug: "ui-ux",
+        href: "/solutions/ui-ux",
+        items: ["Figma Design Systems", "Enterprise UX Audits", "Mobile App Wireframing", "Interactive Prototypes"]
     }
 ]
 

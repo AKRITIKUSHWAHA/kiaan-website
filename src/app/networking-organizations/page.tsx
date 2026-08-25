@@ -386,43 +386,43 @@ export default function NetworkingOrganizations() {
     };
 
     return (
-        <main className="min-h-screen bg-black text-white relative pt-24 pb-12 font-sans overflow-x-hidden">
+        <main className="min-h-screen bg-black text-white relative pt-6 lg:pt-8 pb-10 font-sans overflow-x-hidden">
             {/* Ambient Background Glow */}
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
-            <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
                 {/* --- HEADER --- */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-white/5 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-white/5 pb-3">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white mb-2">
+                        <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-1">
                             Networking <span className="text-yellow-500">Organizations</span>
                         </h1>
-                        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-mono">
+                        <p className="text-zinc-400 text-xs md:text-sm max-w-2xl font-mono">
                             Manage chambers, catalog local corporate contacts, view session schedules, and log reminders.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                         {isAdmin ? (
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => setShowAddOrgModal(true)}
-                                    className="px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md"
+                                    className="px-3.5 py-1.5 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg text-xs font-black uppercase tracking-wider flex items-center gap-1 transition-all shadow-md"
                                 >
-                                    <Plus size={14} /> Add Chamber
+                                    <Plus size={13} /> Add Chamber
                                 </button>
                                 <button 
                                     onClick={handleAdminLogout}
-                                    className="px-4 py-2 border border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 font-mono"
+                                    className="px-3 py-1.5 border border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1 font-mono"
                                 >
-                                    <LogOut size={12} /> Log Out Admin
+                                    <LogOut size={11} /> Log Out Admin
                                 </button>
                             </div>
                         ) : (
                             <button 
                                 onClick={() => setShowAdminLogin(true)}
-                                className="px-4 py-2 bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 font-mono"
+                                className="px-3.5 py-1.5 bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 font-mono"
                             >
                                 <LogIn size={12} /> Admin Login
                             </button>
@@ -431,31 +431,31 @@ export default function NetworkingOrganizations() {
                 </div>
 
                 {/* --- STATS RIBBON --- */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 text-left">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 text-left">
                     {[
                         { label: 'Total Chambers', val: `${orgs.length} Chapters`, desc: 'Active networking organizations' },
                         { label: 'Members Base', val: `${orgs.reduce((acc, curr) => acc + curr.totalMembers, 0)} Contacts`, desc: 'Enrolled directory contacts' },
                         { label: 'Scheduled Meets', val: `${events.length} Sessions`, desc: 'Upcoming calendar events' },
                         { label: 'Scope Mode', val: isAdmin ? 'Administrator' : 'General Public', desc: 'Active operation layout' }
                     ].map((stat, idx) => (
-                        <GlassCard key={idx} className="p-4 border border-white/10 rounded-2xl">
-                            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">{stat.label}</span>
-                            <h3 className="text-xl font-display font-black text-white uppercase mb-0.5">{stat.val}</h3>
+                        <GlassCard key={idx} className="p-3 border border-white/10 rounded-xl">
+                            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block mb-0.5">{stat.label}</span>
+                            <h3 className="text-lg font-display font-black text-white uppercase mb-0.5">{stat.val}</h3>
                             <span className="text-[10px] text-zinc-400 font-sans block">{stat.desc}</span>
                         </GlassCard>
                     ))}
                 </div>
 
                 {/* --- MAIN PAGE CONTENT --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-4">
                     {/* LEFT COLUMN: ORGANIZATIONS CONTAINER */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-2 space-y-3">
                         <div className="text-left flex justify-between items-end">
                             <div>
-                                <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                    <Users size={18} className="text-yellow-500" /> Active Directories
+                                <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                    <Users size={16} className="text-yellow-500" /> Active Directories
                                 </h3>
-                                <p className="text-xs text-zinc-500 font-mono">List of local chapters, business groups, and technology chambers.</p>
+                                <p className="text-[11px] text-zinc-500 font-mono">List of local chapters, business groups, and technology chambers.</p>
                             </div>
                         </div>
 

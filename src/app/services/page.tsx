@@ -120,23 +120,23 @@ const serviceCategories = [
 
 export default function ServicesPage() {
     return (
-        <div className="bg-black text-white pt-32 pb-12 font-sans selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black text-white pt-5 lg:pt-8 pb-2 font-sans selection:bg-yellow-500 selection:text-black">
             {/* Header */}
-            <section className="container mx-auto px-4 mb-12">
-                <div className="border-b border-zinc-800 pb-12">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl mb-4">
+                <div className="border-b border-zinc-800 pb-4">
                     <Reveal>
-                        <div className="inline-block bg-yellow-500 text-black text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 mb-6">
+                        <div className="inline-block bg-yellow-500 text-black text-[10px] font-black uppercase tracking-[0.3em] px-3 py-1 mb-2">
                             Industrial Catalog v2.0
                         </div>
                     </Reveal>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
                         <Reveal delay={0.2}>
-                            <h1 className="text-5xl md:text-7xl font-display uppercase tracking-tighter leading-none">
+                            <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tighter leading-none">
                                 <span className="text-white">ALL</span> <span className="text-yellow-500">SERVICES.</span>
                             </h1>
                         </Reveal>
                         <Reveal delay={0.4}>
-                            <p className="text-base md:text-lg text-white max-w-xl font-light italic border-l-2 border-yellow-500 pl-6 lg:mb-2">
+                            <p className="text-xs md:text-sm text-zinc-300 max-w-xl font-light italic border-l-2 border-yellow-500 pl-4 lg:mb-0.5">
                                 "We don't just provide software. We provide the digital dominance required to lead your industry in the age of AI."
                             </p>
                         </Reveal>
@@ -145,7 +145,7 @@ export default function ServicesPage() {
             </section>
 
             {/* Services Grid */}
-            <section className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-zinc-800">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-zinc-800 mb-4">
                 {serviceCategories.map((category, idx) => (
                     <Link
                         key={idx}

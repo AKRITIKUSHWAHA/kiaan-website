@@ -90,27 +90,24 @@ export default function SchedulePage() {
                 EMAILJS_PUBLIC_KEY
             );
 
-            const res = await fetch('/api/leads', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    leadType: 'contact',
-                    leadSource: 'website_contact',
-                    fullName: formData.name,
-                    email: formData.email,
-                    phone: formData.whatsapp,
-                    serviceInterest: 'Counseling Session',
-                    projectTimeline: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month} at ${selectedTime}`,
-                    message: formData.discuss || 'Counseling Session',
-                    sourcePage: '/schedule'
-                })
-            });
-
-            const data = await res.json();
-            if (!res.ok || !data.ok) {
-                setSubmitError(data.message || 'Booking send nahi ho paayi. Please try again.');
-                setIsSubmitting(false);
-                return;
+            try {
+                await fetch('/api/leads/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        leadType: 'contact',
+                        leadSource: 'website_contact',
+                        fullName: formData.name,
+                        email: formData.email,
+                        phone: formData.whatsapp,
+                        serviceInterest: 'Counseling Session',
+                        projectTimeline: `${chosenDate.weekday}, ${chosenDate.day} ${chosenDate.month} at ${selectedTime}`,
+                        message: formData.discuss || 'Counseling Session',
+                        sourcePage: '/schedule'
+                    })
+                });
+            } catch (err) {
+                console.warn('Backend schedule lead sync notice:', err);
             }
 
             trackGAEvent('form_submit', 'Lead Generation', 'Schedule Call Booking');

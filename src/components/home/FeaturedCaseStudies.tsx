@@ -15,13 +15,13 @@ export const FeaturedCaseStudies: React.FC = () => {
   const accentClasses = ['yellow-500', 'cyan-500', 'violet-500'];
 
   return (
-    <section className="py-20 bg-black relative overflow-hidden border-t border-zinc-900" aria-label="Featured Case Studies">
+    <section className="py-6 bg-black relative overflow-hidden border-t border-zinc-900" aria-label="Featured Case Studies">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-8">
           <div>
             <Reveal>
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-black uppercase tracking-[0.2em] text-yellow-500 mb-4">

@@ -506,16 +506,23 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
-/* ─── Core Web Vitals: Font Display Swap ────────────────────────────── */
-/* Prevents FOIT (Flash of Invisible Text) during font loading.
-   Forces the browser to show fallback font immediately while custom
-   fonts are loading, avoiding blank text that causes CLS. */
-@font-face {
-    font-family: 'Anton';
-    font-display: swap;
+/* ─── Tidio Live Chat Position (Lift ~65-70px above bottom yellow line) ─── */
+#tidio-chat,
+#tidio-chat-iframe,
+#tidio-chat iframe,
+iframe[id*="tidio"],
+div#tidio-chat {
+    bottom: 68px !important;
+    margin-bottom: 68px !important;
 }
 
-@font-face {
-    font-family: 'Manrope';
-    font-display: swap;
+@media (min-width: 768px) {
+    #tidio-chat,
+    #tidio-chat-iframe,
+    #tidio-chat iframe,
+    iframe[id*="tidio"],
+    div#tidio-chat {
+        bottom: 70px !important;
+        margin-bottom: 70px !important;
+    }
 }

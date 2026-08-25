@@ -89,10 +89,18 @@ export default function CaseStudies() {
 
     const filteredStudies = filter === 'All'
         ? caseStudiesData
-        : caseStudiesData.filter(study => study.type === filter);
+        : caseStudiesData.filter(study => {
+            if (study.type?.toLowerCase() === filter.toLowerCase()) return true;
+            if (filter === 'Mobile' && (study.category?.toLowerCase().includes('mobile') || study.technologies?.includes('React Native') || study.slug === 'healthsakhi-ai')) return true;
+            if (filter === 'Enterprise' && (study.category?.toLowerCase().includes('crm') || study.category?.toLowerCase().includes('enterprise') || study.slug === 'study-first-info-crm' || study.slug === 'pgx-payment-gateway')) return true;
+            if (filter === 'SaaS' && (study.category?.toLowerCase().includes('saas') || study.type === 'SaaS')) return true;
+            if (filter === 'AI' && (study.category?.toLowerCase().includes('ai') || study.type === 'AI')) return true;
+            if (filter === 'Web' && (study.type === 'Web' || study.category?.toLowerCase().includes('web') || study.category?.toLowerCase().includes('gateway'))) return true;
+            return false;
+        });
 
     return (
-        <div className="bg-black min-h-screen pt-32 pb-16 selection:bg-yellow-500 selection:text-black">
+        <div className="bg-black min-h-screen pt-6 lg:pt-8 pb-10 selection:bg-yellow-500 selection:text-black">
             <JsonLd 
                 data={{
                     "@context": "https://schema.org",
@@ -114,8 +122,8 @@ export default function CaseStudies() {
                     }))
                 }}
             />
-        {/* Last Updated Freshness Signal */}
-            <div className="container mx-auto px-6 pt-8 pb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+            {/* Last Updated Freshness Signal */}
+            <div className="container mx-auto px-4 sm:px-6 max-w-7xl pt-1 pb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
                 <span>Page Last Updated:</span>
                 <span className="text-white">July 29, 2026</span>
                 <span className="w-1 h-1 rounded-full bg-yellow-500 mx-1" />
@@ -123,37 +131,37 @@ export default function CaseStudies() {
             </div>
 
             {/* Featured Section */}
-            <section className="container mx-auto px-6 mb-16">
-                <div className="glass-panel p-6 md:p-10 border-yellow-500/20 relative overflow-hidden group">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl mb-6">
+                <div className="glass-panel p-5 md:p-8 border-yellow-500/20 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-500/5 blur-[120px] rounded-full -z-10 translate-x-1/2 -translate-y-1/2" />
 
-                    <div className="flex flex-col lg:flex-row gap-16 items-center">
-                        <div className="flex-1 space-y-8">
+                    <div className="flex flex-col lg:flex-row gap-8 items-center">
+                        <div className="flex-1 space-y-4">
                             <Reveal>
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500 text-black text-[10px] font-black uppercase tracking-widest">
-                                    <Target size={14} /> Featured Impact
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500 text-black text-[9px] font-black uppercase tracking-widest">
+                                    <Target size={12} /> Featured Impact
                                 </div>
                             </Reveal>
                             <Reveal delay={0.2}>
-                                <h2 className="text-3xl md:text-5xl font-display uppercase leading-tight tracking-tighter">
+                                <h2 className="text-2xl md:text-4xl font-display uppercase leading-tight tracking-tighter">
                                     Revolutionizing <br />
                                     <span className="text-yellow-500">Global Finance</span>
                                 </h2>
                             </Reveal>
                             <Reveal delay={0.4}>
-                                <p className="text-lg text-zinc-400 font-light max-w-xl leading-relaxed italic border-l-2 border-yellow-500/30 pl-6">
+                                <p className="text-sm md:text-base text-zinc-400 font-light max-w-xl leading-relaxed italic border-l-2 border-yellow-500/30 pl-4">
                                     "Kiaan Technology transformed our legacy engine into a high-frequency powerhouse. We've seen a 50% jump in execution speed across 40+ countries."
                                 </p>
                             </Reveal>
                             <Reveal delay={0.6}>
-                                <div className="flex gap-12">
+                                <div className="flex gap-8 pt-1">
                                     <div>
-                                        <div className="text-2xl font-display text-white mb-1">50%</div>
-                                        <div className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Speed Increase</div>
+                                        <div className="text-xl md:text-2xl font-display text-white mb-0.5">50%</div>
+                                        <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest">Speed Increase</div>
                                     </div>
                                     <div>
-                                        <div className="text-2xl font-display text-white mb-1">Zero</div>
-                                        <div className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Downtime Migrated</div>
+                                        <div className="text-xl md:text-2xl font-display text-white mb-0.5">Zero</div>
+                                        <div className="text-[9px] text-zinc-500 uppercase font-black tracking-widest">Downtime Migrated</div>
                                     </div>
                                 </div>
                             </Reveal>
@@ -176,26 +184,26 @@ export default function CaseStudies() {
             </section>
 
             {/* Header Section */}
-            <section className="container mx-auto px-6 mb-8">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl mb-4">
                 <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
                     <Reveal>
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-xs font-bold uppercase tracking-[0.2em] text-yellow-500 mb-8">
-                            <Zap size={14} /> Case Archive
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-800 bg-zinc-900/50 text-[9px] font-bold uppercase tracking-[0.2em] text-yellow-500 mb-2">
+                            <Zap size={12} /> Case Archive
                         </div>
                     </Reveal>
                     <Reveal delay={0.2}>
-                        <h1 className="text-4xl md:text-6xl font-display uppercase tracking-tighter text-white mb-8">
+                        <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tighter text-white mb-3">
                             Engineering <span className="text-yellow-500">Masterpieces</span>
                         </h1>
                     </Reveal>
 
                     {/* Category Filter */}
-                    <div className="flex flex-wrap justify-center gap-4 mt-8">
-                        {categories.map((cat, i) => (
+                    <div className="flex flex-wrap justify-center gap-2 mt-2">
+                        {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setFilter(cat)}
-                                className={`px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 border ${filter === cat
+                                className={`px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-300 border ${filter === cat
                                     ? 'bg-yellow-500 border-yellow-500 text-black'
                                     : 'bg-transparent border-white/10 text-zinc-500 hover:border-white/30 hover:text-white'
                                     }`}
@@ -208,19 +216,19 @@ export default function CaseStudies() {
             </section>
 
             {/* Video Testimonials Compact Carousel */}
-            <section className="container mx-auto px-6 mb-12">
-                <div className="border border-white/5 rounded-2xl bg-zinc-950/40 p-6">
-                    <div className="flex items-center justify-between mb-5">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl mb-4">
+                <div className="border border-white/5 rounded-xl bg-zinc-950/40 p-4 md:p-5">
+                    <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
-                            <MessageSquareQuote size={16} className="text-yellow-500" />
-                            <h2 className="text-sm font-bold font-mono text-white uppercase tracking-wider">Watch Client Stories</h2>
+                            <MessageSquareQuote size={14} className="text-yellow-500" />
+                            <h2 className="text-xs md:text-sm font-bold font-mono text-white uppercase tracking-wider">Watch Client Stories</h2>
                         </div>
-                        <Link href="/video-testimonials" className="text-[10px] font-mono font-bold text-yellow-500 hover:text-yellow-400 uppercase tracking-widest flex items-center gap-1 transition-colors">
-                            View All <ArrowRight size={10} className="inline" />
+                        <Link href="/video-testimonials" className="text-[9px] font-mono font-bold text-yellow-500 hover:text-yellow-400 uppercase tracking-widest flex items-center gap-1 transition-colors">
+                            View All <ArrowRight size={9} className="inline" />
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         {VIDEO_TESTIMONIALS.slice(0, 3).map((t) => (
                             <VideoCard key={t.id} t={t} />
                         ))}
@@ -229,14 +237,14 @@ export default function CaseStudies() {
             </section>
 
             {/* Case Studies Grid */}
-            <section className="container mx-auto px-6 mb-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     <AnimatePresence mode="popLayout">
-                        {filteredStudies.map((study, index) => (
+                        {filteredStudies.map((study) => (
                             <Link
                                 href={`/case-studies/${study.slug}`}
                                 key={study.title}
-                                className="block group"
+                                className="block group h-full"
                             >
                                 <motion.div
                                     layout
@@ -244,10 +252,10 @@ export default function CaseStudies() {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                                    className="bg-zinc-950 border border-white/5 overflow-hidden hover:border-yellow-500/30 transition-all duration-500"
+                                    className="bg-zinc-950 border border-white/5 overflow-hidden hover:border-yellow-500/30 transition-all duration-500 flex flex-col h-full rounded-lg"
                                 >
                                     <div className="aspect-video overflow-hidden relative">
-                                        <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-black/80 backdrop-blur-md border border-white/10 text-[9px] font-black text-yellow-500 uppercase tracking-widest">
+                                        <div className="absolute top-3 left-3 z-20 px-2.5 py-0.5 bg-black/80 backdrop-blur-md border border-white/10 text-[8.5px] font-black text-yellow-500 uppercase tracking-widest">
                                             {study.category}
                                         </div>
                                         <img
@@ -259,21 +267,21 @@ export default function CaseStudies() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent opacity-60" />
                                     </div>
 
-                                    <div className="p-5 space-y-4">
+                                    <div className="p-4 space-y-3 flex flex-col flex-grow justify-between">
                                         <div>
-                                            <div className="text-[10px] text-zinc-600 font-black uppercase tracking-widest mb-2 flex items-center gap-2">
-                                                {study.client} <span className="w-4 h-[1px] bg-zinc-800" /> <span className="text-yellow-500/80">{study.stats}</span>
+                                            <div className="text-[9px] text-zinc-600 font-black uppercase tracking-widest mb-1.5 flex items-center gap-2">
+                                                {study.client} <span className="w-3 h-[1px] bg-zinc-800" /> <span className="text-yellow-500/80">{study.stats}</span>
                                             </div>
-                                            <h3 className="text-xl font-display uppercase text-white leading-tight group-hover:text-yellow-500 transition-colors">
+                                            <h3 className="text-lg font-display uppercase text-white leading-tight group-hover:text-yellow-500 transition-colors">
                                                 {study.title}
                                             </h3>
+                                            <p className="text-zinc-500 text-xs leading-relaxed font-light line-clamp-3 italic mt-2">
+                                                "{study.desc}"
+                                            </p>
                                         </div>
-                                        <p className="text-zinc-500 text-sm leading-relaxed font-light line-clamp-3 italic">
-                                            "{study.desc}"
-                                        </p>
-                                        <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-                                            <div className="text-[10px] uppercase font-bold text-zinc-600 tracking-wider">Result: <span className="text-zinc-400 italic font-medium">{study.result}</span></div>
-                                            <ArrowUpRight className="text-zinc-700 group-hover:text-yellow-500 transition-colors" size={20} />
+                                        <div className="pt-3 border-t border-white/5 flex items-center justify-between mt-auto">
+                                            <div className="text-[9px] uppercase font-bold text-zinc-600 tracking-wider">Result: <span className="text-zinc-400 italic font-medium">{study.result}</span></div>
+                                            <ArrowUpRight className="text-zinc-700 group-hover:text-yellow-500 transition-colors" size={16} />
                                         </div>
                                     </div>
                                 </motion.div>
@@ -284,19 +292,19 @@ export default function CaseStudies() {
             </section>
 
             {/* Premium Reviews Section */}
-            <section className="py-20 pb-8 relative overflow-hidden">
+            <section className="py-6 pb-4 relative overflow-hidden">
                 {/* Colorful background glow effects */}
                 <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/8 blur-[150px] rounded-full pointer-events-none" />
                 <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/8 blur-[150px] rounded-full pointer-events-none" />
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none" />
                 
                 {/* Centered heading */}
-                <div className="text-center mb-16 relative z-10">
-                    <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tighter text-white mb-4">
+                <div className="text-center mb-4 relative z-10">
+                    <h2 className="text-3xl md:text-5xl font-display uppercase tracking-tighter text-white mb-2">
                         What Our Partners{' '}
                         <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 bg-clip-text text-transparent">Say</span>
                     </h2>
-                    <div className="mx-auto w-24 h-1 bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 rounded-full mt-6" />
+                    <div className="mx-auto w-16 h-0.5 bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 rounded-full mt-2" />
                 </div>
 
                 {/* Edge fades */}
@@ -304,34 +312,34 @@ export default function CaseStudies() {
                 <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none hidden md:block" />
 
                 {/* Row 1 — scrolls left */}
-                <div className="relative w-full mb-6">
+                <div className="relative w-full mb-4">
                     <DraggableMarquee speed={0.6} reverse={false}>
                         {[...reviews, ...reviews].map((rev, i) => (
                             <div 
                                 key={`r1-${i}`} 
-                                className="w-[380px] md:w-[440px] shrink-0 relative group"
+                                className="w-[340px] md:w-[400px] shrink-0 relative group"
                             >
                                 {/* Gradient top border accent */}
-                                <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${rev.gradient} rounded-t`} />
-                                <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/[0.06] p-7 md:p-8 flex flex-col justify-between h-full hover:border-white/10 transition-all duration-500 hover:bg-zinc-900/60">
+                                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${rev.gradient} rounded-t`} />
+                                <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/[0.06] p-5 md:p-6 flex flex-col justify-between h-full hover:border-white/10 transition-all duration-500 hover:bg-zinc-900/60">
                                     {/* Star rating */}
-                                    <div className="flex gap-1 mb-4">
+                                    <div className="flex gap-1 mb-3">
                                         {[...Array(5)].map((_, s) => (
-                                            <svg key={s} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg key={s} className="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                             </svg>
                                         ))}
                                     </div>
-                                    <p className="text-zinc-300 text-sm leading-relaxed font-light mb-6">
+                                    <p className="text-zinc-300 text-xs leading-relaxed font-light mb-4">
                                         &ldquo;{rev.text}&rdquo;
                                     </p>
-                                    <div className="flex items-center gap-4 border-t border-white/5 pt-5">
-                                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${rev.gradient} flex items-center justify-center text-white text-sm font-black shadow-lg`}>
+                                    <div className="flex items-center gap-3 border-t border-white/5 pt-3">
+                                        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${rev.gradient} flex items-center justify-center text-white text-xs font-black shadow-lg`}>
                                             {rev.author[0]}
                                         </div>
                                         <div>
-                                            <div className="text-sm font-bold text-white">{rev.author}</div>
-                                            <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold">{rev.designation}</div>
+                                            <div className="text-xs font-bold text-white">{rev.author}</div>
+                                            <div className="text-[9px] text-zinc-500 uppercase tracking-widest font-semibold">{rev.designation}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -346,29 +354,29 @@ export default function CaseStudies() {
                         {[...reviews.slice(12), ...reviews.slice(0, 12), ...reviews.slice(12), ...reviews.slice(0, 12)].map((rev, i) => (
                             <div 
                                 key={`r2-${i}`} 
-                                className="w-[380px] md:w-[440px] shrink-0 relative group"
+                                className="w-[340px] md:w-[400px] shrink-0 relative group"
                             >
                                 {/* Gradient top border accent */}
-                                <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${rev.gradient} rounded-t`} />
-                                <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/[0.06] p-7 md:p-8 flex flex-col justify-between h-full hover:border-white/10 transition-all duration-500 hover:bg-zinc-900/60">
+                                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${rev.gradient} rounded-t`} />
+                                <div className="bg-zinc-950/80 backdrop-blur-xl border border-white/[0.06] p-5 md:p-6 flex flex-col justify-between h-full hover:border-white/10 transition-all duration-500 hover:bg-zinc-900/60">
                                     {/* Star rating */}
-                                    <div className="flex gap-1 mb-4">
+                                    <div className="flex gap-1 mb-3">
                                         {[...Array(5)].map((_, s) => (
-                                            <svg key={s} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg key={s} className="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                             </svg>
                                         ))}
                                     </div>
-                                    <p className="text-zinc-300 text-sm leading-relaxed font-light mb-6">
+                                    <p className="text-zinc-300 text-xs leading-relaxed font-light mb-4">
                                         &ldquo;{rev.text}&rdquo;
                                     </p>
-                                    <div className="flex items-center gap-4 border-t border-white/5 pt-5">
-                                        <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${rev.gradient} flex items-center justify-center text-white text-sm font-black shadow-lg`}>
+                                    <div className="flex items-center gap-3 border-t border-white/5 pt-3">
+                                        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${rev.gradient} flex items-center justify-center text-white text-xs font-black shadow-lg`}>
                                             {rev.author[0]}
                                         </div>
                                         <div>
-                                            <div className="text-sm font-bold text-white">{rev.author}</div>
-                                            <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold">{rev.designation}</div>
+                                            <div className="text-xs font-bold text-white">{rev.author}</div>
+                                            <div className="text-[9px] text-zinc-500 uppercase tracking-widest font-semibold">{rev.designation}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -379,49 +387,49 @@ export default function CaseStudies() {
             </section>
 
             {/* Methodology / Why Us Section */}
-            <section className="container mx-auto px-6">
-                <div className="max-w-5xl mx-auto border border-white/5 bg-zinc-900/20 backdrop-blur-3xl overflow-hidden relative">
+            <section className="container mx-auto px-4 sm:px-6 max-w-7xl mt-4">
+                <div className="border border-white/5 bg-zinc-900/20 backdrop-blur-3xl overflow-hidden relative">
                     <div className="grid grid-cols-1 md:grid-cols-2 border-b border-white/5">
-                        <div className="p-8 md:p-12 border-r border-white/5 space-y-8">
+                        <div className="p-6 md:p-8 border-r border-white/5 space-y-4">
                             <Reveal>
-                                <h2 className="text-3xl md:text-5xl font-display uppercase leading-none tracking-tighter">
+                                <h2 className="text-2xl md:text-4xl font-display uppercase leading-none tracking-tighter">
                                     The Kiaan <br />
                                     <span className="text-yellow-500 underline decoration-1 underline-offset-8">Methodology</span>
                                 </h2>
                             </Reveal>
                             <Reveal delay={0.2}>
-                                <p className="text-zinc-500 font-light leading-relaxed italic">
+                                <p className="text-zinc-500 text-xs md:text-sm font-light leading-relaxed italic">
                                     We don't just write code. We architect dominance. Our process is rooted in military-grade precision and creative madness.
                                 </p>
                             </Reveal>
                             <Reveal delay={0.4}>
                                 <Link href="/start-project">
-                                    <Button className="bg-white text-black rounded-none px-10 h-14 text-xs font-black uppercase tracking-widest hover:bg-yellow-500 transition-all">
+                                    <Button className="bg-white text-black rounded-none px-8 h-10 text-[10px] font-black uppercase tracking-widest hover:bg-yellow-500 transition-all">
                                         Partner With Us
                                     </Button>
                                 </Link>
                             </Reveal>
                         </div>
-                        <div className="p-8 md:p-12 grid grid-cols-2 gap-8 bg-zinc-950/40">
-                            <div className="space-y-3">
-                                <Globe className="text-yellow-500 mb-4" size={24} />
-                                <h4 className="text-xs font-black uppercase tracking-widest">Global Scale</h4>
-                                <p className="text-[10px] text-zinc-600 uppercase leading-relaxed font-bold">Solutions deployed in 25+ countries across 6 continents.</p>
+                        <div className="p-6 md:p-8 grid grid-cols-2 gap-4 bg-zinc-950/40">
+                            <div className="space-y-2">
+                                <Globe className="text-yellow-500 mb-2" size={20} />
+                                <h4 className="text-[11px] font-black uppercase tracking-widest">Global Scale</h4>
+                                <p className="text-[9px] text-zinc-600 uppercase leading-relaxed font-bold">Solutions deployed in 25+ countries across 6 continents.</p>
                             </div>
-                            <div className="space-y-3">
-                                <ShieldCheck className="text-yellow-500 mb-4" size={24} />
-                                <h4 className="text-xs font-black uppercase tracking-widest">Air-Tight Sec</h4>
-                                <p className="text-[10px] text-zinc-600 uppercase leading-relaxed font-bold">Military-grade protection for every line of code.</p>
+                            <div className="space-y-2">
+                                <ShieldCheck className="text-yellow-500 mb-2" size={20} />
+                                <h4 className="text-[11px] font-black uppercase tracking-widest">Air-Tight Sec</h4>
+                                <p className="text-[9px] text-zinc-600 uppercase leading-relaxed font-bold">Military-grade protection for every line of code.</p>
                             </div>
-                            <div className="space-y-3">
-                                <BarChart3 className="text-yellow-500 mb-4" size={24} />
-                                <h4 className="text-xs font-black uppercase tracking-widest">ROI Focused</h4>
-                                <p className="text-[10px] text-zinc-600 uppercase leading-relaxed font-bold">Average 40% efficiency boost post-implementation.</p>
+                            <div className="space-y-2">
+                                <BarChart3 className="text-yellow-500 mb-2" size={20} />
+                                <h4 className="text-[11px] font-black uppercase tracking-widest">ROI Focused</h4>
+                                <p className="text-[9px] text-zinc-600 uppercase leading-relaxed font-bold">Average 40% efficiency boost post-implementation.</p>
                             </div>
-                            <div className="space-y-3">
-                                <Zap className="text-yellow-500 mb-4" size={24} />
-                                <h4 className="text-xs font-black uppercase tracking-widest">Hyper Speed</h4>
-                                <p className="text-[10px] text-zinc-600 uppercase leading-relaxed font-bold">Sub-second performance even under extreme load.</p>
+                            <div className="space-y-2">
+                                <Zap className="text-yellow-500 mb-2" size={20} />
+                                <h4 className="text-[11px] font-black uppercase tracking-widest">Hyper Speed</h4>
+                                <p className="text-[9px] text-zinc-600 uppercase leading-relaxed font-bold">Sub-second performance even under extreme load.</p>
                             </div>
                         </div>
                     </div>

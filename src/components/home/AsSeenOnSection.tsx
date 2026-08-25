@@ -98,7 +98,7 @@ export const AsSeenOnSection = () => {
     const [activeTab, setActiveTab] = useState<'media' | 'clients'>('media');
 
     return (
-        <section className="py-20 bg-black text-white relative overflow-hidden border-b border-white/10">
+        <section className="py-6 bg-black text-white relative overflow-hidden border-b border-white/10">
             {/* Ambient Background Effects */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(234,179,8,0.06)_0%,_transparent_70%)] pointer-events-none" />
             <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-yellow-500/10 blur-[100px] pointer-events-none" />
@@ -106,7 +106,7 @@ export const AsSeenOnSection = () => {
             <div className="container mx-auto px-6 relative z-10">
 
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-12">
+                <div className="text-center max-w-3xl mx-auto mb-8">
                     <Reveal>
                         <div className="inline-flex items-center gap-2 bg-zinc-900 border border-yellow-500/30 px-4 py-1.5 rounded-full mb-4">
                             <ShieldCheck size={14} className="text-yellow-500" />
@@ -130,7 +130,7 @@ export const AsSeenOnSection = () => {
                 </div>
 
                 {/* Tab Switcher */}
-                <div className="flex justify-center mb-12">
+                <div className="flex justify-center mb-8">
                     <div className="bg-zinc-950 p-1.5 border border-white/10 flex items-center gap-2">
                         <button
                             onClick={() => setActiveTab('media')}

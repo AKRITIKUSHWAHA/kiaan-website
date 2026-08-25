@@ -38,19 +38,19 @@ import { blogData } from '@/data/blogData';
 export default function BlogPage() {
     return (
         <div className="min-h-screen bg-black text-white selection:bg-yellow-500 selection:text-black">
-            <div className="pt-32 pb-20 container mx-auto px-4">
+            <div className="pt-6 lg:pt-8 pb-12 container mx-auto px-4 sm:px-6 max-w-7xl">
                 <Reveal>
-                    <div className="inline-flex items-center gap-3 bg-zinc-900 text-yellow-500 text-[10px] font-black uppercase tracking-[0.4em] px-6 py-2 mb-8 border border-yellow-500/20">
-                        <Terminal size={14} />
+                    <div className="inline-flex items-center gap-2 bg-zinc-900 text-yellow-500 text-[9px] font-black uppercase tracking-[0.3em] px-4 py-1.5 mb-2 border border-yellow-500/20">
+                        <Terminal size={12} />
                         Intel Registry / Public Logs
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-display uppercase leading-none tracking-tighter mb-16">
+                    <h1 className="text-4xl md:text-6xl font-display uppercase leading-none tracking-tighter mb-3">
                         Kiaan <span className="text-zinc-600">Journals</span>
                     </h1>
                 </Reveal>
 
                 {/* Last Updated Freshness Signal */}
-                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-8 -mt-10">
+                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-6">
                     <Clock size={12} className="text-yellow-500" />
                     <span>Page Last Updated:</span>
                     <span className="text-white">July 29, 2026</span>
@@ -58,27 +58,27 @@ export default function BlogPage() {
                     <span>Kiaan Technology</span>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     {/* Left: Blog Posts */}
-                    <div className="lg:col-span-8 space-y-12">
+                    <div className="lg:col-span-8 space-y-6">
                         {blogData.map((post, index) => (
                             <Reveal key={index} delay={index * 0.1}>
-                                <article className="group relative border-b border-zinc-900 pb-12 hover:border-yellow-500/30 transition-colors">
-                                    <div className="flex items-center gap-4 text-xs font-bold text-zinc-500 uppercase tracking-widest mb-4">
+                                <article className="group relative border-b border-zinc-900 pb-6 hover:border-yellow-500/30 transition-colors">
+                                    <div className="flex items-center gap-3 text-[11px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
                                         <span className="text-yellow-500">{post.category}</span>
                                         <span className="w-1 h-1 bg-zinc-800 rounded-full" />
                                         <span>{post.date}</span>
                                     </div>
-                                    <h2 className="text-3xl md:text-4xl font-display uppercase mb-4 text-white group-hover:text-yellow-500 transition-colors">
+                                    <h2 className="text-2xl md:text-3xl font-display uppercase mb-2 text-white group-hover:text-yellow-500 transition-colors">
                                         <Link href={`/blog/${post.slug}`} className="block">
                                             {post.title}
                                         </Link>
                                     </h2>
-                                    <p className="text-zinc-400 text-lg mb-8 leading-relaxed font-light">
+                                    <p className="text-zinc-400 text-sm md:text-base mb-4 leading-relaxed font-light">
                                         {post.excerpt}
                                     </p>
-                                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-hover:text-yellow-500 transition-all">
-                                        READ LOG <ArrowRight size={14} />
+                                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500 group-hover:text-yellow-500 transition-all">
+                                        READ LOG <ArrowRight size={12} />
                                     </Link>
                                 </article>
                             </Reveal>
@@ -86,35 +86,35 @@ export default function BlogPage() {
                     </div>
 
                     {/* Right: Sidebar */}
-                    <div className="lg:col-span-4 h-fit lg:sticky lg:top-24">
-                        <div className="p-8 bg-zinc-900/50 border border-zinc-800 mb-8 backdrop-blur-sm">
-                            <h3 className="text-sm font-black uppercase tracking-widest text-white mb-8 border-b border-zinc-800 pb-4">Categories</h3>
-                            <div className="space-y-4">
+                    <div className="lg:col-span-4 h-fit lg:sticky lg:top-24 space-y-4">
+                        <div className="p-5 bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm">
+                            <h3 className="text-xs font-black uppercase tracking-widest text-white mb-4 border-b border-zinc-800 pb-2">Categories</h3>
+                            <div className="space-y-2.5">
                                 {categories.map(cat => (
-                                    <Link key={cat} href={`/blog`} className="flex justify-between items-center group">
+                                    <Link key={cat} href={`/blog`} className="flex justify-between items-center group text-xs">
                                         <span className="text-zinc-400 group-hover:text-yellow-500 transition-colors">{cat}</span>
-                                        <ChevronRight size={14} className="text-zinc-800 group-hover:text-yellow-500 transition-all" />
+                                        <ChevronRight size={12} className="text-zinc-800 group-hover:text-yellow-500 transition-all" />
                                     </Link>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="p-8 bg-yellow-500 text-black">
-                            <h3 className="text-xl font-black uppercase mb-4">Expert Insights</h3>
-                            <p className="text-sm font-medium mb-8 leading-relaxed">
+                        <div className="p-5 bg-yellow-500 text-black">
+                            <h3 className="text-base font-black uppercase mb-2">Expert Insights</h3>
+                            <p className="text-xs font-medium mb-4 leading-relaxed">
                                 Get a deep dive into Indore's tech ecosystem and modern software engineering directly in your inbox.
                             </p>
                             <Link href="/contact">
-                                <Button className="w-full bg-black text-white rounded-none border-none py-4 text-xs font-black uppercase tracking-widest hover:bg-zinc-900 transition-colors">
+                                <Button className="w-full bg-black text-white rounded-none border-none py-3 text-[10px] font-black uppercase tracking-widest hover:bg-zinc-900 transition-colors">
                                     Join Intel Waitlist
                                 </Button>
                             </Link>
                         </div>
 
                         {/* Related Services — Internal Links Panel */}
-                        <div className="p-6 bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm mt-8">
-                            <h3 className="text-sm font-black uppercase tracking-widest text-white mb-5 border-b border-zinc-800 pb-3">Our Services</h3>
-                            <ul className="space-y-3">
+                        <div className="p-5 bg-zinc-900/50 border border-zinc-800 backdrop-blur-sm">
+                            <h3 className="text-xs font-black uppercase tracking-widest text-white mb-3 border-b border-zinc-800 pb-2">Our Services</h3>
+                            <ul className="space-y-2">
                                 {[
                                     { label: 'Custom Software Development', href: '/services/custom-software-development' },
                                     { label: 'SaaS Product Engineering', href: '/services/saas-development' },
@@ -127,9 +127,9 @@ export default function BlogPage() {
                                     <li key={link.href}>
                                         <Link
                                             href={link.href}
-                                            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-yellow-500 transition-colors group"
+                                            className="flex items-center gap-2 text-xs text-zinc-400 hover:text-yellow-500 transition-colors group"
                                         >
-                                            <span className="w-0 group-hover:w-3 h-[1px] bg-yellow-500 transition-all duration-300" />
+                                            <span className="w-0 group-hover:w-2.5 h-[1px] bg-yellow-500 transition-all duration-300" />
                                             {link.label}
                                         </Link>
                                     </li>

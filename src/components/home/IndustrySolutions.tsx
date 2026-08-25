@@ -76,9 +76,9 @@ const IndustrySolutionsInner = () => {
     ]
 
     return (
-        <section className="py-10 bg-black relative overflow-hidden">
+        <section className="py-6 bg-black relative overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-10">
+                <div className="text-center mb-8">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -12,11 +12,11 @@ const ResourcesPreviewInner = () => {
     const latestResources = resources.slice(0, 3);
 
     return (
-        <section className="py-16 bg-black relative overflow-hidden">
+        <section className="py-6 bg-black relative overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                     {/* Section Header */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 border-b border-zinc-800 pb-8">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 border-b border-zinc-800 pb-4">
                         <div>
                             <Reveal>
                                 <h5 className="text-yellow-500 font-black uppercase tracking-[0.4em] mb-3 text-xs flex items-center gap-3">

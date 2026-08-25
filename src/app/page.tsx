@@ -15,28 +15,28 @@ import Script from 'next/script'
 
 // Lazy Load Heavy Sections
 const AsSeenOnSection = dynamic(() => import('@/components/home/AsSeenOnSection').then(mod => mod.AsSeenOnSection), {
-    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const IndustrySolutions = dynamic(() => import('@/components/home/IndustrySolutions').then(mod => mod.IndustrySolutions), {
-    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const CustomSoftwareSolutions = dynamic(() => import('@/components/home/CustomSoftwareSolutions').then(mod => mod.CustomSoftwareSolutions), {
-    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const InternshipTraining = dynamic(() => import('@/components/home/InternshipTraining').then(mod => mod.InternshipTraining), {
-    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const ResourcesPreview = dynamic(() => import('@/components/home/ResourcesPreview').then(mod => mod.ResourcesPreview), {
-    loading: () => <div className="h-64 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const FeaturedCaseStudies = dynamic(() => import('@/components/home/FeaturedCaseStudies').then(mod => mod.FeaturedCaseStudies), {
-    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const TestimonialsSection = dynamic(() => import('@/components/testimonials/TestimonialsSection').then(mod => mod.TestimonialsSection), {
-    loading: () => <div className="h-96 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 const ContactCTA = dynamic(() => import('@/components/shared/ContactCTA').then(mod => mod.ContactCTA), {
-    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-10" />
+    loading: () => <div className="h-48 w-full bg-zinc-900/20 animate-pulse rounded-lg my-2" />
 })
 
 
@@ -561,7 +561,7 @@ export default function Home() {
             <ClientLogosSection />
 
             {/* Bento Grid Services — Content Only */}
-            <section className="pt-8 pb-10 container mx-auto px-4">
+            <section className="pt-6 pb-6 container mx-auto px-4">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     <GridCardMemo
@@ -618,9 +618,9 @@ export default function Home() {
             <CustomSoftwareSolutions />
 
             {/* Development Process Section */}
-            <section className="py-20 bg-black relative overflow-hidden border-t border-zinc-900">
+            <section className="py-6 bg-black relative overflow-hidden border-t border-zinc-900">
                 <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-6">
                         <Reveal>
                             <h2 className="text-4xl md:text-5xl font-display uppercase text-white">
                                 Our <span className="text-yellow-500">Development Process</span>
@@ -653,9 +653,9 @@ export default function Home() {
             </section>
 
             {/* Technology Stack Section */}
-            <section className="py-20 bg-zinc-950">
+            <section className="py-6 bg-zinc-950">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-6">
                         <Reveal>
                             <h2 className="text-4xl md:text-5xl font-display uppercase text-white mb-4">
                                 Our <span className="text-yellow-500">Technology Stack</span>
@@ -689,8 +689,8 @@ export default function Home() {
             <ResourcesPreview />
 
             {/* Lead Magnet Section */}
-            <section className="py-20 bg-zinc-950 border-t border-zinc-900">
-                <div className="container mx-auto px-4 max-w-4xl">
+            <section className="py-6 bg-zinc-950 border-t border-zinc-900">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
                     <div className="border border-zinc-900 bg-black p-8 md:p-12 relative overflow-hidden group hover:border-yellow-500/20 transition-all duration-500">
                         {/* Glow effect */}
                         <div className="absolute -right-16 -bottom-16 w-64 h-64 bg-yellow-500/5 blur-[80px] rounded-full pointer-events-none" />
@@ -795,9 +795,9 @@ export default function Home() {
             </section>
 
             {/* FAQ Section */}
-            <section className="py-20 bg-black border-t border-zinc-900">
-                <div className="container mx-auto px-4 max-w-4xl">
-                    <div className="text-center mb-16">
+            <section className="py-6 bg-black border-t border-zinc-900">
+                <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+                    <div className="text-center mb-6">
                         <Reveal>
                             <h2 className="text-4xl md:text-5xl font-display uppercase text-white mb-4">
                                 Frequently Asked <span className="text-yellow-500">Questions</span>
@@ -810,22 +810,22 @@ export default function Home() {
                         </Reveal>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
                         {faqSchema.mainEntity.map((item, idx) => {
                             const isOpen = openFaq === idx;
                             return (
                                 <Reveal key={idx} delay={idx * 0.05}>
-                                    <div className="border border-zinc-900 bg-zinc-950/50 transition-all hover:border-yellow-500/20">
+                                    <div className="border border-zinc-900 bg-zinc-950/50 transition-all hover:border-yellow-500/20 h-full">
                                         <button
                                             onClick={() => setOpenFaq(isOpen ? null : idx)}
-                                            className="w-full p-6 flex justify-between items-center text-left gap-4 focus:outline-none cursor-pointer group"
+                                            className="w-full p-4 sm:p-5 flex justify-between items-center text-left gap-4 focus:outline-none cursor-pointer group"
                                         >
                                             <span className="text-base md:text-lg font-display uppercase text-white tracking-wide transition-colors group-hover:text-yellow-500">
                                                 {item.name}
                                             </span>
                                             <ChevronDown
                                                 size={20}
-                                                className={`text-zinc-500 transition-transform duration-300 ${isOpen ? "rotate-180 text-yellow-500" : ""}`}
+                                                className={`text-zinc-500 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-yellow-500" : ""}`}
                                             />
                                         </button>
                                         
@@ -856,7 +856,7 @@ export default function Home() {
             <ContactCTA />
 
             {/* SEO Content Section */}
-            <section className="py-12 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
+            <section className="py-6 px-6 bg-zinc-950/50 border-t border-zinc-900/50">
                 <div className="container mx-auto max-w-7xl">
                     <div className="text-sm md:text-base text-zinc-300 leading-relaxed font-light space-y-4">
                         <p>

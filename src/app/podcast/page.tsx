@@ -72,7 +72,7 @@ export default function PodcastPage() {
 
       <div className="min-h-screen bg-black">
         {/* ── Hero ───────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-32 pb-20">
+        <section className="relative overflow-hidden pt-6 lg:pt-8 pb-6">
           {/* Background glow */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-yellow-500/5 blur-3xl" />
@@ -94,53 +94,53 @@ export default function PodcastPage() {
           </div>
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex flex-col lg:flex-row items-center gap-6">
               {/* Podcast cover */}
               <div className="shrink-0 relative">
-                <div className="w-48 h-48 lg:w-64 lg:h-64 rounded-3xl bg-gradient-to-br from-yellow-500 to-yellow-800 p-0.5 shadow-2xl shadow-yellow-500/20">
-                  <div className="w-full h-full rounded-3xl bg-zinc-900 flex items-center justify-center">
+                <div className="w-36 h-36 lg:w-48 lg:h-48 rounded-2xl bg-gradient-to-br from-yellow-500 to-yellow-800 p-0.5 shadow-xl shadow-yellow-500/20">
+                  <div className="w-full h-full rounded-2xl bg-zinc-900 flex items-center justify-center">
                     <div className="text-center">
-                      <Mic className="w-16 h-16 lg:w-20 lg:h-20 text-yellow-400 mx-auto mb-3" />
-                      <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest">
+                      <Mic className="w-12 h-12 lg:w-16 lg:h-16 text-yellow-400 mx-auto mb-2" />
+                      <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
                         Tech Talks
                       </p>
                     </div>
                   </div>
                 </div>
                 {/* NEW badge */}
-                <span className="absolute -top-3 -right-3 bg-yellow-400 text-black text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
                   NEW
                 </span>
               </div>
 
               {/* Hero Text */}
               <div className="text-center lg:text-left flex-1">
-                <span className="inline-block text-xs font-bold text-yellow-400 uppercase tracking-[0.2em] mb-4 border border-yellow-500/30 bg-yellow-500/10 px-3 py-1.5 rounded-full">
+                <span className="inline-block text-[11px] font-bold text-yellow-400 uppercase tracking-[0.2em] mb-2 border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
                   🎙️ Podcast
                 </span>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight font-display">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight font-display">
                   Kiaan{" "}
                   <span className="text-yellow-400">Tech Talks</span>
                 </h1>
-                <p className="mt-4 text-lg text-zinc-400 leading-relaxed max-w-xl">
+                <p className="mt-2 text-sm md:text-base text-zinc-400 leading-relaxed max-w-xl">
                   Deep dives into AI-driven software development, SaaS strategy,
                   ERP/CRM, and the future of enterprise technology.
                 </p>
-                <p className="mt-2 text-sm text-zinc-500">
+                <p className="mt-1 text-xs text-zinc-500">
                   {podcastEpisodes.length} episodes · Every two weeks
                 </p>
 
                 {/* CTA Row */}
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-6">
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mt-3.5">
                   <a
                     href="/podcast/rss.xml"
                     target="_blank"
                     rel="noopener noreferrer"
                     id="rss-feed-link"
-                    className="flex items-center gap-2 px-4 py-2.5 bg-orange-500/10 border border-orange-500/30 text-orange-400 rounded-xl hover:bg-orange-500/20 transition-all text-sm font-semibold"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 bg-orange-500/10 border border-orange-500/30 text-orange-400 rounded-xl hover:bg-orange-500/20 transition-all text-xs font-semibold"
                     aria-label="Subscribe via RSS feed"
                   >
-                    <Rss className="w-4 h-4" />
+                    <Rss className="w-3.5 h-3.5" />
                     RSS Feed
                   </a>
                   <a
@@ -148,10 +148,10 @@ export default function PodcastPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     id="youtube-podcast-link"
-                    className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-xl hover:border-zinc-500 transition-all text-sm font-semibold"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-xl hover:border-zinc-500 transition-all text-xs font-semibold"
                     aria-label="Watch on YouTube"
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                     YouTube
                   </a>
                 </div>
@@ -161,25 +161,25 @@ export default function PodcastPage() {
         </section>
 
         {/* ── Episode List ─────────────────────────────────────── */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-black text-white">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <div className="flex items-center justify-between mb-3.5">
+            <h2 className="text-xl font-black text-white">
               All Episodes{" "}
-              <span className="text-zinc-600 font-normal text-xl">
+              <span className="text-zinc-600 font-normal text-lg">
                 ({podcastEpisodes.length})
               </span>
             </h2>
             <Link
               href="/podcast/rss.xml"
-              className="text-sm text-zinc-500 hover:text-orange-400 transition-colors flex items-center gap-1"
+              className="text-xs text-zinc-500 hover:text-orange-400 transition-colors flex items-center gap-1"
               aria-label="Subscribe to RSS feed"
             >
-              <Rss className="w-4 h-4" />
+              <Rss className="w-3.5 h-3.5" />
               Subscribe
             </Link>
           </div>
 
-          <div className="grid gap-5">
+          <div className="grid gap-3">
             {[...podcastEpisodes]
               .sort(
                 (a, b) =>
@@ -193,15 +193,15 @@ export default function PodcastPage() {
         </section>
 
         {/* ── About Section ────────────────────────────────────── */}
-        <section className="border-t border-zinc-900 py-16">
+        <section className="border-t border-zinc-900 py-6">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-black text-white mb-4">
+            <h2 className="text-xl font-black text-white mb-2">
               About the Show
             </h2>
-            <p className="text-zinc-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               {podcastShow.description}
             </p>
-            <p className="mt-4 text-sm text-zinc-600">
+            <p className="mt-2 text-xs text-zinc-600">
               Have a topic suggestion or want to be a guest?{" "}
               <Link
                 href="/contact"

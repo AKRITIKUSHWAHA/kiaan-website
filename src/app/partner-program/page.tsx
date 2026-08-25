@@ -239,22 +239,22 @@ export default function PartnerProgram() {
     };
 
     return (
-        <main className="min-h-screen bg-black text-white relative pt-24 pb-12 font-sans overflow-x-hidden">
+        <main className="min-h-screen bg-black text-white relative pt-6 lg:pt-8 pb-10 font-sans overflow-x-hidden">
             {/* Ambient Lighting Background */}
             <div className="absolute top-[-10%] left-[-15%] w-[60%] h-[60%] bg-yellow-500/5 rounded-full blur-[140px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] right-[-15%] w-[60%] h-[60%] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none z-0" />
 
-            <div className="container mx-auto px-6 relative z-10 max-w-4xl">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-4xl">
                 {/* --- HEADER --- */}
                 {step < 4 && (
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-5">
                         <Reveal>
-                            <h1 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white mb-3">
+                            <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-2">
                                 Join Kiaan <span className="text-yellow-500">Partner Program</span>
                             </h1>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <p className="text-zinc-400 text-sm md:text-base max-w-2xl mx-auto font-mono leading-relaxed">
+                            <p className="text-zinc-400 text-xs md:text-sm max-w-2xl mx-auto font-mono leading-relaxed">
                                 Help businesses digitize operations with custom SaaS, ERP, CRM, and enterprise AI. Earn recurring commissions, access resale discounts, and scale co-branded setups.
                             </p>
                         </Reveal>
@@ -263,7 +263,7 @@ export default function PartnerProgram() {
 
                 {/* --- STEP PROGRESS BAR --- */}
                 {step < 4 && (
-                    <div className="mb-10 max-w-xl mx-auto">
+                    <div className="mb-5 max-w-xl mx-auto">
                         <div className="flex justify-between items-center relative">
                             {/* Line behind */}
                             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-zinc-800 z-0"></div>
@@ -275,7 +275,7 @@ export default function PartnerProgram() {
                             {[1, 2, 3].map((num) => (
                                 <div 
                                     key={num}
-                                    className={`w-9 h-9 rounded-full flex items-center justify-center font-mono text-xs font-bold relative z-10 transition-all duration-500 ${
+                                    className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold relative z-10 transition-all duration-500 ${
                                         step > num 
                                             ? 'bg-yellow-500 text-black shadow-[0_0_15px_rgba(234,179,8,0.4)]' 
                                             : step === num 
@@ -283,11 +283,11 @@ export default function PartnerProgram() {
                                                 : 'bg-zinc-950 border-2 border-zinc-800 text-zinc-600'
                                     }`}
                                 >
-                                    {step > num ? <Check size={14} className="stroke-[3px]" /> : num}
+                                    {step > num ? <Check size={13} className="stroke-[3px]" /> : num}
                                 </div>
                             ))}
                         </div>
-                        <div className="flex justify-between text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-2 px-1">
+                        <div className="flex justify-between text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest mt-1.5 px-1">
                             <span>Tier Setup</span>
                             <span className="text-center">Company Profile</span>
                             <span className="text-right">Vision Details</span>
@@ -307,14 +307,14 @@ export default function PartnerProgram() {
                         >
                             {/* STEP 1: PARTNER TIER SELECTION */}
                             {step === 1 && (
-                                <div className="space-y-6">
-                                    <div className="text-center sm:text-left mb-2">
-                                        <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1">Step 1: Choose Your Partnership Path</h3>
-                                        <p className="text-xs text-zinc-500 font-mono">Select a program tier that aligns with your distribution model.</p>
-                                        {errors.partnerTier && <p className="text-xs text-red-500 font-mono mt-2">{errors.partnerTier}</p>}
+                                <div className="space-y-3.5">
+                                    <div className="text-center sm:text-left mb-1">
+                                        <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5">Step 1: Choose Your Partnership Path</h3>
+                                        <p className="text-[11px] text-zinc-500 font-mono">Select a program tier that aligns with your distribution model.</p>
+                                        {errors.partnerTier && <p className="text-xs text-red-500 font-mono mt-1">{errors.partnerTier}</p>}
                                     </div>
 
-                                    <div className="grid grid-cols-1 gap-4">
+                                    <div className="grid grid-cols-1 gap-2.5">
                                         {[
                                             {
                                                 id: 'Referral' as const,

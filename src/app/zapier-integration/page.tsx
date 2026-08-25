@@ -251,114 +251,114 @@ export default function ZapierIntegration() {
     };
 
     return (
-        <main className="min-h-screen bg-black text-white relative pt-24 pb-12 font-sans overflow-x-hidden">
+        <main className="min-h-screen bg-black text-white relative pt-6 lg:pt-8 pb-6 font-sans overflow-x-hidden">
             {/* Ambient glows */}
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
-            <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
                 {/* --- HEADER --- */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-white/5 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-white/5 pb-3">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white mb-2">
+                        <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-1">
                             Zapier <span className="text-yellow-500">Automation</span>
                         </h1>
-                        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-mono">
+                        <p className="text-zinc-400 text-xs md:text-sm max-w-2xl font-mono">
                             Configure Zapier catch hooks, authentication keys, and simulate outbound webhook events.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-3">
-                            <span className={`px-3.5 py-1.5 border text-xs font-bold rounded-full flex items-center gap-1.5 font-mono ${
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
+                            <span className={`px-3 py-1 border text-[11px] font-bold rounded-full flex items-center gap-1 font-mono ${
                                 state.isActive 
                                     ? 'bg-green-500/10 border-green-500/30 text-green-400' 
                                     : 'bg-zinc-900 border-zinc-800 text-zinc-500'
                             }`}>
-                                <Cpu size={12} /> {state.isActive ? 'ACTIVE' : 'SUSPENDED'}
+                                <Cpu size={11} /> {state.isActive ? 'ACTIVE' : 'SUSPENDED'}
                             </span>
                             
                             <button 
                                 onClick={toggleActiveState}
-                                className={`px-4 py-2 border rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                                className={`px-3 py-1.5 border rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${
                                     state.isActive 
                                         ? 'border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white' 
                                         : 'bg-yellow-500 hover:bg-yellow-400 text-black border-transparent'
                                 }`}
                             >
-                                <Power size={12} /> {state.isActive ? 'Pause Pipeline' : 'Resume Pipeline'}
+                                <Power size={11} /> {state.isActive ? 'Pause Pipeline' : 'Resume Pipeline'}
                             </button>
                         </div>
                     </div>
                 </div>
 
                 {/* --- STATISTICS PANELS --- */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 text-left">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-4 text-left">
                     {[
                         { label: 'Zapier Integration', val: state.isActive ? 'Connected' : 'Offline', desc: 'Outbound REST streams status' },
                         { label: 'Automations Executed', val: `${state.totalTasksRun} Tasks`, desc: 'Total successful webhook catches' },
                         { label: 'Event Channels', val: '3 Channels', desc: 'Lead, Invoice, and Internship logs' }
                     ].map((stat, i) => (
-                        <GlassCard key={i} className="p-5 border border-white/10 rounded-2xl">
-                            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">{stat.label}</span>
-                            <h3 className="text-2xl font-display font-black text-white uppercase mb-1">{stat.val}</h3>
-                            <span className="text-xs text-zinc-400 font-sans block">{stat.desc}</span>
+                        <GlassCard key={i} className="p-3.5 border border-white/10 rounded-xl">
+                            <span className="text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest block mb-0.5">{stat.label}</span>
+                            <h3 className="text-xl font-display font-black text-white uppercase mb-0.5">{stat.val}</h3>
+                            <span className="text-[11px] text-zinc-400 font-sans block">{stat.desc}</span>
                         </GlassCard>
                     ))}
                 </div>
 
                 {/* --- MAIN GRID SECTION --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-4">
                     {/* LEFT COLUMN: ZAPIER APP CREDENTIALS */}
-                    <div className="lg:col-span-1 space-y-6">
+                    <div className="lg:col-span-1 space-y-3">
                         <div className="text-left">
-                            <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <Settings size={18} className="text-yellow-500" /> Authentication Keys
+                            <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                <Settings size={16} className="text-yellow-500" /> Authentication Keys
                             </h3>
-                            <p className="text-xs text-zinc-500 font-mono">Input developer authorization secrets for workflow validations.</p>
+                            <p className="text-[11px] text-zinc-500 font-mono">Input developer authorization secrets for workflow validations.</p>
                         </div>
 
                         {saveSuccess && (
-                            <div className="p-3 bg-green-500/10 border border-green-500/20 text-green-400 text-xs rounded-xl font-mono flex items-center gap-2">
-                                <CheckCircle size={14} /> Automation settings updated!
+                            <div className="p-2.5 bg-green-500/10 border border-green-500/20 text-green-400 text-xs rounded-xl font-mono flex items-center gap-2">
+                                <CheckCircle size={13} /> Automation settings updated!
                             </div>
                         )}
 
-                        <GlassCard className="p-6 border border-white/10 rounded-2xl">
-                            <form onSubmit={handleSaveSettings} className="space-y-4">
+                        <GlassCard className="p-4 border border-white/10 rounded-2xl">
+                            <form onSubmit={handleSaveSettings} className="space-y-3">
                                 <div>
-                                    <label className="block text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">Zapier Catch Hook URL</label>
+                                    <label className="block text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Zapier Catch Hook URL</label>
                                     <div className="relative">
-                                        <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={14} />
+                                        <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={13} />
                                         <input 
                                             type="text"
                                             value={catchHookInput}
                                             onChange={e => setCatchHookInput(e.target.value)}
                                             placeholder="https://hooks.zapier.com/hooks/..."
-                                            className={`w-full pl-9 pr-4 py-2 bg-zinc-950 border ${formErrors.catchHookUrl ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
+                                            className={`w-full pl-8 pr-3 py-1.5 bg-zinc-950 border ${formErrors.catchHookUrl ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
                                         />
                                     </div>
-                                    {formErrors.catchHookUrl && <p className="text-[10px] text-red-500 font-mono mt-1 leading-normal">{formErrors.catchHookUrl}</p>}
+                                    {formErrors.catchHookUrl && <p className="text-[9.5px] text-red-500 font-mono mt-1 leading-normal">{formErrors.catchHookUrl}</p>}
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">Developer Secret Token</label>
+                                    <label className="block text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Developer Secret Token</label>
                                     <div className="relative">
-                                        <Key className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={14} />
+                                        <Key className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={13} />
                                         <input 
                                             type="text"
                                             value={devTokenInput}
                                             onChange={e => setDevTokenInput(e.target.value)}
                                             placeholder="zk_live_xxxxxxxx"
-                                            className={`w-full pl-9 pr-4 py-2 bg-zinc-950 border ${formErrors.devToken ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
+                                            className={`w-full pl-8 pr-3 py-1.5 bg-zinc-950 border ${formErrors.devToken ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
                                         />
                                     </div>
-                                    {formErrors.devToken && <p className="text-[10px] text-red-500 font-mono mt-1 leading-normal">{formErrors.devToken}</p>}
+                                    {formErrors.devToken && <p className="text-[9.5px] text-red-500 font-mono mt-1 leading-normal">{formErrors.devToken}</p>}
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white py-2.5 rounded-xl text-xs font-black uppercase transition-all tracking-wider font-mono shadow-md"
+                                    className="w-full bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white py-2 rounded-xl text-xs font-black uppercase transition-all tracking-wider font-mono shadow-md"
                                 >
                                     Update Credentials
                                 </button>
@@ -367,59 +367,57 @@ export default function ZapierIntegration() {
                     </div>
 
                     {/* MIDDLE COLUMN: EVENT TRIGGER SIMULATOR */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-2 space-y-3">
                         <div className="text-left">
-                            <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <Cpu size={18} className="text-yellow-500" /> Outbound Event Triggers
+                            <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                <Cpu size={16} className="text-yellow-500" /> Outbound Event Triggers
                             </h3>
-                            <p className="text-xs text-zinc-500 font-mono">Discharge simulated webhook JSON packages directly to your Zapier hook endpoint.</p>
+                            <p className="text-[11px] text-zinc-500 font-mono">Discharge simulated webhook JSON packages directly to your Zapier hook endpoint.</p>
                         </div>
 
-                        <div className="grid grid-cols-1 gap-4">
+                        <div className="grid grid-cols-1 gap-3">
                             {[
                                 {
                                     id: 'lead' as const,
-                                    name: 'New Lead Created (`lead.created`)',
-                                    desc: 'Fires when a new customer submits a customized software development proposal.',
-                                    payloadPreview: '{ name: "Thomas Anderson", budget: "$15k-$25k" }'
+                                    name: 'New Client Project Lead',
+                                    desc: 'Dispatches name, budget, vision statement, and timestamp.',
+                                    event: 'lead.created'
                                 },
                                 {
                                     id: 'invoice' as const,
-                                    name: 'Invoice Paid (`invoice.paid`)',
-                                    desc: 'Fires when an enterprise SaaS user successfully pays their service fees.',
-                                    payloadPreview: '{ invoiceCode: "KIAN-2026-0921", amount: "₹3,45,000" }'
+                                    name: 'Invoice Payment Received',
+                                    desc: 'Dispatches client name, transaction amount, and contract milestone ID.',
+                                    event: 'invoice.paid'
                                 },
                                 {
                                     id: 'internship' as const,
-                                    name: 'Internship Applied (`internship.applied`)',
-                                    desc: 'Fires when a candidate applies for the MERN/Node Innovation Lab.',
-                                    payloadPreview: '{ course: "Full-Stack MERN", email: "morpheus@nebulabs.org" }'
+                                    name: 'Internship Application Logged',
+                                    desc: 'Dispatches candidate name, technology stream, university, and resume metadata.',
+                                    event: 'internship.applied'
                                 }
                             ].map((trigger) => {
                                 const isSimulating = simulatingType === trigger.id;
                                 return (
-                                    <GlassCard key={trigger.id} className="p-5 border border-white/10 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                                    <GlassCard key={trigger.id} className="p-4 border border-white/10 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                                         <div className="flex-1">
-                                            <h4 className="text-sm font-bold text-white font-mono flex items-center gap-2">
-                                                {trigger.name}
-                                            </h4>
-                                            <p className="text-xs text-zinc-400 font-sans mt-0.5 leading-relaxed">{trigger.desc}</p>
-                                            
-                                            <div className="flex items-center gap-2 mt-3 font-mono text-[9px] bg-zinc-950 border border-white/5 px-2.5 py-1.5 rounded-lg text-zinc-500 w-fit">
-                                                <FileJson size={10} className="text-yellow-500" />
-                                                <span>Preview: {trigger.payloadPreview}</span>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <h4 className="text-sm font-bold text-white font-mono">{trigger.name}</h4>
+                                                <span className="px-2 py-0.5 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-[9px] font-mono font-bold rounded">
+                                                    {trigger.event}
+                                                </span>
                                             </div>
+                                            <p className="text-xs text-zinc-400 font-sans leading-relaxed">{trigger.desc}</p>
                                         </div>
 
                                         <button
                                             disabled={isSimulating || !state.isActive}
                                             onClick={() => handleSimulateTrigger(trigger.id)}
-                                            className="bg-yellow-500 hover:bg-yellow-400 text-black disabled:opacity-20 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shrink-0 w-full sm:w-auto shadow-md"
+                                            className="shrink-0 w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-black disabled:opacity-30 px-3.5 py-1.5 rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-md shadow-yellow-500/10"
                                         >
                                             {isSimulating ? (
-                                                <RefreshCw size={12} className="animate-spin" />
+                                                <RefreshCw size={11} className="animate-spin" />
                                             ) : (
-                                                <Play size={12} />
+                                                <Play size={11} />
                                             )}
                                             Simulate Webhook
                                         </button>
@@ -431,18 +429,18 @@ export default function ZapierIntegration() {
                 </div>
 
                 {/* --- OUTSIDE ACTIONS CONFIG & MONOSPACE CONSOLE LOGGER --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                     {/* LEFT COLUMN: ACTIONS SETUPS */}
-                    <div className="lg:col-span-1 space-y-6">
+                    <div className="lg:col-span-1 space-y-3">
                         <div className="text-left">
-                            <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <Cpu size={18} className="text-yellow-500" /> Workflow Actions
+                            <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                <Cpu size={16} className="text-yellow-500" /> Workflow Actions
                             </h3>
-                            <p className="text-xs text-zinc-500 font-mono">Enable/disable mapped downstream Zapier actions.</p>
+                            <p className="text-[11px] text-zinc-500 font-mono">Enable/disable mapped downstream Zapier actions.</p>
                         </div>
 
-                        <GlassCard className="p-6 border border-white/10 rounded-2xl space-y-4 text-xs font-mono">
-                            <div className="space-y-3">
+                        <GlassCard className="p-4 border border-white/10 rounded-2xl space-y-3 text-xs font-mono">
+                            <div className="space-y-2">
                                 {[
                                     { id: 'slack_notify', label: 'Slack Channel Notifications', desc: 'Post trigger summaries into #sales' },
                                     { id: 'gsheet_row', label: 'Google Sheets Rows Appending', desc: 'Add webhook rows to lead spreadsheet' },
@@ -450,7 +448,7 @@ export default function ZapierIntegration() {
                                 ].map((act) => {
                                     const active = state.enabledActions.includes(act.id);
                                     return (
-                                        <div key={act.id} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+                                        <div key={act.id} className="flex justify-between items-center py-1 border-b border-white/5 last:border-0">
                                             <div>
                                                 <span className="text-[11px] text-zinc-300 block">{act.label}</span>
                                                 <span className="text-[9px] text-zinc-500 block font-sans mt-0.5">{act.desc}</span>
@@ -459,7 +457,7 @@ export default function ZapierIntegration() {
                                                 onClick={() => toggleActionEnabled(act.id)}
                                                 className={`text-zinc-400 transition-colors shrink-0 ${active ? 'text-yellow-500' : 'hover:text-white'}`}
                                             >
-                                                {active ? <ToggleRight size={22} /> : <ToggleLeft size={22} />}
+                                                {active ? <ToggleRight size={20} /> : <ToggleLeft size={20} />}
                                             </button>
                                         </div>
                                     );
@@ -469,23 +467,23 @@ export default function ZapierIntegration() {
                     </div>
 
                     {/* RIGHT COLUMN: CLI LOGGER */}
-                    <div className="lg:col-span-2 space-y-6 flex flex-col">
+                    <div className="lg:col-span-2 space-y-3 flex flex-col">
                         <div className="flex justify-between items-end">
                             <div className="text-left">
-                                <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                    <Terminal size={18} className="text-yellow-500" /> REST Pipeline Terminal
+                                <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                    <Terminal size={16} className="text-yellow-500" /> REST Pipeline Terminal
                                 </h3>
-                                <p className="text-xs text-zinc-500 font-mono">Outgoing webhook payloads, HTTP request headers, and response logs.</p>
+                                <p className="text-[11px] text-zinc-500 font-mono">Outgoing webhook payloads, HTTP request headers, and response logs.</p>
                             </div>
                             <button 
                                 onClick={clearLogs}
-                                className="text-[10px] font-mono text-zinc-500 hover:text-yellow-500 uppercase tracking-widest"
+                                className="text-[9.5px] font-mono text-zinc-500 hover:text-yellow-500 uppercase tracking-widest"
                             >
                                 Clear Console
                             </button>
                         </div>
 
-                        <div className="flex-1 bg-[#030303] border border-white/10 rounded-2xl p-5 font-mono text-[11px] text-zinc-400 h-[280px] overflow-y-auto flex flex-col justify-between scrollbar-hide shadow-inner">
+                        <div className="flex-1 bg-[#030303] border border-white/10 rounded-2xl p-4 font-mono text-[11px] text-zinc-400 h-[220px] overflow-y-auto flex flex-col justify-between scrollbar-hide shadow-inner">
                             <div className="space-y-1">
                                 {logs.map((log, index) => {
                                     let color = 'text-zinc-400';
@@ -503,7 +501,7 @@ export default function ZapierIntegration() {
                                 })}
                                 {simulatingType && (
                                     <div className="text-yellow-500 animate-pulse flex items-center gap-2 mt-2">
-                                        <RefreshCw size={12} className="animate-spin" /> Discharging payload... [{simProgress}%]
+                                        <RefreshCw size={11} className="animate-spin" /> Discharging payload... [{simProgress}%]
                                     </div>
                                 )}
                                 <div ref={consoleEndRef} />

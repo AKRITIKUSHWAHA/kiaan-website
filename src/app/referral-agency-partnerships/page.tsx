@@ -486,31 +486,31 @@ export default function ReferralAgencyPartnerships() {
     const totalPages = Math.ceil(totalAgenciesCount / limit) || 1;
 
     return (
-        <main className="min-h-screen bg-black text-white relative pt-24 pb-12 font-sans overflow-x-hidden">
+        <main className="min-h-screen bg-black text-white relative pt-6 lg:pt-8 pb-10 font-sans overflow-x-hidden">
             {/* Ambient Background Effects */}
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-6xl">
                 {/* --- 1. HEADER & AUTH BAR --- */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-white/5 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-white/5 pb-3">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white mb-2">
+                        <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-1">
                             Referral & Reseller <span className="text-yellow-500">Agencies</span>
                         </h1>
-                        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-mono">
+                        <p className="text-zinc-400 text-xs md:text-sm max-w-2xl font-mono">
                             System Date: {SYSTEM_TODAY} // Monitor affiliate commissions, referral pipelines, and reseller workflows.
                         </p>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                         {isAuthenticated ? (
-                            <div className="flex items-center gap-3">
-                                <span className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-full flex items-center gap-1.5 font-mono">
-                                    <Unlock size={12} /> ADMIN SESSION
+                            <div className="flex items-center gap-2">
+                                <span className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-[11px] font-bold rounded-full flex items-center gap-1 font-mono">
+                                    <Unlock size={11} /> ADMIN SESSION
                                 </span>
                                 <button 
                                     onClick={handleLogout}
-                                    className="px-4 py-2 border border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-all"
+                                    className="px-3 py-1.5 border border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-all"
                                 >
                                     Log Out
                                 </button>
@@ -521,7 +521,7 @@ export default function ReferralAgencyPartnerships() {
                                     setLoginError('');
                                     setLoginModalOpen(true);
                                 }}
-                                className="px-4 py-2 bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white rounded-lg text-xs font-bold flex items-center gap-2 transition-all"
+                                className="px-3.5 py-1.5 bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all font-mono"
                             >
                                 <Lock size={12} className="text-yellow-500" /> Admin Access
                             </button>
@@ -530,42 +530,42 @@ export default function ReferralAgencyPartnerships() {
                 </div>
 
                 {/* --- 2. STATS PANELS --- */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center gap-4 hover:border-yellow-500/30 transition-all duration-300">
-                        <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 rounded-xl">
-                            <Users size={24} />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mb-4">
+                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-3.5 rounded-xl flex items-center gap-3 hover:border-yellow-500/30 transition-all duration-300">
+                        <div className="p-2.5 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 rounded-lg">
+                            <Users size={20} />
                         </div>
                         <div>
-                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Total Agencies</p>
-                            <p className="text-2xl font-bold text-white mt-0.5">{dbSummary.length}</p>
+                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Total Agencies</p>
+                            <p className="text-xl font-bold text-white mt-0.5">{dbSummary.length}</p>
                         </div>
                     </div>
 
-                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center gap-4 hover:border-yellow-500/30 transition-all duration-300">
-                        <div className="p-3 bg-green-500/10 border border-green-500/20 text-green-500 rounded-xl">
-                            <DollarSign size={24} />
+                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-3.5 rounded-xl flex items-center gap-3 hover:border-yellow-500/30 transition-all duration-300">
+                        <div className="p-2.5 bg-green-500/10 border border-green-500/20 text-green-500 rounded-lg">
+                            <DollarSign size={20} />
                         </div>
                         <div>
-                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Total Won Deals</p>
-                            <p className="text-2xl font-bold text-white mt-0.5">${totalWonRevenue.toLocaleString()}</p>
+                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Total Won Deals</p>
+                            <p className="text-xl font-bold text-white mt-0.5">${totalWonRevenue.toLocaleString()}</p>
                         </div>
                     </div>
 
-                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center gap-4 hover:border-yellow-500/30 transition-all duration-300">
-                        <div className="p-3 bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 rounded-xl">
-                            <Percent size={24} />
+                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-3.5 rounded-xl flex items-center gap-3 hover:border-yellow-500/30 transition-all duration-300">
+                        <div className="p-2.5 bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 rounded-lg">
+                            <Percent size={20} />
                         </div>
                         <div>
-                            <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Active Resellers</p>
-                            <p className="text-2xl font-bold text-white mt-0.5">
+                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Active Resellers</p>
+                            <p className="text-xl font-bold text-white mt-0.5">
                                 {dbSummary.filter(a => a.type === 'Reseller' && a.status === 'Active').length}
                             </p>
                         </div>
                     </div>
 
-                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center gap-4 hover:border-yellow-500/30 transition-all duration-300">
-                        <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl">
-                            <Bell size={24} className={followUpAlerts.length > 0 ? "animate-bounce" : ""} />
+                    <div className="bg-zinc-950/40 backdrop-blur-md border border-white/10 p-3.5 rounded-xl flex items-center gap-3 hover:border-yellow-500/30 transition-all duration-300">
+                        <div className="p-2.5 bg-red-500/10 border border-red-500/20 text-red-500 rounded-lg">
+                            <Bell size={20} className={followUpAlerts.length > 0 ? "animate-bounce" : ""} />
                         </div>
                         <div>
                             <p className="text-xs font-mono text-zinc-500 uppercase tracking-wider">Due Follow-ups</p>

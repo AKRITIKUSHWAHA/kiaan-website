@@ -69,7 +69,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                     link.name === 'Solutions' ? (
                                                         <Link
                                                             key={cat.title}
-                                                            href={`/solutions/${cat.slug || generateSlug(cat.title)}`}
+                                                            href={cat.href || `/solutions/${cat.slug || generateSlug(cat.title)}`}
                                                             className="block p-4 text-[11px] text-zinc-400 uppercase tracking-widest border-b border-white/5 last:border-none hover:text-white"
                                                             onClick={onClose}
                                                         >
@@ -88,8 +88,8 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                                                         href = `/internship/${item.slug}`;
                                                                         label = item.title;
                                                                     } else if (link.name === 'Solutions') {
-                                                                        href = `/solutions/${cat.slug || generateSlug(cat.title)}`;
-                                                                        label = item;
+                                                                        href = cat.href || `/solutions/${cat.slug || generateSlug(cat.title)}`;
+                                                                        label = typeof item === 'string' ? item : item.title;
                                                                     } else {
                                                                         href = `/products/${generateSlug(item)}`;
                                                                         label = item;
@@ -129,13 +129,26 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                 </AnimatePresence>
                             </div>
                         ))}
+
+                        {/* Contact Link */}
+                        <div className="border-b border-white/5">
+                            <Link
+                                href="/contact"
+                                className={`flex items-center justify-between py-5 cursor-pointer ${pathname === '/contact' ? 'text-yellow-500' : 'text-white'}`}
+                                onClick={onClose}
+                            >
+                                <span className="text-2xl font-display uppercase tracking-wider">Contact</span>
+                            </Link>
+                        </div>
                     </div>
 
-                    <div className="mt-12 mb-20 px-4">
-                        <Link href="/start-project" onClick={onClose}>
-                            <Button className="w-full bg-red-600 text-white rounded-none py-6 text-xl font-bold uppercase tracking-[0.2em] skew-x-[-10deg]">
-                                <span className="skew-x-[10deg]">Launch Your Software</span>
-                            </Button>
+                    {/* Launch Your Software CTA Button */}
+                    <div className="mt-8 mb-24 px-1">
+                        <Link href="/start-project" onClick={onClose} className="block group">
+                            <div className="w-full bg-gradient-to-r from-red-600 via-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 active:scale-[0.98] text-white rounded-xl py-4 sm:py-4.5 px-6 font-bold uppercase tracking-wider shadow-[0_4px_25px_rgba(220,38,38,0.45)] transition-all duration-300 flex items-center justify-center gap-3 border border-red-500/30">
+                                <Rocket className="w-5 h-5 text-yellow-300 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                                <span className="text-sm sm:text-base font-extrabold tracking-widest text-center">Launch Your Software</span>
+                            </div>
                         </Link>
                     </div>
                 </motion.div>

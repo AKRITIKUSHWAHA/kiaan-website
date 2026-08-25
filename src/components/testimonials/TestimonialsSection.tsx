@@ -53,7 +53,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
 
   return (
     <section
-      className="py-20 bg-black relative overflow-hidden border-t border-zinc-900"
+      className="py-6 bg-black relative overflow-hidden border-t border-zinc-900"
       aria-label="Client Testimonials"
     >
       {/* ── Background texture ── */}
@@ -79,7 +79,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
       <div className="container mx-auto px-4 relative z-10">
         {/* ── Section heading ── */}
         {showHeading && (
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-6">
             <div>
               <Reveal>
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/50 border border-zinc-800 text-[10px] font-black uppercase tracking-[0.2em] text-yellow-500 mb-4">

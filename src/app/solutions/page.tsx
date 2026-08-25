@@ -55,7 +55,7 @@ export default function SolutionsPage() {
             </div>
 
             {/* --- 1. HERO SECTION --- */}
-            <section className="relative z-10 pt-16 lg:pt-32 pb-0 lg:pb-12 overflow-visible">
+            <section className="relative z-10 pt-8 lg:pt-12 pb-2 lg:pb-4 overflow-visible">
                 {/* Background mesh & grid for hero */}
                 <motion.div style={{ y: yHeroBg, opacity: opacityHeroBg }} className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[600px] bg-gradient-to-b from-[#FFE81B]/10 via-cyan-500/5 to-transparent blur-[120px] rounded-[100%]" />
@@ -63,37 +63,37 @@ export default function SolutionsPage() {
                 </motion.div>
 
                 <div className="container mx-auto px-4 lg:px-8 max-w-[1400px]">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
                         
                         {/* Left Column: Typography & CTA */}
                         <div className="lg:col-span-6 z-10 relative">
                             <Reveal>
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4">
                                     <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.8)]"></span>
                                     <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-300">Next-Gen Enterprise Cloud</span>
                                 </div>
                             </Reveal>
                             <Reveal delay={0.1}>
-                                <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-medium tracking-[-0.04em] leading-[1.05] mb-6">
+                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-[-0.04em] leading-[1.05] mb-4">
                                     <span className="text-white drop-shadow-2xl">Smart </span>
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFE81B] via-yellow-300 to-amber-500 filter drop-shadow-[0_0_20px_rgba(255,232,27,0.2)]">Solutions</span><br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">For Every Industry</span>
                                 </h1>
                             </Reveal>
                             <Reveal delay={0.2}>
-                                <p className="text-base md:text-lg text-zinc-400 font-light max-w-xl leading-relaxed mb-10">
+                                <p className="text-sm md:text-base text-zinc-400 font-light max-w-xl leading-relaxed mb-6">
                                     Empower your enterprise with world-class <strong className="text-zinc-200 font-medium">CRM Software</strong>, <strong className="text-zinc-200 font-medium">ERP Solutions</strong>, and <strong className="text-zinc-200 font-medium">Business Automation</strong>. We architect scalable <strong className="text-zinc-200 font-medium">SaaS Platforms</strong>, <strong className="text-zinc-200 font-medium">Healthcare Software</strong>, <strong className="text-zinc-200 font-medium">Car Rental CRM</strong>, <strong className="text-zinc-200 font-medium">Loan Management Software</strong>, <strong className="text-zinc-200 font-medium">Real Estate ERP</strong>, <strong className="text-zinc-200 font-medium">Logistics Management</strong>, and <strong className="text-zinc-200 font-medium">AI Automation</strong> systems for the modern web.
                                 </p>
                             </Reveal>
                             <Reveal delay={0.3}>
                                 <div className="flex flex-wrap items-center gap-4">
-                                    <Link href="/schedule" className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-lg overflow-hidden transition-transform active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,232,27,0.3)]">
+                                    <Link href="/schedule" className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black font-semibold rounded-lg overflow-hidden transition-transform active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,232,27,0.3)]">
                                         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FFE81B] to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         <span className="relative flex items-center gap-2 text-sm tracking-wide group-hover:text-black transition-colors">
                                             Start Building <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                         </span>
                                     </Link>
-                                    <Link href="#architecture" className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-colors text-sm tracking-wide shadow-lg">
+                                    <Link href="#architecture" className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-colors text-sm tracking-wide shadow-lg">
                                         Explore Platforms
                                     </Link>
                                 </div>
@@ -101,7 +101,7 @@ export default function SolutionsPage() {
                         </div>
 
                         {/* Right Column: Premium Industry Constellation Visual */}
-                        <div className="lg:col-span-6 relative z-10 hidden lg:block h-[500px] w-full perspective-[1500px]">
+                        <div className="lg:col-span-6 relative z-10 hidden lg:block h-[450px] w-full perspective-[1500px]">
                             {/* Ambient background glow - matched to brand yellow */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FFE81B]/5 blur-[140px] rounded-full" />
                             
@@ -201,11 +201,11 @@ export default function SolutionsPage() {
             </section>
 
             {/* --- 2. INTEGRATED INDUSTRY ECOSYSTEM (2-Row Selector & Live Showcase) --- */}
-            <section id="architecture" className="relative z-10 pt-4 pb-24 border-y border-white/5 bg-[#010101]">
+            <section id="architecture" className="relative z-10 pt-4 pb-8 lg:pb-10 border-y border-white/5 bg-[#010101]">
                 <div className="container mx-auto px-4 lg:px-8 max-w-[1400px]">
                     
                     {/* Compact, On-Point Title */}
-                    <div className="text-center mb-8">
+                    <div className="text-center mb-5">
                         <Reveal>
                             <h2 className="text-2xl md:text-3xl font-display font-medium tracking-tight text-white uppercase tracking-[0.15em]">
                                 Explore Solutions by <span className="text-[#FFE81B]">Industry</span>
@@ -214,9 +214,9 @@ export default function SolutionsPage() {
                     </div>
 
                     {/* Premium 2-Row Horizontal Industry Grid Selector */}
-                    <div className="mb-14">
+                    <div className="mb-6">
                         <Reveal>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
                                 {industries.map((ind) => (
                                     <button
                                         key={ind.slug}
@@ -224,14 +224,14 @@ export default function SolutionsPage() {
                                         style={{ 
                                             boxShadow: activeIndustry === ind.slug ? `0 0 30px ${ind.glow}` : 'none' 
                                         }}
-                                        className={`group px-3 py-4 rounded-xl transition-all duration-500 flex flex-col items-center justify-center gap-2 border text-center relative overflow-hidden backdrop-blur-md min-h-[72px] ${
+                                        className={`group px-3 py-3 rounded-xl transition-all duration-500 flex flex-col items-center justify-center gap-2 border text-center relative overflow-hidden backdrop-blur-md min-h-[64px] ${
                                             activeIndustry === ind.slug 
-                                                ? 'bg-gradient-to-b from-white/[0.08] to-white/[0.03] text-white border-white/25 scale-[1.03] z-10' 
+                                                ? 'bg-gradient-to-b from-white/[0.08] to-white/[0.03] text-white border-white/25 scale-[1.02] z-10' 
                                                 : 'bg-gradient-to-b from-white/[0.02] to-white/[0.005] text-zinc-400 border-white/10 hover:text-white hover:border-white/20 hover:from-white/[0.04]'
                                         }`}
                                     >
                                         {/* Microscopic module counter on top-right */}
-                                        <span className="absolute top-2 right-2 text-[9px] font-mono font-bold tracking-wider text-zinc-500 opacity-40 group-hover:opacity-80 transition-opacity">
+                                        <span className="absolute top-1.5 right-2 text-[9px] font-mono font-bold tracking-wider text-zinc-500 opacity-40 group-hover:opacity-80 transition-opacity">
                                             {ind.solutions.length.toString().padStart(2, '0')}
                                         </span>
 
@@ -254,31 +254,31 @@ export default function SolutionsPage() {
                     </div>
 
                     {/* Dynamic Full-Width Content Display */}
-                    <div className="relative min-h-[600px] w-full">
+                    <div className="relative min-h-[300px] w-full">
                         <AnimatePresence mode="wait">
                             {industries.map((ind) => ind.slug === activeIndustry && (
                                 <motion.div
                                     key={ind.slug}
-                                    initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
                                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                                    exit={{ opacity: 0, y: -30, filter: 'blur(10px)' }}
-                                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                    exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                                     className="w-full"
                                 >
                                     {/* Industry Header Card */}
-                                    <div className="relative p-8 md:p-12 rounded-3xl border border-white/5 bg-white/[0.01] backdrop-blur-md mb-6 overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-8">
+                                    <div className="relative p-6 md:p-8 rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-md mb-4 overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
                                         <div className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-br ${ind.gradient} opacity-[0.04] blur-[80px] rounded-full`} />
                                         
                                         <div className="max-w-2xl">
-                                            <div className="flex items-center gap-4 mb-6">
-                                                <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${ind.gradient} shadow-[0_0_30px_${ind.glow}] border border-white/10`}>
-                                                    <ind.icon size={26} className="text-white" />
+                                            <div className="flex items-center gap-3 mb-3">
+                                                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${ind.gradient} shadow-[0_0_30px_${ind.glow}] border border-white/10`}>
+                                                    <ind.icon size={22} className="text-white" />
                                                 </div>
-                                                <h3 className="text-3xl md:text-4xl font-display font-medium tracking-tight text-white">
+                                                <h3 className="text-2xl md:text-3xl font-display font-medium tracking-tight text-white">
                                                     {ind.name}
                                                 </h3>
                                             </div>
-                                            <p className="text-zinc-400 text-base md:text-lg leading-relaxed font-light mb-0">
+                                            <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-0">
                                                 {ind.desc}
                                             </p>
                                         </div>
@@ -297,28 +297,28 @@ export default function SolutionsPage() {
                                     </div>
 
                                     {/* 3-Column Grid of Software / Modules */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                         {ind.solutions.map((sol, idx) => (
                                             <motion.div 
                                                 initial={{ opacity: 0, y: 15 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: idx * 0.08 }}
+                                                transition={{ delay: idx * 0.05 }}
                                                 key={sol.id} 
-                                                className="group relative p-6 rounded-xl border border-white/15 bg-zinc-950/40 backdrop-blur-md hover:border-white/30 hover:bg-white/[0.03] transition-all duration-500 overflow-hidden flex flex-col justify-between min-h-[200px]"
+                                                className="group relative p-5 rounded-xl border border-white/15 bg-zinc-950/40 backdrop-blur-md hover:border-white/30 hover:bg-white/[0.03] transition-all duration-500 overflow-hidden flex flex-col justify-between min-h-[180px]"
                                             >
                                                 <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-br ${ind.gradient} opacity-0 group-hover:opacity-[0.08] blur-[50px] transition-opacity duration-700 rounded-full`} />
                                                 
                                                 <div>
-                                                    <h4 className="text-white text-base font-semibold mb-2 tracking-wide flex items-start gap-2">
+                                                    <h4 className="text-white text-base font-semibold mb-1.5 tracking-wide flex items-start gap-2">
                                                         <span className="text-xs font-mono text-zinc-400 mt-1">{(idx+1).toString().padStart(2,'0')}</span>
                                                         {sol.name}
                                                     </h4>
-                                                    <p className="text-sm text-zinc-300 leading-relaxed pl-6 font-normal group-hover:text-white transition-colors mb-2.5">{sol.desc}</p>
+                                                    <p className="text-xs text-zinc-300 leading-relaxed pl-6 font-normal group-hover:text-white transition-colors mb-2">{sol.desc}</p>
                                                     
                                                     {/* Expanded Technical Highlights */}
                                                     <div className="pl-6 space-y-1 mb-2">
                                                         {getMockFeatures(sol.name).map((feat, fIdx) => (
-                                                            <div key={fIdx} className="flex items-center gap-2 text-[11px] text-zinc-200 font-medium font-sans">
+                                                            <div key={fIdx} className="flex items-center gap-2 text-[10px] text-zinc-200 font-medium font-sans">
                                                                 <span className="w-1.5 h-1.5 rounded-full bg-[#FFE81B] shadow-[0_0_6px_#FFE81B]" />
                                                                 <span>{feat}</span>
                                                             </div>
@@ -326,7 +326,7 @@ export default function SolutionsPage() {
                                                     </div>
                                                 </div>
                                                 
-                                                <div className="mt-3 pl-6 flex items-center gap-4 relative z-10">
+                                                <div className="mt-2 pl-6 flex items-center gap-4 relative z-10">
                                                     {sol.link ? (
                                                         <a 
                                                             href={sol.link} 
@@ -355,23 +355,23 @@ export default function SolutionsPage() {
             </section>
 
             {/* --- 4. ENTERPRISE CORE FEATURES SHOWCASE --- */}
-            <section className="relative z-10 pt-16 pb-16 border-y border-white/5 bg-[#010101]">
+            <section className="relative z-10 py-8 lg:py-10 border-y border-white/5 bg-[#010101]">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,232,27,0.03)_0%,transparent_70%)] pointer-events-none" />
                 <div className="container mx-auto px-4 lg:px-8 max-w-[1400px]">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-6">
                         <Reveal>
-                            <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-6">
+                            <h2 className="text-2xl md:text-4xl font-display font-medium tracking-tight mb-3">
                                 Engineered for growth. <span className="text-zinc-500">Premium Integrations.</span>
                             </h2>
                         </Reveal>
                         <Reveal delay={0.1}>
-                            <p className="text-zinc-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
+                            <p className="text-zinc-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-normal">
                                 Every industry ecosystem comes pre-equipped with these robust enterprise-grade foundations to automate your business operations.
                             </p>
                         </Reveal>
                     </div>
  
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {[
                             { title: 'Automated WhatsApp & SMS', icon: Zap, desc: 'Send automated booking alerts, invoice copies, and custom notification campaigns.', glow: 'rgba(34,197,94,0.1)' },
                             { title: 'Zero-Trust Role Security', icon: Lock, desc: 'Advanced role-based access control (RBAC) to restrict and secure sensitive records and accounts.', glow: 'rgba(239,68,68,0.1)' },
@@ -381,11 +381,11 @@ export default function SolutionsPage() {
                             { title: 'Excel & PDF Export Engine', icon: Layers, desc: 'One-click financial and operation reports formatted for instant download and auditing.', glow: 'rgba(244,63,94,0.1)' },
                         ].map((feature, idx) => (
                             <Reveal key={idx} delay={idx * 0.05}>
-                                <div className="group relative p-6 rounded-2xl border border-white/15 bg-zinc-950/40 hover:bg-white/[0.03] hover:border-white/30 transition-all duration-500 overflow-hidden h-full">
+                                <div className="group relative p-5 rounded-xl border border-white/15 bg-zinc-950/40 hover:bg-white/[0.03] hover:border-white/30 transition-all duration-500 overflow-hidden h-full">
                                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: `radial-gradient(circle at 50% 0%, ${feature.glow}, transparent 70%)` }} />
-                                    <feature.icon size={28} className="text-zinc-400 group-hover:text-white mb-5 transition-colors relative z-10" />
-                                    <h4 className="text-lg font-bold text-white tracking-wide mb-3 relative z-10">{feature.title}</h4>
-                                    <p className="text-sm text-zinc-300 leading-relaxed font-normal relative z-10">{feature.desc}</p>
+                                    <feature.icon size={24} className="text-zinc-400 group-hover:text-white mb-3 transition-colors relative z-10" />
+                                    <h4 className="text-base font-bold text-white tracking-wide mb-2 relative z-10">{feature.title}</h4>
+                                    <p className="text-xs text-zinc-300 leading-relaxed font-normal relative z-10">{feature.desc}</p>
                                 </div>
                             </Reveal>
                         ))}
@@ -394,30 +394,30 @@ export default function SolutionsPage() {
             </section>
  
             {/* --- 5. BUSINESS STACK INTEGRATIONS --- */}
-            <section className="relative z-10 pt-16 pb-16 overflow-hidden">
+            <section className="relative z-10 py-8 lg:py-10 overflow-hidden">
                 <div className="container mx-auto px-4 lg:px-8 max-w-[1400px]">
-                    <div className="flex flex-col lg:flex-row items-center gap-16">
+                    <div className="flex flex-col lg:flex-row items-center gap-10">
                         <div className="lg:w-1/2">
                             <Reveal>
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4">
                                     <Terminal size={14} className="text-zinc-400" />
                                     <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-300">Unified Workflow</span>
                                 </div>
                             </Reveal>
                             <Reveal delay={0.1}>
-                                <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-6 leading-tight">
+                                <h2 className="text-2xl md:text-4xl font-display font-medium tracking-tight mb-4 leading-tight">
                                     Connects seamlessly with<br/>
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">your daily business tools.</span>
                                 </h2>
                             </Reveal>
                             <Reveal delay={0.2}>
-                                <p className="text-zinc-300 text-base leading-relaxed mb-8 max-w-lg font-normal">
+                                <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-6 max-w-lg font-normal">
                                     Our platform integrations enable deep sync with secure payment channels, mapping services, dynamic notifications, and robust cloud engines.
                                 </p>
                             </Reveal>
                         </div>
                         
-                        <div className="lg:w-1/2 w-full grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div className="lg:w-1/2 w-full grid grid-cols-2 sm:grid-cols-4 gap-3">
                             {[
                                 { n: 'WhatsApp API', c: 'text-green-500' },
                                 { n: 'Razorpay', c: 'text-blue-500' },
@@ -429,8 +429,8 @@ export default function SolutionsPage() {
                                 { n: 'SMS Gateways', c: 'text-pink-500' },
                             ].map((tech, i) => (
                                 <Reveal key={tech.n} delay={i * 0.05}>
-                                    <div className="aspect-square rounded-2xl border border-white/15 bg-zinc-950/40 flex flex-col items-center justify-center gap-3 hover:bg-white/[0.04] hover:border-white/30 transition-all duration-300 group cursor-default">
-                                        <div className={`text-3xl font-display font-bold ${tech.c} opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}>
+                                    <div className="aspect-square rounded-2xl border border-white/15 bg-zinc-950/40 flex flex-col items-center justify-center gap-2 hover:bg-white/[0.04] hover:border-white/30 transition-all duration-300 group cursor-default">
+                                        <div className={`text-2xl md:text-3xl font-display font-bold ${tech.c} opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300`}>
                                             {tech.n.slice(0,1)}
                                         </div>
                                         <span className="text-[10px] font-bold tracking-wider uppercase text-zinc-300 group-hover:text-white transition-colors text-center px-2">{tech.n}</span>
@@ -443,35 +443,56 @@ export default function SolutionsPage() {
             </section>
 
             {/* --- 6. MASSIVE CTA FOOTER --- */}
-            <section className="relative z-10 pt-16 pb-40 overflow-hidden">
+            <section className="relative z-10 pt-8 pb-12 lg:pb-16 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#FFE81B]/10 via-black to-black pointer-events-none" />
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[400px] bg-[#FFE81B]/10 blur-[120px] rounded-full pointer-events-none" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[350px] bg-[#FFE81B]/10 blur-[120px] rounded-full pointer-events-none" />
                 
-                <div className="container mx-auto px-4 lg:px-8 max-w-[1400px] relative z-10 text-center">
-                    <Reveal>
-                        <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-display font-medium tracking-tighter mb-8 leading-[0.9]">
-                            Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFE81B] to-amber-500">future</span><br/>
-                            of your industry.
-                        </h2>
-                    </Reveal>
-                    <Reveal delay={0.1}>
-                        <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light">
-                            Join the enterprises transforming their operations with our world-class software ecosystems. Let's discuss your architecture.
-                        </p>
-                    </Reveal>
-                    <Reveal delay={0.2}>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <Link href="/schedule" className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-semibold rounded-xl overflow-hidden transition-transform active:scale-95 shadow-[0_0_40px_rgba(255,232,27,0.3)]">
-                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FFE81B] to-yellow-400 opacity-100 transition-opacity duration-500" />
-                                <span className="relative flex items-center gap-3 text-base tracking-wide">
-                                    Schedule Consultation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                </span>
-                            </Link>
-                            <Link href="/demo" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-black border border-white/20 text-white font-medium rounded-xl hover:bg-white/10 hover:border-white/40 transition-all duration-300 text-base tracking-wide">
-                                Explore Live Demos
-                            </Link>
-                        </div>
-                    </Reveal>
+                <div className="container mx-auto px-4 lg:px-8 max-w-[1400px] relative z-10">
+                    <div className="border border-white/10 bg-zinc-950/60 backdrop-blur-md p-8 md:p-12 rounded-3xl text-center relative overflow-hidden">
+                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FFE81B]/10 blur-[80px] rounded-full pointer-events-none" />
+                        
+                        <Reveal>
+                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium tracking-tight mb-4 leading-[1.0]">
+                                Build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFE81B] to-amber-500">future</span> of your industry.
+                            </h2>
+                        </Reveal>
+                        <Reveal delay={0.1}>
+                            <p className="text-zinc-300 text-sm md:text-lg max-w-3xl mx-auto mb-8 font-light leading-relaxed">
+                                Join the enterprises transforming their operations with our world-class software ecosystems. Let's discuss your architecture, automate redundant manual workflows, and scale your digital platform.
+                            </p>
+                        </Reveal>
+
+                        {/* Enterprise Trust Badges */}
+                        <Reveal delay={0.15}>
+                            <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+                                {[
+                                    'Zero Vendor Lock-in',
+                                    '99.99% Cloud Uptime',
+                                    'Dedicated Solution Architect',
+                                    'ISO 27001 & SOC-2 Compliance',
+                                    'Instant Scalability'
+                                ].map((badge, bIdx) => (
+                                    <span key={bIdx} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase font-bold tracking-wider text-zinc-300">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                                        {badge}
+                                    </span>
+                                ))}
+                            </div>
+                        </Reveal>
+
+                        <Reveal delay={0.2}>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link href="/schedule" className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-black font-semibold rounded-xl overflow-hidden transition-transform active:scale-95 shadow-[0_0_30px_rgba(255,232,27,0.25)] hover:bg-[#FFE81B] transition-colors">
+                                    <span className="relative flex items-center gap-3 text-sm font-bold uppercase tracking-wider">
+                                        Schedule Consultation <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                    </span>
+                                </Link>
+                                <Link href="/demo" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-black border border-white/20 text-white font-medium rounded-xl hover:bg-white/10 hover:border-white/40 transition-all duration-300 text-sm uppercase tracking-wider">
+                                    Explore Live Demos
+                                </Link>
+                            </div>
+                        </Reveal>
+                    </div>
                 </div>
             </section>
 

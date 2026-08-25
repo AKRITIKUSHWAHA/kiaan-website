@@ -292,114 +292,114 @@ export default function HubSpotIntegration() {
     };
 
     return (
-        <main className="min-h-screen bg-black text-white relative pt-24 pb-12 font-sans overflow-x-hidden">
+        <main className="min-h-screen bg-black text-white relative pt-6 lg:pt-8 pb-10 font-sans overflow-x-hidden">
             {/* Ambient Background Glow */}
             <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
-            <div className="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-5xl">
                 {/* --- HEADER --- */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 border-b border-white/5 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-white/5 pb-3">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-display uppercase tracking-tight text-white mb-2">
+                        <h1 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white mb-1">
                             HubSpot CRM <span className="text-yellow-500">Integration</span>
                         </h1>
-                        <p className="text-zinc-400 text-sm md:text-base max-w-2xl font-mono">
+                        <p className="text-zinc-400 text-xs md:text-sm max-w-2xl font-mono">
                             OAuth Connection, Contact/Company/Deal Sync Pipelines, and Webhook Logging.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                         {state.isConnected ? (
-                            <div className="flex items-center gap-3">
-                                <span className="px-3.5 py-1.5 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold rounded-full flex items-center gap-1.5 font-mono">
-                                    <CheckCircle size={12} /> CONNECTED
+                            <div className="flex items-center gap-2">
+                                <span className="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 text-[11px] font-bold rounded-full flex items-center gap-1 font-mono">
+                                    <CheckCircle size={11} /> CONNECTED
                                 </span>
                                 <button 
                                     onClick={handleDisconnect}
-                                    className="px-4 py-2 border border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
+                                    className="px-3 py-1.5 border border-zinc-800 hover:border-red-500 text-zinc-400 hover:text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1"
                                 >
-                                    <Power size={12} /> Disconnect
+                                    <Power size={11} /> Disconnect
                                 </button>
                             </div>
                         ) : (
                             <button 
                                 onClick={handleConnectClick}
-                                className="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg text-xs font-black uppercase tracking-wider flex items-center gap-2 transition-all shadow-lg shadow-yellow-500/20"
+                                className="px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md shadow-yellow-500/20"
                             >
-                                <Link2 size={14} /> Connect HubSpot
+                                <Link2 size={13} /> Connect HubSpot
                             </button>
                         )}
                     </div>
                 </div>
 
                 {/* --- MAIN DASHBOARD SECTION --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-4">
                     {/* LEFT COLUMN: SETTINGS FORM (Client ID, Secret, API key) */}
-                    <div className="lg:col-span-1 space-y-6">
+                    <div className="lg:col-span-1 space-y-3">
                         <div className="text-left">
-                            <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <Settings size={18} className="text-yellow-500" /> Integration Settings
+                            <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                <Settings size={16} className="text-yellow-500" /> Integration Settings
                             </h3>
-                            <p className="text-xs text-zinc-500 font-mono">Manage API keys and OAuth secrets required for handshakes.</p>
+                            <p className="text-[11px] text-zinc-500 font-mono">Manage API keys and OAuth secrets required for handshakes.</p>
                         </div>
 
                         {saveSuccess && (
-                            <div className="p-3 bg-green-500/10 border border-green-500/20 text-green-400 text-xs rounded-xl font-mono flex items-center gap-2">
-                                <CheckCircle size={14} /> Credentials saved successfully!
+                            <div className="p-2.5 bg-green-500/10 border border-green-500/20 text-green-400 text-xs rounded-xl font-mono flex items-center gap-2">
+                                <CheckCircle size={13} /> Credentials saved successfully!
                             </div>
                         )}
 
                         {formErrors.form && (
-                            <div className="p-3 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded-xl font-mono flex items-center gap-2">
-                                <AlertCircle size={14} /> {formErrors.form}
+                            <div className="p-2.5 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded-xl font-mono flex items-center gap-2">
+                                <AlertCircle size={13} /> {formErrors.form}
                             </div>
                         )}
 
-                        <GlassCard className="p-6 border border-white/10 rounded-2xl">
-                            <form onSubmit={handleSaveSettings} className="space-y-4">
+                        <GlassCard className="p-4 border border-white/10 rounded-2xl">
+                            <form onSubmit={handleSaveSettings} className="space-y-3">
                                 <div>
-                                    <label className="block text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">Client ID</label>
+                                    <label className="block text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Client ID</label>
                                     <input 
                                         type="text"
                                         value={clientIdInput}
                                         onChange={e => setClientIdInput(e.target.value)}
                                         placeholder="Enter OAuth Client ID"
-                                        className={`w-full px-3.5 py-2 bg-zinc-950 border ${formErrors.clientId ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-sm text-white rounded-xl outline-none transition-all`}
+                                        className={`w-full px-3 py-1.5 bg-zinc-950 border ${formErrors.clientId ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
                                     />
-                                    {formErrors.clientId && <p className="text-[10px] text-red-500 font-mono mt-1">{formErrors.clientId}</p>}
+                                    {formErrors.clientId && <p className="text-[9.5px] text-red-500 font-mono mt-1">{formErrors.clientId}</p>}
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">Client Secret</label>
+                                    <label className="block text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Client Secret</label>
                                     <input 
                                         type="password"
                                         value={clientSecretInput}
                                         onChange={e => setClientSecretInput(e.target.value)}
                                         placeholder="••••••••••••••••"
-                                        className={`w-full px-3.5 py-2 bg-zinc-950 border ${formErrors.clientSecret ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-sm text-white rounded-xl outline-none transition-all`}
+                                        className={`w-full px-3 py-1.5 bg-zinc-950 border ${formErrors.clientSecret ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
                                     />
-                                    {formErrors.clientSecret && <p className="text-[10px] text-red-500 font-mono mt-1">{formErrors.clientSecret}</p>}
+                                    {formErrors.clientSecret && <p className="text-[9.5px] text-red-500 font-mono mt-1">{formErrors.clientSecret}</p>}
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1.5">Private App Token (Developer Key)</label>
+                                    <label className="block text-[9.5px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Private App Token (Developer Key)</label>
                                     <div className="relative">
-                                        <Key className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={14} />
+                                        <Key className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={13} />
                                         <input 
                                             type="text"
                                             value={devKeyInput}
                                             onChange={e => setDevKeyInput(e.target.value)}
                                             placeholder="pat-na-xxxxxxx"
-                                            className={`w-full pl-9 pr-4 py-2 bg-zinc-950 border ${formErrors.developerKey ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-xs text-white rounded-xl outline-none transition-all`}
+                                            className={`w-full pl-8 pr-3 py-1.5 bg-zinc-950 border ${formErrors.developerKey ? 'border-red-500' : 'border-white/5'} focus:border-yellow-500 text-[11px] text-white rounded-xl outline-none transition-all`}
                                         />
                                     </div>
-                                    {formErrors.developerKey && <p className="text-[10px] text-red-500 font-mono mt-1 leading-normal">{formErrors.developerKey}</p>}
+                                    {formErrors.developerKey && <p className="text-[9.5px] text-red-500 font-mono mt-1 leading-normal">{formErrors.developerKey}</p>}
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white py-2.5 rounded-xl text-xs font-black uppercase transition-all tracking-wider font-mono shadow-md"
+                                    className="w-full bg-zinc-900 border border-white/10 hover:border-yellow-500 text-white py-2 rounded-xl text-xs font-black uppercase transition-all tracking-wider font-mono shadow-md"
                                 >
                                     Save Settings
                                 </button>
@@ -408,15 +408,15 @@ export default function HubSpotIntegration() {
                     </div>
 
                     {/* MIDDLE COLUMN: DATA SYNC SYSTEM */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-2 space-y-3">
                         <div className="text-left">
-                            <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <Database size={18} className="text-yellow-500" /> Data Sync Pipelines
+                            <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                <Database size={16} className="text-yellow-500" /> Data Sync Pipelines
                             </h3>
-                            <p className="text-xs text-zinc-500 font-mono">Synchronize HubSpot relational records into your SaaS workspace database.</p>
+                            <p className="text-[11px] text-zinc-500 font-mono">Synchronize HubSpot relational records into your SaaS workspace database.</p>
                         </div>
 
-                        <div className="grid grid-cols-1 gap-4">
+                        <div className="grid grid-cols-1 gap-3">
                             {[
                                 {
                                     id: 'contacts' as const,
@@ -490,20 +490,20 @@ export default function HubSpotIntegration() {
                 </div>
 
                 {/* --- WEBHOOKS SETUPS & LIVE CLI LOGGER --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                     {/* LEFT COLUMN: WEBHOOK SETUP */}
-                    <div className="lg:col-span-1 space-y-6">
+                    <div className="lg:col-span-1 space-y-3">
                         <div className="text-left">
-                            <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <Link2 size={18} className="text-yellow-500" /> Webhook Integrations
+                            <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                <Link2 size={16} className="text-yellow-500" /> Webhook Integrations
                             </h3>
-                            <p className="text-xs text-zinc-500 font-mono">Configure webhook subscriptions for live updates.</p>
+                            <p className="text-[11px] text-zinc-500 font-mono">Configure webhook subscriptions for live updates.</p>
                         </div>
 
-                        <GlassCard className="p-6 border border-white/10 rounded-2xl space-y-4 text-xs font-mono">
+                        <GlassCard className="p-4 border border-white/10 rounded-2xl space-y-3 text-xs font-mono">
                             <div>
-                                <label className="block text-[10px] text-zinc-500 uppercase tracking-widest mb-1.5">Target Endpoint URL</label>
-                                <div className="flex bg-zinc-950 border border-white/5 rounded-xl px-3 py-2 justify-between items-center gap-2">
+                                <label className="block text-[9.5px] text-zinc-500 uppercase tracking-widest mb-1">Target Endpoint URL</label>
+                                <div className="flex bg-zinc-950 border border-white/5 rounded-xl px-3 py-1.5 justify-between items-center gap-2">
                                     <span className="text-[11px] text-zinc-400 truncate">https://kiaantechnology.com/api/webhooks/hubspot/</span>
                                     <button 
                                         onClick={() => handleCopy('https://kiaantechnology.com/api/webhooks/hubspot/', 'Webhook URL')}
@@ -516,8 +516,8 @@ export default function HubSpotIntegration() {
                             </div>
 
                             <div>
-                                <label className="block text-[10px] text-zinc-500 uppercase tracking-widest mb-1.5">Webhook Signing Secret</label>
-                                <div className="flex bg-zinc-950 border border-white/5 rounded-xl px-3 py-2 justify-between items-center gap-2">
+                                <label className="block text-[9.5px] text-zinc-500 uppercase tracking-widest mb-1">Webhook Signing Secret</label>
+                                <div className="flex bg-zinc-950 border border-white/5 rounded-xl px-3 py-1.5 justify-between items-center gap-2">
                                     <span className="text-[11px] text-zinc-400 truncate">{state.webhookSecret}</span>
                                     <div className="flex gap-2">
                                         <button 
@@ -539,8 +539,8 @@ export default function HubSpotIntegration() {
                             </div>
 
                             {/* Subscriptions toggles */}
-                            <div className="border-t border-white/5 pt-4 space-y-3">
-                                <label className="block text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Event Subscriptions</label>
+                            <div className="border-t border-white/5 pt-3 space-y-2">
+                                <label className="block text-[9.5px] text-zinc-500 uppercase tracking-widest mb-1">Event Subscriptions</label>
                                 
                                 {[
                                     { id: 'contact.created', label: 'Contact Created' },
@@ -550,13 +550,13 @@ export default function HubSpotIntegration() {
                                 ].map((event) => {
                                     const active = state.webhookEvents.includes(event.id);
                                     return (
-                                        <div key={event.id} className="flex justify-between items-center py-1">
+                                        <div key={event.id} className="flex justify-between items-center py-0.5">
                                             <span className="text-[11px] text-zinc-300">{event.label}</span>
                                             <button 
                                                 onClick={() => toggleWebhookEvent(event.id)}
                                                 className={`text-zinc-400 transition-colors ${active ? 'text-yellow-500' : 'hover:text-white'}`}
                                             >
-                                                {active ? <ToggleRight size={22} /> : <ToggleLeft size={22} />}
+                                                {active ? <ToggleRight size={20} /> : <ToggleLeft size={20} />}
                                             </button>
                                         </div>
                                     );
@@ -566,17 +566,17 @@ export default function HubSpotIntegration() {
                     </div>
 
                     {/* RIGHT COLUMN: CLI LOGS CONSOLE */}
-                    <div className="lg:col-span-2 space-y-6 flex flex-col">
+                    <div className="lg:col-span-2 space-y-3 flex flex-col">
                         <div className="flex justify-between items-end">
                             <div className="text-left">
-                                <h3 className="text-lg font-bold font-mono text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                                    <Terminal size={18} className="text-yellow-500" /> API Execution Terminal
+                                <h3 className="text-base font-bold font-mono text-white uppercase tracking-wider mb-0.5 flex items-center gap-2">
+                                    <Terminal size={16} className="text-yellow-500" /> API Execution Terminal
                                 </h3>
-                                <p className="text-xs text-zinc-500 font-mono">Live synchronization outputs and API webhook triggers stream.</p>
+                                <p className="text-[11px] text-zinc-500 font-mono">Live synchronization outputs and API webhook triggers stream.</p>
                             </div>
                             <button 
                                 onClick={clearLogs}
-                                className="text-[10px] font-mono text-zinc-500 hover:text-yellow-500 uppercase tracking-widest"
+                                className="text-[9.5px] font-mono text-zinc-500 hover:text-yellow-500 uppercase tracking-widest"
                             >
                                 Clear Console
                             </button>

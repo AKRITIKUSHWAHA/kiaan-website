@@ -35,7 +35,7 @@ export function LeadCaptureForm({ resourceName, onSuccess }: LeadCaptureFormProp
         setErrorMessage('');
 
         try {
-            const res = await fetch('/api/leads', {
+            const res = await fetch('/api/leads/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

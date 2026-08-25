@@ -15,7 +15,7 @@ export default function ServicesLayout({
     return (
         <>
             {children}
-            <div className="container mx-auto px-6 pb-12 pt-8 border-t border-zinc-900/50 text-zinc-600 text-xs font-light text-right">
+            <div className="container mx-auto px-6 py-2 text-zinc-600 text-[10px] font-light text-right border-t border-zinc-900/40">
                 Last Updated: July 2026
             </div>
         </>

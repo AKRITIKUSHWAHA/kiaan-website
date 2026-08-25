@@ -23,6 +23,581 @@ const EMAILJS_PUBLIC_KEY = 'zXyGNtU81gEw6BmhH';
 // Specific Software Data Setup per requirements
 const softwareList = [
     {
+        id: 201,
+        name: 'Boat & Jet Booking Platform',
+        category: 'Sports',
+        desc: 'Luxury yacht, speed boat, and jet-ski rental reservation platform with real-time slot scheduling, captain addons, and fleet management.',
+        link: 'https://boat-jet-booking.kiaansoftwaredemo.shop/',
+        color: 'from-cyan-400 to-blue-600',
+        glow: 'rgba(6, 182, 212, 0.4)',
+        icon: Activity,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Vessel Fleet Showcase', 'Hourly / Daily Slot Booking', 'Captain & Equipment Addons'],
+        detailedFeatures: [
+            { title: 'Vessel Fleet Showcase', description: 'Display premium boats, yachts, and jet skis with high-res galleries, specs, and passenger capacities.' },
+            { title: 'Real-Time Slot Booking', description: 'Live availability calendar with instant slot confirmation, deposit handling, and digital boarding passes.' },
+            { title: 'Fleet & Safety Operations', description: 'Captain allocation, safety gear checklists, and rental timeline tracking for marina operators.' }
+        ],
+        howItWorks: [
+            { icon: Activity, title: 'Browse Available Watercraft', description: 'Explore premium boats, jet skis, and yachts filtered by capacity, power, and marina location.' },
+            { icon: Calendar, title: 'Select Date, Time & Addons', description: 'Choose hourly or full-day slots, add captain services, watersports gear, and special refreshments.' },
+            { icon: CheckCircle2, title: 'Instant Confirmation & Boarding', description: 'Confirm booking with digital waiver and receive your instant digital dock access pass.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Stripe', 'Weather API'] }
+    },
+    {
+        id: 202,
+        name: 'Property Management System',
+        category: 'Real Estate',
+        desc: 'Comprehensive real estate and rental property management software for units, tenant leases, and automated rent collection.',
+        link: 'http://property-ui.kiaansoftwaredemo.shop',
+        color: 'from-blue-500 to-indigo-600',
+        glow: 'rgba(59, 130, 246, 0.4)',
+        icon: Home,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Unit & Building Directory', 'Tenant Lease Automation', 'Rent Collection & Dues'],
+        detailedFeatures: [
+            { title: 'Multi-Property Portfolio', description: 'Centralized management for residential, commercial, and mixed-use properties with floor plans.' },
+            { title: 'Lease & Tenant Portal', description: 'Digital tenancy agreements, KYC verification, maintenance requests, and move-in checklists.' },
+            { title: 'Financial Oversight', description: 'Automated invoice generation, payment gateway sync, rent reminders, and occupancy yield reports.' }
+        ],
+        howItWorks: [
+            { icon: Home, title: 'Onboard Properties & Units', description: 'List units with floor plans, amenities, and current occupancy status in one structured registry.' },
+            { icon: Users, title: 'Manage Leases & Tenants', description: 'Execute digital onboarding, rent schedules, and track maintenance tickets smoothly.' },
+            { icon: DollarSign, title: 'Track Collections & P&L', description: 'Monitor real-time rent receipts, overdue alerts, and portfolio earnings with zero manual bookkeeping.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'TypeScript'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Payment Gateway', 'SMS Alerts'] }
+    },
+    {
+        id: 203,
+        name: 'MSBI Business Intelligence & Analytics Suite',
+        category: 'Enterprise',
+        desc: 'Enterprise-grade Microsoft Business Intelligence dashboard suite with real-time ETL pipelines, data visualization, and KPI reporting.',
+        link: 'http://msbi.kiaansoftwaredemo.shop',
+        color: 'from-amber-400 to-yellow-500',
+        glow: 'rgba(245, 158, 11, 0.4)',
+        icon: Layers,
+        type: 'Software',
+        status: 'Live',
+        features: ['Executive KPI Dashboards', 'SSIS/SSAS Data Models', 'Interactive Power BI Reports'],
+        detailedFeatures: [
+            { title: 'Enterprise Data Warehousing', description: 'Unified data pipelines connecting multi-source databases into centralized analytics cubes.' },
+            { title: 'Self-Service Visual Analytics', description: 'Drill-down charts, predictive trends, and cross-departmental operational performance matrices.' },
+            { title: 'Automated Scheduled Reports', description: 'Automated daily/monthly digest exports and exception alerts for executive leadership.' }
+        ],
+        howItWorks: [
+            { icon: Layers, title: 'Ingest & Transform Data', description: 'Connect multiple operational data streams through automated ETL workflows and clean data pipelines.' },
+            { icon: Cpu, title: 'Build Multi-Dimensional Cubes', description: 'Process analytics models for instant multi-year queries, cohort analyses, and forecasting.' },
+            { icon: Activity, title: 'Visualize & Drive Decisions', description: 'Interact with responsive dashboards to uncover operational bottlenecks and scale business growth.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Power BI Embedded'], backend: ['Node.js', '.NET Core'], database: ['SQL Server', 'PostgreSQL'], infrastructure: ['Azure', 'AWS'], integrations: ['MSBI', 'Excel'] }
+    },
+    {
+        id: 204,
+        name: 'Hostel Management System',
+        category: 'Real Estate',
+        desc: 'End-to-end student hostel and PG accommodation system for room allocations, mess billing, curfew logs, and warden administration.',
+        link: 'https://hostel-management.kiaansoftwaredemo.shop',
+        color: 'from-emerald-400 to-teal-600',
+        glow: 'rgba(16, 185, 129, 0.4)',
+        icon: Home,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Room & Bed Inventory', 'Mess & Meal Management', 'Visitor & Gate Pass System'],
+        detailedFeatures: [
+            { title: 'Bed-Level Allocation', description: 'Real-time floor plan visualization with single/double/triple sharing availability and room transfer.' },
+            { title: 'Student & Fee Profiles', description: 'Digital KYC, monthly mess charges, utility billing, and security deposit reconciliation.' },
+            { title: 'Campus Security Logs', description: 'Digital gate-pass workflows, parent SMS notifications, and curfew entry timestamps.' }
+        ],
+        howItWorks: [
+            { icon: Home, title: 'Assign Rooms & Beds', description: 'Allocate incoming residents to vacant beds based on preference and room type with live availability.' },
+            { icon: Users, title: 'Manage Daily Operations', description: 'Track mess attendance, maintenance complaint tickets, and monthly fee dues in one portal.' },
+            { icon: Shield, title: 'Monitor Safety & Reports', description: 'Track gate entry logs and occupancy revenue with automatic summaries for hostel wardens.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['SMS Gateway', 'Payment Gateway'] }
+    },
+    {
+        id: 205,
+        name: 'School Management System',
+        category: 'EdTech',
+        desc: 'Comprehensive K-12 school and academic ERP platform covering admissions, attendance, exams, timetables, and parent communication.',
+        link: 'https://school-management.kiaansoftwaredemo.shop',
+        color: 'from-indigo-400 to-purple-600',
+        glow: 'rgba(99, 102, 241, 0.4)',
+        icon: GraduationCap,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Student & Staff Portals', 'Automated Attendance & Exams', 'Fee Invoicing & Parent App'],
+        detailedFeatures: [
+            { title: 'Academic Control Center', description: 'Class timetable scheduling, syllabus progress tracking, and dynamic report card grading configuration.' },
+            { title: 'Fee & Account Lifecycle', description: 'Term installment management, online fee receipts, overdue reminders, and scholarship tracking.' },
+            { title: 'Smart Communication', description: 'Automated SMS/WhatsApp notices for absent alerts, exam schedules, and holiday announcements.' }
+        ],
+        howItWorks: [
+            { icon: GraduationCap, title: 'Enroll Students & Classrooms', description: 'Setup classes, sections, student bio-records, and teacher allocations in a structured hierarchy.' },
+            { icon: ClipboardList, title: 'Daily Classroom Workflows', description: 'Teachers mark digital attendance, record marks, and publish homework assignments directly.' },
+            { icon: Users, title: 'Connect Parents & Administration', description: 'Instant online fee payments, automated report cards, and school-wide performance metrics.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['WhatsApp API', 'Payment Gateway'] }
+    },
+    {
+        id: 206,
+        name: 'Commercial Construction Services',
+        category: 'Enterprise',
+        desc: 'High-impact commercial construction, architecture, and infrastructure project management platform with site tracking and RFP requests.',
+        link: 'https://construction-landingpage.kiaansoftwaredemo.shop',
+        color: 'from-orange-500 to-amber-500',
+        glow: 'rgba(249, 115, 22, 0.4)',
+        icon: HardHat,
+        type: 'Website',
+        status: 'Live',
+        features: ['Commercial Project Showcase', 'Blueprint & Scope Estimator', 'Client Tender & Bid Portal'],
+        detailedFeatures: [
+            { title: 'Architectural Portfolio', description: 'Showcase high-rise, commercial, and industrial projects with high-resolution drone photo galleries.' },
+            { title: 'Estimates & RFPs', description: 'Guided client inquiry system to capture square footage, project timeline, and architectural budget tier.' },
+            { title: 'Milestone Tracking', description: 'Live construction milestone updates, safety compliance certifications, and subcontractor management.' }
+        ],
+        howItWorks: [
+            { icon: HardHat, title: 'Browse Commercial Portfolio', description: 'Explore completed enterprise buildings, industrial warehouses, and retail commercial developments.' },
+            { icon: ClipboardList, title: 'Request Project Quote & Scope', description: 'Submit project scope, architectural requirements, structural specifications, and timeline.' },
+            { icon: CheckCircle2, title: 'Track Execution & Handover', description: 'View construction timeline, safety inspections, milestone approvals, and engineering handovers.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Next.js'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['Vercel', 'AWS'], integrations: [] }
+    },
+    {
+        id: 207,
+        name: 'Pet Food & Dog Treats ERP Suite',
+        category: 'Retail & Logistics',
+        desc: 'End-to-end pet nutrition and dog treat manufacturing ERP with recipe batching, inventory, and B2B wholesale distribution.',
+        link: 'https://dog-treat-erp.kiaansoftwaredemo.shop',
+        color: 'from-amber-500 to-orange-600',
+        glow: 'rgba(245, 158, 11, 0.4)',
+        icon: ShoppingBag,
+        type: 'Software',
+        status: 'Live',
+        features: ['Recipe & Batch Formulation', 'Raw Ingredient Inventory', 'Wholesale B2B Distribution'],
+        detailedFeatures: [
+            { title: 'Batch & Formula Management', description: 'Maintain exact ingredient ratios, nutrition facts, and production yield tracking.' },
+            { title: 'Quality & Expiry Compliance', description: 'Monitor lot batches, food safety certifications, and shelf-life expiration dates.' },
+            { title: 'Multi-Channel Order Fulfillment', description: 'Manage wholesale distributor orders and retail inventory pipelines seamlessly.' }
+        ],
+        howItWorks: [
+            { icon: ShoppingBag, title: 'Manage Formulas & Ingredients', description: 'Input recipes, track raw material supplies, and calculate production batch costs.' },
+            { icon: Layers, title: 'Run Production Lines', description: 'Schedule baking, packaging, and QA testing stages with lot tracking.' },
+            { icon: Truck, title: 'Dispatch & Track Deliveries', description: 'Generate shipping manifests and track wholesale deliveries to pet stores and distributors.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Barcode Scanner', 'QuickBooks'] }
+    },
+    {
+        id: 208,
+        name: 'On-Demand In-Home Massage & Wellness',
+        category: 'Healthcare',
+        desc: 'On-demand luxury home massage and wellness therapist booking platform with therapist dispatch and scheduling.',
+        link: 'https://home-massage.kiaansoftwaredemo.shop',
+        color: 'from-pink-400 to-rose-500',
+        glow: 'rgba(244, 63, 94, 0.4)',
+        icon: Activity,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Therapist Matching & Booking', 'Custom Treatment Packages', 'Live Dispatch Tracking'],
+        detailedFeatures: [
+            { title: 'Verified Therapist Profiles', description: 'Browse certified practitioners, specialties (Deep Tissue, Swedish, Aromatherapy), and customer reviews.' },
+            { title: 'Home Service Scheduler', description: 'Select date, duration, preferred pressure tier, and custom essential oils for doorstep therapy.' },
+            { title: 'Safe Checkout & ETA', description: 'Cashless payment with live therapist arrival ETA and safety verification.' }
+        ],
+        howItWorks: [
+            { icon: Activity, title: 'Select Wellness Therapy', description: 'Choose your desired massage technique, session length, and targeted recovery goals.' },
+            { icon: Calendar, title: 'Schedule In-Home Slot', description: 'Pick your preferred date and time; nearest available certified therapist accepts the request.' },
+            { icon: CheckCircle2, title: 'Relax at Home', description: 'Therapist arrives with complete spa equipment for a professional in-home session.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Stripe', 'Google Maps API'] }
+    },
+    {
+        id: 209,
+        name: 'Mini Contractor & Trade Job Management',
+        category: 'Enterprise',
+        desc: 'Field service and subcontractor job dispatch platform for electrical, plumbing, HVAC, and trade contractors.',
+        link: 'http://mini-contactor.kiaansoftwaredemo.shop',
+        color: 'from-yellow-400 to-amber-500',
+        glow: 'rgba(251, 191, 36, 0.4)',
+        icon: HardHat,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Job Dispatch & Work Orders', 'Mobile Technician App', 'Instant Invoicing & Payments'],
+        detailedFeatures: [
+            { title: 'Work Order Pipeline', description: 'Create and assign field jobs with site address, photos, and trade requirements.' },
+            { title: 'Material & Labor Tracking', description: 'Log parts used, labor hours worked, and job completion checklists on-site.' },
+            { title: 'Digital Sign-off & Invoicing', description: 'Capture customer signatures and generate itemized invoices immediately after completion.' }
+        ],
+        howItWorks: [
+            { icon: ClipboardList, title: 'Log Service Inquiry', description: 'Record client repair request with site details, urgency, and estimated parts required.' },
+            { icon: HardHat, title: 'Dispatch Trade Technician', description: 'Assign skilled electrician or plumber with GPS navigation and job instructions.' },
+            { icon: DollarSign, title: 'Complete & Collect Payment', description: 'Technician finishes repair, takes customer sign-off, and collects digital payment.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Twilio', 'Stripe'] }
+    },
+    {
+        id: 210,
+        name: 'DoorLoop Rental Property Management',
+        category: 'Real Estate',
+        desc: 'Modern all-in-one property management dashboard for residential leases, automated tenant payments, and maintenance dispatch.',
+        link: 'https://property-doorloop-new1.netlify.app',
+        color: 'from-blue-500 to-cyan-500',
+        glow: 'rgba(6, 182, 212, 0.4)',
+        icon: Home,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Unit Portfolio Hub', 'Automated Rent Pay Portal', 'Maintenance Ticket Pipeline'],
+        detailedFeatures: [
+            { title: 'Unified Unit Dashboard', description: 'Manage single-family homes, apartments, and multi-unit complexes from one visual portal.' },
+            { title: 'Tenant Online Portal', description: 'Tenants pay rent via autopay, sign digital lease extensions, and submit maintenance tickets.' },
+            { title: 'Owner & Financial Reports', description: 'Automated 1099 tax exports, net operating income (NOI), and rent roll summaries.' }
+        ],
+        howItWorks: [
+            { icon: Home, title: 'Add Rental Properties', description: 'Setup unit inventory, lease pricing, security deposits, and tenant contact info.' },
+            { icon: DollarSign, title: 'Automate Rent Invoicing', description: 'System sends monthly rent reminders and processes automatic bank transfers.' },
+            { icon: CheckCircle2, title: 'Resolve Work Orders', description: 'Assign maintenance tickets to vetted vendors and track repair status till closure.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Next.js'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['Netlify', 'AWS'], integrations: ['Stripe', 'Plaid'] }
+    },
+    {
+        id: 211,
+        name: 'Custom Outdoor Kitchen Design Suite',
+        category: 'Enterprise',
+        desc: 'Interactive outdoor kitchen and patio living builder with 3D modular layout customizer and instant project quotation.',
+        link: 'https://outdoor-kitchen.kiaansoftwaredemo.shop',
+        color: 'from-orange-400 to-red-500',
+        glow: 'rgba(249, 115, 22, 0.4)',
+        icon: Utensils,
+        type: 'Website',
+        status: 'Live',
+        features: ['Modular Grill & Island Builder', 'Material & Finish Visualizer', 'Instant Cost Estimation'],
+        detailedFeatures: [
+            { title: 'Modular Design Configurator', description: 'Configure custom BBQ grills, pizza ovens, beverage centers, and stone countertops.' },
+            { title: 'Premium Material Selection', description: 'Switch between stainless steel finishes, granite tops, and stucco/stone siding live.' },
+            { title: 'Instant Quote & Blueprint', description: 'Generate structural architectural blueprints and itemized contractor budget estimates.' }
+        ],
+        howItWorks: [
+            { icon: Utensils, title: 'Customize Kitchen Layout', description: 'Choose L-shape, U-shape, or straight island configurations for your patio space.' },
+            { icon: Layers, title: 'Select Appliances & Finishes', description: 'Add built-in gas grills, refrigerators, drawers, and luxury stone surfaces.' },
+            { icon: CheckSquare, title: 'Get Instant Project Estimate', description: 'Receive full dimensional specifications and direct contractor estimate for installation.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Three.js / Canvas'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['3D Configurator'] }
+    },
+    {
+        id: 212,
+        name: 'Dental Care Clinic & Patient ERP',
+        category: 'Healthcare',
+        desc: 'Next-gen dental clinic ERP with electronic dental charts, appointment booking, treatment plans, and digital billing.',
+        link: 'https://dental-clinic.kiaansoftwaredemo.shop',
+        color: 'from-teal-400 to-cyan-500',
+        glow: 'rgba(20, 184, 166, 0.4)',
+        icon: Activity,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Electronic Dental Charts', 'Smart Appointment Desk', 'Procedure Treatment Plans'],
+        detailedFeatures: [
+            { title: 'Interactive Odontogram Chart', description: 'Visual tooth-by-tooth charting for cavities, crowns, implants, and periodontal logs.' },
+            { title: 'Patient Recall & Reminders', description: 'Automated SMS/WhatsApp reminders for 6-month checkups and cleaning appointments.' },
+            { title: 'Treatment Billing & Insurance', description: 'Pre-procedure cost estimates, insurance claim processing, and digital payment receipts.' }
+        ],
+        howItWorks: [
+            { icon: Activity, title: 'Schedule Patient Visit', description: 'Front desk or patient books convenient dental consultation slot online.' },
+            { icon: ClipboardList, title: 'Dental Charting & Diagnosis', description: 'Dentist logs findings on interactive chart, attaches X-rays, and designs treatment plan.' },
+            { icon: CheckCircle2, title: 'Execute & Bill Treatment', description: 'Record procedures completed, generate insurance claim, and schedule next follow-up.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['SMS Reminders', 'X-Ray Viewer'] }
+    },
+    {
+        id: 213,
+        name: 'Cloud Financial Accounting & Invoicing ERP',
+        category: 'Finance / Banking',
+        desc: 'Enterprise cloud accounting and bookkeeping suite with automated bank feeds, GST/tax calculation, and profit-loss analytics.',
+        link: 'http://accounting-new.kiaansoftwaredemo.shop',
+        color: 'from-emerald-500 to-green-600',
+        glow: 'rgba(16, 185, 129, 0.4)',
+        icon: DollarSign,
+        type: 'Software',
+        status: 'Live',
+        features: ['Double-Entry Ledger Engine', 'Automated Bank Reconciliation', 'GST / Tax Compliance Invoices'],
+        detailedFeatures: [
+            { title: 'Multi-Currency General Ledger', description: 'Full double-entry bookkeeping with balance sheet, P&L, and trial balance generation.' },
+            { title: 'Automated Invoicing & Receivables', description: 'Create GST/VAT compliant recurring invoices with automated payment reminders.' },
+            { title: 'Cash Flow & Expense Tracking', description: 'Categorize expenses, receipt OCR scanning, and real-time cash position forecasting.' }
+        ],
+        howItWorks: [
+            { icon: DollarSign, title: 'Connect Accounts & Ingest Bills', description: 'Sync bank statements and upload expense receipts for automatic ledger reconciliation.' },
+            { icon: Layers, title: 'Generate Invoices & Track Dues', description: 'Send digital invoices to clients with online payment links and instant receipt vouchers.' },
+            { icon: Activity, title: 'Review Real-Time Financial Reports', description: 'View real-time profit and loss, tax obligations, and audited cash flow snapshots.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'TypeScript'], backend: ['Node.js', 'Python'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Banking APIs', 'Tax Engine'] }
+    },
+    {
+        id: 214,
+        name: 'Sports Arena & Turf Booking Pro',
+        category: 'Sports',
+        desc: 'Multi-court turf reservation system with live floodlight slot management, team tournaments, and instant online payments.',
+        link: 'http://turf-new.kiaansoftwaredemo.shop',
+        color: 'from-green-400 to-emerald-600',
+        glow: 'rgba(34, 197, 94, 0.4)',
+        icon: CheckSquare,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Multi-Court Grid Scheduler', 'Dynamic Peak-Hour Pricing', 'Tournament & League Manager'],
+        detailedFeatures: [
+            { title: 'Live Court Availability', description: 'Visual hourly matrix for football, cricket, tennis, and pickleball arenas.' },
+            { title: 'Peak / Off-Peak Rate Engine', description: 'Configurable pricing for weekend slots, floodlight hours, and recurring weekly bookings.' },
+            { title: 'Equipment & Referee Addons', description: 'Let captains book match referees, sports kits, and hydration packages with their slot.' }
+        ],
+        howItWorks: [
+            { icon: CheckSquare, title: 'Select Sport & Court', description: 'Pick football turf or badminton court with preferred surface type and dimensions.' },
+            { icon: Calendar, title: 'Book Available Slot', description: 'Choose time slot, add tournament ball/gear rentals, and complete instant UPI/card payment.' },
+            { icon: Activity, title: 'Show QR Pass & Play', description: 'Receive instant digital booking confirmation and QR gate access for match day.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Payment Gateway', 'WhatsApp Notifications'] }
+    },
+    {
+        id: 215,
+        name: 'Smart Warehouse & 3PL Logistics Suite',
+        category: 'Retail & Logistics',
+        desc: 'High-efficiency warehouse management system (WMS) with barcode scanning, batch lot tracking, and 3PL shipping workflows.',
+        link: 'https://warehouse-management-new.kiaansoftwaredemo.shop',
+        color: 'from-purple-500 to-indigo-600',
+        glow: 'rgba(139, 92, 246, 0.4)',
+        icon: Truck,
+        type: 'Software',
+        status: 'Live',
+        features: ['Bin & Rack Location System', 'Barcode Scanning & Inbound Putaway', '3PL Dispatch & Carrier Integration'],
+        detailedFeatures: [
+            { title: 'Visual Rack & Bin Mapping', description: 'Aisle, rack, and shelf location hierarchy for optimized picker routing.' },
+            { title: 'Fast Inward / Outward Scanning', description: 'Handheld barcode scanning for goods receipt, pallet allocation, and pick-pack dispatch.' },
+            { title: '3PL Multi-Carrier Shipping', description: 'Automated label printing and direct courier API tracking for bulk commercial shipments.' }
+        ],
+        howItWorks: [
+            { icon: Truck, title: 'Inbound Goods Receipt', description: 'Scan incoming freight, verify purchase orders, and generate shelf putaway routes.' },
+            { icon: Layers, title: 'Real-Time Stock Oversight', description: 'Monitor inventory levels across multiple warehouses with reorder alert thresholds.' },
+            { icon: CheckCircle2, title: 'Pick, Pack & Ship', description: 'Generate wave picking lists, print shipping labels, and dispatch via courier partners.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js', 'Go'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['FedEx', 'DHL', 'Zebra Scanners'] }
+    },
+    {
+        id: 216,
+        name: 'Commercial Real Estate & Asset Management',
+        category: 'Real Estate',
+        desc: 'Enterprise commercial property asset management platform for multi-story office complexes, retail malls, and corporate leases.',
+        link: 'http://real-estate-property.kiaansoftwaredemo.shop',
+        color: 'from-blue-600 to-sky-600',
+        glow: 'rgba(37, 99, 235, 0.4)',
+        icon: Home,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Commercial Building Directory', 'CAM & Utility Recovery Billing', 'Corporate Lease Governance'],
+        detailedFeatures: [
+            { title: 'Multi-Tenant Tower Directory', description: 'Manage corporate tenant lease agreements, escalations, and lock-in covenants.' },
+            { title: 'CAM & Utility Apportionment', description: 'Automated Common Area Maintenance (CAM), HVAC sub-metering, and utility billing.' },
+            { title: 'Facility SLA & Compliance', description: 'Track elevator inspections, fire safety compliance, and vendor SLA scorecards.' }
+        ],
+        howItWorks: [
+            { icon: Home, title: 'Onboard Commercial Tower', description: 'Map office wings, floor plates, retail shops, and allocated parking bays.' },
+            { icon: Users, title: 'Structure Corporate Leases', description: 'Track multi-year contracts, security deposits, and annual escalation clauses.' },
+            { icon: DollarSign, title: 'Automate CAM & Collections', description: 'Generate monthly corporate invoices with utility sub-metering breakdown.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Next.js'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['ERP Connectors', 'Smart Meter APIs'] }
+    },
+    {
+        id: 217,
+        name: 'Modern Residential Property & HOA Portal',
+        category: 'Real Estate',
+        desc: 'Gated community, housing society, and HOA management portal with visitor gate logs, maintenance dues, and facility booking.',
+        link: 'http://property5.kiaansoftwaredemo.shop',
+        color: 'from-cyan-500 to-teal-600',
+        glow: 'rgba(6, 182, 212, 0.4)',
+        icon: Home,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Society Resident Directory', 'Digital Visitor Gate Passes', 'Maintenance Dues & Facility Booking'],
+        detailedFeatures: [
+            { title: 'Resident & Flat Directory', description: 'Owner vs tenant records, parking slot allocation, and emergency contacts.' },
+            { title: 'Security Guard Gate Pass', description: 'Pre-approved visitor entries, delivery verification, and digital gate logs.' },
+            { title: 'Clubhouse & Amenity Booking', description: 'Reserve community hall, swimming pool slots, and tennis courts online.' }
+        ],
+        howItWorks: [
+            { icon: Home, title: 'Resident Profile & Unit Setup', description: 'Residents access personal account to view society announcements and flat records.' },
+            { icon: Shield, title: 'Digital Visitor Approval', description: 'Receive instant phone approval requests for guests, cab entries, and parcel delivery.' },
+            { icon: DollarSign, title: 'Pay Monthly Maintenance', description: 'Pay society maintenance bills with instant receipt and zero manual accounting.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Payment Gateway', 'Guard Tablet App'] }
+    },
+    {
+        id: 218,
+        name: 'Car Drive & Self-Drive Vehicle Rental',
+        category: 'Enterprise',
+        desc: 'On-demand self-drive car rental and vehicle leasing platform with GPS tracking, deposit management, and instant booking calendar.',
+        link: 'http://car-drive.kiaansoftwaredemo.shop',
+        color: 'from-amber-400 to-orange-500',
+        glow: 'rgba(245, 158, 11, 0.4)',
+        icon: Car,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Fleet Showcase & Booking', 'Instant GPS & Fastag Tracking', 'Digital KYC & Inspection Log'],
+        detailedFeatures: [
+            { title: 'Vehicle Fleet Showcase', description: 'Browse sedans, SUVs, and luxury electric vehicles with daily/weekly tariffs.' },
+            { title: 'Digital KYC & Paperless Deposit', description: 'Upload driver license, automated credit verification, and instant security deposit escrow.' },
+            { title: 'On-Road GPS & Fleet Telematics', description: 'Real-time vehicle health, fuel levels, geo-fencing, and automated speed alerts.' }
+        ],
+        howItWorks: [
+            { icon: Car, title: 'Choose Vehicle & Duration', description: 'Select car model, pickup hub, and rental dates with transparent upfront rates.' },
+            { icon: ClipboardList, title: 'Quick Digital Verification', description: 'Upload ID proofs for instant automated verification and digital contract sign-off.' },
+            { icon: CheckCircle2, title: 'Unlock & Hit the Road', description: 'Keyless hub pickup or home delivery with digital vehicle condition checklist.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Fastag API', 'Google Maps'] }
+    },
+    {
+        id: 219,
+        name: 'Legal Case & Practice Management Suite',
+        category: 'Enterprise',
+        desc: 'Comprehensive law firm and corporate legal case management suite with court hearing alerts, document vault, and billable hours tracking.',
+        link: 'http://case-management.kiaansoftwaredemo.shop',
+        color: 'from-blue-600 to-indigo-600',
+        glow: 'rgba(37, 99, 235, 0.4)',
+        icon: Briefcase,
+        type: 'Software',
+        status: 'Live',
+        features: ['Court Docket & Hearing Diary', 'Encrypted Document Vault', 'Billable Hours & Client Invoicing'],
+        detailedFeatures: [
+            { title: 'Court Hearing & Cause List Sync', description: 'Automated court date sync, cause list alerts, and case stage chronological timeline.' },
+            { title: 'Client Matter & Case Repository', description: 'Centralized evidence storage, petition drafts, and client communication logs.' },
+            { title: 'Lawyer Time Tracking & Invoicing', description: 'Track billable time per associate and generate retainer fee invoices automatically.' }
+        ],
+        howItWorks: [
+            { icon: Briefcase, title: 'Register Case & Matter', description: 'Enter case number, court jurisdiction, opposing counsel, and client details.' },
+            { icon: Calendar, title: 'Sync Hearings & Deadlines', description: 'Receive automatic reminders for court hearings, filings, and limitation dates.' },
+            { icon: DollarSign, title: 'Invoice & Generate Reports', description: 'Generate professional invoices for professional retainers and track payment recovery.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'TypeScript'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['e-Courts API', 'Document E-Sign'] }
+    },
+    {
+        id: 220,
+        name: 'Smart Vending Machine & Telemetry ERP',
+        category: 'Retail & Logistics',
+        desc: 'Automated smart vending machine management network with real-time inventory telemetry, cash/UPI monitoring, and route replenishment.',
+        link: 'http://vending-machine.kiaansoftwaredemo.shop',
+        color: 'from-purple-500 to-pink-500',
+        glow: 'rgba(168, 85, 247, 0.4)',
+        icon: ShoppingBag,
+        type: 'Software',
+        status: 'Live',
+        features: ['Real-Time IoT Telemetry', 'Route Refill Optimization', 'Cashless UPI / Card Terminal'],
+        detailedFeatures: [
+            { title: 'Live Machine Telemetry', description: 'Monitor temperature, stock levels per spiral/tray, and machine uptime in real time.' },
+            { title: 'Smart Stock Refill Dispatch', description: 'Generate replenishment pick-lists for route operators before machines run empty.' },
+            { title: 'Cashless Revenue Analytics', description: 'Track digital sales, dispense success rates, and product profit margins instantly.' }
+        ],
+        howItWorks: [
+            { icon: ShoppingBag, title: 'Connect Vending Fleet', description: 'Integrate smart vending units via IoT MDB protocol to central cloud dashboard.' },
+            { icon: Layers, title: 'Monitor Stock & Sales Live', description: 'View live inventory across all locations and receive low-stock refill alerts.' },
+            { icon: Truck, title: 'Optimize Restock Routes', description: 'Automate driver delivery routes to refill machines based on predictive demand.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js', 'Python'], database: ['MongoDB'], infrastructure: ['AWS', 'IoT Core'], integrations: ['MDB Protocol', 'UPI Gateway'] }
+    },
+    {
+        id: 221,
+        name: 'Wedding Photography & Cinematography Studio',
+        category: 'Events',
+        desc: 'Luxury wedding photography showcase, portfolio gallery, and client booking platform.',
+        link: 'https://wedding-photography-website.kiaansoftwaredemo.shop',
+        color: 'from-rose-500 to-amber-500',
+        glow: 'rgba(244, 63, 94, 0.4)',
+        icon: ShoppingBag,
+        type: 'Website',
+        status: 'Live',
+        features: ['Cinematic Portfolio Showcase', 'Interactive Client Booking', 'Custom Package Selection'],
+        detailedFeatures: [
+            { title: 'Portfolio Showcase', description: 'Curated high-resolution wedding galleries, pre-wedding shoot films, and story reels.' },
+            { title: 'Custom Package Builder', description: 'Client package selection for photography, cinematography, drone coverage, and custom albums.' },
+            { title: 'Inquiry & Slot Booking', description: 'Real-time wedding date availability checker with digital booking inquiry workflow.' }
+        ],
+        howItWorks: [
+            { icon: ShoppingBag, title: 'Explore Wedding Stories', description: 'Couples browse recent wedding galleries, cinematic films, and client testimonials.' },
+            { icon: Calendar, title: 'Select Date & Services', description: 'Pick wedding dates, events (Mehendi, Sangeet, Reception), and custom camera crew requirements.' },
+            { icon: CheckCircle2, title: 'Book Consultation & Shoot', description: 'Lock event dates with instant digital confirmation and customized wedding roadmap.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
+    },
+    {
+        id: 222,
+        name: 'Medicare Hospital & Healthcare Management Platform',
+        category: 'Health',
+        desc: 'Modern hospital management system with doctor appointment booking, patient portal, and OPD/IPD workflows.',
+        link: 'https://medicare.kiaansoftwaredemo.shop',
+        color: 'from-cyan-500 to-blue-600',
+        glow: 'rgba(6, 182, 212, 0.4)',
+        icon: Activity,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Doctor Specialization Directory', 'Online Appointment Booking', 'Digital Health Records & OPD'],
+        detailedFeatures: [
+            { title: 'Doctor Directory & Rosters', description: 'Browse specialist physicians, surgeons, OPD duty timings, and consultation fee structures.' },
+            { title: 'Appointment Scheduling', description: 'Instant slot booking for in-clinic OPD consultations and diagnostic laboratory tests.' },
+            { title: 'Electronic Medical Records', description: 'Unified patient clinical history, prescription generation, and diagnostic test reports.' }
+        ],
+        howItWorks: [
+            { icon: Users, title: 'Find Specialist Doctor', description: 'Search doctors by department (Cardiology, Orthopedics, Pediatrics) and available OPD slots.' },
+            { icon: Calendar, title: 'Book Instant Slot', description: 'Select preferred timing, enter patient details, and receive automated booking token.' },
+            { icon: Activity, title: 'Manage Consultations & Records', description: 'Doctors access patient vitals and issue digital prescriptions from their console.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: [] }
+    },
+    {
+        id: 223,
+        name: 'Society Maintenance & Resident Service Portal',
+        category: 'Real Estate',
+        desc: 'Comprehensive residential society, HOA maintenance billing, gate pass, and community management platform.',
+        link: 'https://society-maintenance-service.kiaansoftwaredemo.shop',
+        color: 'from-emerald-500 to-teal-600',
+        glow: 'rgba(16, 185, 129, 0.4)',
+        icon: Home,
+        type: 'Web App',
+        status: 'Live',
+        features: ['Monthly Maintenance Invoicing', 'Visitor Gate Pass Management', 'Resident Helpdesk & Tickets'],
+        detailedFeatures: [
+            { title: 'Automated Billing & Dues', description: 'Generate monthly society maintenance invoices, penalty calculation, and digital payment receipts.' },
+            { title: 'Visitor Gate Access', description: 'Digital visitor check-in, OTP entry passes, and delivery vehicle logging for security staff.' },
+            { title: 'Helpdesk & Complaints', description: 'Resident ticketing system for electrical, plumbing, clubhouse, and facility repair requests.' }
+        ],
+        howItWorks: [
+            { icon: Home, title: 'Resident & Flat Registration', description: 'Flat owners and tenants access individualized account to view society announcements.' },
+            { icon: DollarSign, title: 'Pay Monthly Dues', description: 'Pay maintenance dues instantly through integrated gateways with zero accounting friction.' },
+            { icon: CheckCircle2, title: 'Raise & Track Tickets', description: 'Submit maintenance service requests and track resolution by society staff in real-time.' }
+        ],
+        topSelling: true,
+        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
+    },
+    {
         id: 100,
         name: 'FloraBloom - Online Flower Boutique',
         category: 'Retail',
@@ -73,36 +648,11 @@ const softwareList = [
         techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
     },
     {
-        id: 36,
-        name: 'Turf Booking & Sports Facility Management',
-        category: 'Sports',
-        desc: 'Turf booking and slot scheduling interface.',
-        link: 'https://turfui.kiaansoftware.com',
-        color: 'from-emerald-400 to-teal-500',
-        glow: 'rgba(20, 184, 166, 0.4)',
-        icon: CheckSquare,
-        type: 'Web App',
-        status: 'Live',
-        features: ['Slot Booking', 'Schedule Control', 'Venue Management'],
-        detailedFeatures: [
-            { title: 'Slot Reservations', description: 'Let users browse and reserve turf slots online.' },
-            { title: 'Booking Calendar', description: 'Manage daily bookings, blocked slots, and availability.' },
-            { title: 'Venue Operations', description: 'Handle turf schedules, pricing, and customer activity.' }
-        ],
-        howItWorks: [
-            { icon: Calendar, title: 'Pick date and time', description: 'Customers see open slots for the turf—no phone tag; they choose what fits their schedule.' },
-            { icon: CheckSquare, title: 'Confirm the booking', description: 'The system reserves the slot and updates the calendar so double-bookings do not happen.' },
-            { icon: Settings, title: 'Venue controls the day', description: 'Staff block maintenance windows, adjust pricing, and see who is playing when at a glance.' }
-        ],
-        topSelling: true,
-        techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
-    },
-    {
         id: 37,
-        name: 'Digital Health Assistant Platform',
+        name: 'Health Sakhi - Digital Health Assistant Platform',
         category: 'Health',
-        desc: 'Healthcare outreach and service coordination platform.',
-        link: 'http://healthsakhis.kiaansoftware.com/',
+        desc: 'Healthcare outreach, community health records, and field care coordination platform.',
+        link: 'http://health-sakhi-demo.kiaansoftwaredemo.shop/',
         color: 'from-rose-400 to-pink-500',
         glow: 'rgba(244, 63, 94, 0.4)',
         icon: Activity,
@@ -123,7 +673,7 @@ const softwareList = [
     },
     {
         id: 38,
-        name: 'Agro Supply Chain Management System',
+        name: 'Agriculture Supply Chain Management System',
         category: 'Enterprise',
         desc: 'Agro operations and project management platform.',
         link: 'http://freewayagro.kiaansoftware.com',
@@ -147,7 +697,7 @@ const softwareList = [
     },
     {
         id: 40,
-        name: 'Tractor Rental & Fleet Management Platform',
+        name: 'Agricultural Vehicle Rental & Fleet System',
         category: 'Enterprise',
         desc: 'Farmer-facing portal for tractor services, connections, and agri workflows.',
         link: 'https://tractorlink.netlify.app/farmer',
@@ -196,7 +746,7 @@ const softwareList = [
     },
     {
         id: 21,
-        name: 'Business Operations Management Suite',
+        name: 'Business Workflow Management System',
         category: 'Enterprise',
         desc: 'Business workflow and operations management suite.',
         link: 'https://cloveo.kiaansoftware.com',
@@ -389,7 +939,7 @@ const softwareList = [
     },
     {
         id: 30,
-        name: 'Property Management System',
+        name: 'Property Management & Accounting System',
         category: 'Real Estate',
         desc: 'Property listing and management platform.',
         link: 'https://property1.kiaansoftware.com',
@@ -583,31 +1133,6 @@ const softwareList = [
         techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['Netlify'], integrations: [] }
     },
     {
-        id: 50,
-        name: 'Loan Management & Lending Platform',
-        category: 'Finance / Banking',
-        desc: 'End-to-end digital lending ecosystem for loan origination, servicing, and portfolio management.',
-        link: 'https://lms.softwaredemolive.live',
-        color: 'from-emerald-500 to-teal-600',
-        glow: 'rgba(16, 185, 129, 0.4)',
-        icon: DollarSign,
-        type: 'Web App',
-        status: 'Live',
-        features: ['Digital Onboarding', 'Credit Scoring', 'Disbursement Engine'],
-        detailedFeatures: [
-            { title: 'Paperless Onboarding', description: 'Complete digital KYC and document submission for faster loan processing.' },
-            { title: 'Smart Credit Check', description: 'Automated eligibility checks and credit limit calculations based on user data.' },
-            { title: 'Automated Payouts', description: 'Seamless fund disbursement to verified bank accounts upon approval.' }
-        ],
-        howItWorks: [
-            { icon: ClipboardList, title: 'Apply for Loan', description: 'Borrowers submit their details and documents through a guided digital application.' },
-            { icon: CheckCircle2, title: 'Credit Review', description: 'System analyzes profiles and provides instant or assisted credit decisions.' },
-            { icon: DollarSign, title: 'Manage Repayments', description: 'Track EMI schedules and make payments through integrated gateways.' }
-        ],
-        topSelling: true,
-        techStack: { frontend: ['React'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: [] }
-    },
-    {
         id: 52,
         name: 'Property & Rental Management Platform',
         category: 'Real Estate',
@@ -705,30 +1230,6 @@ const softwareList = [
         techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
     },
     {
-        id: 58,
-        name: 'Multi-Clinic Healthcare Management System',
-        category: 'Health',
-        desc: 'Enterprise healthcare platform for managing multiple clinic branches and centralized patient records.',
-        link: 'https://dhnawantariclinic.softwaredemolive.live',
-        color: 'from-blue-600 to-indigo-700',
-        glow: 'rgba(37, 99, 235, 0.4)',
-        icon: Activity,
-        type: 'Web App',
-        status: 'Live',
-        features: ['Centralized Patient Data', 'Doctor Specialization', 'Appointment Tracking'],
-        detailedFeatures: [
-            { title: 'Multi-Branch Support', description: 'Manage multiple clinic locations from a single unified dashboard.' },
-            { title: 'Specialized Consultations', description: 'Categorize consultations by medical specialization for better patient routing.' },
-            { title: 'Electronic Health Records', description: 'Securely store and share patient records across all clinic branches.' }
-        ],
-        howItWorks: [
-            { icon: Home, title: 'Select Branch', description: 'Patients choose their preferred clinic location and view available specialists.' },
-            { icon: Calendar, title: 'Schedule Visit', description: 'Book appointments and receive automated reminders for the selected branch.' },
-            { icon: Activity, title: 'Centralized Records', description: 'Doctors access patient history regardless of which branch the patient visited previously.' }
-        ],
-        techStack: { frontend: ['React'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: [] }
-    },
-    {
         id: 59,
         name: 'Advanced Property Management Suite',
         category: 'Real Estate',
@@ -751,31 +1252,6 @@ const softwareList = [
             { icon: DollarSign, title: 'Track Financials', description: 'Monitor cash flow, budgets, and tax compliance across the entire portfolio.' }
         ],
         techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
-    },
-    {
-        id: 61,
-        name: 'Tele Health Care & Virtual Care Platform',
-        category: 'Health',
-        desc: 'Advanced telemedicine ecosystem for virtual consultations, remote patient monitoring, and digital care.',
-        link: 'https://telehealthcare.softwaredemolive.live',
-        color: 'from-blue-400 to-cyan-600',
-        glow: 'rgba(6, 182, 212, 0.4)',
-        icon: Activity,
-        type: 'Web App',
-        status: 'Live',
-        features: ['Virtual Consultations', 'Remote Monitoring', 'E-Pharmacy Integration'],
-        detailedFeatures: [
-            { title: 'Tele-Consultation', description: 'Schedule and conduct high-quality video consultations with medical experts.' },
-            { title: 'Patient Data Hub', description: 'Securely manage medical history, reports, and real-time health vitals.' },
-            { title: 'Prescription Management', description: 'Generate digital prescriptions and link them to pharmacy services.' }
-        ],
-        howItWorks: [
-            { icon: Monitor, title: 'Connect with Doctor', description: 'Patients select specialists and start virtual sessions instantly.' },
-            { icon: Activity, title: 'Share Vitals', description: 'Upload or link health monitoring devices for accurate clinical evaluation.' },
-            { icon: ClipboardList, title: 'Follow-up Care', description: 'Receive digital care plans and schedule subsequent virtual check-ups.' }
-        ],
-        topSelling: true,
-        techStack: { frontend: ['React'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: [] }
     },
     {
         id: 62,
@@ -875,30 +1351,6 @@ const softwareList = [
             { icon: Shield, title: 'Visa Coordination', description: 'Manage document checklists and interview schedules for visa processing.' }
         ],
         techStack: { frontend: ['React'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: [] }
-    },
-    {
-        id: 66,
-        name: 'Digital Library & Book Reading Platform',
-        category: 'Education',
-        desc: 'Cloud-based digital repository and immersive reading experience for academic and personal growth.',
-        link: 'https://bookreading.softwaredemolive.live',
-        color: 'from-amber-400 to-orange-600',
-        glow: 'rgba(245, 158, 11, 0.4)',
-        icon: ClipboardList,
-        type: 'Web App',
-        status: 'Live',
-        features: ['E-Book Catalog', 'Personal Reading Lists', 'Academic Resources'],
-        detailedFeatures: [
-            { title: 'Digital Repository', description: 'Access a vast collection of e-books, journals, and academic papers.' },
-            { title: 'Reading Experience', description: 'Customize reading settings, highlights, and notes within the platform.' },
-            { title: 'Resource Sharing', description: 'Facilitate academic collaboration through shared reading lists and research hubs.' }
-        ],
-        howItWorks: [
-            { icon: Monitor, title: 'Browse Collection', description: 'Explore categorized books and resources using advanced search and filters.' },
-            { icon: ClipboardList, title: 'Add to Library', description: 'Save titles to personal lists and track reading progress over time.' },
-            { icon: Share2, title: 'Collaborate', description: 'Share resources and insights with peers or within research groups.' }
-        ],
-        techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: [] }
     },
     {
         id: 67,
@@ -1049,7 +1501,7 @@ const softwareList = [
     },
     {
         id: 73,
-        name: 'English CRM & Language Institute Portal',
+        name: 'Customer Relationship Management System',
         category: 'Enterprise',
         desc: 'Specialized CRM for language academies to manage student inquiries, enrollment pipelines, course schedules, and batches.',
         link: 'https://english-crm.kiaansoftware.com',
@@ -1073,7 +1525,7 @@ const softwareList = [
     },
     {
         id: 74,
-        name: 'SyncFlow Project & Workflow Suite',
+        name: 'Project & Workflow Management System',
         category: 'Enterprise',
         desc: 'Interactive project board, task management, and team collaboration workspace inspired by Monday.com.',
         link: 'https://mondaydotcom.kiaansoftware.com',
@@ -1195,31 +1647,6 @@ const softwareList = [
         techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Credit Bureaus', 'Stripe'] }
     },
     {
-        id: 79,
-        name: 'AI Workforce Platform',
-        category: 'HR & Finance',
-        desc: 'Advanced human capital management and AI-powered workforce optimization suite.',
-        link: 'https://hcm-demo.softwaredemolive.live',
-        color: 'from-violet-500 to-purple-600',
-        glow: 'rgba(167, 139, 250, 0.4)',
-        icon: Users,
-        type: 'Web App',
-        status: 'Live',
-        features: ['AI Shift Allocation', 'Performance Analytics', 'Smart Payroll Sync'],
-        detailedFeatures: [
-            { title: 'AI Shift Allocation', description: 'Intelligent scheduling algorithm to optimize shift patterns, coverage, and staff preferences automatically.' },
-            { title: 'Performance Analytics', description: 'Real-time dashboards tracking team efficiency, goal completion rates, and active contribution metrics.' },
-            { title: 'Smart Payroll Sync', description: 'Seamless automated bridge to push validated operational timesheets and shift adjustments directly into payroll engines.' }
-        ],
-        howItWorks: [
-            { icon: Users, title: 'Onboard & Setup Profiles', description: 'Employees submit credentials, availability, and skillset parameters to build structured talent profiles.' },
-            { icon: Calendar, title: 'Automated Shift Scheduling', description: 'AI evaluates active workloads and maps optimal shift structures with zero conflict.' },
-            { icon: Activity, title: 'Track Team Milestones', description: 'Managers view progress snapshots and performance trends without digging through manuals.' }
-        ],
-        topSelling: true,
-        techStack: { frontend: ['React'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Slack', 'Stripe'] }
-    },
-    {
         id: 80,
         name: 'AI Tele-Calling & CRM Suite',
         category: 'Professional',
@@ -1313,14 +1740,14 @@ export default function AccessLiveEnvironment() {
             // Category Filter
             let categoryMatch = true;
             if (selectedCategory !== "All") {
-                if (selectedCategory === "Real Estate") categoryMatch = soft.category === "Real Estate";
+                if (selectedCategory === "Real Estate") categoryMatch = ["Real Estate", "Property"].includes(soft.category);
                 else if (selectedCategory === "Finance & Banking") categoryMatch = ["HR & Finance", "Finance", "Finance / Billing", "Finance / Banking"].includes(soft.category);
                 else if (selectedCategory === "Retail & Logistics") categoryMatch = ["Retail", "Logistics", "Retail & Logistics"].includes(soft.category);
-                else if (selectedCategory === "Healthcare") categoryMatch = ["Health", "Health / HR"].includes(soft.category);
-                else if (selectedCategory === "EdTech") categoryMatch = soft.category === "Education";
-                else if (selectedCategory === "Enterprise") categoryMatch = ["Professional", "Productivity", "Enterprise", "SaaS", "Events"].includes(soft.category);
-                else if (selectedCategory === "AI & Automation") categoryMatch = soft.category === "Artificial Intelligence";
-                else if (selectedCategory === "Sports") categoryMatch = soft.category === "Sports";
+                else if (selectedCategory === "Healthcare") categoryMatch = ["Health", "Health / HR", "Healthcare"].includes(soft.category);
+                else if (selectedCategory === "EdTech") categoryMatch = ["Education", "EdTech"].includes(soft.category);
+                else if (selectedCategory === "Enterprise") categoryMatch = ["Professional", "Productivity", "Enterprise", "SaaS", "Events", "Construction"].includes(soft.category);
+                else if (selectedCategory === "AI & Automation") categoryMatch = ["Artificial Intelligence", "AI & Automation", "Analytics"].includes(soft.category);
+                else if (selectedCategory === "Sports") categoryMatch = ["Sports", "Recreation"].includes(soft.category);
                 else categoryMatch = false;
             }
 
@@ -1333,8 +1760,8 @@ export default function AccessLiveEnvironment() {
             return categoryMatch && typeMatch;
         });
 
-        // Highlight premium apps at the top (HRM, Hospital, Loan, Construction, etc.)
-        const priorityIds = [79, 45, 69, 77, 68, 78, 58, 42, 76, 75, 74, 73];
+        // Highlight premium apps at the top (New Live Demos, HRM, Hospital, Loan, Construction, etc.)
+        const priorityIds = [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 45, 69, 77, 68, 78, 42, 76, 75, 74, 73];
         return [...filtered].sort((a, b) => {
             const indexA = priorityIds.indexOf(a.id);
             const indexB = priorityIds.indexOf(b.id);
@@ -1424,24 +1851,21 @@ export default function AccessLiveEnvironment() {
                     EMAILJS_PUBLIC_KEY
                 );
 
-                const res = await fetch('/api/leads', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        leadType: 'demo_request',
-                        name: formData.name,
-                        email: formData.email,
-                        phone: formData.phone,
-                        serviceInterest: selectedSoftware?.name,
-                        sourcePage: '/demo'
-                    })
-                });
-
-                const data = await res.json();
-                if (!res.ok || !data.ok) {
-                    setFormErrors({ email: data.message || 'Submission failed. Please try again.', phone: '' });
-                    setIsSubmitting(false);
-                    return;
+                try {
+                    await fetch('/api/leads/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            leadType: 'demo_request',
+                            name: formData.name,
+                            email: formData.email,
+                            phone: formData.phone,
+                            serviceInterest: selectedSoftware?.name,
+                            sourcePage: '/demo'
+                        })
+                    });
+                } catch (err) {
+                    console.warn('Backend lead recording notice:', err);
                 }
 
                 setModalState('selection');
@@ -1492,7 +1916,7 @@ export default function AccessLiveEnvironment() {
             </div>
 
             {/* HERO SECTION - SINGLE ROW LAYOUT */}
-            <section className="relative z-10 pt-32 pb-0 container mx-auto px-4 lg:px-8 max-w-[1400px]">
+            <section className="relative z-10 pt-6 sm:pt-8 pb-0 container mx-auto px-4 lg:px-8 max-w-[1400px]">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 w-full">
                     {/* LEFT SIDE: Headings */}
                     <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">

@@ -66,9 +66,9 @@ const TrainingCardMemo = React.memo(TrainingCard)
 
 const InternshipTrainingInner = () => {
     return (
-        <section id="internship" className="scroll-mt-28 py-10 bg-black relative overflow-hidden">
+        <section id="internship" className="scroll-mt-28 py-6 bg-black relative overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-10">
+                <div className="text-center mb-6">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ const InternshipTrainingInner = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <TrainingCardMemo
                         title="Advanced Frontend Internship"
                         tags={['React.js', 'Tailwind CSS', 'Framer Motion', 'Redux']}
@@ -118,7 +118,7 @@ const InternshipTrainingInner = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-16"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8"
                 >
                     <Link href="/internship">
                         <div className="relative group cursor-pointer">
