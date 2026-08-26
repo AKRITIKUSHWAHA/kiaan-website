@@ -52,9 +52,9 @@ html {
 }
 
 body {
-    @apply bg-black text-white antialiased;
-    overflow-x: clip;
     background-color: var(--color-bg);
+    color: #ffffff;
+    overflow-x: clip;
     /* Performance optimizations */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -108,13 +108,15 @@ main {
 
 /* Neo-Brutalist Card */
 .neo-card {
-    @apply bg-zinc-900/50 border border-zinc-800 transition-all duration-500;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    background-color: rgba(24, 24, 27, 0.5);
+    border: 1px solid #27272a;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform, box-shadow, border-color;
 }
 
 .neo-card:hover {
-    @apply border-yellow-500 bg-zinc-900;
+    border-color: #eab308;
+    background-color: #18181b;
     box-shadow: 12px 12px 0px 0px #FFD60A;
     /* Hard shadow */
     transform: translate(-6px, -6px);
@@ -122,7 +124,7 @@ main {
 
 /* Red Variant */
 .neo-card-red:hover {
-    @apply border-red-600;
+    border-color: #dc2626;
     box-shadow: 12px 12px 0px 0px #FF3B30;
 }
 
@@ -258,7 +260,10 @@ main {
 
 /* Premium Glassmorphism */
 .glass-panel {
-    @apply bg-zinc-900/40 backdrop-blur-md border border-white/10;
+    background-color: rgba(24, 24, 27, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
     /* Removed global will-change — triggered compositing on every glass element.
        Paint pressure is minimized by only promoting on active interaction. */
@@ -461,7 +466,17 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* Benefit counter badge */
 .benefit-counter {
-    @apply inline-flex items-center justify-center w-6 h-6 text-[10px] font-black rounded-full bg-zinc-800 text-zinc-400 shrink-0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 10px;
+    font-weight: 900;
+    border-radius: 9999px;
+    background-color: #27272a;
+    color: #a1a1aa;
+    flex-shrink: 0;
 }
 
 /* Outcome check animation */
@@ -477,12 +492,20 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* Trust section tag */
 .trust-tag {
-    @apply px-4 py-2 bg-zinc-900/80 border border-zinc-800 text-zinc-300 text-xs font-bold tracking-wider uppercase;
+    padding: 0.5rem 1rem;
+    background-color: rgba(24, 24, 27, 0.8);
+    border: 1px solid #27272a;
+    color: #d4d4d8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     transition: all 0.3s ease;
 }
 
 .trust-tag:hover {
-    @apply border-yellow-500/50 text-yellow-500;
+    border-color: rgba(234, 179, 8, 0.5);
+    color: #eab308;
 }
 
 /* ─── Core Web Vitals: Reduce Motion Accessibility ──────────────────── */
@@ -506,12 +529,48 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
-/* ─── Tidio Live Chat Position (Lifted above yellow line, below WhatsApp) ─── */
-#tidio-chat,
-#tidio-chat-iframe,
-#tidio-chat iframe,
-iframe[id*="tidio"],
-div#tidio-chat {
-    transform: translateY(-34px) !important;
+/* ─── WhatsApp & Tidio Chat Floating Widget Positioning ─────────── */
+/* 1. WhatsApp Button: Stays exactly where it is (bottom: 148px)
+   2. 'Chat with us' & Blue Message Icon: Moved vertically DOWN completely BELOW WhatsApp (bottom: 20px) */
+.whatsapp-floating-btn {
+    position: fixed !important;
+    bottom: 148px !important;
+    right: 14px !important;
+    z-index: 99999 !important;
 }
 
+#tidio-chat,
+#tidio-chat-iframe,
+#tidio-chat-container,
+div#tidio-chat,
+iframe#tidio-chat-iframe,
+iframe#tidio-chat-code,
+iframe[id*="tidio"],
+iframe[title*="Tidio"],
+iframe[src*="tidio"],
+div[id^="tidio"] {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: -10px !important;
+    z-index: 9998 !important;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-floating-btn {
+        bottom: 138px !important;
+        right: 10px !important;
+    }
+    #tidio-chat,
+    #tidio-chat-iframe,
+    #tidio-chat-container,
+    div#tidio-chat,
+    iframe#tidio-chat-iframe,
+    iframe#tidio-chat-code,
+    iframe[id*="tidio"],
+    iframe[title*="Tidio"],
+    iframe[src*="tidio"],
+    div[id^="tidio"] {
+        bottom: 15px !important;
+        right: -8px !important;
+    }
+}

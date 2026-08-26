@@ -178,7 +178,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
           {/* Always-visible challenge summary */}
           <div className="p-4">
             <SectionLabel icon={<AlertTriangle size={10} />} label="Challenge" />
-            <p className="text-zinc-400 text-sm font-light leading-relaxed line-clamp-2" dangerouslySetInnerHTML={{ __html: challenge }} />
+            <p className="text-zinc-500 text-sm font-light leading-relaxed line-clamp-2" dangerouslySetInnerHTML={{ __html: challenge }} />
           </div>
  
           {/* Expandable section */}
@@ -194,7 +194,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
               >
                 <div className="p-4">
                   <SectionLabel icon={<Lightbulb size={10} />} label="Solution" />
-                  <p className="text-zinc-400 text-sm font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: solution }} />
+                  <p className="text-zinc-500 text-sm font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: solution }} />
                 </div>
               </motion.div>
             )}
@@ -253,7 +253,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
                 <span className="text-lg font-display text-white group-hover/result:text-yellow-500 transition-colors">
                   {r.value}
                 </span>
-                <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest">
+                <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest">
                   {r.label}
                 </span>
               </div>
@@ -263,7 +263,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
 
         {/* ── Author Byline ── */}
         {authorName && (
-          <div className="text-[10px] text-zinc-400 font-light leading-relaxed tracking-wide">
+          <div className="text-[10px] text-zinc-500 font-light leading-relaxed tracking-wide">
             Case Study by <span className="text-zinc-300 font-medium">{authorName}</span>, {authorDesignation} at Kiaan Technology
           </div>
         )}
@@ -275,7 +275,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
             id={`case-study-card-view-${cardId}`}
             className="group/btn inline-flex items-center gap-2
                        text-[10px] font-black uppercase tracking-widest
-                       text-zinc-400 hover:text-yellow-500
+                       text-zinc-500 hover:text-yellow-500
                        transition-colors duration-300"
             aria-label={`View details for ${projectName}`}
           >

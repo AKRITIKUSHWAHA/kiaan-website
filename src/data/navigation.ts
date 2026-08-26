@@ -216,6 +216,7 @@ export const internshipCategories = [
 
 export const navLinks = [
     { name: 'Home', href: '/' },
+
     {
         name: 'Products',
         href: '/products',
@@ -224,7 +225,6 @@ export const navLinks = [
     {
         name: 'Solutions',
         href: '/solutions',
-        level2: solutionCategories
     },
     {
         name: 'Services',
@@ -267,7 +267,7 @@ export const navLinks = [
         href: '/internship',
         level2: internshipCategories
     },
+
     { name: 'AI Automation', href: '/services/ai-automation' },
     { name: 'Podcast', href: '/podcast' },
-    { name: 'Contact', href: '/contact' }
 ]

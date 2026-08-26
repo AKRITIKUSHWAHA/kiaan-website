@@ -1,7 +1,6 @@
 import { resources, getResourceBySlug } from '@/data/resourcesData';
 import ResourceDetailClient from './ResourceDetailClient';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 // Generate static params for all resource slugs
 export function generateStaticParams() {
@@ -58,9 +57,9 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
                 <div className="text-center">
                     <h1 className="text-4xl font-display text-white uppercase mb-4">Resource Not Found</h1>
                     <p className="text-zinc-500 mb-8">The requested resource could not be found.</p>
-                    <Link href="/resources" className="text-yellow-500 hover:text-yellow-400 uppercase font-black tracking-widest text-sm">
+                    <a href="/resources" className="text-yellow-500 hover:text-yellow-400 uppercase font-black tracking-widest text-sm">
                         ← Back to Resources
-                    </Link>
+                    </a>
                 </div>
             </div>
         );

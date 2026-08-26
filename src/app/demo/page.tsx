@@ -8,7 +8,7 @@ import {
     Shield, Zap, X, Copy, Play, Monitor, Server, CheckCircle2, Loader2, Maximize2,
     Layers, Cpu, Calendar, Star, ArrowRight,
     Settings, Users, ClipboardList, MousePointer2,
-    RefreshCcw, Code, Share2, HardHat, GraduationCap
+    RefreshCcw, Code, Share2, HardHat, GraduationCap, Youtube, Pencil, Trash2, ExternalLink, PlayCircle, Check, Search, Sparkles, Filter
 } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import Link from 'next/link';
@@ -28,6 +28,7 @@ const softwareList = [
         category: 'Sports',
         desc: 'Luxury yacht, speed boat, and jet-ski rental reservation platform with real-time slot scheduling, captain addons, and fleet management.',
         link: 'https://boat-jet-booking.kiaansoftwaredemo.shop/',
+        youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         color: 'from-cyan-400 to-blue-600',
         glow: 'rgba(6, 182, 212, 0.4)',
         icon: Activity,
@@ -53,6 +54,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'Comprehensive real estate and rental property management software for units, tenant leases, and automated rent collection.',
         link: 'http://property-ui.kiaansoftwaredemo.shop',
+        youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         color: 'from-blue-500 to-indigo-600',
         glow: 'rgba(59, 130, 246, 0.4)',
         icon: Home,
@@ -78,6 +80,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Enterprise-grade Microsoft Business Intelligence dashboard suite with real-time ETL pipelines, data visualization, and KPI reporting.',
         link: 'http://msbi.kiaansoftwaredemo.shop',
+        youtube: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         color: 'from-amber-400 to-yellow-500',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: Layers,
@@ -103,6 +106,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'End-to-end student hostel and PG accommodation system for room allocations, mess billing, curfew logs, and warden administration.',
         link: 'https://hostel-management.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-emerald-400 to-teal-600',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: Home,
@@ -128,6 +132,7 @@ const softwareList = [
         category: 'EdTech',
         desc: 'Comprehensive K-12 school and academic ERP platform covering admissions, attendance, exams, timetables, and parent communication.',
         link: 'https://school-management.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-indigo-400 to-purple-600',
         glow: 'rgba(99, 102, 241, 0.4)',
         icon: GraduationCap,
@@ -153,6 +158,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'High-impact commercial construction, architecture, and infrastructure project management platform with site tracking and RFP requests.',
         link: 'https://construction-landingpage.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-orange-500 to-amber-500',
         glow: 'rgba(249, 115, 22, 0.4)',
         icon: HardHat,
@@ -178,6 +184,7 @@ const softwareList = [
         category: 'Retail & Logistics',
         desc: 'End-to-end pet nutrition and dog treat manufacturing ERP with recipe batching, inventory, and B2B wholesale distribution.',
         link: 'https://dog-treat-erp.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-amber-500 to-orange-600',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: ShoppingBag,
@@ -203,6 +210,7 @@ const softwareList = [
         category: 'Healthcare',
         desc: 'On-demand luxury home massage and wellness therapist booking platform with therapist dispatch and scheduling.',
         link: 'https://home-massage.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-pink-400 to-rose-500',
         glow: 'rgba(244, 63, 94, 0.4)',
         icon: Activity,
@@ -228,6 +236,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Field service and subcontractor job dispatch platform for electrical, plumbing, HVAC, and trade contractors.',
         link: 'http://mini-contactor.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-yellow-400 to-amber-500',
         glow: 'rgba(251, 191, 36, 0.4)',
         icon: HardHat,
@@ -248,36 +257,12 @@ const softwareList = [
         techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['Twilio', 'Stripe'] }
     },
     {
-        id: 210,
-        name: 'DoorLoop Rental Property Management',
-        category: 'Real Estate',
-        desc: 'Modern all-in-one property management dashboard for residential leases, automated tenant payments, and maintenance dispatch.',
-        link: 'https://property-doorloop-new1.netlify.app',
-        color: 'from-blue-500 to-cyan-500',
-        glow: 'rgba(6, 182, 212, 0.4)',
-        icon: Home,
-        type: 'Web App',
-        status: 'Live',
-        features: ['Unit Portfolio Hub', 'Automated Rent Pay Portal', 'Maintenance Ticket Pipeline'],
-        detailedFeatures: [
-            { title: 'Unified Unit Dashboard', description: 'Manage single-family homes, apartments, and multi-unit complexes from one visual portal.' },
-            { title: 'Tenant Online Portal', description: 'Tenants pay rent via autopay, sign digital lease extensions, and submit maintenance tickets.' },
-            { title: 'Owner & Financial Reports', description: 'Automated 1099 tax exports, net operating income (NOI), and rent roll summaries.' }
-        ],
-        howItWorks: [
-            { icon: Home, title: 'Add Rental Properties', description: 'Setup unit inventory, lease pricing, security deposits, and tenant contact info.' },
-            { icon: DollarSign, title: 'Automate Rent Invoicing', description: 'System sends monthly rent reminders and processes automatic bank transfers.' },
-            { icon: CheckCircle2, title: 'Resolve Work Orders', description: 'Assign maintenance tickets to vetted vendors and track repair status till closure.' }
-        ],
-        topSelling: true,
-        techStack: { frontend: ['React', 'Next.js'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['Netlify', 'AWS'], integrations: ['Stripe', 'Plaid'] }
-    },
-    {
         id: 211,
         name: 'Custom Outdoor Kitchen Design Suite',
         category: 'Enterprise',
         desc: 'Interactive outdoor kitchen and patio living builder with 3D modular layout customizer and instant project quotation.',
         link: 'https://outdoor-kitchen.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-orange-400 to-red-500',
         glow: 'rgba(249, 115, 22, 0.4)',
         icon: Utensils,
@@ -303,6 +288,7 @@ const softwareList = [
         category: 'Healthcare',
         desc: 'Next-gen dental clinic ERP with electronic dental charts, appointment booking, treatment plans, and digital billing.',
         link: 'https://dental-clinic.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-teal-400 to-cyan-500',
         glow: 'rgba(20, 184, 166, 0.4)',
         icon: Activity,
@@ -328,6 +314,7 @@ const softwareList = [
         category: 'Finance / Banking',
         desc: 'Enterprise cloud accounting and bookkeeping suite with automated bank feeds, GST/tax calculation, and profit-loss analytics.',
         link: 'http://accounting-new.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-emerald-500 to-green-600',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: DollarSign,
@@ -353,6 +340,7 @@ const softwareList = [
         category: 'Sports',
         desc: 'Multi-court turf reservation system with live floodlight slot management, team tournaments, and instant online payments.',
         link: 'http://turf-new.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-green-400 to-emerald-600',
         glow: 'rgba(34, 197, 94, 0.4)',
         icon: CheckSquare,
@@ -378,6 +366,7 @@ const softwareList = [
         category: 'Retail & Logistics',
         desc: 'High-efficiency warehouse management system (WMS) with barcode scanning, batch lot tracking, and 3PL shipping workflows.',
         link: 'https://warehouse-management-new.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-purple-500 to-indigo-600',
         glow: 'rgba(139, 92, 246, 0.4)',
         icon: Truck,
@@ -403,6 +392,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'Enterprise commercial property asset management platform for multi-story office complexes, retail malls, and corporate leases.',
         link: 'http://real-estate-property.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-blue-600 to-sky-600',
         glow: 'rgba(37, 99, 235, 0.4)',
         icon: Home,
@@ -423,36 +413,12 @@ const softwareList = [
         techStack: { frontend: ['React', 'Next.js'], backend: ['Node.js'], database: ['PostgreSQL'], infrastructure: ['AWS'], integrations: ['ERP Connectors', 'Smart Meter APIs'] }
     },
     {
-        id: 217,
-        name: 'Modern Residential Property & HOA Portal',
-        category: 'Real Estate',
-        desc: 'Gated community, housing society, and HOA management portal with visitor gate logs, maintenance dues, and facility booking.',
-        link: 'http://property5.kiaansoftwaredemo.shop',
-        color: 'from-cyan-500 to-teal-600',
-        glow: 'rgba(6, 182, 212, 0.4)',
-        icon: Home,
-        type: 'Web App',
-        status: 'Live',
-        features: ['Society Resident Directory', 'Digital Visitor Gate Passes', 'Maintenance Dues & Facility Booking'],
-        detailedFeatures: [
-            { title: 'Resident & Flat Directory', description: 'Owner vs tenant records, parking slot allocation, and emergency contacts.' },
-            { title: 'Security Guard Gate Pass', description: 'Pre-approved visitor entries, delivery verification, and digital gate logs.' },
-            { title: 'Clubhouse & Amenity Booking', description: 'Reserve community hall, swimming pool slots, and tennis courts online.' }
-        ],
-        howItWorks: [
-            { icon: Home, title: 'Resident Profile & Unit Setup', description: 'Residents access personal account to view society announcements and flat records.' },
-            { icon: Shield, title: 'Digital Visitor Approval', description: 'Receive instant phone approval requests for guests, cab entries, and parcel delivery.' },
-            { icon: DollarSign, title: 'Pay Monthly Maintenance', description: 'Pay society maintenance bills with instant receipt and zero manual accounting.' }
-        ],
-        topSelling: true,
-        techStack: { frontend: ['React', 'Tailwind CSS'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Payment Gateway', 'Guard Tablet App'] }
-    },
-    {
         id: 218,
         name: 'Car Drive & Self-Drive Vehicle Rental',
         category: 'Enterprise',
         desc: 'On-demand self-drive car rental and vehicle leasing platform with GPS tracking, deposit management, and instant booking calendar.',
         link: 'http://car-drive.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-amber-400 to-orange-500',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: Car,
@@ -478,6 +444,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Comprehensive law firm and corporate legal case management suite with court hearing alerts, document vault, and billable hours tracking.',
         link: 'http://case-management.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-blue-600 to-indigo-600',
         glow: 'rgba(37, 99, 235, 0.4)',
         icon: Briefcase,
@@ -503,6 +470,7 @@ const softwareList = [
         category: 'Retail & Logistics',
         desc: 'Automated smart vending machine management network with real-time inventory telemetry, cash/UPI monitoring, and route replenishment.',
         link: 'http://vending-machine.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-purple-500 to-pink-500',
         glow: 'rgba(168, 85, 247, 0.4)',
         icon: ShoppingBag,
@@ -528,6 +496,7 @@ const softwareList = [
         category: 'Events',
         desc: 'Luxury wedding photography showcase, portfolio gallery, and client booking platform.',
         link: 'https://wedding-photography-website.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-rose-500 to-amber-500',
         glow: 'rgba(244, 63, 94, 0.4)',
         icon: ShoppingBag,
@@ -553,6 +522,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Modern hospital management system with doctor appointment booking, patient portal, and OPD/IPD workflows.',
         link: 'https://medicare.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-cyan-500 to-blue-600',
         glow: 'rgba(6, 182, 212, 0.4)',
         icon: Activity,
@@ -578,6 +548,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'Comprehensive residential society, HOA maintenance billing, gate pass, and community management platform.',
         link: 'https://society-maintenance-service.kiaansoftwaredemo.shop',
+        youtube: '',
         color: 'from-emerald-500 to-teal-600',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: Home,
@@ -603,6 +574,7 @@ const softwareList = [
         category: 'Retail',
         desc: 'A premium, highly interactive online floral boutique specializing in designer bouquets, luxury gifting, and streamlined local delivery management.',
         link: 'https://flower-boutique01.netlify.app/',
+        youtube: '',
         color: 'from-rose-400 to-pink-500',
         glow: 'rgba(244, 63, 94, 0.4)',
         icon: ShoppingBag,
@@ -628,6 +600,7 @@ const softwareList = [
         category: 'Retail',
         desc: 'Toy business management and product showcase platform.',
         link: 'https://toy-ui.kiaansoftware.com',
+        youtube: '',
         color: 'from-pink-400 to-yellow-400',
         glow: 'rgba(244, 114, 182, 0.4)',
         icon: ShoppingBag,
@@ -653,6 +626,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Healthcare outreach, community health records, and field care coordination platform.',
         link: 'http://health-sakhi-demo.kiaansoftwaredemo.shop/',
+        youtube: '',
         color: 'from-rose-400 to-pink-500',
         glow: 'rgba(244, 63, 94, 0.4)',
         icon: Activity,
@@ -677,6 +651,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Agro operations and project management platform.',
         link: 'http://freewayagro.kiaansoftware.com',
+        youtube: '',
         color: 'from-lime-500 to-green-600',
         glow: 'rgba(101, 163, 13, 0.4)',
         icon: Briefcase,
@@ -701,6 +676,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Farmer-facing portal for tractor services, connections, and agri workflows.',
         link: 'https://tractorlink.netlify.app/farmer',
+        youtube: '',
         color: 'from-green-600 to-emerald-600',
         glow: 'rgba(22, 163, 74, 0.4)',
         icon: Truck,
@@ -726,6 +702,7 @@ const softwareList = [
         category: 'Events',
         desc: 'End-to-end carnival and event operations platform.',
         link: 'https://carnival-management.kiaansoftware.com',
+        youtube: '',
         color: 'from-pink-500 to-rose-500',
         glow: 'rgba(244, 63, 94, 0.4)',
         icon: Calendar,
@@ -750,6 +727,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Business workflow and operations management suite.',
         link: 'https://cloveo.kiaansoftware.com',
+        youtube: '',
         color: 'from-violet-500 to-purple-500',
         glow: 'rgba(168, 85, 247, 0.4)',
         icon: Briefcase,
@@ -774,6 +752,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Clinic operations platform for appointments and patient care.',
         link: 'https://deephysio-clinic.kiaansoftware.com',
+        youtube: '',
         color: 'from-cyan-500 to-blue-500',
         glow: 'rgba(14, 165, 233, 0.4)',
         icon: Activity,
@@ -798,6 +777,7 @@ const softwareList = [
         category: 'Finance / Banking',
         desc: 'Insurance policy administration and claims management system.',
         link: 'https://insurance-managmenet.kiaansoftware.com',
+        youtube: '',
         color: 'from-emerald-500 to-teal-500',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: Shield,
@@ -823,6 +803,7 @@ const softwareList = [
         category: 'Finance / Banking',
         desc: 'Loan servicing and borrower workflow demo for end-to-end lending operations.',
         link: 'http://loanfistdemo.kiaansoftware.com/',
+        youtube: '',
         color: 'from-green-500 to-emerald-600',
         glow: 'rgba(34, 197, 94, 0.4)',
         icon: DollarSign,
@@ -847,6 +828,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'Service business management for bookings and operations.',
         link: 'http://mordern-service.kiaansoftware.com',
+        youtube: '',
         color: 'from-sky-500 to-cyan-500',
         glow: 'rgba(56, 189, 248, 0.4)',
         icon: Settings,
@@ -871,6 +853,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Business operations software for integrated management.',
         link: 'https://oddo-sh.kiaansoftware.com',
+        youtube: '',
         color: 'from-purple-500 to-indigo-500',
         glow: 'rgba(139, 92, 246, 0.4)',
         icon: Layers,
@@ -895,6 +878,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'Painting service management for leads, jobs, and billing.',
         link: 'https://painting.kiaansoftware.com',
+        youtube: '',
         color: 'from-orange-500 to-amber-500',
         glow: 'rgba(249, 115, 22, 0.4)',
         icon: Briefcase,
@@ -919,6 +903,7 @@ const softwareList = [
         category: 'Retail',
         desc: 'Online product selling and order lifecycle platform.',
         link: 'https://product-selling.kiaansoftware.com',
+        youtube: '',
         color: 'from-yellow-400 to-orange-500',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: ShoppingBag,
@@ -943,6 +928,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'Property listing and management platform.',
         link: 'https://property1.kiaansoftware.com',
+        youtube: '',
         color: 'from-blue-500 to-cyan-500',
         glow: 'rgba(6, 182, 212, 0.4)',
         icon: Home,
@@ -967,6 +953,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'Legal case lifecycle platform for firms to manage matters, hearings, and documentation.',
         link: 'https://legal-case-ui.softwaredemolive.live',
+        youtube: '',
         color: 'from-indigo-500 to-violet-500',
         glow: 'rgba(99, 102, 241, 0.4)',
         icon: Shield,
@@ -991,6 +978,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Advanced survey and feedback management platform for data collection and real-time analysis.',
         link: 'http://surveymate.kiaansoftware.com/',
+        youtube: '',
         color: 'from-blue-400 to-indigo-500',
         glow: 'rgba(56, 189, 248, 0.4)',
         icon: ClipboardList,
@@ -1015,6 +1003,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Comprehensive clinic operations and patient lifecycle management platform.',
         link: 'https://clinic-pro.softwaredemolive.live',
+        youtube: '',
         color: 'from-blue-400 to-cyan-500',
         glow: 'rgba(34, 211, 238, 0.4)',
         icon: Activity,
@@ -1039,6 +1028,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'End-to-end workforce coordination and HR operations management suite.',
         link: 'https://employee-management-system.softwaredemolive.live',
+        youtube: '',
         color: 'from-indigo-400 to-violet-500',
         glow: 'rgba(129, 140, 248, 0.4)',
         icon: Users,
@@ -1065,6 +1055,7 @@ const softwareList = [
         category: 'Events',
         desc: 'Advanced planning and coordination platform for large-scale events and venues.',
         link: 'https://event-management.softwaredemolive.live/',
+        youtube: '',
         color: 'from-purple-500 to-pink-500',
         glow: 'rgba(168, 85, 247, 0.4)',
         icon: Calendar,
@@ -1089,6 +1080,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'Digital workshop operations, job cards, and inventory management for auto service centers.',
         link: 'https://garage-workshop.softwaredemolive.live',
+        youtube: '',
         color: 'from-orange-500 to-red-500',
         glow: 'rgba(249, 115, 22, 0.4)',
         icon: Car,
@@ -1113,6 +1105,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'A premium, modern on-demand laundry and dry-cleaning management ecosystem with smart booking calendars, garment tracking, and secure invoicing.',
         link: 'https://premium-laundry01.netlify.app/',
+        youtube: '',
         color: 'from-blue-400 to-sky-500',
         glow: 'rgba(56, 189, 248, 0.4)',
         icon: Settings,
@@ -1138,6 +1131,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'Comprehensive property portfolio management, leasing, and tenant relationship suite.',
         link: 'https://property-peach-management.softwaredemolive.live',
+        youtube: '',
         color: 'from-amber-400 to-orange-600',
         glow: 'rgba(251, 191, 36, 0.4)',
         icon: Home,
@@ -1162,6 +1156,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Advanced digital queuing solution for streamlined customer flow and wait-time reduction.',
         link: 'https://queue-managment.softwaredemolive.live',
+        youtube: '',
         color: 'from-cyan-500 to-blue-600',
         glow: 'rgba(6, 182, 212, 0.4)',
         icon: RefreshCcw,
@@ -1187,6 +1182,7 @@ const softwareList = [
         category: 'Logistics',
         desc: 'End-to-end transport operations, real-time trip tracking, and fleet maintenance suite.',
         link: 'https://tuck-managment.softwaredemolive.live',
+        youtube: '',
         color: 'from-emerald-600 to-teal-700',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: Truck,
@@ -1211,6 +1207,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Advanced international trade platform for export documentation, logistics, and compliance.',
         link: 'https://workana-export.softwaredemolive.live',
+        youtube: '',
         color: 'from-amber-600 to-yellow-700',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: Briefcase,
@@ -1235,6 +1232,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'High-end property ecosystem for portfolio analytics, lease automation, and vendor coordination.',
         link: 'https://propertythree.softwaredemolive.live',
+        youtube: '',
         color: 'from-amber-500 to-orange-700',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: Home,
@@ -1259,6 +1257,7 @@ const softwareList = [
         category: 'SaaS',
         desc: 'Enterprise-grade multi-tenant architecture for scalable business operations and white-labeled services.',
         link: 'https://multi-tenant-saas.softwaredemolive.live',
+        youtube: '',
         color: 'from-indigo-600 to-violet-700',
         glow: 'rgba(79, 70, 229, 0.4)',
         icon: Layers,
@@ -1284,6 +1283,7 @@ const softwareList = [
         category: 'Sports',
         desc: 'Comprehensive fitness operations suite for member tracking, workout planning, and automated billing.',
         link: 'https://gym.softwaredemolive.live',
+        youtube: '',
         color: 'from-orange-600 to-red-700',
         glow: 'rgba(234, 88, 12, 0.4)',
         icon: Activity,
@@ -1309,6 +1309,7 @@ const softwareList = [
         category: 'Logistics',
         desc: 'End-to-end supply chain visibility and logistics operations suite for modern enterprise commerce.',
         link: 'http://logistic.softwaredemolive.live',
+        youtube: '',
         color: 'from-blue-600 to-indigo-700',
         glow: 'rgba(37, 99, 235, 0.4)',
         icon: Truck,
@@ -1334,6 +1335,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Advanced education consultancy platform for student admissions and international visa processing.',
         link: 'https://studentrecruitmentvisa.softwaredemolive.live',
+        youtube: '',
         color: 'from-violet-600 to-purple-700',
         glow: 'rgba(124, 58, 237, 0.4)',
         icon: Users,
@@ -1358,6 +1360,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Advanced dental clinic operations, patient records, and specialized procedure tracking platform.',
         link: 'http://dentist.softwaredemolive.live',
+        youtube: '',
         color: 'from-blue-400 to-indigo-500',
         glow: 'rgba(56, 189, 248, 0.4)',
         icon: Activity,
@@ -1383,6 +1386,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Comprehensive inventory and medical asset management for large-scale healthcare facilities.',
         link: 'https://hopistal-inventry.softwaredemolive.live',
+        youtube: '',
         color: 'from-cyan-500 to-blue-600',
         glow: 'rgba(6, 182, 212, 0.4)',
         icon: ClipboardList,
@@ -1407,6 +1411,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'End-to-end recruitment lifecycle and candidate placement platform for agencies.',
         link: 'http://placementservice.softwaredemolive.live',
+        youtube: '',
         color: 'from-violet-500 to-purple-600',
         glow: 'rgba(139, 92, 246, 0.4)',
         icon: Users,
@@ -1431,6 +1436,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Industrial-grade quality monitoring and regulatory compliance management platform.',
         link: 'http://qualitymanagement.softwaredemolive.live',
+        youtube: '',
         color: 'from-emerald-500 to-teal-600',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: Shield,
@@ -1456,6 +1462,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'Premium salon and spa operations suite for luxury wellness centers and chains.',
         link: 'https://salon.softwaredemolive.live/',
+        youtube: '',
         color: 'from-pink-500 to-rose-600',
         glow: 'rgba(236, 72, 153, 0.4)',
         icon: Star,
@@ -1481,6 +1488,7 @@ const softwareList = [
         category: 'Sports',
         desc: 'Advanced sports betting analytics and real-time odds management platform for NBA and global sports.',
         link: 'https://betting.softwaredemolive.live',
+        youtube: '',
         color: 'from-orange-500 to-red-600',
         glow: 'rgba(249, 115, 22, 0.4)',
         icon: DollarSign,
@@ -1505,6 +1513,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Specialized CRM for language academies to manage student inquiries, enrollment pipelines, course schedules, and batches.',
         link: 'https://english-crm.kiaansoftware.com',
+        youtube: '',
         color: 'from-rose-500 to-red-600',
         glow: 'rgba(239, 68, 68, 0.4)',
         icon: Users,
@@ -1529,6 +1538,7 @@ const softwareList = [
         category: 'Enterprise',
         desc: 'Interactive project board, task management, and team collaboration workspace inspired by Monday.com.',
         link: 'https://mondaydotcom.kiaansoftware.com',
+        youtube: '',
         color: 'from-indigo-500 to-violet-500',
         glow: 'rgba(99, 102, 241, 0.4)',
         icon: ClipboardList,
@@ -1553,6 +1563,7 @@ const softwareList = [
         category: 'Finance / Banking',
         desc: 'Comprehensive business accounting, multi-ledger bookkeeping, and GST invoicing platform.',
         link: 'https://zirakbook-accounting.kiaansoftware.com',
+        youtube: '',
         color: 'from-emerald-500 to-teal-500',
         glow: 'rgba(16, 185, 129, 0.4)',
         icon: DollarSign,
@@ -1577,6 +1588,7 @@ const softwareList = [
         category: 'Real Estate',
         desc: 'Precision site orchestration, daily site logs, blueprint control, and contractor management platform.',
         link: 'https://constructionui.softwaredemolive.live',
+        youtube: '',
         color: 'from-amber-500 to-yellow-600',
         glow: 'rgba(245, 158, 11, 0.4)',
         icon: HardHat,
@@ -1602,6 +1614,7 @@ const softwareList = [
         category: 'Health',
         desc: 'Advanced hospital operations, digital health records, OPD/IPD management, pharmacy inventory, and lab diagnostic coordination.',
         link: 'https://hospitalui.softwaredemolive.live',
+        youtube: '',
         color: 'from-blue-500 to-cyan-600',
         glow: 'rgba(59, 130, 246, 0.4)',
         icon: Activity,
@@ -1627,6 +1640,7 @@ const softwareList = [
         category: 'Finance / Banking',
         desc: 'High-performance loan lifecycle management with distinct dashboards for borrowers, loan officers, and credit underwriters.',
         link: 'https://loankpui.softwaredemolive.live',
+        youtube: '',
         color: 'from-emerald-400 to-teal-500',
         glow: 'rgba(52, 211, 153, 0.4)',
         icon: DollarSign,
@@ -1652,6 +1666,7 @@ const softwareList = [
         category: 'Professional',
         desc: 'High-performance lead management and AI-driven tele-calling suite for outbound sales teams.',
         link: 'https://tele-managment.softwaredemolive.live',
+        youtube: '',
         color: 'from-red-500 to-rose-600',
         glow: 'rgba(248, 113, 113, 0.4)',
         icon: Briefcase,
@@ -1671,7 +1686,7 @@ const softwareList = [
         topSelling: false,
         techStack: { frontend: ['React'], backend: ['Node.js'], database: ['MongoDB'], infrastructure: ['AWS'], integrations: ['Twilio', 'Salesforce'] }
     },
-]
+];
 
 const StatCard = ({ endValue, label, suffix = '' }: { endValue: number, label: string, suffix?: string }) => {
     const [count, setCount] = useState(0)
@@ -1711,9 +1726,90 @@ export default function AccessLiveEnvironment() {
     const [copiedContent, setCopiedContent] = useState<string | null>(null)
     const [isSubmitting, setIsSubmitting] = useState(false)
 
+    // YouTube Video Customization States
+    const [customYoutubeUrls, setCustomYoutubeUrls] = useState<Record<number, string>>({})
+    const [editingVideoProject, setEditingVideoProject] = useState<typeof softwareList[0] | null>(null)
+    const [videoInputUrl, setVideoInputUrl] = useState('')
+    const [activeVideoModal, setActiveVideoModal] = useState<{ project: typeof softwareList[0]; url: string } | null>(null)
+    const [savedSuccessToast, setSavedSuccessToast] = useState(false)
+
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem('kiaan_demo_youtube_urls')
+            if (saved) {
+                setCustomYoutubeUrls(JSON.parse(saved))
+            }
+        } catch {
+            // ignore
+        }
+    }, [])
+
+    const getProjectYoutubeUrl = (project: typeof softwareList[0]) => {
+        if (customYoutubeUrls[project.id] !== undefined) {
+            return customYoutubeUrls[project.id]
+        }
+        return (project as any).youtube || ''
+    }
+
+    const handleSaveYoutubeUrl = (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!editingVideoProject) return
+
+        const trimmed = videoInputUrl.trim()
+        const updated = { ...customYoutubeUrls, [editingVideoProject.id]: trimmed }
+        setCustomYoutubeUrls(updated)
+        try {
+            localStorage.setItem('kiaan_demo_youtube_urls', JSON.stringify(updated))
+        } catch {
+            // ignore
+        }
+        setSavedSuccessToast(true)
+        setTimeout(() => {
+            setSavedSuccessToast(false)
+            setEditingVideoProject(null)
+            setVideoInputUrl('')
+        }, 1000)
+    }
+
+    const handleRemoveYoutubeUrl = () => {
+        if (!editingVideoProject) return
+        const updated = { ...customYoutubeUrls, [editingVideoProject.id]: '' }
+        setCustomYoutubeUrls(updated)
+        try {
+            localStorage.setItem('kiaan_demo_youtube_urls', JSON.stringify(updated))
+        } catch {
+            // ignore
+        }
+        setEditingVideoProject(null)
+        setVideoInputUrl('')
+    }
+
+    const getYouTubeEmbedUrl = (url: string) => {
+        if (!url) return ''
+        try {
+            let match = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/)
+            if (match && match[1]) return `https://www.youtube.com/embed/${match[1]}?autoplay=1`
+
+            match = url.match(/[?&]v=([a-zA-Z0-9_-]+)/)
+            if (match && match[1]) return `https://www.youtube.com/embed/${match[1]}?autoplay=1`
+
+            match = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/)
+            if (match && match[1]) return `https://www.youtube.com/embed/${match[1]}?autoplay=1`
+
+            match = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]+)/)
+            if (match && match[1]) return `https://www.youtube.com/embed/${match[1]}?autoplay=1`
+
+            if (url.includes('youtube.com/embed/')) return url
+            return url
+        } catch {
+            return url
+        }
+    }
+
     const [infoModal, setInfoModal] = useState<{ project: typeof softwareList[0]; type: 'features' | 'tech' | 'how-it-works' } | null>(null)
     const [selectedCategory, setSelectedCategory] = useState("All")
     const [selectedType, setSelectedType] = useState("All")
+    const [searchQuery, setSearchQuery] = useState("")
 
     const categories = [
         "All",
@@ -1736,8 +1832,27 @@ export default function AccessLiveEnvironment() {
     ]
 
     const getFilteredSoftware = () => {
+        const query = searchQuery.trim().toLowerCase();
+        const queryTokens = query.split(/\s+/).filter(t => t.length > 0);
+
         const filtered = softwareList.filter(soft => {
-            // Category Filter
+            // 1. Search Query Filter (Matches Name, Category, Description, Features, DetailedFeatures, TechStack, Type)
+            if (queryTokens.length > 0) {
+                const searchableText = [
+                    soft.name,
+                    soft.category,
+                    soft.desc,
+                    soft.type,
+                    ...(soft.features || []),
+                    ...(soft.detailedFeatures ? soft.detailedFeatures.map(f => `${f.title} ${f.description}`) : []),
+                    ...(soft.techStack ? Object.values(soft.techStack).flat() : [])
+                ].join(' ').toLowerCase();
+
+                const matchesAny = queryTokens.some(token => searchableText.includes(token));
+                if (!matchesAny) return false;
+            }
+
+            // 2. Category Filter
             let categoryMatch = true;
             if (selectedCategory !== "All") {
                 if (selectedCategory === "Real Estate") categoryMatch = ["Real Estate", "Property"].includes(soft.category);
@@ -1751,7 +1866,7 @@ export default function AccessLiveEnvironment() {
                 else categoryMatch = false;
             }
 
-            // Type Filter
+            // 3. Type Filter
             let typeMatch = true;
             if (selectedType !== "All") {
                 typeMatch = (soft as any).type === selectedType;
@@ -1760,8 +1875,33 @@ export default function AccessLiveEnvironment() {
             return categoryMatch && typeMatch;
         });
 
-        // Highlight premium apps at the top (New Live Demos, HRM, Hospital, Loan, Construction, etc.)
-        const priorityIds = [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 45, 69, 77, 68, 78, 42, 76, 75, 74, 73];
+        // If search query is active, sort by relevance score!
+        if (queryTokens.length > 0) {
+            return [...filtered].sort((a, b) => {
+                const getScore = (item: typeof softwareList[0]) => {
+                    let score = 0;
+                    const nameLower = item.name.toLowerCase();
+                    const catLower = item.category.toLowerCase();
+                    const descLower = item.desc.toLowerCase();
+
+                    if (nameLower.includes(query)) score += 100;
+                    if (nameLower.startsWith(query)) score += 50;
+
+                    queryTokens.forEach(t => {
+                        if (nameLower.includes(t)) score += 30;
+                        if (catLower.includes(t)) score += 20;
+                        if (descLower.includes(t)) score += 10;
+                        if (item.features?.some(f => f.toLowerCase().includes(t))) score += 8;
+                    });
+                    return score;
+                };
+
+                return getScore(b) - getScore(a);
+            });
+        }
+
+        // Default Priority Sort
+        const priorityIds = [201, 202, 203, 204, 205, 206, 207, 208, 209, 211, 212, 213, 214, 215, 216, 218, 219, 220, 221, 222, 223, 45, 69, 77, 68, 78, 42, 76, 75, 74, 73];
         return [...filtered].sort((a, b) => {
             const indexA = priorityIds.indexOf(a.id);
             const indexB = priorityIds.indexOf(b.id);
@@ -1956,6 +2096,79 @@ export default function AccessLiveEnvironment() {
                 </div>
             </section>
 
+            {/* 3. SEARCH & DISCOVERY BAR */}
+            <section className="relative z-10 pt-6 pb-1 container mx-auto px-4 lg:px-8 max-w-[1400px]">
+                <div className="relative w-full rounded-2xl bg-zinc-950/90 border border-zinc-800/90 backdrop-blur-xl p-3 sm:p-3.5 shadow-[0_0_40px_rgba(0,0,0,0.6)] focus-within:border-[#FFE81B]/50 focus-within:shadow-[0_0_30px_rgba(255,232,27,0.15)] transition-all duration-300">
+                    <div className="flex flex-col md:flex-row items-center gap-3">
+                        
+                        {/* Search Input Box */}
+                        <div className="relative flex items-center w-full flex-1">
+                            <div className="absolute left-3.5 flex items-center pointer-events-none text-zinc-400">
+                                <Search size={18} className="text-[#FFE81B] drop-shadow-[0_0_8px_rgba(255,232,27,0.4)]" />
+                            </div>
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder="Search by project name, keywords, industry, or tech (e.g. CRM, Property, Hospital, Loan, Booking, HR)..."
+                                className="w-full bg-zinc-900/80 border border-zinc-700/80 rounded-xl pl-11 pr-10 py-3 text-xs md:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFE81B]/60 focus:bg-zinc-900 transition-all font-sans"
+                            />
+                            {searchQuery && (
+                                <button
+                                    onClick={() => setSearchQuery('')}
+                                    className="absolute right-3 p-1 rounded-full bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700 transition-colors"
+                                    title="Clear search"
+                                >
+                                    <X size={14} />
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Result Counter & Reset Button */}
+                        <div className="flex items-center gap-2 justify-between w-full md:w-auto px-1">
+                            <div className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-zinc-900/90 border border-zinc-800 text-[10px] md:text-xs font-bold uppercase tracking-wider text-zinc-300 whitespace-nowrap shadow-inner">
+                                <Sparkles size={13} className="text-[#FFE81B]" />
+                                <span>
+                                    <strong className="text-[#FFE81B] font-black">{getFilteredSoftware().length}</strong> of {softwareList.length} Systems
+                                </span>
+                            </div>
+                            {(searchQuery || selectedCategory !== 'All' || selectedType !== 'All') && (
+                                <button
+                                    onClick={() => {
+                                        setSearchQuery('');
+                                        setSelectedCategory('All');
+                                        setSelectedType('All');
+                                    }}
+                                    className="text-[10px] uppercase tracking-wider font-bold text-amber-400 hover:text-white transition-colors px-2 py-1 underline whitespace-nowrap cursor-pointer"
+                                >
+                                    Reset All
+                                </button>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Quick Suggestion Pills */}
+                    <div className="flex items-center gap-1.5 pt-2.5 px-1 overflow-x-auto no-scrollbar">
+                        <span className="text-[9.5px] uppercase font-black tracking-widest text-zinc-500 shrink-0 mr-1 flex items-center gap-1">
+                            <Filter size={10} /> Popular:
+                        </span>
+                        {['CRM', 'Property', 'Hospital', 'E-Commerce', 'HRM', 'Booking', 'Loan', 'Food', 'AI Dialer', 'ERP'].map((tag) => (
+                            <button
+                                key={tag}
+                                onClick={() => setSearchQuery(tag === searchQuery ? '' : tag)}
+                                className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider border transition-all duration-200 shrink-0 cursor-pointer ${
+                                    searchQuery.toLowerCase() === tag.toLowerCase()
+                                        ? 'bg-[#FFE81B] text-black border-[#FFE81B] shadow-[0_0_12px_rgba(255,232,27,0.3)]'
+                                        : 'bg-zinc-900/60 text-zinc-400 border-zinc-800/80 hover:border-zinc-600 hover:text-zinc-200'
+                                }`}
+                            >
+                                {tag}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* CATEGORY FILTERS - DUAL LAYER PREMIUM UI */}
             <section className="relative z-10 py-6 container mx-auto px-4 lg:px-8 max-w-[1400px] flex flex-col gap-4">
 
@@ -2011,6 +2224,31 @@ export default function AccessLiveEnvironment() {
             {/* UNIFORM GRID SHOWCASE */}
             <section className="relative z-10 container mx-auto px-4 lg:px-8 max-w-[1400px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {/* Empty State when Search Query has no matches */}
+                    {getFilteredSoftware().length === 0 && (
+                        <div className="col-span-full py-16 px-4 flex flex-col items-center justify-center text-center rounded-2xl bg-zinc-950/70 border border-zinc-800/80 backdrop-blur-xl">
+                            <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 shadow-[0_0_20px_rgba(245,158,11,0.15)]">
+                                <Search size={24} />
+                            </div>
+                            <h3 className="text-xl font-display uppercase tracking-tight text-white mb-2">
+                                No Matching Systems Found
+                            </h3>
+                            <p className="text-xs md:text-sm text-zinc-400 max-w-md mb-6 font-light">
+                                We couldn&apos;t find any software matching <span className="text-white font-bold">&quot;{searchQuery}&quot;</span>. Try searching with a different term like CRM, Real Estate, Hospital, or Booking.
+                            </p>
+                            <button
+                                onClick={() => {
+                                    setSearchQuery('');
+                                    setSelectedCategory('All');
+                                    setSelectedType('All');
+                                }}
+                                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#FFE81B] to-yellow-400 text-black font-black text-xs uppercase tracking-widest hover:brightness-110 shadow-[0_0_20px_rgba(255,232,27,0.3)] transition-all cursor-pointer"
+                            >
+                                Clear Search & Show All {softwareList.length} Systems
+                            </button>
+                        </div>
+                    )}
+
                     {getFilteredSoftware().map((soft) => {
                         return (
                             <div
@@ -2075,6 +2313,52 @@ export default function AccessLiveEnvironment() {
                                                 See How It Works
                                                 <ArrowRight size={11} className="opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
                                             </button>
+
+                                            {/* YouTube Demo Video CTA & Quick Edit Button */}
+                                            {(() => {
+                                                const videoUrl = getProjectYoutubeUrl(soft);
+                                                return videoUrl ? (
+                                                    <div className="flex items-center gap-1.5 w-full">
+                                                        <button
+                                                            type="button"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                setActiveVideoModal({ project: soft, url: videoUrl });
+                                                            }}
+                                                            className="group/yt flex-1 flex justify-center items-center gap-2 py-2.5 px-3 rounded-lg text-[10px] font-black uppercase tracking-widest text-[#FF0000] bg-red-950/20 border border-red-600/30 hover:bg-red-600 hover:text-white hover:border-red-600 shadow-[0_0_15px_rgba(255,0,0,0.15)] hover:shadow-[0_0_20px_rgba(255,0,0,0.3)] transition-all duration-300 cursor-pointer"
+                                                        >
+                                                            <Youtube size={13} className="text-[#FF0000] group-hover/yt:text-white transition-colors duration-300" />
+                                                            Watch Demo Video
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            title="Edit YouTube Video URL"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                setEditingVideoProject(soft);
+                                                                setVideoInputUrl(videoUrl);
+                                                            }}
+                                                            className="p-2.5 rounded-lg border border-red-600/30 bg-red-950/20 text-red-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all duration-300 shadow-sm cursor-pointer"
+                                                        >
+                                                            <Pencil size={12} />
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <button
+                                                        type="button"
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setEditingVideoProject(soft);
+                                                            setVideoInputUrl('');
+                                                        }}
+                                                        className="group/add w-full flex justify-center items-center gap-1.5 py-2 px-3 rounded-lg text-[9.5px] font-bold uppercase tracking-wider text-zinc-400 bg-white/[0.02] border border-dashed border-zinc-700/60 hover:text-red-400 hover:border-red-500/50 hover:bg-red-950/10 transition-all duration-300 cursor-pointer"
+                                                    >
+                                                        <Youtube size={12} className="text-red-500/70 group-hover/add:scale-110 transition-transform" />
+                                                        <span>+ Add Video URL</span>
+                                                        <Pencil size={10} className="opacity-50 group-hover/add:opacity-100 ml-1" />
+                                                    </button>
+                                                );
+                                            })()}
                                         </div>
 
                                         {/* View Features & Tech Stack Buttons */}
@@ -2123,6 +2407,161 @@ export default function AccessLiveEnvironment() {
                     </Reveal>
                 </div>
             </section>
+
+            {/* 1. EDIT YOUTUBE VIDEO MODAL */}
+            <AnimatePresence>
+                {editingVideoProject && (
+                    <motion.div className="fixed inset-0 z-[110] flex items-center justify-center p-4 overflow-y-auto">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/90 backdrop-blur-2xl"
+                            onClick={() => setEditingVideoProject(null)}
+                        />
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, y: 15 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 15 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="relative w-full max-w-lg rounded-[20px] p-[1px] z-10 overflow-hidden shadow-[0_0_60px_rgba(255,0,0,0.2)] bg-gradient-to-r from-red-600 via-rose-500 to-amber-500"
+                        >
+                            <div className="relative bg-zinc-950/95 backdrop-blur-3xl rounded-[19px] p-6 md:p-8">
+                                <button
+                                    onClick={() => setEditingVideoProject(null)}
+                                    className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-zinc-900 border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-all duration-200"
+                                >
+                                    <X size={14} strokeWidth={2.5} />
+                                </button>
+
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-500">
+                                        <Youtube size={16} />
+                                    </div>
+                                    <h3 className="text-xl font-display uppercase tracking-tight text-white">
+                                        Edit Demo Video Link
+                                    </h3>
+                                </div>
+                                <p className="text-xs text-zinc-400 mb-6 font-light">
+                                    Set YouTube video URL for <span className="text-white font-bold">{editingVideoProject.name}</span>
+                                </p>
+
+                                <form onSubmit={handleSaveYoutubeUrl} className="space-y-4">
+                                    <div>
+                                        <label className="block text-[10px] font-black uppercase tracking-widest text-zinc-400 mb-2">
+                                            YouTube Video URL:
+                                        </label>
+                                        <input
+                                            type="url"
+                                            value={videoInputUrl}
+                                            onChange={(e) => setVideoInputUrl(e.target.value)}
+                                            placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..."
+                                            className="w-full bg-zinc-900/80 border border-zinc-700 rounded-lg px-4 py-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all font-mono"
+                                            autoFocus
+                                        />
+                                        <p className="text-[10px] text-zinc-500 mt-1.5">
+                                            Supports standard YouTube links, youtu.be shortlinks, or embed links.
+                                        </p>
+                                    </div>
+
+                                    {savedSuccessToast && (
+                                        <div className="flex items-center gap-2 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold animate-pulse">
+                                            <Check size={14} /> Video URL saved successfully!
+                                        </div>
+                                    )}
+
+                                    <div className="flex items-center gap-3 pt-2">
+                                        <button
+                                            type="submit"
+                                            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-red-600 hover:bg-red-500 text-white font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(255,0,0,0.3)] transition-all cursor-pointer"
+                                        >
+                                            <Check size={14} /> Save Video URL
+                                        </button>
+                                        {getProjectYoutubeUrl(editingVideoProject) && (
+                                            <button
+                                                type="button"
+                                                onClick={handleRemoveYoutubeUrl}
+                                                className="px-4 py-3 rounded-lg bg-zinc-900 border border-zinc-700 hover:border-red-500/50 hover:bg-red-950/20 text-zinc-400 hover:text-red-400 text-xs font-bold uppercase transition-all cursor-pointer"
+                                                title="Remove video from this card"
+                                            >
+                                                <Trash2 size={14} />
+                                            </button>
+                                        )}
+                                    </div>
+                                </form>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* 2. EMBEDDED YOUTUBE VIDEO PLAYER MODAL */}
+            <AnimatePresence>
+                {activeVideoModal && (
+                    <motion.div className="fixed inset-0 z-[120] flex items-center justify-center p-4 overflow-y-auto">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/95 backdrop-blur-2xl"
+                            onClick={() => setActiveVideoModal(null)}
+                        />
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0, y: 15 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 15 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="relative w-full max-w-4xl rounded-[20px] p-[1px] z-10 overflow-hidden shadow-[0_0_80px_rgba(255,0,0,0.3)] bg-gradient-to-r from-red-600 via-rose-500 to-amber-500"
+                        >
+                            <div className="relative bg-zinc-950 rounded-[19px] p-4 md:p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2.5">
+                                        <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white shadow-lg">
+                                            <Youtube size={16} />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-base md:text-lg font-display uppercase tracking-tight text-white">
+                                                {activeVideoModal.project.name}
+                                            </h3>
+                                            <p className="text-[10px] text-zinc-400 uppercase tracking-widest font-black">
+                                                Interactive Product Walkthrough
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <a
+                                            href={activeVideoModal.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-3 py-1.5 rounded-md bg-zinc-900 border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all"
+                                        >
+                                            <span>Open in YouTube</span>
+                                            <ExternalLink size={10} />
+                                        </a>
+                                        <button
+                                            onClick={() => setActiveVideoModal(null)}
+                                            className="w-8 h-8 flex items-center justify-center rounded-full bg-zinc-900 border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
+                                        >
+                                            <X size={14} strokeWidth={2.5} />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* 16:9 Video Aspect Ratio Frame */}
+                                <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-white/10 shadow-2xl">
+                                    <iframe
+                                        src={getYouTubeEmbedUrl(activeVideoModal.url)}
+                                        title={activeVideoModal.project.name}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen
+                                        className="w-full h-full border-0"
+                                    />
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* PREMIUM 2-STEP POPUP FLOW */}
             <AnimatePresence>

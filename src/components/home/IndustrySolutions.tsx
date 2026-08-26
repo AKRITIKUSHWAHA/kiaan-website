@@ -32,9 +32,8 @@ const IndustryCard = ({ title, desc, icon: Icon, delay, href }: IndustryCardProp
                 ease: [0.16, 1, 0.3, 1],
                 delay: delay
             }}
-            className="group glass-panel p-8 relative overflow-hidden flex flex-col h-full border border-zinc-900/90 bg-zinc-950/60 hover:border-yellow-500/40 transition-all duration-500 block cursor-pointer contain-card rounded-xl"
+            className="group glass-panel p-8 relative overflow-hidden flex flex-col h-full border border-zinc-900 hover:border-yellow-500/30 transition-all duration-500 block cursor-pointer contain-card"
         >
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent group-hover:via-yellow-500 transition-all duration-500" />
             <Link href={href || "/blog"} className="absolute inset-0 z-0">
                 <span className="sr-only">Go to {title}</span>
             </Link>
@@ -45,7 +44,7 @@ const IndustryCard = ({ title, desc, icon: Icon, delay, href }: IndustryCardProp
 
             <div className="relative z-10 pointer-events-none">
                 <div
-                    className="mb-8 p-4 bg-zinc-900 border border-zinc-800 w-fit relative z-10 group-hover:bg-yellow-500 group-hover:text-black group-hover:border-yellow-400 transition-all duration-500 rounded-lg"
+                    className="mb-8 p-4 bg-zinc-900 w-fit relative z-10 group-hover:bg-yellow-500 group-hover:text-black transition-all duration-500"
                 >
                     <Icon size={32} />
                 </div>
@@ -54,10 +53,10 @@ const IndustryCard = ({ title, desc, icon: Icon, delay, href }: IndustryCardProp
                     {title}
                 </h3>
 
-                <p className="text-zinc-400 leading-relaxed font-light mb-8 group-hover:text-zinc-200 transition-colors relative z-10 text-sm" dangerouslySetInnerHTML={{ __html: desc }} />
+                <p className="text-zinc-500 leading-relaxed font-light mb-8 group-hover:text-zinc-300 transition-colors relative z-10" dangerouslySetInnerHTML={{ __html: desc }} />
             </div>
 
-            <div className="relative z-10 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 group-hover:text-yellow-500 transition-all duration-500 mt-auto pointer-events-none">
+            <div className="relative z-10 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-hover:text-yellow-500 transition-all duration-500 mt-auto pointer-events-none">
                 GET INDUSTRY INTEL <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
         </motion.div>

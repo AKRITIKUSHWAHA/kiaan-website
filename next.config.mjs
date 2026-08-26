@@ -40,9 +40,7 @@ const nextConfig = {
     trailingSlash: true,
     output: 'export',
     experimental: {
-        optimizePackageImports: ['lucide-react', 'framer-motion'],
-        workerThreads: false,
-        cpus: 1
+        optimizePackageImports: ['lucide-react', 'framer-motion']
     },
 };
 

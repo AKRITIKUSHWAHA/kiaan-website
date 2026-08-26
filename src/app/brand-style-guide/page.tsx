@@ -10,7 +10,9 @@ export const metadata: Metadata = {
     "Official corporate brand guidelines for Kiaan Technology. Includes typography, WCAG colors ratios, voice and tone, logo rules, and templates.",
   keywords: "Kiaan Technology brand guide, style guide, logo rules, brand colors hex, corporate voice, typography standards",
   robots: "noindex, nofollow",
-  
+  alternates: {
+    canonical: "https://kiaantechnology.com/brand-style-guide",
+  },
 };
 
 export default function StyleGuidePage() {

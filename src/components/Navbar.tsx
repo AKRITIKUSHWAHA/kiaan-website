@@ -95,8 +95,8 @@ export const Navbar = () => {
             const dropdownRect = dropdown.getBoundingClientRect();
             const itemRect = item.getBoundingClientRect();
 
-            // Calculate submenu top relative to dropdown
-            let top = itemRect.top - dropdownRect.top;
+            // Calculate submenu top relative to dropdown (offset container padding so first item is flush at top)
+            let top = Math.max(0, itemRect.top - dropdownRect.top - 8);
 
             // Estimate submenu height: ~45px per item + container padding
             const estimatedHeight = Math.min(items.length * 45 + 16, window.innerHeight - 140);
@@ -136,7 +136,7 @@ export const Navbar = () => {
                 <div className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-opacity duration-1000 ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
 
                 <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-10 h-full flex items-center justify-between">
-                    <Link href="/" className="group text-[1.35rem] 2xl:text-[1.65rem] font-display uppercase tracking-tighter leading-none transition-all duration-300 flex items-center relative z-50 shrink-0">
+                    <Link href="/" className="group text-[1.35rem] 2xl:text-[1.65rem] font-display uppercase tracking-tighter leading-none transition-all duration-300 flex items-center relative z-50 shrink-0 mr-3 xl:mr-5 2xl:mr-8">
                         <div className="logo-glitter">
                             <span className="text-white group-hover:text-yellow-500 transition-colors duration-300 font-bold">KIAAN</span>
                             <span className="text-yellow-500 group-hover:text-white transition-colors duration-300 font-bold">TECHNOLOGY</span>
@@ -144,149 +144,165 @@ export const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden xl:flex items-center justify-center h-full flex-1 mx-2 2xl:mx-4 gap-0.5 2xl:gap-1.5 min-w-0">
-                        {navLinks.map((link) => (
-                            <div
-                                key={link.name}
-                                className="h-full flex items-center relative nav-dropdown-container shrink-0"
-                                onMouseEnter={() => setOpenMenu(link.name)}
-                                onMouseLeave={() => {
-                                    setOpenMenu(null)
-                                    setActiveCategory(null)
-                                }}
-                            >
-                                {link.level2 || link.subItems ? (
-                                    <Link
-                                        href={link.href}
-                                        prefetch={true}
-                                        className={`relative h-full px-1.5 2xl:px-2.5 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.04em] 2xl:tracking-[0.08em] flex items-center gap-1 transition-all duration-300 whitespace-nowrap ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
-                                    >
-                                        <span className="relative z-10">{link.name}</span>
-                                        <ChevronDown size={11} className={`relative z-10 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100 text-black' : 'opacity-60'}`} />
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
-                                    </Link>
-                                ) : (
-                                    <Link
-                                        href={link.href}
-                                        prefetch={true}
-                                        className={`relative h-full px-1.5 2xl:px-2.5 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.04em] 2xl:tracking-[0.08em] flex items-center gap-1 transition-all duration-300 whitespace-nowrap ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
-                                    >
-                                        <span className="relative z-10">{link.name}</span>
-                                        <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[34px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 rounded-md ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
-                                    </Link>
-                                )}
-
-                                {/* Level 2 & 3 Hierarchical Dropdown */}
-                                <AnimatePresence>
-                                    {openMenu === link.name && (link.level2 || link.subItems) && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 10 }}
-                                            transition={{ duration: 0.2, ease: "easeOut" }}
-                                            className="absolute top-full left-0 z-[100] mt-1"
+                    <div className="hidden xl:flex items-center h-full flex-1 min-w-0 justify-between">
+                        <div className="flex items-center h-full gap-0.5 xl:gap-1 2xl:gap-2.5">
+                            {navLinks.map((link) => (
+                                <div
+                                    key={link.name}
+                                    className="h-full flex items-center relative nav-dropdown-container shrink-0"
+                                    onMouseEnter={() => setOpenMenu(link.name)}
+                                    onMouseLeave={() => {
+                                        setOpenMenu(null)
+                                        setActiveCategory(null)
+                                    }}
+                                >
+                                    {link.level2 || link.subItems ? (
+                                        <Link
+                                            href={link.href}
+                                            prefetch={true}
+                                            className={`relative h-full px-1 xl:px-1.5 2xl:px-3 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.03em] 2xl:tracking-[0.1em] flex items-center gap-0.5 xl:gap-1 transition-all duration-300 whitespace-nowrap ${openMenu === link.name || (pathname === link.href) ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
                                         >
-                                            <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner rounded-xl overflow-hidden">
-                                                <div
-                                                    className={`${link.subItems ? 'w-[240px]' : 'w-[200px]'} flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
-                                                    style={{ maxHeight: 'calc(100vh - 120px)' }}
-                                                >
-                                                    {/* Standard SubItems List */}
-                                                    {link.subItems && link.subItems.map((subItem) => (
-                                                        <Link
-                                                            key={subItem.name}
-                                                            href={subItem.href}
-                                                            prefetch={true}
-                                                            className="block px-6 py-2.5 text-[11px] font-bold uppercase tracking-wider text-zinc-400 hover:text-black hover:bg-yellow-500 transition-colors border-b border-white/5 last:border-none"
-                                                        >
-                                                            {subItem.name}
-                                                        </Link>
-                                                    ))}
-
-                                                    {/* Level 2 Categories List */}
-                                                    {link.level2 && link.level2.map((category: any) => (
-                                                        <div
-                                                            key={category.title}
-                                                            className={`relative ${activeCategory === category.title ? 'bg-yellow-500 text-black' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
-                                                            onMouseEnter={(e) => handleCategoryHover(e, category.title, category.items)}
-                                                        >
-                                                            <div className="flex items-center justify-between px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider border-b border-white/5 last:border-none cursor-pointer group">
-                                                                <Link
-                                                                    href={(() => {
-                                                                        if (category.href) return category.href;
-                                                                        if (link.name === 'Products') return `/products/category/${generateSlug(category.title)}`;
-                                                                        if (link.name === 'Solutions') return `/solutions/${category.slug || generateSlug(category.title)}`;
-                                                                        return `/internship?cat=${category.slug || generateSlug(category.title)}`;
-                                                                    })()}
-                                                                    prefetch={true}
-                                                                    className={`flex-1 ${activeCategory === category.title ? 'text-black' : 'text-zinc-400 group-hover:text-white'}`}
-                                                                >
-                                                                    {category.title}
-                                                                </Link>
-                                                                <ChevronRight size={12} className={activeCategory === category.title ? 'text-black' : 'text-zinc-600 group-hover:text-white'} />
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-
-                                                {/* Level 3 Floating Sub-Submenu */}
-                                                <AnimatePresence>
-                                                    {activeCategory && (
-                                                        <motion.div
-                                                            initial={{ opacity: 0, x: -6 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            exit={{ opacity: 0, x: -6 }}
-                                                            transition={{ duration: 0.15 }}
-                                                            className="absolute left-full bg-[#111111] border border-white/10 shadow-2xl py-2 overflow-y-auto [&::-webkit-scrollbar]:hidden"
-                                                            style={{
-                                                                top: `${subMenuTop}px`,
-                                                                width: `${maxSubMenuWidth}px`,
-                                                                maxHeight: 'calc(100vh - 140px)'
-                                                            }}
-                                                            onMouseEnter={() => setActiveCategory(activeCategory)}
-                                                            onMouseLeave={() => setActiveCategory(null)}
-                                                        >
-                                                            {(() => {
-                                                                const category = link.level2?.find((c: any) => c.title === activeCategory);
-                                                                if (!category) return null;
-
-                                                                return category.items.map((item: any) => {
-                                                                    const isObject = typeof item === 'object';
-                                                                    const label = isObject ? item.title : item;
-                                                                    let href = '';
-                                                                    if (link.href === '/internship') {
-                                                                        href = isObject && item.slug ? `/internship/${item.slug}` : `/internship/${generateSlug(label)}`;
-                                                                    } else if (link.name === 'Solutions') {
-                                                                        href = (category as any).href || `/solutions/${(category as any).slug || generateSlug(category.title)}`;
-                                                                    } else if (link.name === 'Products') {
-                                                                        href = `/products/${generateSlug(label)}`;
-                                                                    } else {
-                                                                        href = `/${generateSlug(label)}`;
-                                                                    }
-
-                                                                    return (
-                                                                        <Link
-                                                                            key={label}
-                                                                            href={href}
-                                                                            prefetch={true}
-                                                                            className="block px-5 py-2.5 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-yellow-500 hover:bg-white/5 transition-colors border-b border-white/[0.03] last:border-none"
-                                                                        >
-                                                                            {label}
-                                                                        </Link>
-                                                                    );
-                                                                });
-                                                            })()}
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
-                                            </div>
-                                        </motion.div>
+                                            <span className="relative z-10">{link.name}</span>
+                                            <ChevronDown size={10} className={`relative z-10 shrink-0 transition-transform duration-300 ${openMenu === link.name ? 'rotate-180 opacity-100' : 'opacity-50'}`} />
+                                            <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[30px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${openMenu === link.name || (pathname === link.href) ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            href={link.href}
+                                            prefetch={true}
+                                            className={`relative h-full px-1 xl:px-1.5 2xl:px-3 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.03em] 2xl:tracking-[0.1em] flex items-center justify-center transition-all duration-300 whitespace-nowrap ${pathname === link.href ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                        >
+                                            <span className="relative z-10">{link.name}</span>
+                                            <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[30px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === link.href ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                        </Link>
                                     )}
-                                </AnimatePresence>
-                            </div>
-                        ))}
 
-                        <div className="ml-auto flex items-center shrink-0 pl-2 2xl:pl-4">
+                                    {/* Level 2 & 3 Hierarchical Dropdown */}
+                                    <AnimatePresence>
+                                        {openMenu === link.name && (link.level2 || link.subItems) && (
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: 10 }}
+                                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                                className="absolute top-full left-0 z-[100]"
+                                            >
+                                                <div className="bg-[#0a0a0a] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative nav-dropdown-inner">
+                                                    <div
+                                                        className={`${link.subItems ? 'w-[240px]' : 'w-[180px]'} flex flex-col py-2 overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:hidden`}
+                                                        style={{ maxHeight: 'calc(100vh - 120px)' }}
+                                                    >
+                                                        {/* Standard SubItems List */}
+                                                        {link.subItems && link.subItems.map((subItem) => (
+                                                            <Link
+                                                                key={subItem.name}
+                                                                href={subItem.href}
+                                                                prefetch={true}
+                                                                className="block px-6 py-2.5 text-[11px] font-bold uppercase tracking-wider text-zinc-400 hover:text-black hover:bg-yellow-500 transition-colors border-b border-white/5 last:border-none"
+                                                            >
+                                                                {subItem.name}
+                                                            </Link>
+                                                        ))}
+
+                                                        {/* Level 2 Categories List */}
+                                                        {link.level2 && link.level2.map((category: any) => (
+                                                            <div
+                                                                key={category.title}
+                                                                className={`relative ${activeCategory === category.title ? 'bg-yellow-500 text-black' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}
+                                                                onMouseEnter={(e) => handleCategoryHover(e, category.title, category.items)}
+                                                            >
+                                                                <div className="flex items-center justify-between px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider border-b border-white/5 last:border-none cursor-pointer group">
+                                                                    {/* Category Link (Level 2) */}
+                                                                    <Link
+                                                                        href={(() => {
+                                                                            if (category.href) return category.href;
+                                                                            if (link.name === 'Products') return `/products/category/${generateSlug(category.title)}`;
+                                                                            if (link.name === 'Solutions') return `/solutions/${category.slug || generateSlug(category.title)}`;
+                                                                            return `/internship?cat=${category.slug || generateSlug(category.title)}`;
+                                                                        })()}
+                                                                        prefetch={true}
+                                                                        className={`flex-1 ${activeCategory === category.title ? 'text-black' : 'text-zinc-400 group-hover:text-white'}`}
+                                                                    >
+                                                                        {category.title}
+                                                                    </Link>
+                                                                    <ChevronRight size={12} className={activeCategory === category.title ? 'text-black' : 'text-zinc-600 group-hover:text-white'} />
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+
+                                                    {/* Level 3 Floating Sub-Submenu */}
+                                                    <AnimatePresence>
+                                                        {activeCategory && (
+                                                            <motion.div
+                                                                initial={{ opacity: 0, x: -6 }}
+                                                                animate={{ opacity: 1, x: 0 }}
+                                                                exit={{ opacity: 0, x: -6 }}
+                                                                transition={{ duration: 0.15 }}
+                                                                className="absolute left-full bg-[#111111] border border-white/10 shadow-2xl py-2 overflow-y-auto [&::-webkit-scrollbar]:hidden"
+                                                                style={{
+                                                                    top: `${subMenuTop}px`,
+                                                                    width: `${maxSubMenuWidth}px`,
+                                                                    maxHeight: 'calc(100vh - 140px)'
+                                                                }}
+                                                                onMouseEnter={() => setActiveCategory(activeCategory)}
+                                                                onMouseLeave={() => setActiveCategory(null)}
+                                                            >
+                                                                {(() => {
+                                                                    const category = link.level2?.find((c: any) => c.title === activeCategory);
+                                                                    if (!category) return null;
+
+                                                                    return category.items.map((item: any) => {
+                                                                        const isObject = typeof item === 'object';
+                                                                        const label = isObject ? item.title : item;
+                                                                        let href = '';
+                                                                        if (link.href === '/internship') {
+                                                                            href = isObject && item.slug ? `/internship/${item.slug}` : `/internship/${generateSlug(label)}`;
+                                                                        } else if (link.name === 'Solutions') {
+                                                                            href = (category as any).href || `/solutions/${(category as any).slug || generateSlug(category.title)}`;
+                                                                        } else if (link.name === 'Products') {
+                                                                            href = `/products/${generateSlug(label)}`;
+                                                                        } else {
+                                                                            href = `/${generateSlug(label)}`;
+                                                                        }
+
+                                                                        return (
+                                                                            <Link
+                                                                                key={label}
+                                                                                href={href}
+                                                                                prefetch={true}
+                                                                                className="block px-5 py-2.5 text-[10px] font-medium uppercase tracking-wider text-zinc-400 hover:text-yellow-500 hover:bg-white/5 transition-colors border-b border-white/[0.03] last:border-none"
+                                                                            >
+                                                                                {label}
+                                                                            </Link>
+                                                                        );
+                                                                    });
+                                                                })()}
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            ))}
+
+                            {/* Contact Item */}
+                            <div className="h-full flex items-center relative nav-dropdown-container shrink-0">
+                                <Link
+                                    href="/contact"
+                                    prefetch={true}
+                                    className={`relative h-full px-1 xl:px-1.5 2xl:px-3 text-[9.5px] 2xl:text-[11px] font-bold uppercase tracking-[0.03em] 2xl:tracking-[0.1em] flex items-center justify-center transition-all duration-300 whitespace-nowrap ${pathname === '/contact' ? 'text-black' : 'text-zinc-400 hover:text-white'}`}
+                                >
+                                    <span className="relative z-10">Contact</span>
+                                    <span className={`absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[30px] bg-yellow-500 origin-center transition-transform duration-300 ease-out -z-0 ${pathname === '/contact' ? 'scale-y-100' : 'scale-y-0'}`}></span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* Launch Your Software CTA Button */}
+                        <div className="flex items-center shrink-0 ml-3 xl:ml-5 2xl:ml-8">
                             <Link href="/start-project" prefetch={true} className="shrink-0 group">
                                 <div className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white rounded px-2.5 2xl:px-4 h-8 2xl:h-9 text-[9px] 2xl:text-[10.5px] font-bold uppercase tracking-[0.06em] 2xl:tracking-[0.1em] shadow-[0_2px_10px_rgba(220,38,38,0.35)] hover:shadow-[0_4px_16px_rgba(220,38,38,0.5)] transition-all duration-200 flex items-center gap-1.5 2xl:gap-2 whitespace-nowrap active:scale-95 cursor-pointer">
                                     <span>Launch Your Software</span>
